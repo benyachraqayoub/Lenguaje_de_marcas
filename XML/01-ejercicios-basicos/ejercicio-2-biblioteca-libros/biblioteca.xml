@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Etiqueta raíz única que agrupa toda la biblioteca -->
+<biblioteca>
+
+    <libro>
+        <titulo>Planet of the Slums</titulo>
+        <autor>Mike Davis</autor>
+        <ano>2006</ano>
+        <genero>Sociología / Ensayo</genero>
+        <isbn>xxx-xxxxxxxxxx</isbn>
+    </libro>
+
+    <libro>
+        <titulo>A Game of Thrones</titulo>
+        <autor>George R. R. Martin</autor>
+        <ano>1996</ano>
+        <genero>Fantasía épica</genero>
+        <isbn>xxx-xxxxxxxxxx</isbn>
+    </libro>
+
+    <libro>
+        <titulo>Men in the Sun</titulo>
+        <autor>Ghassan Kanafani</autor>
+        <ano>1963</ano>
+        <genero>Novela / Literatura palestina</genero>
+        <isbn>xxx-xxxxxxxxxx</isbn>
+    </libro>
+
+    <libro>
+        <titulo>The Travels of Ibn Battuta</titulo>
+        <autor>Ibn Battuta</autor>
+        <ano>1355</ano>
+        <genero>Crónica de viajes / Historia</genero>
+        <isbn>xxx-xxxxxxxxxx</isbn>
+    </libro>
+
+    <libro>
+        <titulo>12 Rules for Life</titulo>
+        <autor>Jordan Peterson</autor>
+        <ano>2018</ano>
+        <genero>Psicología / Autoayuda</genero>
+        <isbn>xxx-xxxxxxxxxx</isbn>
+    </libro>
+
+</biblioteca>
