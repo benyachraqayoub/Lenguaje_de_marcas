@@ -6,7 +6,7 @@ Colección de ejercicios de estructuración y marcado de datos con XML.
 
 ## 🗂️ Listado de Ejercicios
 
-| Ejercicio | EJERCICIO_5 (PDF) | Solución (Código XML) |
+| Ejercicio | Enunciado (PDF) | Solución (Código XML) |
 | :--- | :---: | :---: |
 | **01. Libro Básico** | [📄 Ver PDF](./01-ejercicios-basicos/ejercicio-1-libro-basico/EJERCICIO_1.pdf) | [💻 Ver Código](./01-ejercicios-basicos/ejercicio-1-libro-basico/libro-basico.xml) |
 | **02. Biblioteca de Libros** | [📄 Ver PDF](./01-ejercicios-basicos/ejercicio-2-biblioteca-libros/EJERCICIO_2.pdf) | [💻 Ver Código](./01-ejercicios-basicos/ejercicio-2-biblioteca-libros/biblioteca.xml) |
