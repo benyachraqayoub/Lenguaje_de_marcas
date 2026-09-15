@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<libro>
+<libro> <!-- Elemento raiz -->
     <titulo>El libro de la restauración y del equilibrio</titulo>
     <autor>Al-Juarismi</autor>
     <ano_de_publicacion>820</ano_de_publicacion>
