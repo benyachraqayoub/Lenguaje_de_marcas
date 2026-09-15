@@ -7,7 +7,7 @@
         <autor>Pierre Boulle</autor>
         <ano>1963</ano>
         <genero>Ciencia ficción</genero>
-        <ISBN>xxx-xxxxxxxxxx</ISBN>
+        <ISBN>978-2266118286</ISBN>
     </libro>
 
     <libro>
@@ -15,7 +15,7 @@
         <autor>George R. R. Martin</autor>
         <ano>1996</ano>
         <genero>Fantasía épica</genero>
-        <ISBN>xxx-xxxxxxxxxx</ISBN>
+        <ISBN>978-0002245845</ISBN>
     </libro>
 
     <libro>
@@ -23,7 +23,7 @@
         <autor>Ghassan Kanafani</autor>
         <ano>1963</ano>
         <genero>Novela / Literatura palestina</genero>
-        <ISBN>xxx-xxxxxxxxxx</ISBN>
+        <ISBN>978-0894108570</ISBN>
     </libro>
 
     <libro>
@@ -31,7 +31,7 @@
         <autor>Ibn Battuta</autor>
         <ano>1355</ano>
         <genero>Crónica de viajes / Historia</genero>
-        <ISBN>xxx-xxxxxxxxxx</ISBN>
+        <ISBN>978-1605206219</ISBN>
     </libro>
 
     <libro>
@@ -39,7 +39,7 @@
         <autor>Jordan Peterson</autor>
         <ano>2018</ano>
         <genero>Psicología / Autoayuda</genero>
-        <ISBN>xxx-xxxxxxxxxx</ISBN>
+        <ISBN>978-0345816023</ISBN>
     </libro>
 
 </biblioteca>
