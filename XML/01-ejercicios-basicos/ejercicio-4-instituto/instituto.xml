@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instituto nombre="DIGITECH FP Valencia" ciudad="Valencia">
+  
+  <!-- SECCIÓN DE PROFESORES -->
+  <profesores>
+    <profesor id="PROFE01">
+      <nombre>Javier</nombre>
+      <apellidos>Martínez Soler</apellidos>
+      <especialidad>Desarrollo Web</especialidad>
+    </profesor>
+    <profesor id="PROFE02">
+      <nombre>Elena</nombre>
+      <apellidos>Sanchis Ribes</apellidos>
+      <especialidad>Sistemas y Redes</especialidad>
+    </profesor>
+    <profesor id="PROFE03">
+      <nombre>Vicente</nombre>
+      <apellidos>Gómez Navarro</apellidos>
+      <especialidad>Inteligencia Artificial</especialidad>
+    </profesor>
+  </profesores>
+
+  <!-- SECCIÓN DE ASIGNATURAS -->
+  <asignaturas>
+    <asignatura id="MOD-LMARCAS">
+      <nombre>Lenguajes de Marcas y Sistemas de Gestión de Información</nombre>
+      <profesor_id>PROFE01</profesor_id>
+    </asignatura>
+    <asignatura id="MOD-GBD">
+      <nombre>Gestión de Bases de Datos</nombre>
+      <profesor_id>PROFE01</profesor_id>
+    </asignatura>
+    <asignatura id="MOD-SISO">
+      <nombre>Sistemas Operativos en Red</nombre>
+      <profesor_id>PROFE02</profesor_id>
+    </asignatura>
+    <asignatura id="MOD-IA">
+      <nombre>Modelos de Inteligencia Artificial</nombre>
+      <profesor_id>PROFE03</profesor_id>
+    </asignatura>
+  </asignaturas>
+
+  <!-- SECCIÓN DE ALUMNOS -->
+  <alumnos>
+    <!-- Alumno 1 - Estudia DAW (Desarrollo de Aplicaciones Web) -->
+    <alumno id="ALU-46001">
+      <nombre>Marc</nombre>
+      <apellidos>Vilanova Estellés</apellidos>
+      <edad>21</edad>
+      <curso>1º DAW (Grado Superior)</curso>
+      <expediente_academico>
+        <asignatura_cursada id_ref="MOD-LMARCAS">
+          <nota>9.5</nota>
+        </asignatura_cursada>
+        <asignatura_cursada id_ref="MOD-GBD">
+          <nota>8.0</nota>
+        </asignatura_cursada>
+      </expediente_academico>
+    </alumno>
+
+    <!-- Alumno 2 - Estudia ASIR / SMR -->
+    <alumno id="ALU-46002">
+      <nombre>Paula</nombre>
+      <apellidos>Ferrer Ortiz</apellidos>
+      <edad>19</edad>
+      <curso>2º SMR (Grado Medio)</curso>
+      <expediente_academico>
+        <asignatura_cursada id_ref="MOD-SISO">
+          <nota>7.2</nota>
+        </asignatura_cursada>
+      </expediente_academico>
+    </alumno>
+
+    <!-- Alumno 3 - Especialización en IA -->
+    <alumno id="ALU-46003">
+      <nombre>Álvaro</nombre>
+      <apellidos>Blanes Camps</apellidos>
+      <edad>24</edad>
+      <curso>Máster FP Inteligencia Artificial</curso>
+      <expediente_academico>
+        <asignatura_cursada id_ref="MOD-IA">
+          <nota>9.0</nota>
+        </asignatura_cursada>
+      </expediente_academico>
+    </alumno>
+
+    <!-- Alumno 4 - Doble titulación DAM + DAW -->
+    <alumno id="ALU-46004">
+      <nombre>Sara</nombre>
+      <apellidos>Giménez Pastor</apellidos>
+      <edad>22</edad>
+      <curso>2º Doble Grado DAM+DAW</curso>
+      <expediente_academico>
+        <asignatura_cursada id_ref="MOD-LMARCAS">
+          <nota>6.5</nota>
+        </asignatura_cursada>
+        <asignatura_cursada id_ref="MOD-GBD">
+          <nota>7.0</nota>
+        </asignatura_cursada>
+        <asignatura_cursada id_ref="MOD-IA">
+          <nota>8.5</nota>
+        </asignatura_cursada>
+      </expediente_academico>
+    </alumno>
+  </alumnos>
+
+</instituto>
