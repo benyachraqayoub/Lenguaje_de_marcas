@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Etiqueta raíz única que agrupa toda la biblioteca -->
-<biblioteca>
+<biblioteca>  <!-- Elemento raíz  -->
 
-    <libro>
-        <titulo>La Planète des Singes</titulo>
+    <libro> <!-- Elemento padre -->
+        <titulo>La Planète des Singes</titulo> <!-- Elemento hijo -->
         <autor>Pierre Boulle</autor>
         <ano>1963</ano>
         <genero>Ciencia ficción</genero>
-        <isbn>xxx-xxxxxxxxxx</isbn>
+        <ISBN>xxx-xxxxxxxxxx</ISBN>
     </libro>
 
     <libro>
@@ -15,7 +15,7 @@
         <autor>George R. R. Martin</autor>
         <ano>1996</ano>
         <genero>Fantasía épica</genero>
-        <isbn>xxx-xxxxxxxxxx</isbn>
+        <ISBN>xxx-xxxxxxxxxx</ISBN>
     </libro>
 
     <libro>
@@ -23,7 +23,7 @@
         <autor>Ghassan Kanafani</autor>
         <ano>1963</ano>
         <genero>Novela / Literatura palestina</genero>
-        <isbn>xxx-xxxxxxxxxx</isbn>
+        <ISBN>xxx-xxxxxxxxxx</ISBN>
     </libro>
 
     <libro>
@@ -31,7 +31,7 @@
         <autor>Ibn Battuta</autor>
         <ano>1355</ano>
         <genero>Crónica de viajes / Historia</genero>
-        <isbn>xxx-xxxxxxxxxx</isbn>
+        <ISBN>xxx-xxxxxxxxxx</ISBN>
     </libro>
 
     <libro>
@@ -39,7 +39,7 @@
         <autor>Jordan Peterson</autor>
         <ano>2018</ano>
         <genero>Psicología / Autoayuda</genero>
-        <isbn>xxx-xxxxxxxxxx</isbn>
+        <ISBN>xxx-xxxxxxxxxx</ISBN>
     </libro>
 
 </biblioteca>
