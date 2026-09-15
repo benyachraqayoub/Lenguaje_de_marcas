@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tienda_informatica>
+
+  <!-- Producto 1: Componente principal -->
+  <producto id="PROD-001">
+    <nombre>Procesador Intel Core i7-13700K</nombre>
+    <marca>Intel</marca>
+    <precio>419.99</precio>
+    <stock>15</stock>
+    <categoria>Componentes</categoria>
+  </producto>
+
+  <!-- Producto 2: Almacenamiento -->
+  <producto id="PROD-002">
+    <nombre>Disco Duro SSD 1TB NVMe M.2</nombre>
+    <marca>Samsung</marca>
+    <precio>89.50</precio>
+    <stock>42</stock>
+    <categoria>Almacenamiento</categoria>
+  </producto>
+
+  <!-- Producto 3: Periférico -->
+  <producto id="PROD-003">
+    <nombre>Teclado Mecánico G Pro X</nombre>
+    <marca>Logitech</marca>
+    <precio>125.00</precio>
+    <stock>8</stock>
+    <categoria>Perifericos</categoria>
+  </producto>
+
+  <!-- Producto 4: Tarjeta gráfica -->
+  <producto id="PROD-004">
+    <nombre>Tarjeta Gráfica GeForce RTX 5090</nombre>
+    <marca>ASUS</marca>
+    <precio>2499.99</precio>
+    <stock>4</stock>
+    <categoria>Componentes</categoria>
+  </producto>
+
+  <!-- Producto 5: Monitor -->
+  <producto id="PROD-005">
+    <nombre>Monitor Gaming 27" QHD 165Hz</nombre>
+    <marca>MSI</marca>
+    <precio>279.90</precio>
+    <stock>21</stock>
+    <categoria>Monitores</categoria>
+  </producto>
+
+</tienda_informatica>
