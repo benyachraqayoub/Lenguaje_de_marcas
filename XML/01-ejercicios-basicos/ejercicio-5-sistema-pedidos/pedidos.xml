@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pedidos>
+
+  <!-- PEDIDO 1 -->
+  <pedido id="P001">
+    <fecha>2026-03-10</fecha>
+    <cliente>
+      <nombre>María García López</nombre>
+      <email>maria.garcia@email.com</email>
+      <telefono>+34 600 123 456</telefono>
+    </cliente>
+    <direccion_envio>
+      <calle>Calle Mayor, 14, 2ºB</calle>
+      <ciudad>Madrid</ciudad>
+      <codigo_postal>28001</codigo_postal>
+      <pais>España</pais>
+    </direccion_envio>
+    <productos>
+      <producto id="PROD101">
+        <nombre>Auriculares Inalámbricos Pro</nombre>
+        <cantidad>1</cantidad>
+        <precio_unitario>89.99</precio_unitario>
+      </producto>
+      <producto id="PROD204">
+        <nombre>Funda de Silicona Premium</nombre>
+        <cantidad>2</cantidad>
+        <precio_unitario>15.00</precio_unitario>
+      </producto>
+    </productos>
+    <total>119.99</total>
+  </pedido>
+
+  <!-- PEDIDO 2 -->
+  <pedido id="P002">
+    <fecha>2026-03-12</fecha>
+    <cliente>
+      <nombre>Carlos Mendoza</nombre>
+      <email>carlos.m@email.com</email>
+      <telefono>+34 655 987 654</telefono>
+    </cliente>
+    <direccion_envio>
+      <calle>Avinguda Diagonal, 450</calle>
+      <ciudad>Barcelona</ciudad>
+      <codigo_postal>08006</codigo_postal>
+      <pais>España</pais>
+    </direccion_envio>
+    <productos>
+      <producto id="PROD315">
+        <nombre>Teclado Mecánico RGB</nombre>
+        <cantidad>1</cantidad>
+        <precio_unitario>120.50</precio_unitario>
+      </producto>
+      <producto id="PROD402">
+        <nombre>Ratón Ergonómico Inalámbrico</nombre>
+        <cantidad>1</cantidad>
+        <precio_unitario>45.00</precio_unitario>
+      </producto>
+      <producto id="PROD088">
+        <nombre>Alfombrilla XL</nombre>
+        <cantidad>3</cantidad>
+        <precio_unitario>19.90</precio_unitario>
+      </producto>
+    </productos>
+    <total>225.20</total>
+  </pedido>
+
+  <!-- PEDIDO 3 -->
+  <pedido id="P003">
+    <fecha>2026-03-15</fecha>
+    <cliente>
+      <nombre>Ana Martínez Silva</nombre>
+      <email>ana.martinez@email.com</email>
+      <telefono>+34 611 445 566</telefono>
+    </cliente>
+    <direccion_envio>
+      <calle>Calle Sierpes, 23</calle>
+      <ciudad>Sevilla</ciudad>
+      <codigo_postal>41004</codigo_postal>
+      <pais>España</pais>
+    </direccion_envio>
+    <productos>
+      <producto id="PROD510">
+        <nombre>Cafetera de Goteo Automática</nombre>
+        <cantidad>1</cantidad>
+        <precio_unitario>65.00</precio_unitario>
+      </producto>
+      <producto id="PROD012">
+        <nombre>Pack 2 tazas de Cerámica</nombre>
+        <cantidad>2</cantidad>
+        <precio_unitario>12.50</precio_unitario>
+      </producto>
+    </productos>
+    <total>90.00</total>
+  </pedido>
+
+</pedidos>
