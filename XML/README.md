@@ -13,8 +13,6 @@ Colección de ejercicios de estructuración y marcado de datos con XML.
 | **03. Tienda con Atributos** | [📄 Ver PDF](./01-ejercicios-basicos/ejercicio-3-tienda-atributos/EJERCICIO_3.pdf) | [💻 Ver Código](./01-ejercicios-basicos/ejercicio-3-tienda-atributos/tienda.xml) |
 | **04. Instituto** | [📄 Ver PDF](./01-ejercicios-basicos/ejercicio-4-instituto/EJERCICIO_4.pdf) | [💻 Ver Código](./01-ejercicios-basicos/ejercicio-4-instituto/instituto.xml) |
 | **05. Sistema de Pedidos** | [📄 Ver PDF](./01-ejercicios-basicos/ejercicio-5-sistema-pedidos/EJERCICIO_5.pdf) | [💻 Ver Código](./01-ejercicios-basicos/ejercicio-5-sistema-pedidos/pedidos.xml) |
-| **06. Gestion tienda online** | [📄 Ver PDF](./01-ejercicios-basicos/ejercicio-6-tienda-online/EJERCICIO_6.pdf) | [💻 Ver Código](./01-ejercicios-basicos/ejercicio-6-tienda-online/tienda.xml) |
+| **06. Gestion tienda online** | [📄 Ver PDF](./01-ejercicios-basicos\ejercicio-6-tienda-online\EJERCICIO_6.pdf) | [💻 Ver Código](./01-ejercicios-basicos/ejercicio-6-tienda-online/tienda.xml) |
 
 ---
-
-
