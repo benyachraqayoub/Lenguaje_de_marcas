@@ -4,6 +4,12 @@ Colección de ejercicios de estructuración y marcado de datos con XML.
 
 ---
 
+## 📘 Teoría
+
+> [📄 Acceder al PDF de XML](./Teoria/LENGUAJES%20DE%20MARCAS%20_XML.pdf)
+
+---
+
 ## 🗂️ Listado de Ejercicios
 
 | Ejercicio | Enunciado (PDF) | Solución (Código XML) |
