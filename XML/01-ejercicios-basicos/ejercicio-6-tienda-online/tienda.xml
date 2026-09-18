@@ -10,7 +10,7 @@
         <direccion>Calle de la Innovación, 42, 28001 Madrid</direccion>
     </datos_generales>
 
-    <!-- CATÁLOGO DE PRODUCTOS (5 productos) -->
+    <!-- CATÁLOGO DE PRODUCTOS -->
     <productos>
         <producto id="PROD-001">
             <nombre>Smartphone Galaxy X</nombre>
@@ -49,7 +49,7 @@
         </producto>
     </productos>
 
-    <!-- CLIENTES (4 clientes) -->
+    <!-- CLIENTES -->
     <clientes>
         <cliente id="CLI-001">
             <nombre>Carlos</nombre>
@@ -81,7 +81,7 @@
         </cliente>
     </clientes>
 
-    <!-- PEDIDOS (5 pedidos con al menos 2 productos cada uno) -->
+    <!-- PEDIDOS -->
     <pedidos>
         <!-- Pedido 1: Estado Entregado -->
         <pedido id="PED-001">
