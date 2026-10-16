@@ -16,11 +16,11 @@ Colección de ejercicios de estructuración, sintaxis y validación de datos con
 
 | Ejercicio | Enunciado (PDF) | Solución (Código JSON) |
 | :--- | :---: | :---: |
-| **01. Ejercicio 1** | [📄 Ver PDF](./ejercicios/EJERCICIO_1_JSON.pdf) | [✅ Ver solución](./ejercicios/ejercicio1.json) |
-| **02. Ejercicio 2** | [📄 Ver PDF](./ejercicios/EJERCICIO_2_JSON.pdf) | [✅ Ver solución](./ejercicios/ejercicio2.md) |
-| **03. Ejercicio 3** | [📄 Ver PDF](./ejercicios/EJERCICIO_3_JSON.pdf) | [✅ Ver solución](./ejercicios/ejercicio3.md) |
-| **04. Ejercicio 4** | [📄 Ver PDF](./ejercicios/EJERCICIO_4_JSON.pdf) | [✅ Ver solución](./ejercicios/ejercicio4.md) |
-| **05. Ejercicio 5** | [📄 Ver PDF](./ejercicios/EJERCICIO_5_JSON.pdf) | [✅ Ver solución](./ejercicios/ejercicio5.md) |
+| **01. Crear un objeto básico** | [📄 Ver PDF](./ejercicios/EJERCICIO_1_JSON.pdf) | [✅ Ver solución](./ejercicios/ejercicio1.json) |
+| **02. Identificar los tipos de datos** | [📄 Ver PDF](./ejercicios/EJERCICIO_2_JSON.pdf) | [✅ Ver solución](./ejercicios/ejercicio2.md) |
+| **03. Número vs. texto** | [📄 Ver PDF](./ejercicios/EJERCICIO_3_JSON.pdf) | [✅ Ver solución](./ejercicios/ejercicio3.md) |
+| **04. Detectar errores** | [📄 Ver PDF](./ejercicios/EJERCICIO_4_JSON.pdf) | [✅ Ver solución](./ejercicios/ejercicio4.md) |
+| **05. Crear tu propio objeto** | [📄 Ver PDF](./ejercicios/EJERCICIO_5_JSON.pdf) | [✅ Ver solución](./ejercicios/ejercicio5.md) |
 | **06. Crear un array** | [📄 Ver PDF](./ejercicios/EJERCICIO_6_JSON.pdf) | [✅ Ver solución](./ejercicios/ejercicio6.md) |
 | **07. Arrays con diferentes tipos** | [📄 Ver PDF](./ejercicios/EJERCICIO_7_JSON.pdf) | [✅ Ver solución](./ejercicios/ejercicio7.md) |
 | **08. Array de objetos** | [📄 Ver PDF](./ejercicios/EJERCICIO_8_JSON.pdf) | [✅ Ver solución](./ejercicios/ejercicio8.md) |

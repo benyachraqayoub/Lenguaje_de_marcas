@@ -1,4 +1,4 @@
-# Ejercicio 5 — Crear tu propio objeto (Videojuego)
+# Ejercicio 5 — Crear tu propio objeto
 
 ## JSON de Ejemplo
 ```json
