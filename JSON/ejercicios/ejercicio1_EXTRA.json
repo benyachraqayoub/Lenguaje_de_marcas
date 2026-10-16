@@ -1,0 +1,11 @@
+{
+  "marca": "Toyota",
+  "modelo": "Corolla",
+  "matricula": "1234-BCD",
+  "kilometros": 25000,
+  "conductor": {
+    "nombre": "Ana",
+    "apellido": "García",
+    "email": "ana.garcia@email.com"
+  }
+}

@@ -8,6 +8,7 @@ Repositorio dedicado a recopilar todos los apuntes, prácticas y exámenes del m
 
 Haga clic en cualquiera de las secciones para acceder a los ejercicios correspondientes:
 
+* [📂 Control de versiones](./CONTROL_DE_VERSIONES/README.md) — Guía de configuración y uso del control de versiones.
 * [📂 HTML & CSS](./HTML-CSS/) — Introducción al diseño web, maquetación estructural y estilos visuales.
 * [📂 XML](./XML/) — Sintaxis estricta, validaciones XSD y almacenamiento lógico de datos.
 * [📂 JSON](./JSON/) — Estructuras modernas de objetos de datos utilizadas en aplicaciones web actuales.
@@ -20,5 +21,3 @@ Haga clic en cualquiera de las secciones para acceder a los ejercicios correspon
 * XML & JSON
 
 ---
-
-
