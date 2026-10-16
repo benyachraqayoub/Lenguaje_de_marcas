@@ -1,0 +1,198 @@
+{
+  "status": 200,
+  "ok": true,
+  "meta": {
+    "pagina": 1,
+    "porPagina": 4,
+    "totalResultados": 4
+  },
+  "enlaces": {
+    "anterior": null,
+    "siguiente": null
+  },
+  "generadoEn": "2026-10-16T12:00:00Z",
+  "data": [
+    {
+      "id": "s1",
+      "titulo": "Horizonte",
+      "genero": "Ciencia ficción",
+      "estreno": 2023,
+      "valoracion": {
+        "media": 8.7,
+        "votos": 12450
+      },
+      "reparto": [
+        {
+          "actor": "Alicia Vega",
+          "personaje": "Mara",
+          "principal": true
+        },
+        {
+          "actor": "Daniel Cruz",
+          "personaje": "Ivo",
+          "principal": false
+        }
+      ],
+      "temporadas": [
+        {
+          "numero": 1,
+          "episodios": [
+            {
+              "titulo": "La señal",
+              "duracionMin": 48
+            },
+            {
+              "titulo": "Órbita",
+              "duracionMin": 51
+            }
+          ]
+        },
+        {
+          "numero": 2,
+          "episodios": [
+            {
+              "titulo": "Regreso",
+              "duracionMin": 50
+            }
+          ]
+        }
+      ],
+      "disponibleEn": {
+        "ES": true,
+        "MX": true,
+        "US": false
+      },
+      "trailer": {
+        "url": "https://stream.example/trailers/horizonte",
+        "duracionSeg": 96
+      }
+    },
+    {
+      "id": "s2",
+      "titulo": "Cocina de barrio",
+      "genero": "Comedia",
+      "estreno": 2022,
+      "valoracion": {
+        "media": 7.9,
+        "votos": 8320
+      },
+      "reparto": [
+        {
+          "actor": "Bruno León",
+          "personaje": "Tomás",
+          "principal": true
+        },
+        {
+          "actor": "Marta Sol",
+          "personaje": "Eva",
+          "principal": false
+        }
+      ],
+      "temporadas": [
+        {
+          "numero": 1,
+          "episodios": [
+            {
+              "titulo": "El primer servicio",
+              "duracionMin": 32
+            },
+            {
+              "titulo": "Mesa para dos",
+              "duracionMin": 35
+            }
+          ]
+        }
+      ],
+      "disponibleEn": {
+        "ES": true,
+        "MX": false,
+        "US": true
+      },
+      "trailer": null
+    },
+    {
+      "id": "s3",
+      "titulo": "Código abierto",
+      "genero": "Drama",
+      "estreno": 2024,
+      "valoracion": {
+        "media": 8.2,
+        "votos": 5910
+      },
+      "reparto": [
+        {
+          "actor": "Clara Mar",
+          "personaje": "Vera",
+          "principal": true
+        },
+        {
+          "actor": "Iván Rey",
+          "personaje": "Leo",
+          "principal": false
+        }
+      ],
+      "temporadas": [
+        {
+          "numero": 1,
+          "episodios": [
+            {
+              "titulo": "Commit inicial",
+              "duracionMin": 44
+            },
+            {
+              "titulo": "Conflicto de versiones",
+              "duracionMin": 47
+            }
+          ]
+        }
+      ],
+      "disponibleEn": {
+        "ES": true,
+        "MX": true,
+        "US": true
+      },
+      "trailer": {
+        "url": "https://stream.example/trailers/codigo-abierto",
+        "duracionSeg": 105
+      }
+    },
+    {
+      "id": "s4",
+      "titulo": "Mareas",
+      "genero": "Aventura",
+      "estreno": 2021,
+      "valoracion": {
+        "media": 7.5,
+        "votos": 4100
+      },
+      "reparto": [
+        {
+          "actor": "Nora Campos",
+          "personaje": "Inés",
+          "principal": true
+        }
+      ],
+      "temporadas": [
+        {
+          "numero": 1,
+          "episodios": [
+            {
+              "titulo": "La costa",
+              "duracionMin": 42
+            }
+          ]
+        }
+      ],
+      "disponibleEn": {
+        "ES": false,
+        "MX": true,
+        "US": true
+      },
+      "trailer": {
+        "url": "https://stream.example/trailers/mareas",
+        "duracionSeg": 88
+      }
+    }
+  ],
+  "errores": []
+}

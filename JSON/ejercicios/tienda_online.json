@@ -1,0 +1,149 @@
+{
+  "tienda": {
+    "nombre": "Tienda Online",
+    "contacto": {
+      "email": "contacto@tiendaonline.example",
+      "telefono": "+34 960 123 456"
+    },
+    "direccion": {
+      "calle": "Calle Mayor, 25",
+      "ciudad": "Valencia",
+      "codigoPostal": "46001",
+      "pais": "España"
+    },
+    "productos": [
+      {
+        "id": "P001",
+        "nombre": "Portátil",
+        "categoria": "Informática",
+        "precio": 899.99,
+        "stock": 8,
+        "disponible": true
+      },
+      {
+        "id": "P002",
+        "nombre": "Ratón inalámbrico",
+        "categoria": "Accesorios",
+        "precio": 24.5,
+        "stock": 25,
+        "disponible": true
+      },
+      {
+        "id": "P003",
+        "nombre": "Monitor",
+        "categoria": "Informática",
+        "precio": 199.99,
+        "stock": 5,
+        "disponible": true
+      },
+      {
+        "id": "P004",
+        "nombre": "Teclado",
+        "categoria": "Accesorios",
+        "precio": 49.9,
+        "stock": 0,
+        "disponible": false
+      }
+    ],
+    "clientes": [
+      {
+        "id": "C001",
+        "nombre": "Ana López",
+        "email": "ana.lopez@example.com",
+        "telefono": "+34 600 111 222",
+        "direccion": {
+          "calle": "Calle del Mar, 10",
+          "ciudad": "Valencia",
+          "codigoPostal": "46002",
+          "pais": "España"
+        }
+      },
+      {
+        "id": "C002",
+        "nombre": "Bruno García",
+        "email": "bruno.garcia@example.com",
+        "telefono": "+34 600 333 444",
+        "direccion": {
+          "calle": "Avenida Central, 42",
+          "ciudad": "Madrid",
+          "codigoPostal": "28010",
+          "pais": "España"
+        }
+      },
+      {
+        "id": "C003",
+        "nombre": "Carla Ruiz",
+        "email": "carla.ruiz@example.com",
+        "telefono": "+34 600 555 666",
+        "direccion": {
+          "calle": "Calle Luna, 7",
+          "ciudad": "Sevilla",
+          "codigoPostal": "41001",
+          "pais": "España"
+        }
+      }
+    ],
+    "pedidos": [
+      {
+        "id": "PED001",
+        "clienteId": "C001",
+        "fecha": "2026-10-10",
+        "estado": "entregado",
+        "total": 948.99,
+        "productos": [
+          {
+            "productoId": "P001",
+            "cantidad": 1
+          },
+          {
+            "productoId": "P002",
+            "cantidad": 2
+          }
+        ]
+      },
+      {
+        "id": "PED002",
+        "clienteId": "C002",
+        "fecha": "2026-10-12",
+        "estado": "pendiente",
+        "total": 49.9,
+        "productos": [
+          {
+            "productoId": "P004",
+            "cantidad": 1
+          }
+        ]
+      },
+      {
+        "id": "PED003",
+        "clienteId": "C003",
+        "fecha": "2026-10-14",
+        "estado": "pendiente",
+        "total": 1099.97,
+        "productos": [
+          {
+            "productoId": "P003",
+            "cantidad": 1
+          },
+          {
+            "productoId": "P001",
+            "cantidad": 1
+          }
+        ]
+      },
+      {
+        "id": "PED004",
+        "clienteId": "C002",
+        "fecha": "2026-10-15",
+        "estado": "enviado",
+        "total": 199.99,
+        "productos": [
+          {
+            "productoId": "P003",
+            "cantidad": 1
+          }
+        ]
+      }
+    ]
+  }
+}

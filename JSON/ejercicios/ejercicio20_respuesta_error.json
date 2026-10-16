@@ -1,0 +1,17 @@
+{
+  "status": 404,
+  "ok": false,
+  "data": null,
+  "errores": [
+    {
+      "codigo": "RECURSO_NO_ENCONTRADO",
+      "mensaje": "No se encontró la serie solicitada.",
+      "campo": "id"
+    },
+    {
+      "codigo": "ID_INVALIDO",
+      "mensaje": "El identificador proporcionado no corresponde a una serie.",
+      "campo": "id"
+    }
+  ]
+}
