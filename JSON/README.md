@@ -60,4 +60,12 @@ Colección de ejercicios de estructuración, sintaxis y validación de datos con
 
 ---
 
+## 📝 Cuestionarios
+
+| Cuestionario | Temas |
+| :--- | :--- |
+| [Cuestionario general sobre JSON](./ejercicios/cuestionario_json.md) | Sintaxis, tipos de datos, arrays, objetos anidados y errores habituales |
+
+---
+
 [🏠 Volver al Menú Principal](../README.md)

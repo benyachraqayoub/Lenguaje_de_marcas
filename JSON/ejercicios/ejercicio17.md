@@ -64,11 +64,10 @@
             "telefono": "+34 600 333 444"
           }
         },
-        "horario": {
-          "dia": "Martes",
-          "inicio": "11:30",
-          "fin": "13:30"
-        },
+        "horario": [
+          { "dia": "lunes", "inicio": "17:00", "fin": "19:00" },
+          { "dia": "miércoles", "inicio": "17:00", "fin": "19:00" }
+        ],
         "alumnos": [
           {
             "nombre": "Leo",
@@ -101,11 +100,10 @@
             "telefono": "+34 600 555 666"
           }
         },
-        "horario": {
-          "dia": "Miércoles",
-          "inicio": "15:00",
-          "fin": "17:00"
-        },
+        "horario": [
+          { "dia": "martes", "inicio": "18:00", "fin": "20:30" },
+          { "dia": "jueves", "inicio": "18:00", "fin": "20:30" }
+        ],
         "alumnos": [
           {
             "nombre": "Mara",
