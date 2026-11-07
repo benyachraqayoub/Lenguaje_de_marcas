@@ -1,0 +1,231 @@
+{
+  "hotel": {
+    "datosGenerales": {
+      "nombre": "Hotel Costa Valencia",
+      "estrellas": 4,
+      "activo": true,
+      "checkIn": "14:00",
+      "checkOut": "12:00"
+    },
+    "direccion": {
+      "calle": "Avenida del Puerto 120",
+      "ciudad": "Valencia",
+      "codigoPostal": "46023",
+      "coordenadas": [
+        39.4699,
+        -0.3763
+      ]
+    },
+    "contacto": {
+      "email": "reservas@costavalencia.example",
+      "telefonos": [
+        "961112233",
+        "961112244"
+      ],
+      "web": null
+    },
+    "servicios": [
+      "wifi",
+      "desayuno",
+      "parking",
+      "spa"
+    ],
+    "habitaciones": [
+      {
+        "id": "H101",
+        "numero": 101,
+        "nombre": "Habitación doble",
+        "precioNoche": 89.9,
+        "capacidad": 2,
+        "disponible": true,
+        "ubicacion": {
+          "planta": "Planta 1",
+          "orientacion": "Mar"
+        },
+        "equipamiento": [
+          "TV",
+          "Aire acondicionado",
+          "Minibar"
+        ],
+        "valoraciones": [
+          4,
+          5,
+          5
+        ]
+      },
+      {
+        "id": "H205",
+        "numero": 205,
+        "nombre": "Suite \"Mar\"",
+        "precioNoche": 189,
+        "capacidad": 4,
+        "disponible": true,
+        "ubicacion": {
+          "planta": "Planta 2",
+          "orientacion": "Mar"
+        },
+        "equipamiento": [
+          "TV",
+          "Aire acondicionado",
+          "Jacuzzi",
+          "Terraza"
+        ],
+        "valoraciones": [
+          5,
+          5
+        ]
+      },
+      {
+        "id": "H310",
+        "numero": 310,
+        "nombre": "Individual económica",
+        "precioNoche": 59.5,
+        "capacidad": 1,
+        "disponible": false,
+        "ubicacion": {
+          "planta": "Planta 3",
+          "orientacion": "Ciudad"
+        },
+        "equipamiento": [],
+        "valoraciones": []
+      }
+    ],
+    "clientes": [
+      {
+        "id": "C001",
+        "nombre": "Laura Giménez",
+        "nacimiento": "1988-04-12",
+        "documento": {
+          "tipo": "DNI",
+          "numero": "12345678Z"
+        },
+        "fidelidad": {
+          "nivel": "Oro",
+          "puntos": 1250
+        },
+        "preferencias": [
+          "planta alta",
+          "almohada extra"
+        ]
+      },
+      {
+        "id": "C002",
+        "nombre": "Marc Soler",
+        "nacimiento": "1995-09-30",
+        "documento": {
+          "tipo": "Pasaporte",
+          "numero": "XK918273"
+        },
+        "fidelidad": null,
+        "preferencias": []
+      },
+      {
+        "id": "C003",
+        "nombre": "Anna Petrova",
+        "nacimiento": "1979-01-22",
+        "documento": {
+          "tipo": "NIE",
+          "numero": "Y1234567X"
+        },
+        "fidelidad": {
+          "nivel": "Plata",
+          "puntos": 430
+        },
+        "preferencias": [
+          "sin gluten"
+        ]
+      }
+    ],
+    "reservas": [
+      {
+        "id": "R001",
+        "clienteId": "C001",
+        "habitacionId": "H101",
+        "fechas": {
+          "entrada": "2026-12-10",
+          "salida": "2026-12-13"
+        },
+        "estado": "Confirmada",
+        "pagado": true,
+        "extras": [
+          {
+            "servicio": "Desayuno",
+            "precioUnidad": 12.5,
+            "cantidad": 3
+          },
+          {
+            "servicio": "Parking",
+            "precioUnidad": 15,
+            "cantidad": 3
+          }
+        ],
+        "pago": {
+          "metodo": "Tarjeta",
+          "total": 387.42,
+          "desglose": {
+            "habitacion": 269.7,
+            "extras": 82.5,
+            "impuestos": 35.22
+          }
+        },
+        "notas": "Llegada tardía"
+      },
+      {
+        "id": "R002",
+        "clienteId": "C002",
+        "habitacionId": "H205",
+        "fechas": {
+          "entrada": "2026-12-20",
+          "salida": "2026-12-22"
+        },
+        "estado": "Pendiente",
+        "pagado": false,
+        "extras": [],
+        "pago": null,
+        "notas": null
+      },
+      {
+        "id": "R003",
+        "clienteId": "C003",
+        "habitacionId": "H101",
+        "fechas": {
+          "entrada": "2027-01-05",
+          "salida": "2027-01-08"
+        },
+        "estado": "Confirmada",
+        "pagado": true,
+        "extras": [
+          {
+            "servicio": "Spa",
+            "precioUnidad": 40,
+            "cantidad": 1
+          }
+        ],
+        "pago": {
+          "metodo": "Transferencia",
+          "total": 340.67,
+          "desglose": {
+            "habitacion": 269.7,
+            "extras": 40,
+            "impuestos": 30.97
+          }
+        },
+        "notas": "Sin gluten en el desayuno"
+      },
+      {
+        "id": "R004",
+        "clienteId": "C001",
+        "habitacionId": "H205",
+        "fechas": {
+          "entrada": "2027-02-14",
+          "salida": "2027-02-16"
+        },
+        "estado": "Cancelada",
+        "pagado": false,
+        "extras": [],
+        "pago": null,
+        "notas": "Cancelada por la clienta"
+      }
+    ]
+  }
+}
