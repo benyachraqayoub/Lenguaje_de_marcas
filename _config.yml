@@ -1,8 +1,8 @@
 # Option A: Black background with green terminal-style text
-theme: jekyll-theme-hacker
+#theme: jekyll-theme-hacker
 
 # Option B: Dark grey background with clean white/blue text
-# theme: jekyll-theme-slate
+theme: jekyll-theme-slate
 
 # Option C: Dark navy/black background
 # theme: jekyll-theme-midnight
