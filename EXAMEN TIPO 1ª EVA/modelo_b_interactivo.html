@@ -1,0 +1,1721 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#115e59">
+  <title>Modelo B - Examen Oficial Interactivo | Lenguajes de Marcas</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --bg-mesh: radial-gradient(at 0% 0%, #0f766e18 0px, transparent 50%),
+                 radial-gradient(at 100% 0%, #0ea5e915 0px, transparent 50%);
+      --paper: #ffffff;
+      --paper-elevated: #ffffff;
+      --glass: rgba(255, 255, 255, 0.86);
+      --ink: #0f172a;
+      --ink-soft: #334155;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --line-strong: #cbd5e1;
+      --accent: #0f766e;
+      --accent-dark: #115e59;
+      --accent-soft: #0f766e15;
+      --accent-glow: #0f766e35;
+      --green: #15803d;
+      --green-bg: #dcfce7;
+      --green-border: #86efac;
+      --red: #b91c1c;
+      --red-bg: #fee2e2;
+      --red-border: #fca5a5;
+      --amber: #b45309;
+      --amber-bg: #fef3c7;
+      --code-bg: #0f172a;
+      --code-ink: #e2e8f0;
+      --inline-code-bg: #f1f5f9;
+      --inline-code-ink: #0f172a;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 40px -12px rgba(15, 23, 42, 0.14);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #090d16;
+      --bg-mesh: radial-gradient(at 0% 0%, #0f766e28 0px, transparent 50%),
+                 radial-gradient(at 100% 0%, #1e293b80 0px, transparent 50%);
+      --paper: #111827;
+      --paper-elevated: #1e293b;
+      --glass: rgba(17, 24, 39, 0.85);
+      --ink: #f8fafc;
+      --ink-soft: #cbd5e1;
+      --muted: #94a3b8;
+      --line: #1f2937;
+      --line-strong: #334155;
+      --accent-soft: #0f766e28;
+      --green: #4ade80;
+      --green-bg: rgba(21, 128, 61, 0.2);
+      --green-border: #22c55e;
+      --red: #f87171;
+      --red-bg: rgba(185, 28, 28, 0.22);
+      --red-border: #ef4444;
+      --amber: #fbbf24;
+      --amber-bg: rgba(180, 83, 9, 0.25);
+      --code-bg: #030712;
+      --code-ink: #f1f5f9;
+      --inline-code-bg: #1e293b;
+      --inline-code-ink: #e2e8f0;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 10px 30px -5px rgba(0, 0, 0, 0.45);
+      --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      background-image: var(--bg-mesh);
+      background-attachment: fixed;
+      color: var(--ink);
+      font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      transition: background-color .35s ease, color .35s ease;
+      overflow-x: hidden;
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+      50% { box-shadow: 0 0 0 8px transparent; }
+    }
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.92); }
+      70% { transform: scale(1.02); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes shakeError {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+    }
+
+    /* Hero Header */
+    header.hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, #0f172a 100%);
+      color: #ffffff;
+      padding: 2.4rem 1.25rem 2.2rem;
+      box-shadow: var(--shadow-md);
+    }
+    header.hero::before,
+    header.hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(45px);
+      opacity: 0.28;
+    }
+    header.hero::before {
+      width: 320px; height: 320px;
+      background: #38bdf8;
+      top: -120px; right: -60px;
+      animation: floatSlow 9s ease-in-out infinite;
+    }
+    header.hero::after {
+      width: 240px; height: 240px;
+      background: #a78bfa;
+      bottom: -100px; left: 10%;
+      animation: floatSlow 12s ease-in-out infinite reverse;
+    }
+
+    .wrap { max-width: 1020px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: .8rem;
+    }
+    .badge-row { display: flex; align-items: center; gap: .55rem; flex-wrap: wrap; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: .32rem .75rem;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+    }
+    .model-pill {
+      font-size: .8rem;
+      font-weight: 800;
+      background: #ffffff;
+      color: var(--accent-dark);
+      padding: .3rem .75rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .theme-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: .45rem .85rem;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s var(--ease-spring), background .2s ease;
+    }
+    .theme-btn:hover { background: rgba(255, 255, 255, 0.24); transform: translateY(-2px); }
+
+    header.hero h1 {
+      margin: .3rem 0 .4rem;
+      font-size: clamp(1.75rem, 4vw, 2.55rem);
+      font-weight: 850;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    header.hero p.subtitle {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 1.02rem;
+      max-width: 720px;
+    }
+    .meta-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 1.15rem;
+    }
+    .meta-chip {
+      font-size: .82rem;
+      background: rgba(15, 23, 42, 0.32);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: .32rem .75rem;
+      border-radius: 8px;
+      color: #e2e8f0;
+    }
+
+    /* Navigation Tabs */
+    .mode-tabs {
+      display: flex;
+      gap: .5rem;
+      margin-top: 1.5rem;
+      background: rgba(15, 23, 42, 0.35);
+      padding: .35rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      overflow-x: auto;
+    }
+    .tab-btn {
+      flex: 1 1 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: .68rem 1rem;
+      border-radius: 10px;
+      border: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.82);
+      font-weight: 750;
+      font-size: .92rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all .25s var(--ease-out);
+    }
+    .tab-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.1); }
+    .tab-btn.active {
+      background: #ffffff;
+      color: var(--accent-dark);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+      transform: translateY(-1px);
+    }
+    .tab-badge {
+      font-size: .74rem;
+      padding: .1rem .45rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.12);
+      font-weight: 800;
+    }
+    .tab-btn.active .tab-badge {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+    }
+
+    /* Main Content Layout */
+    main { padding: 1.5rem 1.25rem 4rem; }
+    .tab-panel { display: none; animation: fadeSlideUp .4s var(--ease-out) both; }
+    .tab-panel.active { display: block; }
+
+    /* Cards & Glass Panels */
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 1.15rem;
+      transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out), border-color .25s ease;
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: .85rem;
+      margin-top: .85rem;
+    }
+    .stat-box {
+      background: var(--inline-code-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: .75rem 1rem;
+    }
+    .stat-box .lbl { font-size: .76rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 700; }
+    .stat-box .val { font-size: 1.08rem; font-weight: 800; color: var(--ink); margin-top: .15rem; }
+
+    /* Sticky Toolbar */
+    .toolbar {
+      position: sticky;
+      top: .75rem;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      flex-wrap: wrap;
+      padding: .8rem 1rem;
+      margin: 1rem 0 1.25rem;
+      background: var(--glass);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--shadow-md);
+    }
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      flex: 1 1 240px;
+    }
+    .counter-badge {
+      font-weight: 800;
+      font-size: .9rem;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .bar-track {
+      flex: 1;
+      height: 10px;
+      background: var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), #38bdf8);
+      border-radius: 999px;
+      transition: width .4s var(--ease-out);
+    }
+
+    /* Timer Widget */
+    .timer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: var(--inline-code-bg);
+      border: 1px solid var(--line-strong);
+      padding: .38rem .7rem;
+      border-radius: 10px;
+      font-variant-numeric: tabular-nums;
+      font-weight: 800;
+      font-size: .9rem;
+    }
+    .timer-pill.warning { color: var(--amber); background: var(--amber-bg); }
+    .timer-pill.danger { color: var(--red); background: var(--red-bg); animation: pulseGlow 1.2s infinite; }
+    .icon-btn {
+      background: transparent;
+      border: 0;
+      color: var(--ink-soft);
+      padding: .2rem .4rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: .82rem;
+      font-weight: 750;
+    }
+    .icon-btn:hover { background: var(--line); color: var(--ink); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      border: 0;
+      border-radius: 10px;
+      padding: .62rem 1.05rem;
+      font: inherit;
+      font-size: .9rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: transform .18s var(--ease-spring), box-shadow .2s ease, filter .2s ease;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+    .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .btn-secondary {
+      color: var(--ink);
+      background: var(--inline-code-bg);
+      border: 1px solid var(--line-strong);
+    }
+    .btn-secondary:hover { background: var(--line); }
+
+    /* Question Map Drawer */
+    .qmap-drawer {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .qmap-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-bottom: .75rem;
+    }
+    .qmap-title { font-size: .88rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .filter-pills { display: flex; gap: .35rem; flex-wrap: wrap; }
+    .filter-pill {
+      font-size: .78rem;
+      font-weight: 750;
+      padding: .28rem .65rem;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .filter-pill.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .qmap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+      gap: .4rem;
+    }
+    .qmap-dot {
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--line-strong);
+      background: var(--inline-code-bg);
+      color: var(--ink-soft);
+      font-weight: 800;
+      font-size: .82rem;
+      cursor: pointer;
+      transition: transform .18s var(--ease-spring), background .2s ease, border-color .2s ease;
+    }
+    .qmap-dot:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .qmap-dot.answered {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .qmap-dot.correct {
+      background: var(--green-bg);
+      border-color: var(--green-border);
+      color: var(--green);
+    }
+    .qmap-dot.incorrect {
+      background: var(--red-bg);
+      border-color: var(--red-border);
+      color: var(--red);
+    }
+
+    /* Question Cards */
+    .question {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 1.35rem 1.45rem;
+      margin: 1.1rem 0;
+      scroll-margin-top: 6.8rem;
+      box-shadow: var(--shadow-sm);
+      animation: fadeSlideUp .45s var(--ease-out) both;
+      transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out), border-color .25s ease;
+    }
+    .question:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--line-strong);
+    }
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: .65rem;
+    }
+    .q-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .8rem;
+      font-weight: 850;
+      padding: .22rem .65rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .q-topic {
+      font-size: .76rem;
+      font-weight: 700;
+      color: var(--muted);
+      background: var(--inline-code-bg);
+      padding: .2rem .6rem;
+      border-radius: 6px;
+    }
+    .question h2 {
+      margin: 0 0 .75rem;
+      font-size: 1.06rem;
+      line-height: 1.5;
+      font-weight: 750;
+    }
+    pre {
+      overflow-x: auto;
+      padding: .95rem 1.1rem;
+      border-radius: var(--radius-sm);
+      background: var(--code-bg);
+      color: var(--code-ink);
+      font-size: .88rem;
+      line-height: 1.55;
+      border: 1px solid var(--line-strong);
+      margin: .75rem 0;
+    }
+    code {
+      border-radius: 6px;
+      background: var(--inline-code-bg);
+      color: var(--inline-code-ink);
+      padding: .14em .38em;
+      font: .9em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      overflow-wrap: anywhere;
+    }
+    pre code {
+      padding: 0;
+      background: transparent;
+      color: inherit;
+      overflow-wrap: normal;
+    }
+
+    /* Options Styling */
+    fieldset {
+      display: grid;
+      gap: .55rem;
+      border: 0;
+      padding: 0;
+      margin: .9rem 0 0;
+    }
+    .choice {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: .8rem;
+      padding: .8rem .95rem;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      cursor: pointer;
+      background: var(--paper);
+      transition: transform .18s var(--ease-out), border-color .18s ease, background-color .18s ease, box-shadow .18s ease;
+    }
+    .choice:hover {
+      border-color: var(--accent);
+      background: var(--inline-code-bg);
+      transform: translateX(4px);
+    }
+    .choice input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .opt-Bul {
+      flex: 0 0 28px;
+      height: 28px;
+      border-radius: 8px;
+      border: 1.5px solid var(--line-strong);
+      background: var(--inline-code-bg);
+      color: var(--ink-soft);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 850;
+      font-size: .84rem;
+      transition: all .2s var(--ease-spring);
+      margin-top: .05rem;
+    }
+    .choice:has(input:checked) {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    }
+    .choice:has(input:checked) .opt-Bul {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+      transform: scale(1.08);
+    }
+
+    /* Graded States */
+    .choice.correct {
+      border-color: var(--green-border) !important;
+      background: var(--green-bg) !important;
+    }
+    .choice.correct .opt-Bul {
+      background: var(--green) !important;
+      border-color: var(--green) !important;
+      color: #fff !important;
+    }
+    .choice.incorrect {
+      border-color: var(--red-border) !important;
+      background: var(--red-bg) !important;
+      animation: shakeError .45s ease;
+    }
+    .choice.incorrect .opt-Bul {
+      background: var(--red) !important;
+      border-color: var(--red) !important;
+      color: #fff !important;
+    }
+    .question.correct { border-left: 5px solid var(--green); }
+    .question.incorrect { border-left: 5px solid var(--red); }
+    .question.unanswered-card { border-left: 5px solid var(--amber); }
+
+    .feedback {
+      margin: .85rem 0 0 !important;
+      padding: .65rem .9rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: .9rem;
+      background: var(--inline-code-bg);
+      animation: popIn .3s var(--ease-out);
+    }
+    .question.correct .feedback { color: var(--green); background: var(--green-bg); }
+    .question.incorrect .feedback { color: var(--red); background: var(--red-bg); }
+
+    /* Results Dashboard */
+    .results {
+      display: none;
+      padding: 1.5rem;
+      margin: 1.25rem 0;
+      background: var(--paper);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      animation: popIn .45s var(--ease-out);
+    }
+    .results.visible { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: center; }
+    .gauge-box {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gauge-svg { transform: rotate(-90deg); width: 130px; height: 130px; }
+    .gauge-bg { fill: none; stroke: var(--line); stroke-width: 10; }
+    .gauge-val {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-dasharray: 339.29;
+      stroke-dashoffset: 339.29;
+      transition: stroke-dashoffset 1.2s var(--ease-out);
+    }
+    .gauge-label {
+      position: absolute;
+      text-align: center;
+      line-height: 1.1;
+    }
+    .gauge-label .big { font-size: 1.55rem; font-weight: 900; display: block; }
+    .gauge-label .small { font-size: .75rem; color: var(--muted); font-weight: 750; }
+    .res-KPIs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: .65rem;
+      margin-top: .8rem;
+    }
+    .kpi-pill {
+      padding: .6rem .8rem;
+      border-radius: 10px;
+      background: var(--inline-code-bg);
+      border: 1px solid var(--line);
+    }
+    .kpi-pill span { display: block; font-size: .75rem; color: var(--muted); font-weight: 700; }
+    .kpi-pill strong { font-size: 1.1rem; font-weight: 850; }
+
+    /* Open Questions & Practical Section */
+    .open-textarea {
+      width: 100%;
+      min-height: 110px;
+      margin-top: .75rem;
+      padding: .8rem 1rem;
+      border-radius: 12px;
+      border: 1.5px solid var(--line-strong);
+      background: var(--inline-code-bg);
+      color: var(--ink);
+      font: inherit;
+      resize: vertical;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .open-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    details.sol-drawer {
+      margin-top: .85rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      background: var(--inline-code-bg);
+      overflow: hidden;
+    }
+    details.sol-drawer summary {
+      padding: .75rem 1rem;
+      font-weight: 800;
+      font-size: .9rem;
+      cursor: pointer;
+      color: var(--accent);
+      user-select: none;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    details.sol-drawer summary::after { content: "▼"; font-size: .75rem; transition: transform .25s ease; }
+    details.sol-drawer[open] summary::after { transform: rotate(180deg); }
+    .sol-body {
+      padding: .9rem 1.1rem 1.1rem;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+      animation: fadeSlideUp .3s var(--ease-out);
+    }
+
+    /* Tables in Practical Section */
+    .table-wrap { overflow-x: auto; margin: .85rem 0 1.25rem; border-radius: 12px; border: 1px solid var(--line-strong); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .data-table th, .data-table td { padding: .65rem .85rem; text-align: left; border-bottom: 1px solid var(--line); }
+    .data-table th { background: var(--inline-code-bg); font-weight: 800; color: var(--ink); white-space: nowrap; }
+    .data-table tr:last-child td { border-bottom: 0; }
+    .data-table tr:hover td { background: var(--accent-soft); }
+    .sub-heading { margin: 1.4rem 0 .4rem; font-size: 1.05rem; color: var(--accent); }
+    .sec-heading { margin: 1.5rem 0 .6rem; font-size: 1.25rem; border-bottom: 2px solid var(--line); padding-bottom: .35rem; }
+    .task-list { padding-left: 1.2rem; }
+    .task-list li { margin: .45rem 0; }
+    .task-list li.sub-item { margin-left: 1.2rem; list-style-type: circle; }
+
+    /* Interactive JSON Validator */
+    .validator-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .85rem;
+      margin-top: .8rem;
+    }
+    .code-editor {
+      width: 100%;
+      min-height: 220px;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1.5px solid var(--line-strong);
+      background: var(--code-bg);
+      color: var(--code-ink);
+      font: .88rem/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      resize: vertical;
+    }
+    .val-status {
+      padding: .7rem 1rem;
+      border-radius: 10px;
+      font-weight: 750;
+      font-size: .9rem;
+    }
+    .val-status.ok { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+    .val-status.err { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+
+    .copy-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: .35rem;
+    }
+
+    footer {
+      padding: 2rem 1rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: .88rem;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 680px) {
+      .results.visible { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+      .toolbar { position: static; }
+      .question { padding: 1.1rem; }
+    }
+    @media print {
+      header.hero { background: none !important; color: #000 !important; box-shadow: none; padding: 1rem 0; }
+      .toolbar, .qmap-drawer, .mode-tabs, .theme-btn, footer { display: none !important; }
+      .tab-panel { display: block !important; }
+      .question, .card { box-shadow: none; break-inside: avoid; border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <div class="badge-row">
+          <span class="eyebrow">Digitech FP · 1.º DAW A</span>
+          <span class="model-pill">MODELO B</span>
+        </div>
+        <button type="button" class="theme-btn" id="themeToggle" aria-label="Cambiar tema claro u oscuro">
+          <span id="themeIcon">🌙</span> <span id="themeText">Modo oscuro</span>
+        </button>
+      </div>
+      <h1>Lenguajes de Marcas — 1.ª Evaluación</h1>
+      <p class="subtitle">Simulacro interactivo completo: Parte 1 (Test 27 preguntas + 3 Abiertas) y Parte 2 (Caso práctico JSON: Clínica Veterinaria Turia)</p>
+      <div class="meta-chips">
+        <span class="meta-chip">⏱️ Parte 1: 30 min (30%)</span>
+        <span class="meta-chip">💻 Parte 2: 90 min (50%)</span>
+        <span class="meta-chip">🗣️ Parte 3: Defensa (20%)</span>
+      </div>
+
+      <nav class="mode-tabs" aria-label="Partes del examen">
+        <button type="button" class="tab-btn active" data-tab="tab-test">
+          <span>1. Test Teórico</span>
+          <span class="tab-badge">27 preg.</span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="tab-open">
+          <span>2. Preguntas Abiertas</span>
+          <span class="tab-badge">3 preg.</span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="tab-prac">
+          <span>3. Práctica JSON y Solución</span>
+          <span class="tab-badge">clinica.json</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- TAB 1: TEST INTERACTIVO -->
+    <section id="tab-test" class="tab-panel active">
+      <div class="card">
+        <strong>Instrucciones de la Parte 1 (Evaluación teórica):</strong>
+        <p style="margin:.35rem 0 0; color:var(--ink-soft);">Selecciona una única respuesta por pregunta. Puedes usar el temporizador de 30 minutos para simular las condiciones reales sin apuntes ni dispositivos. Al pulsar <strong>Corregir examen</strong>, se calculará tu nota aplicando la regla oficial (<em>cada 3 errores descuentan 1 acierto</em>).</p>
+        <div class="intro-grid">
+          <div class="stat-box"><div class="lbl">Preguntas Test</div><div class="val">27 preguntas</div></div>
+          <div class="stat-box"><div class="lbl">Penalización</div><div class="val">-1 cada 3 errores</div></div>
+          <div class="stat-box"><div class="lbl">Modo corrección</div><div class="val"><label style="cursor:pointer; display:inline-flex; align-items:center; gap:.4rem; font-size:.92rem;"><input type="checkbox" id="instantCheck"> Feedback al instante</label></div></div>
+        </div>
+      </div>
+
+      <form id="quizForm">
+        <div class="toolbar" aria-label="Progreso y acciones">
+          <div class="progress-wrap">
+            <span class="counter-badge" id="counter">0 / 27</span>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill" id="barFill"></div></div>
+          </div>
+          <div class="timer-pill" id="timerBox" title="Temporizador de 30 minutos">
+            <span>⏱️</span>
+            <span id="timerDisplay">30:00</span>
+            <button type="button" class="icon-btn" id="timerToggle">Iniciar</button>
+            <button type="button" class="icon-btn" id="timerReset" title="Reiniciar reloj">↺</button>
+          </div>
+          <button class="btn btn-primary" type="submit">✓ Corregir examen</button>
+          <button class="btn btn-secondary" type="button" id="resetButton">Borrar</button>
+        </div>
+
+        <section id="results" class="results" aria-live="polite" tabindex="-1"></section>
+
+        <div class="qmap-drawer" aria-label="Mapa de preguntas">
+          <div class="qmap-header">
+            <span class="qmap-title">Mapa rápido de preguntas (1–27)</span>
+            <div class="filter-pills" id="filterPills">
+              <button type="button" class="filter-pill active" data-filter="all">Todas (27)</button>
+              <button type="button" class="filter-pill" data-filter="unanswered">Sin responder</button>
+              <button type="button" class="filter-pill" data-filter="incorrect">Incorrectas</button>
+              <button type="button" class="filter-pill" data-filter="correct">Correctas</button>
+            </div>
+          </div>
+          <div class="qmap-grid" id="qmapGrid"></div>
+        </div>
+
+        <div id="questions"></div>
+      </form>
+    </section>
+
+    <!-- TAB 2: PREGUNTAS ABIERTAS -->
+    <section id="tab-open" class="tab-panel">
+      <div class="card">
+        <h2 style="margin:0 0 .4rem;">Preguntas de respuesta abierta (Parte 1)</h2>
+        <p style="margin:0; color:var(--ink-soft);">Redacta tu respuesta razonada en cada cuadro de texto para practicar y después despliega la <strong>Solución Oficial</strong> para comparar los puntos clave.</p>
+      </div>
+      <div id="openContainer"></div>
+    </section>
+
+    <!-- TAB 3: PRACTICA JSON -->
+    <section id="tab-prac" class="tab-panel">
+      <div class="card">
+        <div class="q-meta">
+          <span class="q-num">PARTE 2 · 90 MINUTOS (50%)</span>
+          <span class="q-topic">Archivo principal: clinica.json</span>
+        </div>
+        <h3 class="sec-heading">Enunciado — Caso: Clinica Veterinaria Turia (modelado de datos en JSON)</h3>
+<p>La <strong>Clinica Veterinaria Turia</strong> va a migrar el registro de sus gabinetes, clientes y consultas a una nueva plataforma web que trabaja con formato JSON. Debes construir el archivo <code>clinica.json</code> con todos los datos de las tablas siguientes, aplicando una estructura jerarquica limpia con objetos, arrays, anidaciones y los tipos de datos correctos.</p>
+<p>El archivo tendra un objeto raiz con una unica propiedad <code>clinica</code> que contendra toda la informacion.</p>
+<h4 class="sub-heading">Informacion de la clinica</h4>
+<div class="table-wrap"><table class="data-table"><thead><tr>
+<th>Bloque</th>
+<th>Datos</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Datos generales</strong></td>
+<td>Nombre: Clínica Veterinaria Turia · Urgencias 24h: sí · Número de colegiado centro: 46089 · Apertura: 09:00 · Cierre: 20:30</td>
+</tr>
+<tr>
+<td><strong>Direccion</strong></td>
+<td>Calle Colón 45, Valencia, código postal 46004 · Coordenadas en el mapa: 39.4682 y -0.3719</td>
+</tr>
+<tr>
+<td><strong>Contacto</strong></td>
+<td>Email: info@vetturia.example · Teléfonos: 963001122 y 600112233 · Web: aún no tiene</td>
+</tr>
+<tr>
+<td><strong>Especialidades</strong></td>
+<td>cirugía, dermatología, exóticos, diagnóstico por imagen</td>
+</tr>
+</tbody></table></div>
+<h4 class="sub-heading">Gabinetes (Salas de consulta)</h4>
+<div class="table-wrap"><table class="data-table"><thead><tr>
+<th>ID</th>
+<th>Num.</th>
+<th>Nombre</th>
+<th>Tarifa base</th>
+<th>Capacidad animales</th>
+<th>Operativo</th>
+<th>Ubicacion</th>
+<th>Valoraciones</th>
+<th>Equipamiento</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>G01</strong></td>
+<td>1</td>
+<td>Consulta general</td>
+<td>35,00 EUR</td>
+<td>2</td>
+<td>Sí</td>
+<td>Planta 0 · Exterior</td>
+<td>5, 4, 5</td>
+<td>Báscula digital, Otoscopio, Lector microchip</td>
+</tr>
+<tr>
+<td><strong>G02</strong></td>
+<td>2</td>
+<td>Quirófano &quot;Turia&quot;</td>
+<td>120,50 EUR</td>
+<td>1</td>
+<td>Sí</td>
+<td>Planta 1 · Interior</td>
+<td>5, 5</td>
+<td>Monitor multiparamétrico, Bisturí eléctrico, Oxígeno</td>
+</tr>
+<tr>
+<td><strong>G03</strong></td>
+<td>3</td>
+<td>Sala de rayos X</td>
+<td>65,00 EUR</td>
+<td>1</td>
+<td>No</td>
+<td>Planta -1 · Interior</td>
+<td><em>(ninguna)</em></td>
+<td><em>(ninguno)</em></td>
+</tr>
+</tbody></table></div>
+<h4 class="sub-heading">Clientes (Propietarios)</h4>
+<div class="table-wrap"><table class="data-table"><thead><tr>
+<th>ID</th>
+<th>Nombre</th>
+<th>Fecha alta</th>
+<th>Documento</th>
+<th>Seguro mascota</th>
+<th>Alertas administrativas</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>P001</strong></td>
+<td>Carlos Valor</td>
+<td>2023-05-14</td>
+<td>DNI 23456789M</td>
+<td>VetPlus · Póliza 99812</td>
+<td>avisar por SMS, factura detallada</td>
+</tr>
+<tr>
+<td><strong>P002</strong></td>
+<td>Elena Bosch</td>
+<td>2024-11-02</td>
+<td>NIE X8765432T</td>
+<td>No tiene seguro</td>
+<td><em>(ninguna)</em></td>
+</tr>
+<tr>
+<td><strong>P003</strong></td>
+<td>Jorge Marín</td>
+<td>2025-02-19</td>
+<td>Pasaporte PA445566</td>
+<td>MascotaSegura · Póliza 10455</td>
+<td>perro nervioso en sala de espera</td>
+</tr>
+</tbody></table></div>
+<h4 class="sub-heading">Consultas medicas</h4>
+<div class="table-wrap"><table class="data-table"><thead><tr>
+<th>ID</th>
+<th>Cliente</th>
+<th>Gabinete</th>
+<th>Fechas (Ingreso / Alta)</th>
+<th>Estado</th>
+<th>Pagada</th>
+<th>Tratamientos extra</th>
+<th>Pago y notas</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>M001</strong></td>
+<td>P001</td>
+<td>G01</td>
+<td>02/11/2026 al 02/11/2026</td>
+<td>Finalizada</td>
+<td>Sí</td>
+<td>Vacuna rabia 25,00 EUR x 1 · Desparasitación 12,50 EUR x 2</td>
+<td>Tarjeta · gabinete 35,00 · extras 50,00 · impuestos 17,85 · total 102,85 · Nota: Revisar peso en 6 meses</td>
+</tr>
+<tr>
+<td><strong>M002</strong></td>
+<td>P002</td>
+<td>G02</td>
+<td>15/11/2026 al 16/11/2026</td>
+<td>Programada</td>
+<td>No</td>
+<td><em>(ninguno)</em></td>
+<td>Sin pago todavía · sin notas</td>
+</tr>
+<tr>
+<td><strong>M003</strong></td>
+<td>P003</td>
+<td>G01</td>
+<td>20/11/2026 al 20/11/2026</td>
+<td>Finalizada</td>
+<td>Sí</td>
+<td>Analítica completa 45,00 EUR x 1</td>
+<td>Efectivo · gabinete 35,00 · extras 45,00 · impuestos 16,80 · total 96,80 · Nota: Ayuno de 12 horas cumplido</td>
+</tr>
+<tr>
+<td><strong>M004</strong></td>
+<td>P001</td>
+<td>G02</td>
+<td>01/12/2026 al 02/12/2026</td>
+<td>Cancelada</td>
+<td>No</td>
+<td><em>(ninguno)</em></td>
+<td>Sin pago · Nota: Cancelada por mejoría del animal</td>
+</tr>
+</tbody></table></div>
+<hr class="divider">
+<h3 class="sec-heading">Tareas a realizar</h3>
+<ul class="task-list">
+<li><strong>Tarea 1. Detecta y corrige errores (10 min):</strong> El siguiente fragmento contiene varios errores de sintaxis y de tipo de dato. Guardalo como <code>fragmento_corregido.json</code> ya corregido y, en <code>respuestas.txt</code>, anota cada error encontrado y por que lo es:</li>
+</ul>
+<pre><code>{
+  nombre: &#x27;Clínica Veterinaria Turia&#x27;,
+  &quot;colegiadoCentro&quot;: &quot;46089&quot;,
+  &quot;urgencias24h&quot;: True,
+  &quot;especialidades&quot;: [&quot;cirugía&quot;, &quot;exóticos&quot;,],
+  &quot;web&quot;: &quot;null&quot;
+}</code></pre>
+<ul class="task-list">
+<li><strong>Tarea 2. Estructura base: objetos y tipos (20 min):</strong> En <code>clinica.json</code> crea el objeto raiz y, dentro de <code>clinica</code>, los datos generales, la <code>direccion</code> y el <code>contacto</code>:</li>
+<li class="sub-item">Usa el tipo de dato adecuado en cada valor (texto, numero, booleano, null) y justificalo en <code>respuestas.txt</code> para <code>colegiadoCentro</code>, <code>codigoPostal</code> y <code>web</code>.</li>
+<li class="sub-item"><code>direccion</code> y <code>contacto</code> son objetos anidados.</li>
+<li class="sub-item"><code>especialidades</code> y <code>telefonos</code> son arrays de textos; <code>coordenadas</code> es un array de numeros.</li>
+<li><strong>Tarea 3. Gabinetes: arrays de objetos y anidacion (20 min):</strong> Anade la propiedad <code>gabinetes</code> como array de objetos. Cada gabinete tiene <code>id</code>, <code>numero</code>, <code>nombre</code>, <code>tarifaBase</code>, <code>capacidad</code>, <code>operativo</code> y:</li>
+<li class="sub-item">un objeto anidado <code>ubicacion</code> con <code>planta</code> y <code>zona</code>;</li>
+<li class="sub-item">un array <code>equipamiento</code> de textos (vacio cuando no hay);</li>
+<li class="sub-item">un array <code>valoraciones</code> de numeros (vacio cuando no hay).</li>
+<li class="sub-item">Cuida los caracteres especiales del nombre del quirofano y escribe los decimales correctamente.</li>
+<li><strong>Tarea 4. Clientes y consultas: relaciones y jerarquia profunda (30 min):</strong> Anade <code>clientes</code> y <code>consultas</code> como arrays de objetos:</li>
+<li class="sub-item">Cada cliente incluye un objeto <code>documento</code> (<code>tipo</code> y <code>numero</code>), un valor <code>seguro</code> (objeto con <code>compania</code> y <code>poliza</code>, o <code>null</code> si no tiene seguro) y un array <code>alertas</code>.</li>
+<li class="sub-item">Cada consulta se relaciona con su cliente y su gabinete mediante identificadores (<code>clienteId</code>, <code>gabineteId</code>), sin copiar sus datos.</li>
+<li class="sub-item">Cada consulta contiene un objeto <code>fechas</code> (<code>ingreso</code> y <code>alta</code>), el <code>estado</code>, un booleano <code>pagada</code> y un array <code>extras</code> de objetos (<code>concepto</code>, <code>precioUnidad</code> y <code>cantidad</code>).</li>
+<li class="sub-item">Cada consulta contiene un objeto <code>pago</code> (o <code>null</code> si no hay pago) con <code>metodo</code>, <code>total</code> y un objeto anidado <code>desglose</code> (<code>gabinete</code>, <code>extras</code> e <code>impuestos</code>), y una propiedad <code>notas</code> (texto o <code>null</code>).</li>
+<li class="sub-item">Escribe las fechas como texto en formato <code>AAAA-MM-DD</code>.</li>
+<li><strong>Tarea 5. Comprobacion y navegacion (10 min):</strong> Da formato al archivo con VS Code y comprueba que no muestra errores en el panel de problemas. Despues, en <code>respuestas.txt</code>, escribe:</li>
+<li class="sub-item"><strong>(a)</strong> la ruta completa para acceder al importe de <code>impuestos</code> del desglose del pago de la primera consulta, y la ruta al <code>precioUnidad</code> del segundo extra de esa misma consulta;</li>
+<li class="sub-item"><strong>(b)</strong> como averiguarias que consultas pertenecen al gabinete <code>G01</code>;</li>
+<li class="sub-item"><strong>(c)</strong> como averiguarias que clientes no tienen seguro contratado.</li>
+</ul>
+<hr class="divider">
+      </div>
+
+      <!-- Interactive JSON Validator Sandbox -->
+      <div class="card">
+        <h3 style="margin:0 0 .35rem;">🛠️ Validador y Laboratorio JSON en vivo (Tarea 1 / Pruebas)</h3>
+        <p style="margin:0; color:var(--ink-soft);">Corrige aquí mismo el fragmento con 5 errores de la <strong>Tarea 1</strong> (o pega tu archivo <code>clinica.json</code>) y comprueba en tiempo real si la sintaxis JSON es válida:</p>
+        <div class="validator-grid">
+          <textarea id="jsonSandbox" class="code-editor" spellcheck="false">{
+  nombre: &#x27;Clínica Veterinaria Turia&#x27;,
+  &quot;colegiadoCentro&quot;: &quot;46089&quot;,
+  &quot;urgencias24h&quot;: True,
+  &quot;especialidades&quot;: [&quot;cirugía&quot;, &quot;exóticos&quot;,],
+  &quot;web&quot;: &quot;null&quot;
+}</textarea>
+          <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
+            <button type="button" class="btn btn-primary" id="validateJsonBtn">Validar y Formatear JSON</button>
+            <button type="button" class="btn btn-secondary" id="loadT1SolBtn">Cargar solución Tarea 1</button>
+            <button type="button" class="btn btn-secondary" id="loadFullSolBtn">Cargar clinica.json completo</button>
+          </div>
+          <div id="jsonStatus" class="val-status err">Pendiente de validar: el fragmento inicial de la Tarea 1 contiene 5 errores intencionados.</div>
+        </div>
+      </div>
+
+      <!-- Official Solutions Accordions -->
+      <div class="card">
+        <h3 style="margin:0 0 .5rem;">📂 Solucionario Oficial de la Parte Práctica</h3>
+        <p style="margin:0 0 .8rem; color:var(--ink-soft);">Despliega cada archivo para consultar la solución completa o copiar su contenido.</p>
+
+        <details class="sol-drawer">
+          <summary>Archivo 1: fragmento_corregido.json (Tarea 1)</summary>
+          <div class="sol-body">
+            <div class="copy-bar">
+              <span class="q-topic">JSON válido</span>
+              <button type="button" class="btn btn-secondary copy-btn" data-target="solFrag">Copiar JSON</button>
+            </div>
+            <pre><code id="solFrag">{
+  &quot;nombre&quot;: &quot;Clínica Veterinaria Turia&quot;,
+  &quot;colegiadoCentro&quot;: 46089,
+  &quot;urgencias24h&quot;: true,
+  &quot;especialidades&quot;: [&quot;cirugía&quot;, &quot;exóticos&quot;],
+  &quot;web&quot;: null
+}</code></pre>
+          </div>
+        </details>
+
+        <details class="sol-drawer">
+          <summary>Archivo 2: respuestas.txt (Tareas 1, 2 y 5 explicadas)</summary>
+          <div class="sol-body">
+            <div class="copy-bar">
+              <span class="q-topic">Texto explicativo</span>
+              <button type="button" class="btn btn-secondary copy-btn" data-target="solResp">Copiar texto</button>
+            </div>
+            <pre><code id="solResp">=== TAREA 1: ERRORES DETECTADOS ===
+1. nombre: &#x27;Clínica Veterinaria Turia&#x27; -&gt; La clave &quot;nombre&quot; no lleva comillas dobles obligatorias y el valor usa comillas simples (&#x27; &#x27;) en lugar de comillas dobles (&quot; &quot;).
+2. &quot;colegiadoCentro&quot;: &quot;46089&quot; -&gt; Error de tipo de dato: el número de colegiado del centro es un valor numérico entero (46089) o identificador numérico, no debe ir como cadena si se representa como número en la ficha.
+3. &quot;urgencias24h&quot;: True -&gt; Error de sintaxis: en JSON los booleanos se escriben en minúsculas (true / false), no con mayúscula inicial como en Python.
+4. &quot;especialidades&quot;: [&quot;cirugía&quot;, &quot;exóticos&quot;,] -&gt; Error de sintaxis: hay una coma final sobrante (trailing comma) después del último elemento del array (&quot;exóticos&quot;).
+5. &quot;web&quot;: &quot;null&quot; -&gt; Error de tipo de dato: al poner &quot;null&quot; entre comillas se guarda el texto literal &quot;null&quot; en lugar del valor especial null que indica ausencia de página web.
+
+=== TAREA 2: JUSTIFICACION DE TIPOS ===
+- colegiadoCentro (number -&gt; 46089): Es un valor numérico entero sin ceros a la izquierda ni caracteres alfanuméricos.
+- codigoPostal (string -&gt; &quot;46004&quot;): Aunque contiene dígitos, es un código identificador geográfico con formato fijo de 5 caracteres (en algunas provincias empieza por 0, como &quot;03001&quot;, que se perdería si fuera number) y no se realizan operaciones matemáticas con él.
+- web (null -&gt; null): La clínica aún no tiene página web, por lo que el valor adecuado para representar la ausencia de dato es el literal null (sin comillas).
+
+=== TAREA 5: COMPROBACION Y NAVEGACION ===
+(a) Rutas de acceso:
+- Importe de impuestos del desglose de la primera consulta:
+  clinica.consultas[0].pago.desglose.impuestos
+- Precio por unidad del segundo extra de la primera consulta:
+  clinica.consultas[0].extras[1].precioUnidad
+
+(b) Cómo averiguar qué consultas pertenecen al gabinete G01:
+Recorriendo el array clinica.consultas y filtrando aquellos objetos cuya propiedad gabineteId sea exactamente igual a &quot;G01&quot;.
+
+(c) Cómo averiguar qué clientes no tienen seguro contratado:
+Recorriendo el array clinica.clientes y comprobando qué objetos tienen la propiedad seguro con valor igual a null.</code></pre>
+          </div>
+        </details>
+
+        <details class="sol-drawer">
+          <summary>Archivo 3: clinica.json (Solución completa Tareas 2, 3 y 4)</summary>
+          <div class="sol-body">
+            <div class="copy-bar">
+              <span class="q-topic">Modelado jerárquico completo</span>
+              <button type="button" class="btn btn-secondary copy-btn" data-target="solMainJson">Copiar clinica.json</button>
+            </div>
+            <pre><code id="solMainJson">{
+  &quot;clinica&quot;: {
+    &quot;nombre&quot;: &quot;Clínica Veterinaria Turia&quot;,
+    &quot;urgencias24h&quot;: true,
+    &quot;colegiadoCentro&quot;: 46089,
+    &quot;horario&quot;: {
+      &quot;apertura&quot;: &quot;09:00&quot;,
+      &quot;cierre&quot;: &quot;20:30&quot;
+    },
+    &quot;direccion&quot;: {
+      &quot;calle&quot;: &quot;Calle Colón 45&quot;,
+      &quot;ciudad&quot;: &quot;Valencia&quot;,
+      &quot;codigoPostal&quot;: &quot;46004&quot;,
+      &quot;coordenadas&quot;: [39.4682, -0.3719]
+    },
+    &quot;contacto&quot;: {
+      &quot;email&quot;: &quot;info@vetturia.example&quot;,
+      &quot;telefonos&quot;: [&quot;963001122&quot;, &quot;600112233&quot;],
+      &quot;web&quot;: null
+    },
+    &quot;especialidades&quot;: [
+      &quot;cirugía&quot;,
+      &quot;dermatología&quot;,
+      &quot;exóticos&quot;,
+      &quot;diagnóstico por imagen&quot;
+    ],
+    &quot;gabinetes&quot;: [
+      {
+        &quot;id&quot;: &quot;G01&quot;,
+        &quot;numero&quot;: 1,
+        &quot;nombre&quot;: &quot;Consulta general&quot;,
+        &quot;tarifaBase&quot;: 35.0,
+        &quot;capacidad&quot;: 2,
+        &quot;operativo&quot;: true,
+        &quot;ubicacion&quot;: {
+          &quot;planta&quot;: 0,
+          &quot;zona&quot;: &quot;Exterior&quot;
+        },
+        &quot;equipamiento&quot;: [
+          &quot;Báscula digital&quot;,
+          &quot;Otoscopio&quot;,
+          &quot;Lector microchip&quot;
+        ],
+        &quot;valoraciones&quot;: [5, 4, 5]
+      },
+      {
+        &quot;id&quot;: &quot;G02&quot;,
+        &quot;numero&quot;: 2,
+        &quot;nombre&quot;: &quot;Quirófano \&quot;Turia\&quot;&quot;,
+        &quot;tarifaBase&quot;: 120.5,
+        &quot;capacidad&quot;: 1,
+        &quot;operativo&quot;: true,
+        &quot;ubicacion&quot;: {
+          &quot;planta&quot;: 1,
+          &quot;zona&quot;: &quot;Interior&quot;
+        },
+        &quot;equipamiento&quot;: [
+          &quot;Monitor multiparamétrico&quot;,
+          &quot;Bisturí eléctrico&quot;,
+          &quot;Oxígeno&quot;
+        ],
+        &quot;valoraciones&quot;: [5, 5]
+      },
+      {
+        &quot;id&quot;: &quot;G03&quot;,
+        &quot;numero&quot;: 3,
+        &quot;nombre&quot;: &quot;Sala de rayos X&quot;,
+        &quot;tarifaBase&quot;: 65.0,
+        &quot;capacidad&quot;: 1,
+        &quot;operativo&quot;: false,
+        &quot;ubicacion&quot;: {
+          &quot;planta&quot;: -1,
+          &quot;zona&quot;: &quot;Interior&quot;
+        },
+        &quot;equipamiento&quot;: [],
+        &quot;valoraciones&quot;: []
+      }
+    ],
+    &quot;clientes&quot;: [
+      {
+        &quot;id&quot;: &quot;P001&quot;,
+        &quot;nombre&quot;: &quot;Carlos Valor&quot;,
+        &quot;fechaAlta&quot;: &quot;2023-05-14&quot;,
+        &quot;documento&quot;: {
+          &quot;tipo&quot;: &quot;DNI&quot;,
+          &quot;numero&quot;: &quot;23456789M&quot;
+        },
+        &quot;seguro&quot;: {
+          &quot;compania&quot;: &quot;VetPlus&quot;,
+          &quot;poliza&quot;: 99812
+        },
+        &quot;alertas&quot;: [&quot;avisar por SMS&quot;, &quot;factura detallada&quot;]
+      },
+      {
+        &quot;id&quot;: &quot;P002&quot;,
+        &quot;nombre&quot;: &quot;Elena Bosch&quot;,
+        &quot;fechaAlta&quot;: &quot;2024-11-02&quot;,
+        &quot;documento&quot;: {
+          &quot;tipo&quot;: &quot;NIE&quot;,
+          &quot;numero&quot;: &quot;X8765432T&quot;
+        },
+        &quot;seguro&quot;: null,
+        &quot;alertas&quot;: []
+      },
+      {
+        &quot;id&quot;: &quot;P003&quot;,
+        &quot;nombre&quot;: &quot;Jorge Marín&quot;,
+        &quot;fechaAlta&quot;: &quot;2025-02-19&quot;,
+        &quot;documento&quot;: {
+          &quot;tipo&quot;: &quot;Pasaporte&quot;,
+          &quot;numero&quot;: &quot;PA445566&quot;
+        },
+        &quot;seguro&quot;: {
+          &quot;compania&quot;: &quot;MascotaSegura&quot;,
+          &quot;poliza&quot;: 10455
+        },
+        &quot;alertas&quot;: [&quot;perro nervioso en sala de espera&quot;]
+      }
+    ],
+    &quot;consultas&quot;: [
+      {
+        &quot;id&quot;: &quot;M001&quot;,
+        &quot;clienteId&quot;: &quot;P001&quot;,
+        &quot;gabineteId&quot;: &quot;G01&quot;,
+        &quot;fechas&quot;: {
+          &quot;ingreso&quot;: &quot;2026-11-02&quot;,
+          &quot;alta&quot;: &quot;2026-11-02&quot;
+        },
+        &quot;estado&quot;: &quot;Finalizada&quot;,
+        &quot;pagada&quot;: true,
+        &quot;extras&quot;: [
+          {
+            &quot;concepto&quot;: &quot;Vacuna rabia&quot;,
+            &quot;precioUnidad&quot;: 25.0,
+            &quot;cantidad&quot;: 1
+          },
+          {
+            &quot;concepto&quot;: &quot;Desparasitación&quot;,
+            &quot;precioUnidad&quot;: 12.5,
+            &quot;cantidad&quot;: 2
+          }
+        ],
+        &quot;pago&quot;: {
+          &quot;metodo&quot;: &quot;Tarjeta&quot;,
+          &quot;total&quot;: 102.85,
+          &quot;desglose&quot;: {
+            &quot;gabinete&quot;: 35.0,
+            &quot;extras&quot;: 50.0,
+            &quot;impuestos&quot;: 17.85
+          }
+        },
+        &quot;notas&quot;: &quot;Revisar peso en 6 meses&quot;
+      },
+      {
+        &quot;id&quot;: &quot;M002&quot;,
+        &quot;clienteId&quot;: &quot;P002&quot;,
+        &quot;gabineteId&quot;: &quot;G02&quot;,
+        &quot;fechas&quot;: {
+          &quot;ingreso&quot;: &quot;2026-11-15&quot;,
+          &quot;alta&quot;: &quot;2026-11-16&quot;
+        },
+        &quot;estado&quot;: &quot;Programada&quot;,
+        &quot;pagada&quot;: false,
+        &quot;extras&quot;: [],
+        &quot;pago&quot;: null,
+        &quot;notas&quot;: null
+      },
+      {
+        &quot;id&quot;: &quot;M003&quot;,
+        &quot;clienteId&quot;: &quot;P003&quot;,
+        &quot;gabineteId&quot;: &quot;G01&quot;,
+        &quot;fechas&quot;: {
+          &quot;ingreso&quot;: &quot;2026-11-20&quot;,
+          &quot;alta&quot;: &quot;2026-11-20&quot;
+        },
+        &quot;estado&quot;: &quot;Finalizada&quot;,
+        &quot;pagada&quot;: true,
+        &quot;extras&quot;: [
+          {
+            &quot;concepto&quot;: &quot;Analítica completa&quot;,
+            &quot;precioUnidad&quot;: 45.0,
+            &quot;cantidad&quot;: 1
+          }
+        ],
+        &quot;pago&quot;: {
+          &quot;metodo&quot;: &quot;Efectivo&quot;,
+          &quot;total&quot;: 96.8,
+          &quot;desglose&quot;: {
+            &quot;gabinete&quot;: 35.0,
+            &quot;extras&quot;: 45.0,
+            &quot;impuestos&quot;: 16.8
+          }
+        },
+        &quot;notas&quot;: &quot;Ayuno de 12 horas cumplido&quot;
+      },
+      {
+        &quot;id&quot;: &quot;M004&quot;,
+        &quot;clienteId&quot;: &quot;P001&quot;,
+        &quot;gabineteId&quot;: &quot;G02&quot;,
+        &quot;fechas&quot;: {
+          &quot;ingreso&quot;: &quot;2026-12-01&quot;,
+          &quot;alta&quot;: &quot;2026-12-02&quot;
+        },
+        &quot;estado&quot;: &quot;Cancelada&quot;,
+        &quot;pagada&quot;: false,
+        &quot;extras&quot;: [],
+        &quot;pago&quot;: null,
+        &quot;notas&quot;: &quot;Cancelada por mejoría del animal&quot;
+      }
+    ]
+  }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Modelo B Interactivo · Desarrollo de Aplicaciones Web (DAW) — Lenguajes de Marcas · Digitech FP
+  </footer>
+
+  <script>
+    const questions = [{"number": 1, "topic": "HTML5 & Accesibilidad", "promptHtml": "En el blog de una tienda hay un <code>&lt;h1&gt;</code> «Catalogo 2026», seguido directamente de un <code>&lt;h3&gt;</code> «Portatiles gaming» porque al disenador el <code>&lt;h2&gt;</code> le parecia demasiado grande. ¿Por que es incorrecto?", "bodyHtml": "", "options": [{"letter": "A", "html": "Porque un documento HTML no puede tener etiquetas <code>&lt;h3&gt;</code> si no estan dentro de un <code>&lt;article&gt;</code>."}, {"letter": "B", "html": "Porque rompe la jerarquia logica de encabezados al omitir el nivel <code>&lt;h2&gt;</code>, dificultando la navegacion con lectores de pantalla y el indexado SEO."}, {"letter": "C", "html": "Porque solo puede usarse un unico encabezado secundario por pagina web."}, {"letter": "D", "html": "No es incorrecto: los niveles <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code> sirven exclusivamente para ajustar el tamano de la fuente."}], "answer": "B"}, {"number": 2, "topic": "HTML5 & Accesibilidad", "promptHtml": "Quieres enlazar a una pasarela de pago externa abriendo una pestana nueva de forma segura. ¿Que codigo es el correcto?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;a href=&quot;https://pago.example.com&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Ir a la pasarela de pago&lt;/a&gt;</code>"}, {"letter": "B", "html": "<code>&lt;a href=&quot;https://pago.example.com&quot; target=&quot;_new&quot;&gt;Ir a la pasarela de pago&lt;/a&gt;</code>"}, {"letter": "C", "html": "<code>&lt;a href=&quot;https://pago.example.com&quot; target=&quot;_blank&quot;&gt;Ir a la pasarela de pago&lt;/a&gt;</code>"}, {"letter": "D", "html": "<code>&lt;a href=&quot;https://pago.example.com&quot; rel=&quot;external&quot;&gt;Ir a la pasarela de pago&lt;/a&gt;</code>"}], "answer": "A"}, {"number": 3, "topic": "HTML5 & Accesibilidad", "promptHtml": "Desde el punto de vista de la accesibilidad web y el posicionamiento SEO, ¿cual de estos enlaces esta mejor redactado?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;a href=&quot;horario.pdf&quot;&gt;Haz clic aqui&lt;/a&gt;</code>"}, {"letter": "B", "html": "<code>&lt;a href=&quot;horario.pdf&quot;&gt;Descargar el horario de clases en PDF&lt;/a&gt;</code>"}, {"letter": "C", "html": "<code>&lt;a href=&quot;horario.pdf&quot;&gt;Ver mas&lt;/a&gt;</code>"}, {"letter": "D", "html": "<code>&lt;a href=&quot;horario.pdf&quot;&gt;archivo.pdf&lt;/a&gt;</code>"}], "answer": "B"}, {"number": 4, "topic": "HTML5 & Accesibilidad", "promptHtml": "En la frase «Atencion: el servidor se apagara hoy y solo tendras cinco minutos para guardar», quieres dar gran importancia a «Atencion» y enfasis de entonacion a «solo» con significado semantico. ¿Que etiquetas debes usar?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;b&gt;Atencion&lt;/b&gt;</code> e <code>&lt;i&gt;solo&lt;/i&gt;</code>"}, {"letter": "B", "html": "<code>&lt;em&gt;Atencion&lt;/em&gt;</code> y <code>&lt;strong&gt;solo&lt;/strong&gt;</code>"}, {"letter": "C", "html": "<code>&lt;strong&gt;Atencion&lt;/strong&gt;</code> y <code>&lt;em&gt;solo&lt;/em&gt;</code>"}, {"letter": "D", "html": "<code>&lt;span&gt;Atencion&lt;/span&gt;</code> y <code>&lt;u&gt;solo&lt;/u&gt;</code>"}], "answer": "C"}, {"number": 5, "topic": "HTML5 & Accesibilidad", "promptHtml": "Al abrir tu pagina web en el navegador, la palabra «Programación» aparece como «ProgramaciÃ³n». ¿Que debes revisar?", "bodyHtml": "", "options": [{"letter": "A", "html": "Que la etiqueta <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> este incluida en el <code>&lt;head&gt;</code> y el archivo este codificado en UTF-8."}, {"letter": "B", "html": "Que la etiqueta <code>&lt;html&gt;</code> tenga el atributo <code>dir=&quot;ltr&quot;</code>."}, {"letter": "C", "html": "Que el archivo tenga enlazada una hoja de estilos CSS valida."}, {"letter": "D", "html": "Que el <code>&lt;title&gt;</code> no contenga tildes ni caracteres especiales."}], "answer": "A"}, {"number": 6, "topic": "HTML5 & Accesibilidad", "promptHtml": "¿Por que no valida el siguiente fragmento de lista ordenada?", "bodyHtml": "<pre><code class=\"lang-html\">&lt;ol&gt;\n  &lt;li&gt;Instalacion&lt;/li&gt;\n  &lt;p&gt;Requiere permisos de administrador&lt;/p&gt;\n  &lt;li&gt;Configuracion&lt;/li&gt;\n&lt;/ol&gt;</code></pre>", "options": [{"letter": "A", "html": "Porque <code>&lt;ol&gt;</code> no admite texto en espanol con tildes."}, {"letter": "B", "html": "Porque los unicos hijos directos permitidos dentro de <code>&lt;ol&gt;</code> son elementos <code>&lt;li&gt;</code> (el <code>&lt;p&gt;</code> debe ir dentro del <code>&lt;li&gt;</code>)."}, {"letter": "C", "html": "Porque dentro de una lista <code>&lt;ol&gt;</code> es obligatorio usar <code>&lt;ul&gt;</code> antes de un parrafo."}, {"letter": "D", "html": "Porque una lista ordenada debe tener al menos tres elementos <code>&lt;li&gt;</code>."}], "answer": "B"}, {"number": 7, "topic": "HTML5 & Accesibilidad", "promptHtml": "Una web corporativa tiene: cabecera superior con menu principal, zona central con el contenido unico de la pagina, una barra lateral de enlaces patrocinados y un pie de pagina con el aviso legal. ¿Que estructura semantica es la adecuada?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;header&gt;</code> con <code>&lt;nav&gt;</code>; luego <code>&lt;main&gt;</code> junto con <code>&lt;aside&gt;</code>; y finalmente <code>&lt;footer&gt;</code>."}, {"letter": "B", "html": "<code>&lt;top&gt;</code>, <code>&lt;center&gt;</code>, <code>&lt;sidebar&gt;</code> y <code>&lt;bottom&gt;</code>."}, {"letter": "C", "html": "Cuatro etiquetas <code>&lt;section&gt;</code> numeradas con <code>id=&quot;1&quot;</code> a <code>id=&quot;4&quot;</code>."}, {"letter": "D", "html": "Un <code>&lt;main&gt;</code> general que envuelva a tres <code>&lt;header&gt;</code> y un <code>&lt;footer&gt;</code>."}], "answer": "A"}, {"number": 8, "topic": "HTML5 & Accesibilidad", "promptHtml": "¿Cual de las siguientes lineas de codigo HTML5 esta bien anidada y cumple las buenas practicas de accesibilidad?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;p&gt;Oferta &lt;strong&gt;exclusiva &lt;em&gt;hoy&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;</code>"}, {"letter": "B", "html": "<code>&lt;img src=&quot;banner.jpg&quot; alt=&quot;Descuento del 20% en monitores&quot;&gt;</code>"}, {"letter": "C", "html": "<code>&lt;p&gt;Bienvenido a &lt;h1&gt;Mi Tienda&lt;/h1&gt;&lt;/p&gt;</code>"}, {"letter": "D", "html": "<code>&lt;img src=&quot;banner.jpg&quot;&gt;</code>"}], "answer": "B"}, {"number": 9, "topic": "HTML5 & Accesibilidad", "promptHtml": "En un cuestionario quieres que el usuario elija un unico turno («Manana» o «Tarde») usando <code>&lt;input type=&quot;radio&quot;&gt;</code>. Actualmente puede seleccionar ambos a la vez y no se desmarca el otro. ¿Como se soluciona?", "bodyHtml": "", "options": [{"letter": "A", "html": "Poniendo el mismo valor en el atributo <code>id</code> de ambos <code>&lt;input&gt;</code>."}, {"letter": "B", "html": "Cambiando el tipo a <code>&lt;input type=&quot;checkbox&quot;&gt;</code>."}, {"letter": "C", "html": "Asignando exactamente el mismo valor en el atributo <code>name</code> de ambos <code>&lt;input&gt;</code> (por ejemplo, <code>name=&quot;turno&quot;</code>)."}, {"letter": "D", "html": "Anadiendo el atributo <code>checked</code> a los dos elementos."}], "answer": "C"}, {"number": 10, "topic": "XML, XSD & XPath", "promptHtml": "¿Cual de estos fragmentos corresponde a un documento XML bien formado?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;libro&gt;&lt;titulo&gt;XML practico&lt;/Titulo&gt;&lt;/libro&gt;</code>"}, {"letter": "B", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;libro id=1&gt;&lt;titulo&gt;XML practico&lt;/titulo&gt;&lt;/libro&gt;</code>"}, {"letter": "C", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;libro id=&quot;1&quot;&gt;&lt;titulo&gt;XML practico&lt;/titulo&gt;&lt;autor&gt;Ana Gil&lt;/autor&gt;&lt;/libro&gt;</code>"}, {"letter": "D", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;libro&gt;&lt;titulo&gt;XML practico&lt;/libro&gt;&lt;/titulo&gt;</code>"}], "answer": "C"}, {"number": 11, "topic": "XML, XSD & XPath", "promptHtml": "En un esquema XSD se define <code>&lt;xs:element name=&quot;precio&quot; type=&quot;xs:decimal&quot;/&gt;</code>. En el archivo XML se escribe <code>&lt;PRECIO&gt;15.50&lt;/PRECIO&gt;</code>. ¿Que afirmacion es cierta?", "bodyHtml": "", "options": [{"letter": "A", "html": "El XML esta bien formado, pero es invalido respecto al XSD porque XML/XSD distingue entre mayusculas y minusculas."}, {"letter": "B", "html": "El XML esta mal formado porque las etiquetas XML no pueden escribirse en mayusculas."}, {"letter": "C", "html": "El XML es valido y bien formado, ya que <code>PRECIO</code> y <code>precio</code> representan la misma palabra."}, {"letter": "D", "html": "El XML es invalido porque <code>15.50</code> lleva punto en lugar de coma."}], "answer": "A"}, {"number": 12, "topic": "XML, XSD & XPath", "promptHtml": "En <code>academia.xml</code> tienes una lista de <code>profesores</code> (con DNI, nombre, email y telefono) y una lista de <code>cursos</code>. Un mismo profesor imparte varios cursos. ¿Como debes relacionarlos para evitar redundancia?", "bodyHtml": "", "options": [{"letter": "A", "html": "Copiando el nombre, email y telefono del profesor dentro de cada curso que imparta."}, {"letter": "B", "html": "Asignando un atributo identificador unico (ej. <code>id=&quot;P01&quot;</code>) a cada profesor y referenciandolo desde cada curso (ej. <code>profesorId=&quot;P01&quot;</code>)."}, {"letter": "C", "html": "Creando un archivo XML distinto por cada curso y duplicando alli la ficha del profesor."}, {"letter": "D", "html": "Guardando todos los cursos como texto separado por comas dentro del elemento <code>&lt;nombre&gt;</code> del profesor."}], "answer": "B"}, {"number": 13, "topic": "XML, XSD & XPath", "promptHtml": "Dos bancos necesitan intercambiar ficheros diarios con movimientos de cuentas bancarias para procesarlos automaticamente. ¿Por que elegirian XML en lugar de HTML?", "bodyHtml": "", "options": [{"letter": "A", "html": "Porque XML carga mas rapido las imagenes y estilos visuales en el navegador del banco."}, {"letter": "B", "html": "Porque HTML no puede enviarse a traves de Internet entre servidores."}, {"letter": "C", "html": "Porque XML permite estructurar y describir el significado de los datos mediante etiquetas propias y validables."}, {"letter": "D", "html": "Porque XML corrige automaticamente los importes bancarios erroneos."}], "answer": "C"}, {"number": 14, "topic": "XML, XSD & XPath", "promptHtml": "Dado el siguiente fragmento XSD, ¿que ocurre si en el XML escribimos <code>&lt;alumno&gt;&lt;edad&gt;20&lt;/edad&gt;&lt;nombre&gt;Luis&lt;/nombre&gt;&lt;/alumno&gt;</code>?", "bodyHtml": "<pre><code class=\"lang-xml\">&lt;xs:element name=&quot;alumno&quot;&gt;\n  &lt;xs:complexType&gt;\n    &lt;xs:sequence&gt;\n      &lt;xs:element name=&quot;nombre&quot; type=&quot;xs:string&quot;/&gt;\n      &lt;xs:element name=&quot;edad&quot; type=&quot;xs:integer&quot;/&gt;\n    &lt;/xs:sequence&gt;\n  &lt;/xs:complexType&gt;\n&lt;/xs:element&gt;</code></pre>", "options": [{"letter": "A", "html": "Es valido: ambos elementos existen y sus tipos son correctos."}, {"letter": "B", "html": "Esta mal formado porque <code>&lt;edad&gt;</code> nunca puede ir antes que <code>&lt;nombre&gt;</code>."}, {"letter": "C", "html": "Es invalido: el indicador <code>&lt;xs:sequence&gt;</code> obliga a que <code>&lt;nombre&gt;</code> aparezca antes que <code>&lt;edad&gt;</code>."}, {"letter": "D", "html": "Es invalido porque <code>20</code> deberia ir entre comillas dentro de <code>&lt;edad&gt;</code>."}], "answer": "C"}, {"number": 15, "topic": "XML, XSD & XPath", "promptHtml": "En un XSD, el elemento <code>&lt;telefono&gt;</code> tiene <code>minOccurs=&quot;1&quot;</code> y <code>maxOccurs=&quot;2&quot;</code>. Un cliente en el XML no tiene ningun elemento <code>&lt;telefono&gt;</code>. ¿Cual es el diagnostico?", "bodyHtml": "", "options": [{"letter": "A", "html": "El XML sigue estando bien formado, pero es invalido porque incumple el minimo de ocurrencias (<code>minOccurs=&quot;1&quot;</code>)."}, {"letter": "B", "html": "El XML esta mal formado porque falta una etiqueta obligatoria."}, {"letter": "C", "html": "El XML es valido porque <code>minOccurs</code> es solo una recomendacion."}, {"letter": "D", "html": "El XML es valido siempre que el cliente tenga correo electronico."}], "answer": "A"}, {"number": 16, "topic": "XML, XSD & XPath", "promptHtml": "En un XSD se define <code>&lt;xs:attribute name=&quot;moneda&quot; type=&quot;xs:string&quot; use=&quot;optional&quot;/&gt;</code> dentro del elemento <code>importe</code>. Si en el XML escribimos <code>&lt;importe&gt;100&lt;/importe&gt;</code> sin el atributo <code>moneda</code>, ¿que sucede?", "bodyHtml": "", "options": [{"letter": "A", "html": "Es invalido porque todos los atributos declarados en XSD son obligatorios."}, {"letter": "B", "html": "Esta mal formado porque <code>&lt;importe&gt;</code> no tiene atributos."}, {"letter": "C", "html": "Es tanto bien formado como valido, ya que <code>use=&quot;optional&quot;</code> permite omitir el atributo."}, {"letter": "D", "html": "El validador anade automaticamente <code>moneda=&quot;EUR&quot;</code> al archivo XML."}], "answer": "C"}, {"number": 17, "topic": "XML, XSD & XPath", "promptHtml": "Un documento <code>biblioteca.xml</code> contiene 3 elementos <code>&lt;seccion&gt;</code> (cada uno con un hijo <code>&lt;titulo&gt;</code>) y dentro de las secciones hay en total 8 elementos <code>&lt;libro&gt;</code> (cada uno con su propio hijo <code>&lt;titulo&gt;</code>). ¿Cuantos nodos devuelve la expresion XPath <code>//titulo</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "3 nodos (solo los de las secciones)."}, {"letter": "B", "html": "8 nodos (solo los de los libros)."}, {"letter": "C", "html": "11 nodos (los 3 titulos de seccion mas los 8 titulos de libro)."}, {"letter": "D", "html": "1 nodo (unicamente el primer <code>&lt;titulo&gt;</code> del documento)."}], "answer": "C"}, {"number": 18, "topic": "XML, XSD & XPath", "promptHtml": "Dada la estructura <code>/catalogo/categoria[@codigo=&#x27;INF&#x27;]/producto[marca=&#x27;Logitech&#x27;]/precio</code>, ¿que selecciona exactamente esta expresion XPath?", "bodyHtml": "", "options": [{"letter": "A", "html": "El precio de los productos cuyo atributo <code>marca</code> sea <code>Logitech</code> dentro de la categoria con hijo <code>&lt;codigo&gt;INF&lt;/codigo&gt;</code>."}, {"letter": "B", "html": "El precio de los productos que tienen un elemento hijo <code>&lt;marca&gt;</code> con valor <code>&#x27;Logitech&#x27;</code>, dentro de la categoria cuyo atributo <code>codigo</code> vale <code>&#x27;INF&#x27;</code>."}, {"letter": "C", "html": "Todos los productos de la categoria <code>&#x27;INF&#x27;</code> aunque no tengan precio."}, {"letter": "D", "html": "El atributo <code>precio</code> del elemento <code>Logitech</code>."}], "answer": "B"}, {"number": 19, "topic": "XML, XSD & XPath", "promptHtml": "En un esquema XSD quieres validar que <code>&lt;fechaAlta&gt;</code> tenga formato de fecha estandar (AAAA-MM-DD) y <code>&lt;pagado&gt;</code> solo acepte <code>true</code> o <code>false</code>. ¿Que tipos debes usar?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>type=&quot;xs:string&quot;</code> para ambos."}, {"letter": "B", "html": "<code>type=&quot;xs:date&quot;</code> y <code>type=&quot;xs:boolean&quot;</code>."}, {"letter": "C", "html": "<code>type=&quot;xs:calendar&quot;</code> y <code>type=&quot;xs:bit&quot;</code>."}, {"letter": "D", "html": "<code>type=&quot;xs:integer&quot;</code> y <code>type=&quot;xs:string&quot;</code>."}], "answer": "B"}, {"number": 20, "topic": "JSON & Modelado", "promptHtml": "¿Cual de los siguientes objetos JSON es sintacticamente valido?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>{ &quot;codigo&quot;: &quot;A12&quot;, &quot;disponible&quot;: false, &quot;tags&quot;: [&quot;oferta&quot;, &quot;nuevo&quot;] }</code>"}, {"letter": "B", "html": "<code>{ &#x27;codigo&#x27;: &#x27;A12&#x27;, &#x27;disponible&#x27;: false, &#x27;tags&#x27;: [&#x27;oferta&#x27;, &#x27;nuevo&#x27;] }</code>"}, {"letter": "C", "html": "<code>{ &quot;codigo&quot;: &quot;A12&quot;, &quot;disponible&quot;: False, &quot;tags&quot;: [&quot;oferta&quot;, &quot;nuevo&quot;] }</code>"}, {"letter": "D", "html": "<code>{ codigo: &quot;A12&quot;, &quot;disponible&quot;: false, &quot;tags&quot;: [&quot;oferta&quot;, &quot;nuevo&quot;], }</code>"}], "answer": "A"}, {"number": 21, "topic": "JSON & Modelado", "promptHtml": "En un fichero JSON se guarda <code>&quot;stock&quot;: &quot;0&quot;</code> en lugar de <code>&quot;stock&quot;: 0</code>. ¿Que afirmacion es correcta?", "bodyHtml": "", "options": [{"letter": "A", "html": "Es un error de sintaxis JSON y VS Code subrayara la linea en rojo."}, {"letter": "B", "html": "Es sintacticamente valido, pero el tipo de dato es una cadena de texto (<code>string</code>) en lugar de un numero (<code>number</code>)."}, {"letter": "C", "html": "Representa lo mismo que <code>&quot;stock&quot;: null</code>."}, {"letter": "D", "html": "JSON transforma automaticamente <code>&quot;0&quot;</code> en el booleano <code>false</code>."}], "answer": "B"}, {"number": 22, "topic": "JSON & Modelado", "promptHtml": "Un curso tiene varios modulos, y de cada modulo interesa guardar su <code>codigo</code>, <code>nombre</code> y <code>horas</code>. ¿Cual es la mejor estructura en JSON para la propiedad <code>&quot;modulos&quot;</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "Un array de objetos: <code>&quot;modulos&quot;: [ { &quot;codigo&quot;: &quot;LM&quot;, &quot;nombre&quot;: &quot;Lenguajes de marcas&quot;, &quot;horas&quot;: 96 }, ... ]</code>"}, {"letter": "B", "html": "Un texto largo: <code>&quot;modulos&quot;: &quot;LM - Lenguajes de marcas - 96, BD - Bases de datos - 160&quot;</code>"}, {"letter": "C", "html": "Un objeto con claves repetidas: <code>&quot;modulos&quot;: { &quot;modulo&quot;: &quot;LM&quot;, &quot;modulo&quot;: &quot;BD&quot; }</code>"}, {"letter": "D", "html": "Tres arrays sueltos sin relacion clara en la raiz del documento."}], "answer": "A"}, {"number": 23, "topic": "JSON & Modelado", "promptHtml": "A partir de este JSON, ¿que ruta devuelve <code>&quot;València&quot;</code>? (Recuerda que los arrays empiezan en el indice 0)", "bodyHtml": "<pre><code class=\"lang-json\">{\n  &quot;empresa&quot;: {\n    &quot;sedes&quot;: [\n      { &quot;ciudad&quot;: &quot;Madrid&quot;, &quot;oficinas&quot;: [&quot;Centro&quot;, &quot;Norte&quot;] },\n      { &quot;ciudad&quot;: &quot;València&quot;, &quot;oficinas&quot;: [&quot;Puerto&quot;, &quot;Ruzafa&quot;] }\n    ]\n  }\n}</code></pre>", "options": [{"letter": "A", "html": "<code>empresa.sedes[2].ciudad</code>"}, {"letter": "B", "html": "<code>empresa.sedes[1].ciudad</code>"}, {"letter": "C", "html": "<code>empresa.sedes[0].ciudad</code>"}, {"letter": "D", "html": "<code>empresa.sedes.ciudad[1]</code>"}], "answer": "B"}, {"number": 24, "topic": "JSON & Modelado", "promptHtml": "En un JSON de una tienda tienes un array <code>pedidos</code>, donde cada objeto tiene <code>id</code>, <code>clienteId</code> y <code>total</code>. ¿Como obtendrias todos los pedidos realizados por el cliente con <code>id</code> <code>&quot;C05&quot;</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "Accediendo directamente a <code>pedidos[&quot;C05&quot;]</code>."}, {"letter": "B", "html": "Buscando el pedido que esta en la posicion 5 del array (<code>pedidos[5]</code>)."}, {"letter": "C", "html": "Recorriendo el array <code>pedidos</code> y filtrando aquellos objetos cuya propiedad <code>clienteId</code> sea igual a <code>&quot;C05&quot;</code>."}, {"letter": "D", "html": "Buscando los pedidos cuyo atributo <code>id</code> del pedido sea <code>&quot;C05&quot;</code>."}], "answer": "C"}, {"number": 25, "topic": "JSON & Modelado", "promptHtml": "Si un empleado aun no tiene fecha de baja en la empresa, ¿cual es la forma correcta de representar la ausencia de valor en la propiedad <code>fechaBaja</code> en JSON?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&quot;fechaBaja&quot;: null</code>"}, {"letter": "B", "html": "<code>&quot;fechaBaja&quot;: &quot;null&quot;</code>"}, {"letter": "C", "html": "<code>&quot;fechaBaja&quot;: undefined</code>"}, {"letter": "D", "html": "<code>&quot;fechaBaja&quot;: None</code>"}], "answer": "A"}, {"number": 26, "topic": "JSON & Modelado", "promptHtml": "Quieres pasar a JSON el XML <code>&lt;aula codigo=&quot;A102&quot;&gt;&lt;capacidad&gt;30&lt;/capacidad&gt;&lt;proyector&gt;true&lt;/proyector&gt;&lt;/aula&gt;</code> manteniendo los tipos de datos mas precisos. ¿Cual es la mejor opcion?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>{ &quot;codigo&quot;: &quot;A102&quot;, &quot;capacidad&quot;: &quot;30&quot;, &quot;proyector&quot;: &quot;true&quot; }</code>"}, {"letter": "B", "html": "<code>{ &quot;codigo&quot;: &quot;A102&quot;, &quot;capacidad&quot;: 30, &quot;proyector&quot;: true }</code>"}, {"letter": "C", "html": "<code>{ &quot;aula&quot;: [ &quot;A102&quot;, &quot;30&quot;, &quot;true&quot; ] }</code>"}, {"letter": "D", "html": "<code>{ &quot;codigo&quot;: 102, &quot;capacidad&quot;: 30, &quot;proyector&quot;: 1 }</code>"}], "answer": "B"}, {"number": 27, "topic": "JSON & Modelado", "promptHtml": "¿Por que da error de validacion sintactica este JSON?", "bodyHtml": "<pre><code class=\"lang-json\">{\n  &quot;categorias&quot;: [\n    &quot;Teclados&quot;,\n    &quot;Ratones&quot;,\n    &quot;Monitores&quot;,\n  ]\n}</code></pre>", "options": [{"letter": "A", "html": "Porque los arrays en JSON solo pueden contener objetos, no textos."}, {"letter": "B", "html": "Porque sobra la coma final detras de <code>&quot;Monitores&quot;</code> (JSON no permite <em>trailing commas</em>)."}, {"letter": "C", "html": "Porque las palabras del array empiezan por mayuscula."}, {"letter": "D", "html": "Porque falta el atributo <code>id</code> dentro del array."}], "answer": "B"}];
+    const openQuestions = [{"promptHtml": "**Un companero utiliza la etiqueta <code>&lt;b&gt;</code> para todos los textos importantes de una web y varios <code>&lt;br&gt;&lt;br&gt;&lt;br&gt;</code> seguidos para dejar espacio entre bloques.** Explica por que ambas decisiones son malas practicas en HTML5 y que etiquetas o tecnologias deberia emplear en su lugar.", "solutionHtml": "<ul class=\"task-list\">\n<li>**Por que <code>&lt;b&gt;</code> es mala practica para textos importantes:** La etiqueta <code>&lt;b&gt;</code> solo aplica estilo visual (negrita) sin aportar significado semantico de relevancia. Para indicar que un texto es importante para lectores de pantalla y buscadores se debe utilizar <code>&lt;strong&gt;</code>.</li>\n<li>**Por que <code>&lt;br&gt;&lt;br&gt;&lt;br&gt;</code> es mala practica para espaciar bloques:** <code>&lt;br&gt;</code> representa un salto de linea puntual dentro de un mismo bloque de texto (como una direccion o un poema), no una herramienta de maquetacion. Para separar bloques se deben usar etiquetas semanticas de bloque (<code>&lt;p&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;div&gt;</code>) y controlar los margenes mediante <strong>CSS</strong> (<code>margin</code> o <code>padding</code>).</li>\n</ul>"}, {"promptHtml": "<strong>Explica la diferencia entre un documento XML «bien formado» y uno «valido».</strong> A partir de un archivo <code>biblioteca.xml</code>, escribe un ejemplo concreto de error que lo convierta en <em>mal formado</em> y otro que lo deje <em>bien formado pero invalido</em> frente a su esquema XSD.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>Diferencia:</strong> Un documento XML <strong>bien formado</strong> cumple las reglas basicas de sintaxis de XML (una sola raiz, etiquetas bien cerradas y anidadas, atributos entre comillas, sensibilidad a mayusculas/minusculas). Un documento XML <strong>valido</strong>, ademas de estar bien formado, cumple todas las reglas de estructura, orden, cardinalidad y tipos de datos definidas en un esquema (como un XSD).</li>\n<li>**Ejemplo mal formado en <code>biblioteca.xml</code>:** Abrir <code>&lt;libro&gt;</code> y cerrarlo como <code>&lt;/Libro&gt;</code> (con mayuscula) o cruzar etiquetas como <code>&lt;libro&gt;&lt;titulo&gt;Quijote&lt;/libro&gt;&lt;/titulo&gt;</code>.</li>\n<li><strong>Ejemplo bien formado pero invalido frente a su XSD:</strong> Que el XSD declare <code>&lt;xs:element name=&quot;paginas&quot; type=&quot;xs:integer&quot;/&gt;</code> y en el XML se escriba <code>&lt;paginas&gt;trescientas&lt;/paginas&gt;</code> (sintaxis XML correcta, pero incumple el tipo entero del XSD).</li>\n</ul>"}, {"promptHtml": "<strong>Representa tanto en XML como en JSON la ficha de un mismo curso</strong> (<code>codigo</code>: <code>&quot;DAW1&quot;</code>, <code>titulo</code>: <code>&quot;Lenguajes de Marcas&quot;</code>, <code>horas</code>: <code>96</code>, <code>cuotaMensual</code>: <code>120.50</code>, <code>online</code>: <code>false</code>) y explica tres diferencias clave entre ambos formatos.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>En XML:</strong></li>\n</ul>\n<pre><code>&lt;curso codigo=&quot;DAW1&quot;&gt;\n  &lt;titulo&gt;Lenguajes de Marcas&lt;/titulo&gt;\n  &lt;horas&gt;96&lt;/horas&gt;\n  &lt;cuotaMensual&gt;120.50&lt;/cuotaMensual&gt;\n  &lt;online&gt;false&lt;/online&gt;\n&lt;/curso&gt;</code></pre>\n<ul class=\"task-list\">\n<li><strong>En JSON:</strong></li>\n</ul>\n<pre><code>{\n  &quot;codigo&quot;: &quot;DAW1&quot;,\n  &quot;titulo&quot;: &quot;Lenguajes de Marcas&quot;,\n  &quot;horas&quot;: 96,\n  &quot;cuotaMensual&quot;: 120.50,\n  &quot;online&quot;: false\n}</code></pre>\n<ul class=\"task-list\">\n<li><strong>Tres diferencias clave:</strong></li>\n</ul>\n<p>  1. <strong>Sintaxis:</strong> XML utiliza etiquetas de apertura y cierre (<code>&lt;etiqueta&gt;...&lt;/etiqueta&gt;</code>) y atributos, mientras que JSON utiliza pares <code>&quot;clave&quot;: valor</code> dentro de llaves <code>{}</code>.</p>\n<p>  2. <strong>Tipos de datos nativos:</strong> JSON distingue nativamente numeros (<code>96</code>, <code>120.50</code>), booleanos (<code>false</code>) y <code>null</code> sin comillas; en XML todo contenido es texto plano a menos que se asocie un esquema XSD.</p>\n<p>  3. <strong>Verbosidad:</strong> XML es mas verboso al repetir el nombre de cada etiqueta al abrir y cerrar; JSON es mas compacto y ligero para el transporte en APIs web.</p>\n<hr class=\"divider\">"}];
+    const t1SolString = "{\n  \"nombre\": \"Clínica Veterinaria Turia\",\n  \"colegiadoCentro\": 46089,\n  \"urgencias24h\": true,\n  \"especialidades\": [\"cirugía\", \"exóticos\"],\n  \"web\": null\n}";
+    const fullJsonString = "{\n  \"clinica\": {\n    \"nombre\": \"Clínica Veterinaria Turia\",\n    \"urgencias24h\": true,\n    \"colegiadoCentro\": 46089,\n    \"horario\": {\n      \"apertura\": \"09:00\",\n      \"cierre\": \"20:30\"\n    },\n    \"direccion\": {\n      \"calle\": \"Calle Colón 45\",\n      \"ciudad\": \"Valencia\",\n      \"codigoPostal\": \"46004\",\n      \"coordenadas\": [39.4682, -0.3719]\n    },\n    \"contacto\": {\n      \"email\": \"info@vetturia.example\",\n      \"telefonos\": [\"963001122\", \"600112233\"],\n      \"web\": null\n    },\n    \"especialidades\": [\n      \"cirugía\",\n      \"dermatología\",\n      \"exóticos\",\n      \"diagnóstico por imagen\"\n    ],\n    \"gabinetes\": [\n      {\n        \"id\": \"G01\",\n        \"numero\": 1,\n        \"nombre\": \"Consulta general\",\n        \"tarifaBase\": 35.0,\n        \"capacidad\": 2,\n        \"operativo\": true,\n        \"ubicacion\": {\n          \"planta\": 0,\n          \"zona\": \"Exterior\"\n        },\n        \"equipamiento\": [\n          \"Báscula digital\",\n          \"Otoscopio\",\n          \"Lector microchip\"\n        ],\n        \"valoraciones\": [5, 4, 5]\n      },\n      {\n        \"id\": \"G02\",\n        \"numero\": 2,\n        \"nombre\": \"Quirófano \\\"Turia\\\"\",\n        \"tarifaBase\": 120.5,\n        \"capacidad\": 1,\n        \"operativo\": true,\n        \"ubicacion\": {\n          \"planta\": 1,\n          \"zona\": \"Interior\"\n        },\n        \"equipamiento\": [\n          \"Monitor multiparamétrico\",\n          \"Bisturí eléctrico\",\n          \"Oxígeno\"\n        ],\n        \"valoraciones\": [5, 5]\n      },\n      {\n        \"id\": \"G03\",\n        \"numero\": 3,\n        \"nombre\": \"Sala de rayos X\",\n        \"tarifaBase\": 65.0,\n        \"capacidad\": 1,\n        \"operativo\": false,\n        \"ubicacion\": {\n          \"planta\": -1,\n          \"zona\": \"Interior\"\n        },\n        \"equipamiento\": [],\n        \"valoraciones\": []\n      }\n    ],\n    \"clientes\": [\n      {\n        \"id\": \"P001\",\n        \"nombre\": \"Carlos Valor\",\n        \"fechaAlta\": \"2023-05-14\",\n        \"documento\": {\n          \"tipo\": \"DNI\",\n          \"numero\": \"23456789M\"\n        },\n        \"seguro\": {\n          \"compania\": \"VetPlus\",\n          \"poliza\": 99812\n        },\n        \"alertas\": [\"avisar por SMS\", \"factura detallada\"]\n      },\n      {\n        \"id\": \"P002\",\n        \"nombre\": \"Elena Bosch\",\n        \"fechaAlta\": \"2024-11-02\",\n        \"documento\": {\n          \"tipo\": \"NIE\",\n          \"numero\": \"X8765432T\"\n        },\n        \"seguro\": null,\n        \"alertas\": []\n      },\n      {\n        \"id\": \"P003\",\n        \"nombre\": \"Jorge Marín\",\n        \"fechaAlta\": \"2025-02-19\",\n        \"documento\": {\n          \"tipo\": \"Pasaporte\",\n          \"numero\": \"PA445566\"\n        },\n        \"seguro\": {\n          \"compania\": \"MascotaSegura\",\n          \"poliza\": 10455\n        },\n        \"alertas\": [\"perro nervioso en sala de espera\"]\n      }\n    ],\n    \"consultas\": [\n      {\n        \"id\": \"M001\",\n        \"clienteId\": \"P001\",\n        \"gabineteId\": \"G01\",\n        \"fechas\": {\n          \"ingreso\": \"2026-11-02\",\n          \"alta\": \"2026-11-02\"\n        },\n        \"estado\": \"Finalizada\",\n        \"pagada\": true,\n        \"extras\": [\n          {\n            \"concepto\": \"Vacuna rabia\",\n            \"precioUnidad\": 25.0,\n            \"cantidad\": 1\n          },\n          {\n            \"concepto\": \"Desparasitación\",\n            \"precioUnidad\": 12.5,\n            \"cantidad\": 2\n          }\n        ],\n        \"pago\": {\n          \"metodo\": \"Tarjeta\",\n          \"total\": 102.85,\n          \"desglose\": {\n            \"gabinete\": 35.0,\n            \"extras\": 50.0,\n            \"impuestos\": 17.85\n          }\n        },\n        \"notas\": \"Revisar peso en 6 meses\"\n      },\n      {\n        \"id\": \"M002\",\n        \"clienteId\": \"P002\",\n        \"gabineteId\": \"G02\",\n        \"fechas\": {\n          \"ingreso\": \"2026-11-15\",\n          \"alta\": \"2026-11-16\"\n        },\n        \"estado\": \"Programada\",\n        \"pagada\": false,\n        \"extras\": [],\n        \"pago\": null,\n        \"notas\": null\n      },\n      {\n        \"id\": \"M003\",\n        \"clienteId\": \"P003\",\n        \"gabineteId\": \"G01\",\n        \"fechas\": {\n          \"ingreso\": \"2026-11-20\",\n          \"alta\": \"2026-11-20\"\n        },\n        \"estado\": \"Finalizada\",\n        \"pagada\": true,\n        \"extras\": [\n          {\n            \"concepto\": \"Analítica completa\",\n            \"precioUnidad\": 45.0,\n            \"cantidad\": 1\n          }\n        ],\n        \"pago\": {\n          \"metodo\": \"Efectivo\",\n          \"total\": 96.8,\n          \"desglose\": {\n            \"gabinete\": 35.0,\n            \"extras\": 45.0,\n            \"impuestos\": 16.8\n          }\n        },\n        \"notas\": \"Ayuno de 12 horas cumplido\"\n      },\n      {\n        \"id\": \"M004\",\n        \"clienteId\": \"P001\",\n        \"gabineteId\": \"G02\",\n        \"fechas\": {\n          \"ingreso\": \"2026-12-01\",\n          \"alta\": \"2026-12-02\"\n        },\n        \"estado\": \"Cancelada\",\n        \"pagada\": false,\n        \"extras\": [],\n        \"pago\": null,\n        \"notas\": \"Cancelada por mejoría del animal\"\n      }\n    ]\n  }\n}";
+
+    const list = document.getElementById('questions');
+    const qmapGrid = document.getElementById('qmapGrid');
+    const form = document.getElementById('quizForm');
+    const barFill = document.getElementById('barFill');
+    const counter = document.getElementById('counter');
+    const results = document.getElementById('results');
+    const instantCheck = document.getElementById('instantCheck');
+    let isGraded = false;
+
+    // 1. Render Test Questions & Map
+    function renderQuestions() {
+      list.innerHTML = questions.map((q, idx) => `
+        <article class="question" id="question-${q.number}" data-qnum="${q.number}" style="animation-delay: ${Math.min(idx * 25, 400)}ms">
+          <div class="q-meta">
+            <span class="q-num">Pregunta ${q.number}</span>
+            <span class="q-topic">${q.topic}</span>
+          </div>
+          <h2>${q.promptHtml}</h2>
+          ${q.bodyHtml}
+          <fieldset aria-label="Respuestas para la pregunta ${q.number}">
+            ${q.options.map((opt) => `
+              <label class="choice" data-choice="${opt.letter}">
+                <input type="radio" name="q${q.number}" value="${opt.letter}">
+                <span class="opt-Bul">${opt.letter}</span>
+                <span style="flex:1">${opt.html}</span>
+              </label>`).join('')}
+          </fieldset>
+          <p class="feedback" hidden></p>
+        </article>`).join('');
+
+      qmapGrid.innerHTML = questions.map((q) => `
+        <button type="button" class="qmap-dot" id="dot-${q.number}" data-qnum="${q.number}" title="Ir a pregunta ${q.number}">${q.number}</button>
+      `).join('');
+    }
+
+    // 2. Render Open Questions
+    function renderOpenQuestions() {
+      const container = document.getElementById('openContainer');
+      container.innerHTML = openQuestions.map((oq, i) => `
+        <article class="card">
+          <div class="q-meta">
+            <span class="q-num">Pregunta Abierta ${i + 1}</span>
+            <span class="q-topic">Razonamiento técnico</span>
+          </div>
+          <p style="margin:.2rem 0 .5rem; font-size:1.03rem;">${oq.promptHtml}</p>
+          <textarea class="open-textarea" placeholder="Escribe aquí tu respuesta razonada..."></textarea>
+          <details class="sol-drawer">
+            <summary>Ver respuesta oficial orientativa</summary>
+            <div class="sol-body">${oq.solutionHtml}</div>
+          </details>
+        </article>
+      `).join('');
+    }
+
+    // 3. Map Navigation
+    qmapGrid.addEventListener('click', (e) => {
+      const btn = e.target.closest('.qmap-dot');
+      if (!btn) return;
+      const card = document.getElementById(`question-${btn.dataset.qnum}`);
+      if (card) {
+        card.hidden = false;
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+
+    // 4. Grade single question (for instant feedback or full submit)
+    function gradeSingleQuestion(q) {
+      const selected = form.querySelector(`input[name="q${q.number}"]:checked`);
+      const card = document.getElementById(`question-${q.number}`);
+      const dot = document.getElementById(`dot-${q.number}`);
+      const feedback = card.querySelector('.feedback');
+      const isCorrect = selected && selected.value === q.answer;
+
+      card.classList.toggle('correct', Boolean(isCorrect));
+      card.classList.toggle('incorrect', Boolean(selected && !isCorrect));
+      card.classList.toggle('unanswered-card', !selected);
+
+      dot.classList.remove('answered', 'correct', 'incorrect');
+      if (isCorrect) dot.classList.add('correct');
+      else if (selected) dot.classList.add('incorrect');
+
+      for (const label of card.querySelectorAll('.choice')) {
+        const letter = label.dataset.choice;
+        label.classList.toggle('correct', letter === q.answer);
+        label.classList.toggle('incorrect', Boolean(selected && letter === selected.value && !isCorrect));
+      }
+
+      feedback.hidden = false;
+      feedback.innerHTML = isCorrect
+        ? '✓ <strong>¡Respuesta correcta!</strong>'
+        : selected
+          ? `✗ <strong>Incorrecta.</strong> Marcaste la ${selected.value}, pero la respuesta correcta es la <strong>${q.answer}</strong>.`
+          : `⚠️ <strong>Sin responder.</strong> La respuesta correcta es la <strong>${q.answer}</strong>.`;
+
+      return { isCorrect: Boolean(isCorrect), isAnswered: Boolean(selected) };
+    }
+
+    // 5. Update Progress
+    list.addEventListener('change', (e) => {
+      updateProgress();
+      if (instantCheck.checked && e.target.name) {
+        const qnum = parseInt(e.target.name.replace('q', ''), 10);
+        const qObj = questions.find(item => item.number === qnum);
+        if (qObj) gradeSingleQuestion(qObj);
+      }
+    });
+
+    function updateProgress() {
+      let answered = 0;
+      for (const q of questions) {
+        const hasAns = Boolean(form.querySelector(`input[name="q${q.number}"]:checked`));
+        if (hasAns) answered++;
+        const dot = document.getElementById(`dot-${q.number}`);
+        if (dot && !isGraded) {
+          dot.classList.toggle('answered', hasAns);
+        }
+      }
+      const pct = Math.round((answered / questions.length) * 100);
+      barFill.style.width = `${pct}%`;
+      counter.textContent = `${answered} / ${questions.length} (${pct}%)`;
+    }
+
+    // 6. Full Exam Grading
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      isGraded = true;
+      let correct = 0;
+      let incorrect = 0;
+      let unanswered = 0;
+
+      for (const q of questions) {
+        const res = gradeSingleQuestion(q);
+        if (res.isCorrect) correct++;
+        else if (res.isAnswered) incorrect++;
+        else unanswered++;
+      }
+
+      const net = Math.max(0, correct - incorrect / 3);
+      const score10 = (net / questions.length) * 10;
+      const weighted30 = score10 * 0.3;
+      const circumference = 339.29;
+      const offset = circumference - (score10 / 10) * circumference;
+
+      results.innerHTML = `
+        <div class="gauge-box">
+          <svg class="gauge-svg" viewBox="0 0 120 120">
+            <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
+            <circle class="gauge-val" id="gaugeCircle" cx="60" cy="60" r="54" style="stroke:${score10 >= 5 ? 'var(--green)' : 'var(--red)'}"></circle>
+          </svg>
+          <div class="gauge-label">
+            <span class="big">${score10.toFixed(2)}</span>
+            <span class="small">SOBRE 10</span>
+          </div>
+        </div>
+        <div>
+          <h2 style="margin:0 0 .25rem; font-size:1.35rem;">${score10 >= 5 ? '🎉 ¡Test superado!' : '📚 Sigue practicando'}</h2>
+          <p style="margin:0; color:var(--ink-soft);">Aplicando la penalización oficial (1 acierto menos por cada 3 fallos), tu puntuación neta es <strong>${net.toFixed(2)} / ${questions.length}</strong>.</p>
+          <div class="res-KPIs">
+            <div class="kpi-pill"><span>Aciertos</span><strong style="color:var(--green)">${correct}</strong></div>
+            <div class="kpi-pill"><span>Errores</span><strong style="color:var(--red)">${incorrect}</strong></div>
+            <div class="kpi-pill"><span>En blanco</span><strong>${unanswered}</strong></div>
+            <div class="kpi-pill"><span>Peso Parte 1 (30%)</span><strong>${weighted30.toFixed(2)} / 3.00 pts</strong></div>
+          </div>
+        </div>`;
+
+      results.classList.add('visible');
+      requestAnimationFrame(() => {
+        const circle = document.getElementById('gaugeCircle');
+        if (circle) circle.style.strokeDashoffset = offset;
+      });
+      results.focus();
+      results.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // 7. Filter Questions
+    document.getElementById('filterPills').addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-pill');
+      if (!btn) return;
+      for (const b of document.querySelectorAll('.filter-pill')) b.classList.remove('active');
+      btn.classList.add('active');
+      const mode = btn.dataset.filter;
+
+      for (const q of questions) {
+        const card = document.getElementById(`question-${q.number}`);
+        const selected = form.querySelector(`input[name="q${q.number}"]:checked`);
+        const isCorrect = selected && selected.value === q.answer;
+        if (mode === 'all') card.hidden = false;
+        else if (mode === 'unanswered') card.hidden = Boolean(selected);
+        else if (mode === 'incorrect') card.hidden = !(selected && !isCorrect);
+        else if (mode === 'correct') card.hidden = !isCorrect;
+      }
+    });
+
+    // 8. Reset Exam
+    document.getElementById('resetButton').addEventListener('click', () => {
+      isGraded = false;
+      form.reset();
+      results.classList.remove('visible');
+      results.innerHTML = '';
+      for (const b of document.querySelectorAll('.filter-pill')) b.classList.toggle('active', b.dataset.filter === 'all');
+      renderQuestions();
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 9. Countdown Timer (30 min)
+    let remainingSec = 30 * 60;
+    let timerId = null;
+    const timerDisplay = document.getElementById('timerDisplay');
+    const timerToggle = document.getElementById('timerToggle');
+    const timerBox = document.getElementById('timerBox');
+
+    function renderTimer() {
+      const m = String(Math.floor(remainingSec / 60)).padStart(2, '0');
+      const s = String(remainingSec % 60).padStart(2, '0');
+      timerDisplay.textContent = `${m}:${s}`;
+      timerBox.classList.toggle('warning', remainingSec <= 300 && remainingSec > 60);
+      timerBox.classList.toggle('danger', remainingSec <= 60);
+    }
+
+    timerToggle.addEventListener('click', () => {
+      if (timerId) {
+        clearInterval(timerId);
+        timerId = null;
+        timerToggle.textContent = 'Reanudar';
+      } else {
+        timerToggle.textContent = 'Pausar';
+        timerId = setInterval(() => {
+          if (remainingSec > 0) {
+            remainingSec--;
+            renderTimer();
+          } else {
+            clearInterval(timerId);
+            timerId = null;
+            timerToggle.textContent = 'Tiempo agotado';
+          }
+        }, 1000);
+      }
+    });
+
+    document.getElementById('timerReset').addEventListener('click', () => {
+      if (timerId) { clearInterval(timerId); timerId = null; }
+      remainingSec = 30 * 60;
+      timerToggle.textContent = 'Iniciar';
+      renderTimer();
+    });
+
+    // 10. Mode Tabs Switching
+    for (const btn of document.querySelectorAll('.tab-btn')) {
+      btn.addEventListener('click', () => {
+        for (const b of document.querySelectorAll('.tab-btn')) b.classList.remove('active');
+        for (const p of document.querySelectorAll('.tab-panel')) p.classList.remove('active');
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    }
+
+    // 11. Dark / Light Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const root = document.documentElement;
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      document.getElementById('themeIcon').textContent = isDark ? '🌙' : '☀️';
+      document.getElementById('themeText').textContent = isDark ? 'Modo oscuro' : 'Modo claro';
+    });
+
+    // 12. Interactive JSON Sandbox Validator
+    const jsonSandbox = document.getElementById('jsonSandbox');
+    const jsonStatus = document.getElementById('jsonStatus');
+
+    function validateSandbox() {
+      try {
+        const parsed = JSON.parse(jsonSandbox.value);
+        jsonSandbox.value = JSON.stringify(parsed, null, 2);
+        jsonStatus.className = 'val-status ok';
+        jsonStatus.textContent = '✓ ¡JSON sintácticamente válido! Se ha formateado correctamente con sangría de 2 espacios.';
+      } catch (err) {
+        jsonStatus.className = 'val-status err';
+        jsonStatus.textContent = '✗ Error de sintaxis JSON detectado: ' + err.message;
+      }
+    }
+
+    document.getElementById('validateJsonBtn').addEventListener('click', validateSandbox);
+    document.getElementById('loadT1SolBtn').addEventListener('click', () => {
+      jsonSandbox.value = t1SolString;
+      validateSandbox();
+    });
+    document.getElementById('loadFullSolBtn').addEventListener('click', () => {
+      jsonSandbox.value = fullJsonString;
+      validateSandbox();
+    });
+
+    // 13. Copy Buttons
+    for (const btn of document.querySelectorAll('.copy-btn')) {
+      btn.addEventListener('click', () => {
+        const codeEl = document.getElementById(btn.dataset.target);
+        if (!codeEl) return;
+        navigator.clipboard.writeText(codeEl.textContent).then(() => {
+          const orig = btn.textContent;
+          btn.textContent = '✓ ¡Copiado!';
+          setTimeout(() => { btn.textContent = orig; }, 1600);
+        });
+      });
+    }
+
+    renderQuestions();
+    renderOpenQuestions();
+    updateProgress();
+  </script>
+</body>
+</html>

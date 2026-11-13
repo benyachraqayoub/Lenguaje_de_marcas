@@ -12,7 +12,7 @@ Haga clic en cualquiera de las secciones para acceder a los ejercicios correspon
 * [📂 HTML & CSS](./HTML-CSS/README.md) — Teoría de HTML y futuras prácticas de diseño web.
 * [📂 XML](./XML/) — Sintaxis estricta, validaciones XSD y almacenamiento lógico de datos.
 * [📂 JSON](./JSON/) — Estructuras modernas de objetos de datos utilizadas en aplicaciones web actuales.
-* [📝 Examen tipo 1.ª evaluación](./EXAMEN%20TIPO%201%C2%AA%20EVA/README.md) — Enunciado, respuestas y archivos prácticos JSON.
+* [📝 Preparación del examen — 1.ª evaluación](./EXAMEN%20TIPO%201%C2%AA%20EVA/README.md) — Guía de repaso y cuatro simulacros con solucionario.
 
 ---
 

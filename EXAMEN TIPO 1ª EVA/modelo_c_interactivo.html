@@ -1,0 +1,1710 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4c1d95">
+  <title>Modelo C - Examen Oficial Interactivo | Lenguajes de Marcas</title>
+  <style>
+    :root {
+      --bg: #f0f4f8;
+      --bg-mesh: radial-gradient(at 0% 0%, #6d28d918 0px, transparent 50%),
+                 radial-gradient(at 100% 0%, #0ea5e915 0px, transparent 50%);
+      --paper: #ffffff;
+      --paper-elevated: #ffffff;
+      --glass: rgba(255, 255, 255, 0.86);
+      --ink: #0f172a;
+      --ink-soft: #334155;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --line-strong: #cbd5e1;
+      --accent: #6d28d9;
+      --accent-dark: #4c1d95;
+      --accent-soft: #6d28d915;
+      --accent-glow: #6d28d935;
+      --green: #15803d;
+      --green-bg: #dcfce7;
+      --green-border: #86efac;
+      --red: #b91c1c;
+      --red-bg: #fee2e2;
+      --red-border: #fca5a5;
+      --amber: #b45309;
+      --amber-bg: #fef3c7;
+      --code-bg: #0f172a;
+      --code-ink: #e2e8f0;
+      --inline-code-bg: #f1f5f9;
+      --inline-code-ink: #0f172a;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 40px -12px rgba(15, 23, 42, 0.14);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #090d16;
+      --bg-mesh: radial-gradient(at 0% 0%, #6d28d928 0px, transparent 50%),
+                 radial-gradient(at 100% 0%, #1e293b80 0px, transparent 50%);
+      --paper: #111827;
+      --paper-elevated: #1e293b;
+      --glass: rgba(17, 24, 39, 0.85);
+      --ink: #f8fafc;
+      --ink-soft: #cbd5e1;
+      --muted: #94a3b8;
+      --line: #1f2937;
+      --line-strong: #334155;
+      --accent-soft: #6d28d928;
+      --green: #4ade80;
+      --green-bg: rgba(21, 128, 61, 0.2);
+      --green-border: #22c55e;
+      --red: #f87171;
+      --red-bg: rgba(185, 28, 28, 0.22);
+      --red-border: #ef4444;
+      --amber: #fbbf24;
+      --amber-bg: rgba(180, 83, 9, 0.25);
+      --code-bg: #030712;
+      --code-ink: #f1f5f9;
+      --inline-code-bg: #1e293b;
+      --inline-code-ink: #e2e8f0;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 10px 30px -5px rgba(0, 0, 0, 0.45);
+      --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      background-image: var(--bg-mesh);
+      background-attachment: fixed;
+      color: var(--ink);
+      font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      transition: background-color .35s ease, color .35s ease;
+      overflow-x: hidden;
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+      50% { box-shadow: 0 0 0 8px transparent; }
+    }
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.92); }
+      70% { transform: scale(1.02); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes shakeError {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+    }
+
+    /* Hero Header */
+    header.hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 60%, #0f172a 100%);
+      color: #ffffff;
+      padding: 2.4rem 1.25rem 2.2rem;
+      box-shadow: var(--shadow-md);
+    }
+    header.hero::before,
+    header.hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(45px);
+      opacity: 0.28;
+    }
+    header.hero::before {
+      width: 320px; height: 320px;
+      background: #38bdf8;
+      top: -120px; right: -60px;
+      animation: floatSlow 9s ease-in-out infinite;
+    }
+    header.hero::after {
+      width: 240px; height: 240px;
+      background: #a78bfa;
+      bottom: -100px; left: 10%;
+      animation: floatSlow 12s ease-in-out infinite reverse;
+    }
+
+    .wrap { max-width: 1020px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: .8rem;
+    }
+    .badge-row { display: flex; align-items: center; gap: .55rem; flex-wrap: wrap; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: .32rem .75rem;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+    }
+    .model-pill {
+      font-size: .8rem;
+      font-weight: 800;
+      background: #ffffff;
+      color: var(--accent-dark);
+      padding: .3rem .75rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .theme-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: .45rem .85rem;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s var(--ease-spring), background .2s ease;
+    }
+    .theme-btn:hover { background: rgba(255, 255, 255, 0.24); transform: translateY(-2px); }
+
+    header.hero h1 {
+      margin: .3rem 0 .4rem;
+      font-size: clamp(1.75rem, 4vw, 2.55rem);
+      font-weight: 850;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    header.hero p.subtitle {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 1.02rem;
+      max-width: 720px;
+    }
+    .meta-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 1.15rem;
+    }
+    .meta-chip {
+      font-size: .82rem;
+      background: rgba(15, 23, 42, 0.32);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: .32rem .75rem;
+      border-radius: 8px;
+      color: #e2e8f0;
+    }
+
+    /* Navigation Tabs */
+    .mode-tabs {
+      display: flex;
+      gap: .5rem;
+      margin-top: 1.5rem;
+      background: rgba(15, 23, 42, 0.35);
+      padding: .35rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      overflow-x: auto;
+    }
+    .tab-btn {
+      flex: 1 1 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: .68rem 1rem;
+      border-radius: 10px;
+      border: 0;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.82);
+      font-weight: 750;
+      font-size: .92rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all .25s var(--ease-out);
+    }
+    .tab-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.1); }
+    .tab-btn.active {
+      background: #ffffff;
+      color: var(--accent-dark);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+      transform: translateY(-1px);
+    }
+    .tab-badge {
+      font-size: .74rem;
+      padding: .1rem .45rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.12);
+      font-weight: 800;
+    }
+    .tab-btn.active .tab-badge {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+    }
+
+    /* Main Content Layout */
+    main { padding: 1.5rem 1.25rem 4rem; }
+    .tab-panel { display: none; animation: fadeSlideUp .4s var(--ease-out) both; }
+    .tab-panel.active { display: block; }
+
+    /* Cards & Glass Panels */
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 1.15rem;
+      transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out), border-color .25s ease;
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: .85rem;
+      margin-top: .85rem;
+    }
+    .stat-box {
+      background: var(--inline-code-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: .75rem 1rem;
+    }
+    .stat-box .lbl { font-size: .76rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 700; }
+    .stat-box .val { font-size: 1.08rem; font-weight: 800; color: var(--ink); margin-top: .15rem; }
+
+    /* Sticky Toolbar */
+    .toolbar {
+      position: sticky;
+      top: .75rem;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      flex-wrap: wrap;
+      padding: .8rem 1rem;
+      margin: 1rem 0 1.25rem;
+      background: var(--glass);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--shadow-md);
+    }
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      flex: 1 1 240px;
+    }
+    .counter-badge {
+      font-weight: 800;
+      font-size: .9rem;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .bar-track {
+      flex: 1;
+      height: 10px;
+      background: var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), #38bdf8);
+      border-radius: 999px;
+      transition: width .4s var(--ease-out);
+    }
+
+    /* Timer Widget */
+    .timer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: var(--inline-code-bg);
+      border: 1px solid var(--line-strong);
+      padding: .38rem .7rem;
+      border-radius: 10px;
+      font-variant-numeric: tabular-nums;
+      font-weight: 800;
+      font-size: .9rem;
+    }
+    .timer-pill.warning { color: var(--amber); background: var(--amber-bg); }
+    .timer-pill.danger { color: var(--red); background: var(--red-bg); animation: pulseGlow 1.2s infinite; }
+    .icon-btn {
+      background: transparent;
+      border: 0;
+      color: var(--ink-soft);
+      padding: .2rem .4rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: .82rem;
+      font-weight: 750;
+    }
+    .icon-btn:hover { background: var(--line); color: var(--ink); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      border: 0;
+      border-radius: 10px;
+      padding: .62rem 1.05rem;
+      font: inherit;
+      font-size: .9rem;
+      font-weight: 750;
+      cursor: pointer;
+      transition: transform .18s var(--ease-spring), box-shadow .2s ease, filter .2s ease;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+    .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .btn-secondary {
+      color: var(--ink);
+      background: var(--inline-code-bg);
+      border: 1px solid var(--line-strong);
+    }
+    .btn-secondary:hover { background: var(--line); }
+
+    /* Question Map Drawer */
+    .qmap-drawer {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .qmap-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-bottom: .75rem;
+    }
+    .qmap-title { font-size: .88rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .filter-pills { display: flex; gap: .35rem; flex-wrap: wrap; }
+    .filter-pill {
+      font-size: .78rem;
+      font-weight: 750;
+      padding: .28rem .65rem;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .filter-pill.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .qmap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+      gap: .4rem;
+    }
+    .qmap-dot {
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--line-strong);
+      background: var(--inline-code-bg);
+      color: var(--ink-soft);
+      font-weight: 800;
+      font-size: .82rem;
+      cursor: pointer;
+      transition: transform .18s var(--ease-spring), background .2s ease, border-color .2s ease;
+    }
+    .qmap-dot:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .qmap-dot.answered {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .qmap-dot.correct {
+      background: var(--green-bg);
+      border-color: var(--green-border);
+      color: var(--green);
+    }
+    .qmap-dot.incorrect {
+      background: var(--red-bg);
+      border-color: var(--red-border);
+      color: var(--red);
+    }
+
+    /* Question Cards */
+    .question {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 1.35rem 1.45rem;
+      margin: 1.1rem 0;
+      scroll-margin-top: 6.8rem;
+      box-shadow: var(--shadow-sm);
+      animation: fadeSlideUp .45s var(--ease-out) both;
+      transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out), border-color .25s ease;
+    }
+    .question:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--line-strong);
+    }
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: .65rem;
+    }
+    .q-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .8rem;
+      font-weight: 850;
+      padding: .22rem .65rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .q-topic {
+      font-size: .76rem;
+      font-weight: 700;
+      color: var(--muted);
+      background: var(--inline-code-bg);
+      padding: .2rem .6rem;
+      border-radius: 6px;
+    }
+    .question h2 {
+      margin: 0 0 .75rem;
+      font-size: 1.06rem;
+      line-height: 1.5;
+      font-weight: 750;
+    }
+    pre {
+      overflow-x: auto;
+      padding: .95rem 1.1rem;
+      border-radius: var(--radius-sm);
+      background: var(--code-bg);
+      color: var(--code-ink);
+      font-size: .88rem;
+      line-height: 1.55;
+      border: 1px solid var(--line-strong);
+      margin: .75rem 0;
+    }
+    code {
+      border-radius: 6px;
+      background: var(--inline-code-bg);
+      color: var(--inline-code-ink);
+      padding: .14em .38em;
+      font: .9em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      overflow-wrap: anywhere;
+    }
+    pre code {
+      padding: 0;
+      background: transparent;
+      color: inherit;
+      overflow-wrap: normal;
+    }
+
+    /* Options Styling */
+    fieldset {
+      display: grid;
+      gap: .55rem;
+      border: 0;
+      padding: 0;
+      margin: .9rem 0 0;
+    }
+    .choice {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: .8rem;
+      padding: .8rem .95rem;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      cursor: pointer;
+      background: var(--paper);
+      transition: transform .18s var(--ease-out), border-color .18s ease, background-color .18s ease, box-shadow .18s ease;
+    }
+    .choice:hover {
+      border-color: var(--accent);
+      background: var(--inline-code-bg);
+      transform: translateX(4px);
+    }
+    .choice input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .opt-Bul {
+      flex: 0 0 28px;
+      height: 28px;
+      border-radius: 8px;
+      border: 1.5px solid var(--line-strong);
+      background: var(--inline-code-bg);
+      color: var(--ink-soft);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 850;
+      font-size: .84rem;
+      transition: all .2s var(--ease-spring);
+      margin-top: .05rem;
+    }
+    .choice:has(input:checked) {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    }
+    .choice:has(input:checked) .opt-Bul {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+      transform: scale(1.08);
+    }
+
+    /* Graded States */
+    .choice.correct {
+      border-color: var(--green-border) !important;
+      background: var(--green-bg) !important;
+    }
+    .choice.correct .opt-Bul {
+      background: var(--green) !important;
+      border-color: var(--green) !important;
+      color: #fff !important;
+    }
+    .choice.incorrect {
+      border-color: var(--red-border) !important;
+      background: var(--red-bg) !important;
+      animation: shakeError .45s ease;
+    }
+    .choice.incorrect .opt-Bul {
+      background: var(--red) !important;
+      border-color: var(--red) !important;
+      color: #fff !important;
+    }
+    .question.correct { border-left: 5px solid var(--green); }
+    .question.incorrect { border-left: 5px solid var(--red); }
+    .question.unanswered-card { border-left: 5px solid var(--amber); }
+
+    .feedback {
+      margin: .85rem 0 0 !important;
+      padding: .65rem .9rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: .9rem;
+      background: var(--inline-code-bg);
+      animation: popIn .3s var(--ease-out);
+    }
+    .question.correct .feedback { color: var(--green); background: var(--green-bg); }
+    .question.incorrect .feedback { color: var(--red); background: var(--red-bg); }
+
+    /* Results Dashboard */
+    .results {
+      display: none;
+      padding: 1.5rem;
+      margin: 1.25rem 0;
+      background: var(--paper);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      animation: popIn .45s var(--ease-out);
+    }
+    .results.visible { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: center; }
+    .gauge-box {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gauge-svg { transform: rotate(-90deg); width: 130px; height: 130px; }
+    .gauge-bg { fill: none; stroke: var(--line); stroke-width: 10; }
+    .gauge-val {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-dasharray: 339.29;
+      stroke-dashoffset: 339.29;
+      transition: stroke-dashoffset 1.2s var(--ease-out);
+    }
+    .gauge-label {
+      position: absolute;
+      text-align: center;
+      line-height: 1.1;
+    }
+    .gauge-label .big { font-size: 1.55rem; font-weight: 900; display: block; }
+    .gauge-label .small { font-size: .75rem; color: var(--muted); font-weight: 750; }
+    .res-KPIs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: .65rem;
+      margin-top: .8rem;
+    }
+    .kpi-pill {
+      padding: .6rem .8rem;
+      border-radius: 10px;
+      background: var(--inline-code-bg);
+      border: 1px solid var(--line);
+    }
+    .kpi-pill span { display: block; font-size: .75rem; color: var(--muted); font-weight: 700; }
+    .kpi-pill strong { font-size: 1.1rem; font-weight: 850; }
+
+    /* Open Questions & Practical Section */
+    .open-textarea {
+      width: 100%;
+      min-height: 110px;
+      margin-top: .75rem;
+      padding: .8rem 1rem;
+      border-radius: 12px;
+      border: 1.5px solid var(--line-strong);
+      background: var(--inline-code-bg);
+      color: var(--ink);
+      font: inherit;
+      resize: vertical;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .open-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    details.sol-drawer {
+      margin-top: .85rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      background: var(--inline-code-bg);
+      overflow: hidden;
+    }
+    details.sol-drawer summary {
+      padding: .75rem 1rem;
+      font-weight: 800;
+      font-size: .9rem;
+      cursor: pointer;
+      color: var(--accent);
+      user-select: none;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    details.sol-drawer summary::after { content: "▼"; font-size: .75rem; transition: transform .25s ease; }
+    details.sol-drawer[open] summary::after { transform: rotate(180deg); }
+    .sol-body {
+      padding: .9rem 1.1rem 1.1rem;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+      animation: fadeSlideUp .3s var(--ease-out);
+    }
+
+    /* Tables in Practical Section */
+    .table-wrap { overflow-x: auto; margin: .85rem 0 1.25rem; border-radius: 12px; border: 1px solid var(--line-strong); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .data-table th, .data-table td { padding: .65rem .85rem; text-align: left; border-bottom: 1px solid var(--line); }
+    .data-table th { background: var(--inline-code-bg); font-weight: 800; color: var(--ink); white-space: nowrap; }
+    .data-table tr:last-child td { border-bottom: 0; }
+    .data-table tr:hover td { background: var(--accent-soft); }
+    .sub-heading { margin: 1.4rem 0 .4rem; font-size: 1.05rem; color: var(--accent); }
+    .sec-heading { margin: 1.5rem 0 .6rem; font-size: 1.25rem; border-bottom: 2px solid var(--line); padding-bottom: .35rem; }
+    .task-list { padding-left: 1.2rem; }
+    .task-list li { margin: .45rem 0; }
+    .task-list li.sub-item { margin-left: 1.2rem; list-style-type: circle; }
+
+    /* Interactive JSON Validator */
+    .validator-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .85rem;
+      margin-top: .8rem;
+    }
+    .code-editor {
+      width: 100%;
+      min-height: 220px;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1.5px solid var(--line-strong);
+      background: var(--code-bg);
+      color: var(--code-ink);
+      font: .88rem/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      resize: vertical;
+    }
+    .val-status {
+      padding: .7rem 1rem;
+      border-radius: 10px;
+      font-weight: 750;
+      font-size: .9rem;
+    }
+    .val-status.ok { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+    .val-status.err { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+
+    .copy-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: .35rem;
+    }
+
+    footer {
+      padding: 2rem 1rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: .88rem;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 680px) {
+      .results.visible { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+      .toolbar { position: static; }
+      .question { padding: 1.1rem; }
+    }
+    @media print {
+      header.hero { background: none !important; color: #000 !important; box-shadow: none; padding: 1rem 0; }
+      .toolbar, .qmap-drawer, .mode-tabs, .theme-btn, footer { display: none !important; }
+      .tab-panel { display: block !important; }
+      .question, .card { box-shadow: none; break-inside: avoid; border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-top">
+        <div class="badge-row">
+          <span class="eyebrow">Digitech FP · 1.º DAW A</span>
+          <span class="model-pill">MODELO C</span>
+        </div>
+        <button type="button" class="theme-btn" id="themeToggle" aria-label="Cambiar tema claro u oscuro">
+          <span id="themeIcon">🌙</span> <span id="themeText">Modo oscuro</span>
+        </button>
+      </div>
+      <h1>Lenguajes de Marcas — 1.ª Evaluación</h1>
+      <p class="subtitle">Simulacro interactivo completo: Parte 1 (Test 27 preguntas + 3 Abiertas) y Parte 2 (Caso práctico JSON: Concesionario Albufera Motor)</p>
+      <div class="meta-chips">
+        <span class="meta-chip">⏱️ Parte 1: 30 min (30%)</span>
+        <span class="meta-chip">💻 Parte 2: 90 min (50%)</span>
+        <span class="meta-chip">🗣️ Parte 3: Defensa (20%)</span>
+      </div>
+
+      <nav class="mode-tabs" aria-label="Partes del examen">
+        <button type="button" class="tab-btn active" data-tab="tab-test">
+          <span>1. Test Teórico</span>
+          <span class="tab-badge">27 preg.</span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="tab-open">
+          <span>2. Preguntas Abiertas</span>
+          <span class="tab-badge">3 preg.</span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="tab-prac">
+          <span>3. Práctica JSON y Solución</span>
+          <span class="tab-badge">concesionario.json</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- TAB 1: TEST INTERACTIVO -->
+    <section id="tab-test" class="tab-panel active">
+      <div class="card">
+        <strong>Instrucciones de la Parte 1 (Evaluación teórica):</strong>
+        <p style="margin:.35rem 0 0; color:var(--ink-soft);">Selecciona una única respuesta por pregunta. Puedes usar el temporizador de 30 minutos para simular las condiciones reales sin apuntes ni dispositivos. Al pulsar <strong>Corregir examen</strong>, se calculará tu nota aplicando la regla oficial (<em>cada 3 errores descuentan 1 acierto</em>).</p>
+        <div class="intro-grid">
+          <div class="stat-box"><div class="lbl">Preguntas Test</div><div class="val">27 preguntas</div></div>
+          <div class="stat-box"><div class="lbl">Penalización</div><div class="val">-1 cada 3 errores</div></div>
+          <div class="stat-box"><div class="lbl">Modo corrección</div><div class="val"><label style="cursor:pointer; display:inline-flex; align-items:center; gap:.4rem; font-size:.92rem;"><input type="checkbox" id="instantCheck"> Feedback al instante</label></div></div>
+        </div>
+      </div>
+
+      <form id="quizForm">
+        <div class="toolbar" aria-label="Progreso y acciones">
+          <div class="progress-wrap">
+            <span class="counter-badge" id="counter">0 / 27</span>
+            <div class="bar-track" aria-hidden="true"><div class="bar-fill" id="barFill"></div></div>
+          </div>
+          <div class="timer-pill" id="timerBox" title="Temporizador de 30 minutos">
+            <span>⏱️</span>
+            <span id="timerDisplay">30:00</span>
+            <button type="button" class="icon-btn" id="timerToggle">Iniciar</button>
+            <button type="button" class="icon-btn" id="timerReset" title="Reiniciar reloj">↺</button>
+          </div>
+          <button class="btn btn-primary" type="submit">✓ Corregir examen</button>
+          <button class="btn btn-secondary" type="button" id="resetButton">Borrar</button>
+        </div>
+
+        <section id="results" class="results" aria-live="polite" tabindex="-1"></section>
+
+        <div class="qmap-drawer" aria-label="Mapa de preguntas">
+          <div class="qmap-header">
+            <span class="qmap-title">Mapa rápido de preguntas (1–27)</span>
+            <div class="filter-pills" id="filterPills">
+              <button type="button" class="filter-pill active" data-filter="all">Todas (27)</button>
+              <button type="button" class="filter-pill" data-filter="unanswered">Sin responder</button>
+              <button type="button" class="filter-pill" data-filter="incorrect">Incorrectas</button>
+              <button type="button" class="filter-pill" data-filter="correct">Correctas</button>
+            </div>
+          </div>
+          <div class="qmap-grid" id="qmapGrid"></div>
+        </div>
+
+        <div id="questions"></div>
+      </form>
+    </section>
+
+    <!-- TAB 2: PREGUNTAS ABIERTAS -->
+    <section id="tab-open" class="tab-panel">
+      <div class="card">
+        <h2 style="margin:0 0 .4rem;">Preguntas de respuesta abierta (Parte 1)</h2>
+        <p style="margin:0; color:var(--ink-soft);">Redacta tu respuesta razonada en cada cuadro de texto para practicar y después despliega la <strong>Solución Oficial</strong> para comparar los puntos clave.</p>
+      </div>
+      <div id="openContainer"></div>
+    </section>
+
+    <!-- TAB 3: PRACTICA JSON -->
+    <section id="tab-prac" class="tab-panel">
+      <div class="card">
+        <div class="q-meta">
+          <span class="q-num">PARTE 2 · 90 MINUTOS (50%)</span>
+          <span class="q-topic">Archivo principal: concesionario.json</span>
+        </div>
+        <h3 class="sec-heading">Enunciado — Caso: Concesionario Albufera Motor (modelado de datos en JSON)</h3>
+<p>El concesionario y servicio de alquiler <strong>Albufera Motor</strong> va a implantar un nuevo sistema que intercambia datos en formato JSON. Debes elaborar el archivo <code>concesionario.json</code> con toda la informacion de las tablas adjuntas, organizando adecuadamente objetos, arrays, anidaciones y tipos de datos.</p>
+<p>El archivo tendra un objeto raiz con una unica propiedad <code>concesionario</code> que englobara todo el contenido.</p>
+<h4 class="sub-heading">Informacion del concesionario</h4>
+<div class="table-wrap"><table class="data-table"><thead><tr>
+<th>Bloque</th>
+<th>Datos</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Datos generales</strong></td>
+<td>Nombre: Albufera Motor · Licencias de flota: 25 · Concesionario abierto: sí · Horario entrega: 08:30 · Horario devolución: 20:00</td>
+</tr>
+<tr>
+<td><strong>Direccion</strong></td>
+<td>Pista de Silla km 5, Valencia, código postal 46470 · Coordenadas en el mapa: 39.4125 y -0.3841</td>
+</tr>
+<tr>
+<td><strong>Contacto</strong></td>
+<td>Email: flota@albuferamotor.example · Teléfonos: 961223344 y 961223355 · Web: aún no tiene</td>
+</tr>
+<tr>
+<td><strong>Servicios</strong></td>
+<td>alquiler diario, renting, taller propio, asistencia en carretera</td>
+</tr>
+</tbody></table></div>
+<h4 class="sub-heading">Vehiculos</h4>
+<div class="table-wrap"><table class="data-table"><thead><tr>
+<th>ID</th>
+<th>Num. plaza</th>
+<th>Modelo</th>
+<th>Precio dia</th>
+<th>Plazas</th>
+<th>Disponible</th>
+<th>Ubicacion</th>
+<th>Valoraciones</th>
+<th>Equipamiento</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>V10</strong></td>
+<td>10</td>
+<td>Compacto &quot;Eco&quot;</td>
+<td>42,50 EUR</td>
+<td>5</td>
+<td>Sí</td>
+<td>Nave 1 · Zona Norte</td>
+<td>4, 5, 4</td>
+<td>Climatizador, Bluetooth, Control de crucero</td>
+</tr>
+<tr>
+<td><strong>V22</strong></td>
+<td>22</td>
+<td>SUV Familiar</td>
+<td>78,00 EUR</td>
+<td>7</td>
+<td>Sí</td>
+<td>Nave 2 · Zona Sur</td>
+<td>5, 5</td>
+<td>Navegador GPS, Cámara 360, Techo panorámico, Bola remolque</td>
+</tr>
+<tr>
+<td><strong>V35</strong></td>
+<td>35</td>
+<td>Furgoneta carga</td>
+<td>64,90 EUR</td>
+<td>2</td>
+<td>No</td>
+<td>Nave 1 · Zona Exterior</td>
+<td><em>(ninguna)</em></td>
+<td><em>(ninguno)</em></td>
+</tr>
+</tbody></table></div>
+<h4 class="sub-heading">Clientes</h4>
+<div class="table-wrap"><table class="data-table"><thead><tr>
+<th>ID</th>
+<th>Nombre</th>
+<th>Fecha nacimiento</th>
+<th>Documento</th>
+<th>Club fidelidad</th>
+<th>Preferencias</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>CL01</strong></td>
+<td>Sofía Martí</td>
+<td>1990-07-18</td>
+<td>DNI 45678901L</td>
+<td>Premium · 850 puntos</td>
+<td>cambio automático, recogida rápida</td>
+</tr>
+<tr>
+<td><strong>CL02</strong></td>
+<td>David Orts</td>
+<td>1984-03-11</td>
+<td>Pasaporte ZP334455</td>
+<td>No pertenece al club</td>
+<td><em>(ninguna)</em></td>
+</tr>
+<tr>
+<td><strong>CL03</strong></td>
+<td>Nadia Haddad</td>
+<td>1998-12-05</td>
+<td>NIE Y9876543W</td>
+<td>Básico · 120 puntos</td>
+<td>vehículo eléctrico o híbrido</td>
+</tr>
+</tbody></table></div>
+<h4 class="sub-heading">Alquileres</h4>
+<div class="table-wrap"><table class="data-table"><thead><tr>
+<th>ID</th>
+<th>Cliente</th>
+<th>Vehiculo</th>
+<th>Fechas (Recogida / Devolucion)</th>
+<th>Estado</th>
+<th>Pagado</th>
+<th>Extras contratados</th>
+<th>Pago y notas</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>A001</strong></td>
+<td>CL01</td>
+<td>V10</td>
+<td>04/12/2026 al 07/12/2026</td>
+<td>Activo</td>
+<td>Sí</td>
+<td>Seguro todo riesgo 18,00 EUR x 3 · Silla infantil 8,50 EUR x 3</td>
+<td>Tarjeta · vehiculo 127,50 · extras 79,50 · impuestos 43,47 · total 250,47 · Nota: Entrega con depósito lleno</td>
+</tr>
+<tr>
+<td><strong>A002</strong></td>
+<td>CL02</td>
+<td>V22</td>
+<td>18/12/2026 al 21/12/2026</td>
+<td>Pendiente</td>
+<td>No</td>
+<td><em>(ninguno)</em></td>
+<td>Sin pago todavía · sin notas</td>
+</tr>
+<tr>
+<td><strong>A003</strong></td>
+<td>CL03</td>
+<td>V10</td>
+<td>10/01/2027 al 12/01/2027</td>
+<td>Confirmado</td>
+<td>Sí</td>
+<td>Conductor adicional 15,00 EUR x 2</td>
+<td>Transferencia · vehiculo 85,00 · extras 30,00 · impuestos 24,15 · total 139,15 · Nota: Presenta carné internacional</td>
+</tr>
+<tr>
+<td><strong>A004</strong></td>
+<td>CL01</td>
+<td>V22</td>
+<td>01/02/2027 al 03/02/2027</td>
+<td>Cancelado</td>
+<td>No</td>
+<td><em>(ninguno)</em></td>
+<td>Sin pago · Nota: Cancelado con más de 48h de antelación</td>
+</tr>
+</tbody></table></div>
+<hr class="divider">
+<h3 class="sec-heading">Tareas a realizar</h3>
+<ul class="task-list">
+<li><strong>Tarea 1. Detecta y corrige errores (10 min):</strong> Corrige el siguiente fragmento en <code>fragmento_corregido.json</code> y detalla cada error en <code>respuestas.txt</code>:</li>
+</ul>
+<pre><code>{
+  nombre: &#x27;Albufera Motor&#x27;,
+  &quot;licenciasFlota&quot;: &quot;25&quot;,
+  &quot;abierto&quot;: True,
+  &quot;servicios&quot;: [&quot;alquiler diario&quot;, &quot;renting&quot;,],
+  &quot;web&quot;: &quot;null&quot;
+}</code></pre>
+<ul class="task-list">
+<li><strong>Tarea 2. Estructura base: objetos y tipos (20 min):</strong> En <code>concesionario.json</code>, crea el objeto raiz <code>concesionario</code> con los datos generales, <code>direccion</code> y <code>contacto</code>. Justifica en <code>respuestas.txt</code> los tipos de dato para <code>licenciasFlota</code>, <code>codigoPostal</code> y <code>web</code>.</li>
+<li><strong>Tarea 3. Vehiculos: arrays de objetos y anidacion (20 min):</strong> Anade el array <code>vehiculos</code>. Cada vehiculo tendra <code>id</code>, <code>numeroPlaza</code>, <code>modelo</code>, <code>precioDia</code>, <code>plazas</code>, <code>disponible</code>, el objeto <code>ubicacion</code> (<code>nave</code> y <code>zona</code>), el array <code>equipamiento</code> y el array <code>valoraciones</code>. Cuida el escape de comillas en <code>Compacto &quot;Eco&quot;</code>.</li>
+<li><strong>Tarea 4. Clientes y alquileres: relaciones y jerarquia profunda (30 min):</strong> Anade los arrays <code>clientes</code> (con <code>documento</code> (<code>tipo</code> y <code>numero</code>), <code>fidelidad</code> (<code>nivel</code> y <code>puntos</code>, o <code>null</code>) y <code>preferencias</code>) y <code>alquileres</code> (con <code>clienteId</code>, <code>vehiculoId</code>, objeto <code>fechas</code> (<code>recogida</code> y <code>devolucion</code> en formato <code>AAAA-MM-DD</code>), <code>estado</code>, booleano <code>pagado</code>, array <code>extras</code> (<code>servicio</code>, <code>precioUnidad</code>, <code>cantidad</code>), objeto <code>pago</code> (<code>metodo</code>, <code>total</code> y <code>desglose</code> con <code>vehiculo</code>, <code>extras</code>, <code>impuestos</code>) o <code>null</code>, y <code>notas</code> como texto o <code>null</code>).</li>
+<li><strong>Tarea 5. Comprobacion y navegacion (10 min):</strong> En <code>respuestas.txt</code>, responde:</li>
+<li class="sub-item"><strong>(a)</strong> La ruta completa al importe de <code>vehiculo</code> dentro del desglose del pago del primer alquiler, y la ruta a la <code>cantidad</code> del segundo extra de ese mismo alquiler.</li>
+<li class="sub-item"><strong>(b)</strong> Como averiguarias que alquileres corresponden al vehiculo <code>V10</code>.</li>
+<li class="sub-item"><strong>(c)</strong> Como averiguarias que clientes no pertenecen al club de fidelidad.</li>
+</ul>
+<hr class="divider">
+      </div>
+
+      <!-- Interactive JSON Validator Sandbox -->
+      <div class="card">
+        <h3 style="margin:0 0 .35rem;">🛠️ Validador y Laboratorio JSON en vivo (Tarea 1 / Pruebas)</h3>
+        <p style="margin:0; color:var(--ink-soft);">Corrige aquí mismo el fragmento con 5 errores de la <strong>Tarea 1</strong> (o pega tu archivo <code>concesionario.json</code>) y comprueba en tiempo real si la sintaxis JSON es válida:</p>
+        <div class="validator-grid">
+          <textarea id="jsonSandbox" class="code-editor" spellcheck="false">{
+  nombre: &#x27;Albufera Motor&#x27;,
+  &quot;licenciasFlota&quot;: &quot;25&quot;,
+  &quot;abierto&quot;: True,
+  &quot;servicios&quot;: [&quot;alquiler diario&quot;, &quot;renting&quot;,],
+  &quot;web&quot;: &quot;null&quot;
+}</textarea>
+          <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
+            <button type="button" class="btn btn-primary" id="validateJsonBtn">Validar y Formatear JSON</button>
+            <button type="button" class="btn btn-secondary" id="loadT1SolBtn">Cargar solución Tarea 1</button>
+            <button type="button" class="btn btn-secondary" id="loadFullSolBtn">Cargar concesionario.json completo</button>
+          </div>
+          <div id="jsonStatus" class="val-status err">Pendiente de validar: el fragmento inicial de la Tarea 1 contiene 5 errores intencionados.</div>
+        </div>
+      </div>
+
+      <!-- Official Solutions Accordions -->
+      <div class="card">
+        <h3 style="margin:0 0 .5rem;">📂 Solucionario Oficial de la Parte Práctica</h3>
+        <p style="margin:0 0 .8rem; color:var(--ink-soft);">Despliega cada archivo para consultar la solución completa o copiar su contenido.</p>
+
+        <details class="sol-drawer">
+          <summary>Archivo 1: fragmento_corregido.json (Tarea 1)</summary>
+          <div class="sol-body">
+            <div class="copy-bar">
+              <span class="q-topic">JSON válido</span>
+              <button type="button" class="btn btn-secondary copy-btn" data-target="solFrag">Copiar JSON</button>
+            </div>
+            <pre><code id="solFrag">{
+  &quot;nombre&quot;: &quot;Albufera Motor&quot;,
+  &quot;licenciasFlota&quot;: 25,
+  &quot;abierto&quot;: true,
+  &quot;servicios&quot;: [&quot;alquiler diario&quot;, &quot;renting&quot;],
+  &quot;web&quot;: null
+}</code></pre>
+          </div>
+        </details>
+
+        <details class="sol-drawer">
+          <summary>Archivo 2: respuestas.txt (Tareas 1, 2 y 5 explicadas)</summary>
+          <div class="sol-body">
+            <div class="copy-bar">
+              <span class="q-topic">Texto explicativo</span>
+              <button type="button" class="btn btn-secondary copy-btn" data-target="solResp">Copiar texto</button>
+            </div>
+            <pre><code id="solResp">=== TAREA 1: ERRORES DETECTADOS ===
+1. nombre: &#x27;Albufera Motor&#x27; -&gt; La propiedad &quot;nombre&quot; no está encerrada entre comillas dobles y el texto del valor utiliza comillas simples en lugar de comillas dobles.
+2. &quot;licenciasFlota&quot;: &quot;25&quot; -&gt; Error de tipo de dato: la cantidad de licencias de flota es una magnitud numérica entera (25), no un texto (&quot;25&quot;).
+3. &quot;abierto&quot;: True -&gt; Error de sintaxis: el booleano debe escribirse íntegramente en minúsculas (true).
+4. &quot;servicios&quot;: [&quot;alquiler diario&quot;, &quot;renting&quot;,] -&gt; Error de sintaxis: sobra la coma después del último elemento del array (&quot;renting&quot;).
+5. &quot;web&quot;: &quot;null&quot; -&gt; Error de tipo de dato: está escrito como cadena de texto (&quot;null&quot;) en vez del literal nulo de JSON (null).
+
+=== TAREA 2: JUSTIFICACION DE TIPOS ===
+- licenciasFlota (number -&gt; 25): Representa una cantidad contable de licencias con la que se puede operar matemáticamente.
+- codigoPostal (string -&gt; &quot;46470&quot;): Es un identificador postal de longitud fija con el que no se hacen cálculos aritméticos y que debe conservar posibles ceros iniciales.
+- web (null -&gt; null): Indica explícitamente que el concesionario carece actualmente de sitio web.
+
+=== TAREA 5: COMPROBACION Y NAVEGACION ===
+(a) Rutas de acceso:
+- Importe de vehiculo del desglose del pago del primer alquiler:
+  concesionario.alquileres[0].pago.desglose.vehiculo
+- Cantidad del segundo extra de ese mismo alquiler:
+  concesionario.alquileres[0].extras[1].cantidad
+
+(b) Cómo averiguar qué alquileres corresponden al vehículo V10:
+Recorriendo el array concesionario.alquileres y filtrando los objetos cuya propiedad vehiculoId sea igual a &quot;V10&quot;.
+
+(c) Cómo averiguar qué clientes no pertenecen al club de fidelidad:
+Recorriendo el array concesionario.clientes y seleccionando aquellos cuya propiedad fidelidad tenga el valor null.</code></pre>
+          </div>
+        </details>
+
+        <details class="sol-drawer">
+          <summary>Archivo 3: concesionario.json (Solución completa Tareas 2, 3 y 4)</summary>
+          <div class="sol-body">
+            <div class="copy-bar">
+              <span class="q-topic">Modelado jerárquico completo</span>
+              <button type="button" class="btn btn-secondary copy-btn" data-target="solMainJson">Copiar concesionario.json</button>
+            </div>
+            <pre><code id="solMainJson">{
+  &quot;concesionario&quot;: {
+    &quot;nombre&quot;: &quot;Albufera Motor&quot;,
+    &quot;licenciasFlota&quot;: 25,
+    &quot;abierto&quot;: true,
+    &quot;horario&quot;: {
+      &quot;entrega&quot;: &quot;08:30&quot;,
+      &quot;devolucion&quot;: &quot;20:00&quot;
+    },
+    &quot;direccion&quot;: {
+      &quot;calle&quot;: &quot;Pista de Silla km 5&quot;,
+      &quot;ciudad&quot;: &quot;Valencia&quot;,
+      &quot;codigoPostal&quot;: &quot;46470&quot;,
+      &quot;coordenadas&quot;: [39.4125, -0.3841]
+    },
+    &quot;contacto&quot;: {
+      &quot;email&quot;: &quot;flota@albuferamotor.example&quot;,
+      &quot;telefonos&quot;: [&quot;961223344&quot;, &quot;961223355&quot;],
+      &quot;web&quot;: null
+    },
+    &quot;servicios&quot;: [
+      &quot;alquiler diario&quot;,
+      &quot;renting&quot;,
+      &quot;taller propio&quot;,
+      &quot;asistencia en carretera&quot;
+    ],
+    &quot;vehiculos&quot;: [
+      {
+        &quot;id&quot;: &quot;V10&quot;,
+        &quot;numeroPlaza&quot;: 10,
+        &quot;modelo&quot;: &quot;Compacto \&quot;Eco\&quot;&quot;,
+        &quot;precioDia&quot;: 42.5,
+        &quot;plazas&quot;: 5,
+        &quot;disponible&quot;: true,
+        &quot;ubicacion&quot;: {
+          &quot;nave&quot;: 1,
+          &quot;zona&quot;: &quot;Zona Norte&quot;
+        },
+        &quot;equipamiento&quot;: [
+          &quot;Climatizador&quot;,
+          &quot;Bluetooth&quot;,
+          &quot;Control de crucero&quot;
+        ],
+        &quot;valoraciones&quot;: [4, 5, 4]
+      },
+      {
+        &quot;id&quot;: &quot;V22&quot;,
+        &quot;numeroPlaza&quot;: 22,
+        &quot;modelo&quot;: &quot;SUV Familiar&quot;,
+        &quot;precioDia&quot;: 78.0,
+        &quot;plazas&quot;: 7,
+        &quot;disponible&quot;: true,
+        &quot;ubicacion&quot;: {
+          &quot;nave&quot;: 2,
+          &quot;zona&quot;: &quot;Zona Sur&quot;
+        },
+        &quot;equipamiento&quot;: [
+          &quot;Navegador GPS&quot;,
+          &quot;Cámara 360&quot;,
+          &quot;Techo panorámico&quot;,
+          &quot;Bola remolque&quot;
+        ],
+        &quot;valoraciones&quot;: [5, 5]
+      },
+      {
+        &quot;id&quot;: &quot;V35&quot;,
+        &quot;numeroPlaza&quot;: 35,
+        &quot;modelo&quot;: &quot;Furgoneta carga&quot;,
+        &quot;precioDia&quot;: 64.9,
+        &quot;plazas&quot;: 2,
+        &quot;disponible&quot;: false,
+        &quot;ubicacion&quot;: {
+          &quot;nave&quot;: 1,
+          &quot;zona&quot;: &quot;Zona Exterior&quot;
+        },
+        &quot;equipamiento&quot;: [],
+        &quot;valoraciones&quot;: []
+      }
+    ],
+    &quot;clientes&quot;: [
+      {
+        &quot;id&quot;: &quot;CL01&quot;,
+        &quot;nombre&quot;: &quot;Sofía Martí&quot;,
+        &quot;fechaNacimiento&quot;: &quot;1990-07-18&quot;,
+        &quot;documento&quot;: {
+          &quot;tipo&quot;: &quot;DNI&quot;,
+          &quot;numero&quot;: &quot;45678901L&quot;
+        },
+        &quot;fidelidad&quot;: {
+          &quot;nivel&quot;: &quot;Premium&quot;,
+          &quot;puntos&quot;: 850
+        },
+        &quot;preferencias&quot;: [&quot;cambio automático&quot;, &quot;recogida rápida&quot;]
+      },
+      {
+        &quot;id&quot;: &quot;CL02&quot;,
+        &quot;nombre&quot;: &quot;David Orts&quot;,
+        &quot;fechaNacimiento&quot;: &quot;1984-03-11&quot;,
+        &quot;documento&quot;: {
+          &quot;tipo&quot;: &quot;Pasaporte&quot;,
+          &quot;numero&quot;: &quot;ZP334455&quot;
+        },
+        &quot;fidelidad&quot;: null,
+        &quot;preferencias&quot;: []
+      },
+      {
+        &quot;id&quot;: &quot;CL03&quot;,
+        &quot;nombre&quot;: &quot;Nadia Haddad&quot;,
+        &quot;fechaNacimiento&quot;: &quot;1998-12-05&quot;,
+        &quot;documento&quot;: {
+          &quot;tipo&quot;: &quot;NIE&quot;,
+          &quot;numero&quot;: &quot;Y9876543W&quot;
+        },
+        &quot;fidelidad&quot;: {
+          &quot;nivel&quot;: &quot;Básico&quot;,
+          &quot;puntos&quot;: 120
+        },
+        &quot;preferencias&quot;: [&quot;vehículo eléctrico o híbrido&quot;]
+      }
+    ],
+    &quot;alquileres&quot;: [
+      {
+        &quot;id&quot;: &quot;A001&quot;,
+        &quot;clienteId&quot;: &quot;CL01&quot;,
+        &quot;vehiculoId&quot;: &quot;V10&quot;,
+        &quot;fechas&quot;: {
+          &quot;recogida&quot;: &quot;2026-12-04&quot;,
+          &quot;devolucion&quot;: &quot;2026-12-07&quot;
+        },
+        &quot;estado&quot;: &quot;Activo&quot;,
+        &quot;pagado&quot;: true,
+        &quot;extras&quot;: [
+          {
+            &quot;servicio&quot;: &quot;Seguro todo riesgo&quot;,
+            &quot;precioUnidad&quot;: 18.0,
+            &quot;cantidad&quot;: 3
+          },
+          {
+            &quot;servicio&quot;: &quot;Silla infantil&quot;,
+            &quot;precioUnidad&quot;: 8.5,
+            &quot;cantidad&quot;: 3
+          }
+        ],
+        &quot;pago&quot;: {
+          &quot;metodo&quot;: &quot;Tarjeta&quot;,
+          &quot;total&quot;: 250.47,
+          &quot;desglose&quot;: {
+            &quot;vehiculo&quot;: 127.5,
+            &quot;extras&quot;: 79.5,
+            &quot;impuestos&quot;: 43.47
+          }
+        },
+        &quot;notas&quot;: &quot;Entrega con depósito lleno&quot;
+      },
+      {
+        &quot;id&quot;: &quot;A002&quot;,
+        &quot;clienteId&quot;: &quot;CL02&quot;,
+        &quot;vehiculoId&quot;: &quot;V22&quot;,
+        &quot;fechas&quot;: {
+          &quot;recogida&quot;: &quot;2026-12-18&quot;,
+          &quot;devolucion&quot;: &quot;2026-12-21&quot;
+        },
+        &quot;estado&quot;: &quot;Pendiente&quot;,
+        &quot;pagado&quot;: false,
+        &quot;extras&quot;: [],
+        &quot;pago&quot;: null,
+        &quot;notas&quot;: null
+      },
+      {
+        &quot;id&quot;: &quot;A003&quot;,
+        &quot;clienteId&quot;: &quot;CL03&quot;,
+        &quot;vehiculoId&quot;: &quot;V10&quot;,
+        &quot;fechas&quot;: {
+          &quot;recogida&quot;: &quot;2027-01-10&quot;,
+          &quot;devolucion&quot;: &quot;2027-01-12&quot;
+        },
+        &quot;estado&quot;: &quot;Confirmado&quot;,
+        &quot;pagado&quot;: true,
+        &quot;extras&quot;: [
+          {
+            &quot;servicio&quot;: &quot;Conductor adicional&quot;,
+            &quot;precioUnidad&quot;: 15.0,
+            &quot;cantidad&quot;: 2
+          }
+        ],
+        &quot;pago&quot;: {
+          &quot;metodo&quot;: &quot;Transferencia&quot;,
+          &quot;total&quot;: 139.15,
+          &quot;desglose&quot;: {
+            &quot;vehiculo&quot;: 85.0,
+            &quot;extras&quot;: 30.0,
+            &quot;impuestos&quot;: 24.15
+          }
+        },
+        &quot;notas&quot;: &quot;Presenta carné internacional&quot;
+      },
+      {
+        &quot;id&quot;: &quot;A004&quot;,
+        &quot;clienteId&quot;: &quot;CL01&quot;,
+        &quot;vehiculoId&quot;: &quot;V22&quot;,
+        &quot;fechas&quot;: {
+          &quot;recogida&quot;: &quot;2027-02-01&quot;,
+          &quot;devolucion&quot;: &quot;2027-02-03&quot;
+        },
+        &quot;estado&quot;: &quot;Cancelado&quot;,
+        &quot;pagado&quot;: false,
+        &quot;extras&quot;: [],
+        &quot;pago&quot;: null,
+        &quot;notas&quot;: &quot;Cancelado con más de 48h de antelación&quot;
+      }
+    ]
+  }
+}</code></pre>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Modelo C Interactivo · Desarrollo de Aplicaciones Web (DAW) — Lenguajes de Marcas · Digitech FP
+  </footer>
+
+  <script>
+    const questions = [{"number": 1, "topic": "HTML5 & Accesibilidad", "promptHtml": "En una web de recetas, el titulo principal es <code>&lt;h1&gt;</code> «Cocina Mediterranea», el bloque de entrantes es <code>&lt;h2&gt;</code> «Ensaladas» y cada receta dentro de «Ensaladas» se marca con <code>&lt;h5&gt;</code> «Ensalada Cesar» para que la letra salga pequena. ¿Que problema presenta?", "bodyHtml": "", "options": [{"letter": "A", "html": "Ninguno, porque <code>&lt;h5&gt;</code> esta dentro del rango permitido de <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>."}, {"letter": "B", "html": "Se saltan los niveles <code>&lt;h3&gt;</code> y <code>&lt;h4&gt;</code>, deteriorando la estructura semantica del documento para tecnologias de asistencia y motores de busqueda."}, {"letter": "C", "html": "Las etiquetas <code>&lt;h5&gt;</code> solo pueden utilizarse en el <code>&lt;footer&gt;</code>."}, {"letter": "D", "html": "HTML5 no permite usar mas de dos niveles de encabezado en la misma pagina."}], "answer": "B"}, {"number": 2, "topic": "HTML5 & Accesibilidad", "promptHtml": "¿Por que se recomienda anadir <code>rel=&quot;noopener noreferrer&quot;</code> cuando un enlace lleva <code>target=&quot;_blank&quot;</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "Para que la pagina externa cargue sin imagenes y consuma menos datos."}, {"letter": "B", "html": "Por seguridad y privacidad: evita que la pagina abierta pueda acceder al objeto <code>window.opener</code> de la pestana original."}, {"letter": "C", "html": "Para obligar al navegador a abrir el enlace en la misma pestana."}, {"letter": "D", "html": "Para que los buscadores pongan el texto del enlace en negrita."}], "answer": "B"}, {"number": 3, "topic": "HTML5 & Accesibilidad", "promptHtml": "¿Cual de los siguientes enlaces sigue las recomendaciones de accesibilidad para lectores de pantalla?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;a href=&quot;bases-concurso.html&quot;&gt;Consultar las bases legales del concurso&lt;/a&gt;</code>"}, {"letter": "B", "html": "<code>&lt;a href=&quot;bases-concurso.html&quot;&gt;Aqui&lt;/a&gt;</code>"}, {"letter": "C", "html": "<code>&lt;a href=&quot;bases-concurso.html&quot;&gt;Link&lt;/a&gt;</code>"}, {"letter": "D", "html": "<code>&lt;a href=&quot;bases-concurso.html&quot;&gt;Ver&lt;/a&gt;</code>"}], "answer": "A"}, {"number": 4, "topic": "HTML5 & Accesibilidad", "promptHtml": "Quieres marcar en un aviso de seguridad la palabra «Peligro» como de maxima importancia semantica y dar enfasis de lectura a la palabra «inmediatamente». ¿Que opcion es la adecuada?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;i&gt;Peligro&lt;/i&gt;</code> y <code>&lt;b&gt;inmediatamente&lt;/b&gt;</code>"}, {"letter": "B", "html": "<code>&lt;strong&gt;Peligro&lt;/strong&gt;</code> y <code>&lt;em&gt;inmediatamente&lt;/em&gt;</code>"}, {"letter": "C", "html": "<code>&lt;b&gt;Peligro&lt;/b&gt;</code> y <code>&lt;em&gt;inmediatamente&lt;/em&gt;</code>"}, {"letter": "D", "html": "<code>&lt;mark&gt;Peligro&lt;/mark&gt;</code> y <code>&lt;small&gt;inmediatamente&lt;/small&gt;</code>"}], "answer": "B"}, {"number": 5, "topic": "HTML5 & Accesibilidad", "promptHtml": "¿Para que sirve incluir <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> dentro de la seccion <code>&lt;head&gt;</code> de un documento HTML?", "bodyHtml": "", "options": [{"letter": "A", "html": "Para que la pagina se adapte automaticamente al ancho de las pantallas moviles."}, {"letter": "B", "html": "Para definir el idioma espanol como idioma de traduccion automatica."}, {"letter": "C", "html": "Para indicar la codificacion de caracteres y que simbolos como <code>ñ</code>, tildes o <code>€</code> se muestren correctamente."}, {"letter": "D", "html": "Para enlazar el archivo con un esquema de validacion XML."}], "answer": "C"}, {"number": 6, "topic": "HTML5 & Accesibilidad", "promptHtml": "Analiza el siguiente codigo HTML. ¿Por que es estructuralmente incorrecto?", "bodyHtml": "<pre><code class=\"lang-html\">&lt;ul&gt;\n  &lt;li&gt;Perifericos&lt;/li&gt;\n  &lt;li&gt;Componentes&lt;/li&gt;\n  &lt;ol&gt;\n    &lt;li&gt;Procesadores&lt;/li&gt;\n    &lt;li&gt;Tarjetas graficas&lt;/li&gt;\n  &lt;/ol&gt;\n&lt;/ul&gt;</code></pre>", "options": [{"letter": "A", "html": "Porque no se puede combinar nunca una lista <code>&lt;ol&gt;</code> con una <code>&lt;ul&gt;</code> en el mismo documento."}, {"letter": "B", "html": "Porque la sublista <code>&lt;ol&gt;</code> esta colocada como hija directa de <code>&lt;ul&gt;</code>, cuando deberia estar anidada dentro del <code>&lt;li&gt;</code> correspondiente («Componentes»)."}, {"letter": "C", "html": "Porque <code>&lt;ol&gt;</code> solo acepta dos elementos como maximo."}, {"letter": "D", "html": "Porque falta la etiqueta <code>&lt;list&gt;</code> envolviendo todo el bloque."}], "answer": "B"}, {"number": 7, "topic": "HTML5 & Accesibilidad", "promptHtml": "En un periodico digital quieres etiquetar una noticia independiente (con su titular, texto y autor) que podria redistribuirse por si sola en un lector de noticias, situada dentro de la zona principal de la pagina. ¿Que combinacion semantica encaja mejor?", "bodyHtml": "", "options": [{"letter": "A", "html": "Un <code>&lt;article&gt;</code> situado dentro de <code>&lt;main&gt;</code>."}, {"letter": "B", "html": "Un <code>&lt;nav&gt;</code> situado dentro de <code>&lt;footer&gt;</code>."}, {"letter": "C", "html": "Un <code>&lt;aside&gt;</code> que contenga tres etiquetas <code>&lt;header&gt;</code>."}, {"letter": "D", "html": "Un <code>&lt;p&gt;</code> que envuelva a toda la pagina web."}], "answer": "A"}, {"number": 8, "topic": "HTML5 & Accesibilidad", "promptHtml": "¿Cual de estos fragmentos de codigo HTML es valido y respeta el anidamiento correcto?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;p&gt;Curso de &lt;strong&gt;Desarrollo &lt;em&gt;Web&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;</code>"}, {"letter": "B", "html": "<code>&lt;a href=&quot;index.html&quot;&gt;&lt;p&gt;Volver al inicio&lt;/a&gt;&lt;/p&gt;</code>"}, {"letter": "C", "html": "<code>&lt;p&gt;Curso de &lt;strong&gt;Desarrollo&lt;/strong&gt; &lt;em&gt;Web&lt;/em&gt;.&lt;/p&gt;</code>"}, {"letter": "D", "html": "<code>&lt;ul&gt;&lt;p&gt;Elemento de lista&lt;/p&gt;&lt;/ul&gt;</code>"}], "answer": "C"}, {"number": 9, "topic": "HTML5 & Accesibilidad", "promptHtml": "En un formulario de contacto hay tres casillas <code>&lt;input type=&quot;radio&quot;&gt;</code> para elegir la franja horaria de llamada («Manana», «Mediodia», «Tarde»), cada una con <code>name=&quot;franja1&quot;</code>, <code>name=&quot;franja2&quot;</code> y <code>name=&quot;franja3&quot;</code>. ¿Que ocurrira al usarlo?", "bodyHtml": "", "options": [{"letter": "A", "html": "El navegador mostrara un error y no dejara enviar el formulario."}, {"letter": "B", "html": "Solo se podra elegir «Manana» por ser la primera."}, {"letter": "C", "html": "Funcionara correctamente como seleccion unica porque los <code>name</code> son diferentes."}, {"letter": "D", "html": "El usuario podra marcar las tres opciones a la vez y no podra desmarcarlas porque tienen distinto atributo <code>name</code>."}], "answer": "D"}, {"number": 10, "topic": "XML, XSD & XPath", "promptHtml": "¿Cual de estos fragmentos XML esta bien formado?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;vehiculo&gt;&lt;marca&gt;Seat&lt;/marca&gt;&lt;modelo&gt;Ibiza&lt;/modelo&gt;</code>"}, {"letter": "B", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;vehiculo matricula=&quot;1234BCD&quot;&gt;&lt;marca&gt;Seat&lt;/marca&gt;&lt;modelo&gt;Ibiza&lt;/modelo&gt;&lt;/vehiculo&gt;</code>"}, {"letter": "C", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;vehiculo&gt;&lt;marca&gt;Seat&lt;/marca&gt;&lt;/vehiculo&gt;&lt;vehiculo&gt;&lt;marca&gt;Ford&lt;/marca&gt;&lt;/vehiculo&gt;</code>"}, {"letter": "D", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;vehiculo&gt;&lt;marca&gt;Seat&lt;modelo&gt;Ibiza&lt;/marca&gt;&lt;/modelo&gt;&lt;/vehiculo&gt;</code>"}], "answer": "B"}, {"number": 11, "topic": "XML, XSD & XPath", "promptHtml": "Un archivo <code>facturas.xml</code> cierra todas sus etiquetas correctamente y tiene una unica raiz, pero incluye el elemento <code>&lt;descuento&gt;10&lt;/descuento&gt;</code>, que no ha sido declarado en su archivo <code>facturas.xsd</code>. ¿Cual es su estado?", "bodyHtml": "", "options": [{"letter": "A", "html": "Esta mal formado y es invalido."}, {"letter": "B", "html": "Es valido, pero esta mal formado."}, {"letter": "C", "html": "Esta bien formado, pero es invalido respecto al XSD."}, {"letter": "D", "html": "Es tanto bien formado como valido, porque XML permite anadir etiquetas libres."}], "answer": "C"}, {"number": 12, "topic": "XML, XSD & XPath", "promptHtml": "En <code>concesionario.xml</code> se registran los <code>vehiculos</code> y las <code>revisiones</code> de taller. Un vehiculo pasa muchas revisiones a lo largo de los anos. ¿Como se disena correctamente la relacion?", "bodyHtml": "", "options": [{"letter": "A", "html": "Duplicando todos los datos tecnicos del vehiculo (marca, modelo, bastidor, cilindrada, color) dentro de cada revision."}, {"letter": "B", "html": "Almacenando los datos del vehiculo una sola vez en <code>vehiculos</code> con un <code>id</code>, e incluyendo solo la referencia <code>vehiculoId</code> en cada revision."}, {"letter": "C", "html": "Poniendo solo el color del coche en la revision para identificarlo."}, {"letter": "D", "html": "Creando una etiqueta distinta por cada matricula (<code>&lt;coche1234&gt;</code>, <code>&lt;coche5678&gt;</code>)."}], "answer": "B"}, {"number": 13, "topic": "XML, XSD & XPath", "promptHtml": "¿Cual es la diferencia fundamental de proposito entre HTML y XML?", "bodyHtml": "", "options": [{"letter": "A", "html": "HTML esta disenado para almacenar y transportar datos estructurados; XML sirve para maquetar paginas web."}, {"letter": "B", "html": "XML es la version moderna que ha sustituido por completo a HTML en los navegadores."}, {"letter": "C", "html": "HTML distingue entre mayusculas y minusculas en las etiquetas y XML no."}, {"letter": "D", "html": "HTML se centra en presentar y estructurar contenido en la web con etiquetas predefinidas, mientras que XML permite definir etiquetas propias para estructurar y transportar datos segun su significado."}], "answer": "D"}, {"number": 14, "topic": "XML, XSD & XPath", "promptHtml": "Si un esquema XSD define un elemento complejo mediante <code>&lt;xs:sequence&gt;</code> con los hijos <code>calle</code>, <code>numero</code> y <code>ciudad</code> (en ese orden), ¿que ocurre si un XML pone primero <code>ciudad</code> y luego <code>calle</code> y <code>numero</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "El documento XML es invalido porque <code>&lt;xs:sequence&gt;</code> exige respetar estrictamente el orden declarado."}, {"letter": "B", "html": "El documento XML pasa a estar mal formado."}, {"letter": "C", "html": "El documento XML es valido porque estan presentes los tres elementos obligatorios."}, {"letter": "D", "html": "El validador reordena automaticamente las etiquetas del XML."}], "answer": "A"}, {"number": 15, "topic": "XML, XSD & XPath", "promptHtml": "En un XSD aparece <code>&lt;xs:element name=&quot;extra&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;3&quot;/&gt;</code>. ¿Que significa para el XML?", "bodyHtml": "", "options": [{"letter": "A", "html": "Que el elemento <code>&lt;extra&gt;</code> debe aparecer obligatoriamente 3 veces."}, {"letter": "B", "html": "Que el elemento <code>&lt;extra&gt;</code> es opcional (puede no aparecer) y como maximo puede repetirse 3 veces seguidas."}, {"letter": "C", "html": "Que el texto dentro de <code>&lt;extra&gt;</code> debe tener entre 0 y 3 letras."}, {"letter": "D", "html": "Que el elemento <code>&lt;extra&gt;</code> puede repetirse un numero ilimitado de veces."}], "answer": "B"}, {"number": 16, "topic": "XML, XSD & XPath", "promptHtml": "En el XSD de un catalogo se define <code>&lt;xs:attribute name=&quot;codigo&quot; type=&quot;xs:string&quot; use=&quot;required&quot;/&gt;</code> para el elemento <code>&lt;producto&gt;</code>. Si un <code>&lt;producto&gt;</code> en el XML no lleva el atributo <code>codigo</code>, ¿que ocurre?", "bodyHtml": "", "options": [{"letter": "A", "html": "El XML deja de estar bien formado porque falta un atributo."}, {"letter": "B", "html": "Es valido si el producto tiene un elemento hijo <code>&lt;nombre&gt;</code>."}, {"letter": "C", "html": "El XML sigue estando bien formado, pero resulta invalido al validar contra el XSD."}, {"letter": "D", "html": "El navegador no puede abrir el archivo como texto."}], "answer": "C"}, {"number": 17, "topic": "XML, XSD & XPath", "promptHtml": "En <code>empresa.xml</code> hay 4 elementos <code>&lt;departamento&gt;</code> (cada uno con un hijo <code>&lt;responsable&gt;</code>) y 10 elementos <code>&lt;proyecto&gt;</code> repartidos dentro de los departamentos (cada proyecto tambien tiene un hijo <code>&lt;responsable&gt;</code>). ¿Cuantos nodos devuelve la consulta XPath <code>/empresa/departamento/responsable</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "14 nodos (todos los responsables del documento)."}, {"letter": "B", "html": "4 nodos (unicamente los hijos directos <code>responsable</code> de cada <code>departamento</code>)."}, {"letter": "C", "html": "10 nodos (solo los responsables de los proyectos)."}, {"letter": "D", "html": "0 nodos, porque falta poner <code>//</code> al principio."}], "answer": "B"}, {"number": 18, "topic": "XML, XSD & XPath", "promptHtml": "Dada la estructura XML <code>/concesionario/vehiculo[@id=&#x27;V01&#x27;]/equipamiento/item[categoria=&#x27;Seguridad&#x27;]/nombre</code>, ¿que devuelve esta ruta XPath?", "bodyHtml": "", "options": [{"letter": "A", "html": "El nombre de los items de equipamiento cuya categoria (elemento hijo) es <code>&#x27;Seguridad&#x27;</code>, pertenecientes al vehiculo con atributo <code>id=&#x27;V01&#x27;</code>."}, {"letter": "B", "html": "Todos los vehiculos que tienen el atributo <code>categoria=&#x27;Seguridad&#x27;</code>."}, {"letter": "C", "html": "El atributo <code>nombre</code> del vehiculo <code>&#x27;V01&#x27;</code>."}, {"letter": "D", "html": "Los items de equipamiento cuyo atributo <code>@categoria</code> es <code>&#x27;Seguridad&#x27;</code>."}], "answer": "A"}, {"number": 19, "topic": "XML, XSD & XPath", "promptHtml": "En un archivo XSD necesitas que <code>&lt;unidades&gt;</code> solo admita numeros enteros sin decimales y <code>&lt;importeTotal&gt;</code> admita numeros con decimales. ¿Que tipos de datos XSD debes asignar?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>xs:number</code> para ambos."}, {"letter": "B", "html": "<code>xs:string</code> para <code>unidades</code> y <code>xs:floatString</code> para <code>importeTotal</code>."}, {"letter": "C", "html": "<code>xs:boolean</code> para <code>unidades</code> y <code>xs:decimal</code> para <code>importeTotal</code>."}, {"letter": "D", "html": "<code>xs:integer</code> para <code>unidades</code> y <code>xs:decimal</code> para <code>importeTotal</code>."}], "answer": "D"}, {"number": 20, "topic": "JSON & Modelado", "promptHtml": "¿Cual de los siguientes fragmentos cumple estrictamente la sintaxis de JSON?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>{ &quot;modelo&quot;: &quot;Corsa&quot;, &quot;electrico&quot;: true, &quot;revisiones&quot;: [2024, 2025], &quot;incidencias&quot;: null }</code>"}, {"letter": "B", "html": "<code>{ &quot;modelo&quot;: &quot;Corsa&quot;, &quot;electrico&quot;: TRUE, &quot;revisiones&quot;: [2024, 2025], &quot;incidencias&quot;: null }</code>"}, {"letter": "C", "html": "<code>{ &quot;modelo&quot;: &#x27;Corsa&#x27;, &quot;electrico&quot;: true, &quot;revisiones&quot;: (2024, 2025) }</code>"}, {"letter": "D", "html": "<code>{ modelo: &quot;Corsa&quot;, electrico: true, incidencias: NULL }</code>"}], "answer": "A"}, {"number": 21, "topic": "JSON & Modelado", "promptHtml": "En un JSON de inventario se escribe <code>&quot;precio&quot;: &quot;45.90&quot;</code> en lugar de <code>&quot;precio&quot;: 45.90</code>. ¿Que implicacion tiene?", "bodyHtml": "", "options": [{"letter": "A", "html": "Ninguna, en JSON los numeros con decimales deben ir siempre entre comillas dobles."}, {"letter": "B", "html": "El JSON es invalido porque el punto decimal no esta permitido dentro de comillas."}, {"letter": "C", "html": "El JSON es valido, pero <code>&quot;45.90&quot;</code> se trata como texto (<code>string</code>), por lo que una aplicacion tendria que convertirlo a numero antes de sumarlo o multiplicarlo."}, {"letter": "D", "html": "VS Code lo borrara automaticamente al guardar el archivo."}], "answer": "C"}, {"number": 22, "topic": "JSON & Modelado", "promptHtml": "Un vehiculo de alquiler puede tener varias incidencias registradas, y de cada una queremos almacenar <code>fecha</code>, <code>descripcion</code> y <code>costeReparacion</code>. ¿Como debe modelarse la propiedad <code>&quot;incidencias&quot;</code> en JSON?", "bodyHtml": "", "options": [{"letter": "A", "html": "Como un booleano <code>&quot;incidencias&quot;: true</code>."}, {"letter": "B", "html": "Como un unico objeto repitiendo tres veces las mismas claves <code>fecha</code>, <code>descripcion</code> y <code>costeReparacion</code>."}, {"letter": "C", "html": "Como tres propiedades sueltas: <code>&quot;incidencia1&quot;</code>, <code>&quot;incidencia2&quot;</code> e <code>&quot;incidencia3&quot;</code>."}, {"letter": "D", "html": "Como un array de objetos, donde cada objeto contiene <code>fecha</code>, <code>descripcion</code> y <code>costeReparacion</code>."}], "answer": "D"}, {"number": 23, "topic": "JSON & Modelado", "promptHtml": "Dado el siguiente JSON, ¿que expresion accede a <code>&quot;Automático&quot;</code>?", "bodyHtml": "<pre><code class=\"lang-json\">{\n  &quot;flota&quot;: {\n    &quot;coches&quot;: [\n      { &quot;matricula&quot;: &quot;1111AAA&quot;, &quot;extras&quot;: [&quot;GPS&quot;, &quot;Techo solar&quot;] },\n      { &quot;matricula&quot;: &quot;2222BBB&quot;, &quot;extras&quot;: [&quot;Sensores&quot;, &quot;Automático&quot;, &quot;Asientos calefactables&quot;] }\n    ]\n  }\n}</code></pre>", "options": [{"letter": "A", "html": "<code>flota.coches[2].extras[2]</code>"}, {"letter": "B", "html": "<code>flota.coches[1].extras[1]</code>"}, {"letter": "C", "html": "<code>flota.coches[1].extras[2]</code>"}, {"letter": "D", "html": "<code>flota.coches[0].extras[1]</code>"}], "answer": "B"}, {"number": 24, "topic": "JSON & Modelado", "promptHtml": "Tienes un array JSON <code>alquileres</code>, donde cada objeto incluye <code>id</code>, <code>vehiculoId</code> y <code>clienteId</code>. ¿Como puedes saber cuantas veces se ha alquilado el vehiculo <code>&quot;V02&quot;</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "Mirando el elemento <code>alquileres[2]</code>."}, {"letter": "B", "html": "Recorriendo el array <code>alquileres</code> y seleccionando los objetos cuya propiedad <code>vehiculoId</code> sea <code>&quot;V02&quot;</code>."}, {"letter": "C", "html": "Buscando en <code>alquileres</code> el objeto cuyo <code>id</code> sea <code>&quot;V02&quot;</code>."}, {"letter": "D", "html": "No es posible saberlo si los datos del vehiculo no estan copiados dentro del alquiler."}], "answer": "B"}, {"number": 25, "topic": "JSON & Modelado", "promptHtml": "Segun el diseno de una API en JSON, la propiedad <code>descuento</code> de un cliente debe ser un objeto con <code>tipo</code> y <code>porcentaje</code>, o bien indicar ausencia de valor si no tiene descuento. ¿Como se escribe cuando no tiene descuento?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&quot;descuento&quot;: &quot;ninguno&quot;</code>"}, {"letter": "B", "html": "<code>&quot;descuento&quot;: []</code>"}, {"letter": "C", "html": "<code>&quot;descuento&quot;: null</code>"}, {"letter": "D", "html": "<code>&quot;descuento&quot;: false</code>"}], "answer": "C"}, {"number": 26, "topic": "JSON & Modelado", "promptHtml": "Se desea convertir a JSON el elemento XML <code>&lt;envio codigo=&quot;E99&quot;&gt;&lt;peso&gt;4.5&lt;/peso&gt;&lt;urgente&gt;false&lt;/urgente&gt;&lt;/envio&gt;</code> respetando los tipos de datos. ¿Que opcion es la mas adecuada?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>{ &quot;codigo&quot;: &quot;E99&quot;, &quot;peso&quot;: 4.5, &quot;urgente&quot;: false }</code>"}, {"letter": "B", "html": "<code>{ &quot;codigo&quot;: &quot;E99&quot;, &quot;peso&quot;: &quot;4.5&quot;, &quot;urgente&quot;: &quot;false&quot; }</code>"}, {"letter": "C", "html": "<code>{ &quot;envio&quot;: &quot;E99 - 4.5 - false&quot; }</code>"}, {"letter": "D", "html": "<code>{ codigo: &quot;E99&quot;, peso: 4,5, urgente: 0 }</code>"}], "answer": "A"}, {"number": 27, "topic": "JSON & Modelado", "promptHtml": "¿Que error sintactico impide que este JSON sea valido?", "bodyHtml": "<pre><code class=\"lang-json\">{\n  &quot;sucursales&quot;: [\n    { &quot;id&quot;: 1, &quot;ciudad&quot;: &quot;València&quot; }\n    { &quot;id&quot;: 2, &quot;ciudad&quot;: &quot;Alicante&quot; }\n  ]\n}</code></pre>", "options": [{"letter": "A", "html": "El valor de <code>&quot;id&quot;</code> debe ir obligatoriamente entre comillas."}, {"letter": "B", "html": "No se pueden usar corchetes <code>[</code> <code>]</code> dentro de un objeto JSON."}, {"letter": "C", "html": "La palabra <code>&quot;ciudad&quot;</code> esta repetida en el segundo objeto."}, {"letter": "D", "html": "Falta la coma <code>,</code> que debe separar el primer objeto del segundo dentro del array <code>sucursales</code>."}], "answer": "D"}];
+    const openQuestions = [{"promptHtml": "**Un desarrollador maqueta toda una pagina web utilizando exclusivamente etiquetas <code>&lt;div&gt;</code> (para la cabecera, el menu, las noticias y el pie de pagina) porque «en pantalla se ve exactamente igual».** Explica por que es una mala practica y que ventajas aporta usar etiquetas semanticas de HTML5.", "solutionHtml": "<ul class=\"task-list\">\n<li>**Por que usar solo <code>&lt;div&gt;</code> es mala practica (<code>divitis</code>):** La etiqueta <code>&lt;div&gt;</code> es un contenedor generico sin ningun significado semantico. Si toda la web se construye con <code>&lt;div&gt;</code>, ni los motores de busqueda (SEO) ni los lectores de pantalla para personas con discapacidad visual pueden distinguir cual es el menu de navegacion, cual es el contenido principal o cual es el pie de pagina.</li>\n<li>**Ventajas del HTML5 semantico (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>):** Mejora la accesibilidad (permite saltar directamente al contenido principal o al menu), mejora la indexacion en buscadores y hace que el codigo fuente sea mucho mas legible y mantenible para otros desarrolladores.</li>\n</ul>"}, {"promptHtml": "<strong>Define que significa que un documento XML este «bien formado» frente a que sea «valido».</strong> Sobre un archivo <code>concesionario.xml</code>, inventa un cambio que lo deje <em>mal formado</em> y otro cambio que lo deje <em>bien formado pero invalido</em> segun su XSD.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>Diferencia:</strong> Un XML <strong>bien formado</strong> respeta las reglas sintacticas del estandar XML (etiquetas cerradas en orden, un unico nodo raiz, valores de atributos entrecomillados). Un XML <strong>valido</strong> es un documento bien formado que ademas respeta las restricciones estructurales y de tipos definidas en un esquema XSD o DTD.</li>\n<li>**Ejemplo mal formado en <code>concesionario.xml</code>:** Escribir un atributo sin comillas (<code>&lt;vehiculo id=V10&gt;</code>) o dejar una etiqueta <code>&lt;modelo&gt;</code> sin su cierre <code>&lt;/modelo&gt;</code>.</li>\n<li><strong>Ejemplo bien formado pero invalido segun su XSD:</strong> Eliminar el atributo obligatorio <code>id</code> de <code>&lt;vehiculo&gt;</code> cuando el XSD exige <code>&lt;xs:attribute name=&quot;id&quot; type=&quot;xs:string&quot; use=&quot;required&quot;/&gt;</code>, o alterar el orden de los elementos hijos declarados en un <code>&lt;xs:sequence&gt;</code>.</li>\n</ul>"}, {"promptHtml": "<strong>Escribe la representacion en XML y en JSON de un mismo vehiculo</strong> (<code>id</code>: <code>&quot;V10&quot;</code>, <code>modelo</code>: <code>&quot;Seat León&quot;</code>, <code>potenciaCV</code>: <code>150</code>, <code>consumoMedio</code>: <code>5.4</code>, <code>hibrido</code>: <code>true</code>) e indica tres diferencias sintacticas o de tipos entre ambos formatos.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>En XML:</strong></li>\n</ul>\n<pre><code>&lt;vehiculo id=&quot;V10&quot;&gt;\n  &lt;modelo&gt;Seat León&lt;/modelo&gt;\n  &lt;potenciaCV&gt;150&lt;/potenciaCV&gt;\n  &lt;consumoMedio&gt;5.4&lt;/consumoMedio&gt;\n  &lt;hibrido&gt;true&lt;/hibrido&gt;\n&lt;/vehiculo&gt;</code></pre>\n<ul class=\"task-list\">\n<li><strong>En JSON:</strong></li>\n</ul>\n<pre><code>{\n  &quot;id&quot;: &quot;V10&quot;,\n  &quot;modelo&quot;: &quot;Seat León&quot;,\n  &quot;potenciaCV&quot;: 150,\n  &quot;consumoMedio&quot;: 5.4,\n  &quot;hibrido&quot;: true\n}</code></pre>\n<ul class=\"task-list\">\n<li><strong>Tres diferencias:</strong></li>\n</ul>\n<p>  1. En XML se utilizan etiquetas de apertura/cierre y atributos (<code>id=&quot;V10&quot;</code>), mientras que en JSON todo son propiedades <code>&quot;clave&quot;: valor</code>.</p>\n<p>  2. JSON tipa directamente numeros enteros (<code>150</code>), decimales (<code>5.4</code>) y booleanos (<code>true</code>) sin comillas; en XML todo el contenido textual entre etiquetas es texto a menos que un XSD defina su tipo.</p>\n<p>  3. JSON soporta arrays nativos con corchetes <code>[...]</code> para colecciones, mientras que XML requiere repetir etiquetas hermanas con el mismo nombre.</p>\n<hr class=\"divider\">"}];
+    const t1SolString = "{\n  \"nombre\": \"Albufera Motor\",\n  \"licenciasFlota\": 25,\n  \"abierto\": true,\n  \"servicios\": [\"alquiler diario\", \"renting\"],\n  \"web\": null\n}";
+    const fullJsonString = "{\n  \"concesionario\": {\n    \"nombre\": \"Albufera Motor\",\n    \"licenciasFlota\": 25,\n    \"abierto\": true,\n    \"horario\": {\n      \"entrega\": \"08:30\",\n      \"devolucion\": \"20:00\"\n    },\n    \"direccion\": {\n      \"calle\": \"Pista de Silla km 5\",\n      \"ciudad\": \"Valencia\",\n      \"codigoPostal\": \"46470\",\n      \"coordenadas\": [39.4125, -0.3841]\n    },\n    \"contacto\": {\n      \"email\": \"flota@albuferamotor.example\",\n      \"telefonos\": [\"961223344\", \"961223355\"],\n      \"web\": null\n    },\n    \"servicios\": [\n      \"alquiler diario\",\n      \"renting\",\n      \"taller propio\",\n      \"asistencia en carretera\"\n    ],\n    \"vehiculos\": [\n      {\n        \"id\": \"V10\",\n        \"numeroPlaza\": 10,\n        \"modelo\": \"Compacto \\\"Eco\\\"\",\n        \"precioDia\": 42.5,\n        \"plazas\": 5,\n        \"disponible\": true,\n        \"ubicacion\": {\n          \"nave\": 1,\n          \"zona\": \"Zona Norte\"\n        },\n        \"equipamiento\": [\n          \"Climatizador\",\n          \"Bluetooth\",\n          \"Control de crucero\"\n        ],\n        \"valoraciones\": [4, 5, 4]\n      },\n      {\n        \"id\": \"V22\",\n        \"numeroPlaza\": 22,\n        \"modelo\": \"SUV Familiar\",\n        \"precioDia\": 78.0,\n        \"plazas\": 7,\n        \"disponible\": true,\n        \"ubicacion\": {\n          \"nave\": 2,\n          \"zona\": \"Zona Sur\"\n        },\n        \"equipamiento\": [\n          \"Navegador GPS\",\n          \"Cámara 360\",\n          \"Techo panorámico\",\n          \"Bola remolque\"\n        ],\n        \"valoraciones\": [5, 5]\n      },\n      {\n        \"id\": \"V35\",\n        \"numeroPlaza\": 35,\n        \"modelo\": \"Furgoneta carga\",\n        \"precioDia\": 64.9,\n        \"plazas\": 2,\n        \"disponible\": false,\n        \"ubicacion\": {\n          \"nave\": 1,\n          \"zona\": \"Zona Exterior\"\n        },\n        \"equipamiento\": [],\n        \"valoraciones\": []\n      }\n    ],\n    \"clientes\": [\n      {\n        \"id\": \"CL01\",\n        \"nombre\": \"Sofía Martí\",\n        \"fechaNacimiento\": \"1990-07-18\",\n        \"documento\": {\n          \"tipo\": \"DNI\",\n          \"numero\": \"45678901L\"\n        },\n        \"fidelidad\": {\n          \"nivel\": \"Premium\",\n          \"puntos\": 850\n        },\n        \"preferencias\": [\"cambio automático\", \"recogida rápida\"]\n      },\n      {\n        \"id\": \"CL02\",\n        \"nombre\": \"David Orts\",\n        \"fechaNacimiento\": \"1984-03-11\",\n        \"documento\": {\n          \"tipo\": \"Pasaporte\",\n          \"numero\": \"ZP334455\"\n        },\n        \"fidelidad\": null,\n        \"preferencias\": []\n      },\n      {\n        \"id\": \"CL03\",\n        \"nombre\": \"Nadia Haddad\",\n        \"fechaNacimiento\": \"1998-12-05\",\n        \"documento\": {\n          \"tipo\": \"NIE\",\n          \"numero\": \"Y9876543W\"\n        },\n        \"fidelidad\": {\n          \"nivel\": \"Básico\",\n          \"puntos\": 120\n        },\n        \"preferencias\": [\"vehículo eléctrico o híbrido\"]\n      }\n    ],\n    \"alquileres\": [\n      {\n        \"id\": \"A001\",\n        \"clienteId\": \"CL01\",\n        \"vehiculoId\": \"V10\",\n        \"fechas\": {\n          \"recogida\": \"2026-12-04\",\n          \"devolucion\": \"2026-12-07\"\n        },\n        \"estado\": \"Activo\",\n        \"pagado\": true,\n        \"extras\": [\n          {\n            \"servicio\": \"Seguro todo riesgo\",\n            \"precioUnidad\": 18.0,\n            \"cantidad\": 3\n          },\n          {\n            \"servicio\": \"Silla infantil\",\n            \"precioUnidad\": 8.5,\n            \"cantidad\": 3\n          }\n        ],\n        \"pago\": {\n          \"metodo\": \"Tarjeta\",\n          \"total\": 250.47,\n          \"desglose\": {\n            \"vehiculo\": 127.5,\n            \"extras\": 79.5,\n            \"impuestos\": 43.47\n          }\n        },\n        \"notas\": \"Entrega con depósito lleno\"\n      },\n      {\n        \"id\": \"A002\",\n        \"clienteId\": \"CL02\",\n        \"vehiculoId\": \"V22\",\n        \"fechas\": {\n          \"recogida\": \"2026-12-18\",\n          \"devolucion\": \"2026-12-21\"\n        },\n        \"estado\": \"Pendiente\",\n        \"pagado\": false,\n        \"extras\": [],\n        \"pago\": null,\n        \"notas\": null\n      },\n      {\n        \"id\": \"A003\",\n        \"clienteId\": \"CL03\",\n        \"vehiculoId\": \"V10\",\n        \"fechas\": {\n          \"recogida\": \"2027-01-10\",\n          \"devolucion\": \"2027-01-12\"\n        },\n        \"estado\": \"Confirmado\",\n        \"pagado\": true,\n        \"extras\": [\n          {\n            \"servicio\": \"Conductor adicional\",\n            \"precioUnidad\": 15.0,\n            \"cantidad\": 2\n          }\n        ],\n        \"pago\": {\n          \"metodo\": \"Transferencia\",\n          \"total\": 139.15,\n          \"desglose\": {\n            \"vehiculo\": 85.0,\n            \"extras\": 30.0,\n            \"impuestos\": 24.15\n          }\n        },\n        \"notas\": \"Presenta carné internacional\"\n      },\n      {\n        \"id\": \"A004\",\n        \"clienteId\": \"CL01\",\n        \"vehiculoId\": \"V22\",\n        \"fechas\": {\n          \"recogida\": \"2027-02-01\",\n          \"devolucion\": \"2027-02-03\"\n        },\n        \"estado\": \"Cancelado\",\n        \"pagado\": false,\n        \"extras\": [],\n        \"pago\": null,\n        \"notas\": \"Cancelado con más de 48h de antelación\"\n      }\n    ]\n  }\n}";
+
+    const list = document.getElementById('questions');
+    const qmapGrid = document.getElementById('qmapGrid');
+    const form = document.getElementById('quizForm');
+    const barFill = document.getElementById('barFill');
+    const counter = document.getElementById('counter');
+    const results = document.getElementById('results');
+    const instantCheck = document.getElementById('instantCheck');
+    let isGraded = false;
+
+    // 1. Render Test Questions & Map
+    function renderQuestions() {
+      list.innerHTML = questions.map((q, idx) => `
+        <article class="question" id="question-${q.number}" data-qnum="${q.number}" style="animation-delay: ${Math.min(idx * 25, 400)}ms">
+          <div class="q-meta">
+            <span class="q-num">Pregunta ${q.number}</span>
+            <span class="q-topic">${q.topic}</span>
+          </div>
+          <h2>${q.promptHtml}</h2>
+          ${q.bodyHtml}
+          <fieldset aria-label="Respuestas para la pregunta ${q.number}">
+            ${q.options.map((opt) => `
+              <label class="choice" data-choice="${opt.letter}">
+                <input type="radio" name="q${q.number}" value="${opt.letter}">
+                <span class="opt-Bul">${opt.letter}</span>
+                <span style="flex:1">${opt.html}</span>
+              </label>`).join('')}
+          </fieldset>
+          <p class="feedback" hidden></p>
+        </article>`).join('');
+
+      qmapGrid.innerHTML = questions.map((q) => `
+        <button type="button" class="qmap-dot" id="dot-${q.number}" data-qnum="${q.number}" title="Ir a pregunta ${q.number}">${q.number}</button>
+      `).join('');
+    }
+
+    // 2. Render Open Questions
+    function renderOpenQuestions() {
+      const container = document.getElementById('openContainer');
+      container.innerHTML = openQuestions.map((oq, i) => `
+        <article class="card">
+          <div class="q-meta">
+            <span class="q-num">Pregunta Abierta ${i + 1}</span>
+            <span class="q-topic">Razonamiento técnico</span>
+          </div>
+          <p style="margin:.2rem 0 .5rem; font-size:1.03rem;">${oq.promptHtml}</p>
+          <textarea class="open-textarea" placeholder="Escribe aquí tu respuesta razonada..."></textarea>
+          <details class="sol-drawer">
+            <summary>Ver respuesta oficial orientativa</summary>
+            <div class="sol-body">${oq.solutionHtml}</div>
+          </details>
+        </article>
+      `).join('');
+    }
+
+    // 3. Map Navigation
+    qmapGrid.addEventListener('click', (e) => {
+      const btn = e.target.closest('.qmap-dot');
+      if (!btn) return;
+      const card = document.getElementById(`question-${btn.dataset.qnum}`);
+      if (card) {
+        card.hidden = false;
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+
+    // 4. Grade single question (for instant feedback or full submit)
+    function gradeSingleQuestion(q) {
+      const selected = form.querySelector(`input[name="q${q.number}"]:checked`);
+      const card = document.getElementById(`question-${q.number}`);
+      const dot = document.getElementById(`dot-${q.number}`);
+      const feedback = card.querySelector('.feedback');
+      const isCorrect = selected && selected.value === q.answer;
+
+      card.classList.toggle('correct', Boolean(isCorrect));
+      card.classList.toggle('incorrect', Boolean(selected && !isCorrect));
+      card.classList.toggle('unanswered-card', !selected);
+
+      dot.classList.remove('answered', 'correct', 'incorrect');
+      if (isCorrect) dot.classList.add('correct');
+      else if (selected) dot.classList.add('incorrect');
+
+      for (const label of card.querySelectorAll('.choice')) {
+        const letter = label.dataset.choice;
+        label.classList.toggle('correct', letter === q.answer);
+        label.classList.toggle('incorrect', Boolean(selected && letter === selected.value && !isCorrect));
+      }
+
+      feedback.hidden = false;
+      feedback.innerHTML = isCorrect
+        ? '✓ <strong>¡Respuesta correcta!</strong>'
+        : selected
+          ? `✗ <strong>Incorrecta.</strong> Marcaste la ${selected.value}, pero la respuesta correcta es la <strong>${q.answer}</strong>.`
+          : `⚠️ <strong>Sin responder.</strong> La respuesta correcta es la <strong>${q.answer}</strong>.`;
+
+      return { isCorrect: Boolean(isCorrect), isAnswered: Boolean(selected) };
+    }
+
+    // 5. Update Progress
+    list.addEventListener('change', (e) => {
+      updateProgress();
+      if (instantCheck.checked && e.target.name) {
+        const qnum = parseInt(e.target.name.replace('q', ''), 10);
+        const qObj = questions.find(item => item.number === qnum);
+        if (qObj) gradeSingleQuestion(qObj);
+      }
+    });
+
+    function updateProgress() {
+      let answered = 0;
+      for (const q of questions) {
+        const hasAns = Boolean(form.querySelector(`input[name="q${q.number}"]:checked`));
+        if (hasAns) answered++;
+        const dot = document.getElementById(`dot-${q.number}`);
+        if (dot && !isGraded) {
+          dot.classList.toggle('answered', hasAns);
+        }
+      }
+      const pct = Math.round((answered / questions.length) * 100);
+      barFill.style.width = `${pct}%`;
+      counter.textContent = `${answered} / ${questions.length} (${pct}%)`;
+    }
+
+    // 6. Full Exam Grading
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      isGraded = true;
+      let correct = 0;
+      let incorrect = 0;
+      let unanswered = 0;
+
+      for (const q of questions) {
+        const res = gradeSingleQuestion(q);
+        if (res.isCorrect) correct++;
+        else if (res.isAnswered) incorrect++;
+        else unanswered++;
+      }
+
+      const net = Math.max(0, correct - incorrect / 3);
+      const score10 = (net / questions.length) * 10;
+      const weighted30 = score10 * 0.3;
+      const circumference = 339.29;
+      const offset = circumference - (score10 / 10) * circumference;
+
+      results.innerHTML = `
+        <div class="gauge-box">
+          <svg class="gauge-svg" viewBox="0 0 120 120">
+            <circle class="gauge-bg" cx="60" cy="60" r="54"></circle>
+            <circle class="gauge-val" id="gaugeCircle" cx="60" cy="60" r="54" style="stroke:${score10 >= 5 ? 'var(--green)' : 'var(--red)'}"></circle>
+          </svg>
+          <div class="gauge-label">
+            <span class="big">${score10.toFixed(2)}</span>
+            <span class="small">SOBRE 10</span>
+          </div>
+        </div>
+        <div>
+          <h2 style="margin:0 0 .25rem; font-size:1.35rem;">${score10 >= 5 ? '🎉 ¡Test superado!' : '📚 Sigue practicando'}</h2>
+          <p style="margin:0; color:var(--ink-soft);">Aplicando la penalización oficial (1 acierto menos por cada 3 fallos), tu puntuación neta es <strong>${net.toFixed(2)} / ${questions.length}</strong>.</p>
+          <div class="res-KPIs">
+            <div class="kpi-pill"><span>Aciertos</span><strong style="color:var(--green)">${correct}</strong></div>
+            <div class="kpi-pill"><span>Errores</span><strong style="color:var(--red)">${incorrect}</strong></div>
+            <div class="kpi-pill"><span>En blanco</span><strong>${unanswered}</strong></div>
+            <div class="kpi-pill"><span>Peso Parte 1 (30%)</span><strong>${weighted30.toFixed(2)} / 3.00 pts</strong></div>
+          </div>
+        </div>`;
+
+      results.classList.add('visible');
+      requestAnimationFrame(() => {
+        const circle = document.getElementById('gaugeCircle');
+        if (circle) circle.style.strokeDashoffset = offset;
+      });
+      results.focus();
+      results.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // 7. Filter Questions
+    document.getElementById('filterPills').addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-pill');
+      if (!btn) return;
+      for (const b of document.querySelectorAll('.filter-pill')) b.classList.remove('active');
+      btn.classList.add('active');
+      const mode = btn.dataset.filter;
+
+      for (const q of questions) {
+        const card = document.getElementById(`question-${q.number}`);
+        const selected = form.querySelector(`input[name="q${q.number}"]:checked`);
+        const isCorrect = selected && selected.value === q.answer;
+        if (mode === 'all') card.hidden = false;
+        else if (mode === 'unanswered') card.hidden = Boolean(selected);
+        else if (mode === 'incorrect') card.hidden = !(selected && !isCorrect);
+        else if (mode === 'correct') card.hidden = !isCorrect;
+      }
+    });
+
+    // 8. Reset Exam
+    document.getElementById('resetButton').addEventListener('click', () => {
+      isGraded = false;
+      form.reset();
+      results.classList.remove('visible');
+      results.innerHTML = '';
+      for (const b of document.querySelectorAll('.filter-pill')) b.classList.toggle('active', b.dataset.filter === 'all');
+      renderQuestions();
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 9. Countdown Timer (30 min)
+    let remainingSec = 30 * 60;
+    let timerId = null;
+    const timerDisplay = document.getElementById('timerDisplay');
+    const timerToggle = document.getElementById('timerToggle');
+    const timerBox = document.getElementById('timerBox');
+
+    function renderTimer() {
+      const m = String(Math.floor(remainingSec / 60)).padStart(2, '0');
+      const s = String(remainingSec % 60).padStart(2, '0');
+      timerDisplay.textContent = `${m}:${s}`;
+      timerBox.classList.toggle('warning', remainingSec <= 300 && remainingSec > 60);
+      timerBox.classList.toggle('danger', remainingSec <= 60);
+    }
+
+    timerToggle.addEventListener('click', () => {
+      if (timerId) {
+        clearInterval(timerId);
+        timerId = null;
+        timerToggle.textContent = 'Reanudar';
+      } else {
+        timerToggle.textContent = 'Pausar';
+        timerId = setInterval(() => {
+          if (remainingSec > 0) {
+            remainingSec--;
+            renderTimer();
+          } else {
+            clearInterval(timerId);
+            timerId = null;
+            timerToggle.textContent = 'Tiempo agotado';
+          }
+        }, 1000);
+      }
+    });
+
+    document.getElementById('timerReset').addEventListener('click', () => {
+      if (timerId) { clearInterval(timerId); timerId = null; }
+      remainingSec = 30 * 60;
+      timerToggle.textContent = 'Iniciar';
+      renderTimer();
+    });
+
+    // 10. Mode Tabs Switching
+    for (const btn of document.querySelectorAll('.tab-btn')) {
+      btn.addEventListener('click', () => {
+        for (const b of document.querySelectorAll('.tab-btn')) b.classList.remove('active');
+        for (const p of document.querySelectorAll('.tab-panel')) p.classList.remove('active');
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    }
+
+    // 11. Dark / Light Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const root = document.documentElement;
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      document.getElementById('themeIcon').textContent = isDark ? '🌙' : '☀️';
+      document.getElementById('themeText').textContent = isDark ? 'Modo oscuro' : 'Modo claro';
+    });
+
+    // 12. Interactive JSON Sandbox Validator
+    const jsonSandbox = document.getElementById('jsonSandbox');
+    const jsonStatus = document.getElementById('jsonStatus');
+
+    function validateSandbox() {
+      try {
+        const parsed = JSON.parse(jsonSandbox.value);
+        jsonSandbox.value = JSON.stringify(parsed, null, 2);
+        jsonStatus.className = 'val-status ok';
+        jsonStatus.textContent = '✓ ¡JSON sintácticamente válido! Se ha formateado correctamente con sangría de 2 espacios.';
+      } catch (err) {
+        jsonStatus.className = 'val-status err';
+        jsonStatus.textContent = '✗ Error de sintaxis JSON detectado: ' + err.message;
+      }
+    }
+
+    document.getElementById('validateJsonBtn').addEventListener('click', validateSandbox);
+    document.getElementById('loadT1SolBtn').addEventListener('click', () => {
+      jsonSandbox.value = t1SolString;
+      validateSandbox();
+    });
+    document.getElementById('loadFullSolBtn').addEventListener('click', () => {
+      jsonSandbox.value = fullJsonString;
+      validateSandbox();
+    });
+
+    // 13. Copy Buttons
+    for (const btn of document.querySelectorAll('.copy-btn')) {
+      btn.addEventListener('click', () => {
+        const codeEl = document.getElementById(btn.dataset.target);
+        if (!codeEl) return;
+        navigator.clipboard.writeText(codeEl.textContent).then(() => {
+          const orig = btn.textContent;
+          btn.textContent = '✓ ¡Copiado!';
+          setTimeout(() => { btn.textContent = orig; }, 1600);
+        });
+      });
+    }
+
+    renderQuestions();
+    renderOpenQuestions();
+    updateProgress();
+  </script>
+</body>
+</html>
