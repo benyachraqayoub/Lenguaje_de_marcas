@@ -8,7 +8,7 @@
 Apartado de repaso y simulacros dentro del repositorio de **Lenguajes de marcas y sistemas de gestión de información** para preparar el examen oficial de la primera evaluación.
 
 > [!NOTE]
-> **Sobre este apartado del repositorio:** El **Modelo A** y sus archivos de corrección corresponden al material oficial proporcionado por el profesor en clase. Los **Modelos B, C y D** son simulacros adicionales creados con IA siguiendo la misma estructura y rúbrica para practicar, y no sustituyen las indicaciones oficiales del aula.
+> **Sobre este apartado del repositorio:** El **Modelo A** procede del material oficial proporcionado por el profesor en clase. Los **Modelos B, C y D** son simulacros adicionales creados con IA siguiendo la misma estructura y rúbrica para practicar, y no sustituyen las indicaciones oficiales del aula.
 
 ---
 
@@ -24,14 +24,14 @@ Apartado de repaso y simulacros dentro del repositorio de **Lenguajes de marcas 
 
 ## 🚀 Simulacros Disponibles en esta Carpeta
 
-Cada modelo cuenta con una **aplicación web interactiva** (con temporizador, autocorrección, modo oscuro y validador JSON en vivo) y su **documento Markdown** con el enunciado y el solucionario completo:
+Cada modelo se puede practicar desde su **aplicación web interactiva**, con temporizador, autocorrección, modo oscuro y validador JSON en vivo:
 
 | Modelo | Caso Práctico | Origen | Acceso Directo al Material |
 | :---: | :--- | :---: | :--- |
-| ![Modelo A](https://img.shields.io/badge/MODELO_A-185b83?style=for-the-badge) | 🏨 **Hotel Costa Valencia** (`hotel.json`) | 👨‍🏫 Oficial de clase | [🎮 **Test Interactivo**](./modelo_a_interactivo.html) · [📄 **Enunciado y Solución**](./examen_modelo_a_y_solucionario.md) |
-| ![Modelo B](https://img.shields.io/badge/MODELO_B-0f766e?style=for-the-badge) | 🐾 **Clínica Veterinaria Turia** (`clinica.json`) | 🤖 Simulacro IA | [🎮 **Test Interactivo**](./modelo_b_interactivo.html) · [📄 **Enunciado y Solución**](./examen_modelo_b_y_solucionario.md) |
-| ![Modelo C](https://img.shields.io/badge/MODELO_C-6d28d9?style=for-the-badge) | 🚗 **Concesionario Albufera Motor** (`concesionario.json`) | 🤖 Simulacro IA | [🎮 **Test Interactivo**](./modelo_c_interactivo.html) · [📄 **Enunciado y Solución**](./examen_modelo_c_y_solucionario.md) |
-| ![Modelo D](https://img.shields.io/badge/MODELO_D-c2410c?style=for-the-badge) | 🏋️ **Centro Deportivo Levante Fit** (`gimnasio.json`) | 🤖 Simulacro IA | [🎮 **Test Interactivo**](./modelo_d_interactivo.html) · [📄 **Enunciado y Solución**](./examen_modelo_d_y_solucionario.md) |
+| ![Modelo A](https://img.shields.io/badge/MODELO_A-185b83?style=for-the-badge) | 🏨 **Hotel Costa Valencia** (`hotel.json`) | 👨‍🏫 Oficial de clase | [🎮 **Test Interactivo**](./modelo_a_interactivo.html) |
+| ![Modelo B](https://img.shields.io/badge/MODELO_B-0f766e?style=for-the-badge) | 🐾 **Clínica Veterinaria Turia** (`clinica.json`) | 🤖 Simulacro IA | [🎮 **Test Interactivo**](./modelo_b_interactivo.html) |
+| ![Modelo C](https://img.shields.io/badge/MODELO_C-6d28d9?style=for-the-badge) | 🚗 **Concesionario Albufera Motor** (`concesionario.json`) | 🤖 Simulacro IA | [🎮 **Test Interactivo**](./modelo_c_interactivo.html) |
+| ![Modelo D](https://img.shields.io/badge/MODELO_D-c2410c?style=for-the-badge) | 🏋️ **Centro Deportivo Levante Fit** (`gimnasio.json`) | 🤖 Simulacro IA | [🎮 **Test Interactivo**](./modelo_d_interactivo.html) |
 
 ---
 
@@ -41,9 +41,9 @@ Cada modelo cuenta con una **aplicación web interactiva** (con temporizador, au
 > **Resuelve siempre cada modelo completo antes de desplegar las soluciones.** Así entrenarás tanto el control del tiempo como la detección de errores reales.
 
 1. 📖 **Repasa la base teórica:** Revisa los conceptos clave de `HTML5`, `XML`, `XSD`, `XPath` y `JSON`.
-2. 🎯 **Elige un modelo sin mirar las respuestas:** Abre primero la versión interactiva o el enunciado sin consultar el solucionario.
+2. 🎯 **Elige un modelo y empieza sin mirar las respuestas:** Abre la versión interactiva y completa el test antes de revisar la autocorrección.
 3. ⏲️ **Entrena con tiempo real:** Ponte un cronómetro de **30 minutos** para la teoría y **90 minutos** para la práctica.
-4. 🔍 **Analiza tus fallos:** Compara tus respuestas con el solucionario y anota los errores que se repiten (comas finales, tipos de datos entre comillas, rutas de arrays, etc.).
+4. 🔍 **Analiza tus fallos:** Revisa la autocorrección y anota los errores que se repiten (comas finales, tipos de datos entre comillas, rutas de arrays, etc.).
 5. 🎙️ **Prepara la defensa oral:** Practica una explicación breve en voz alta para justificar tus decisiones sin depender del código.
 
 ---
@@ -80,20 +80,6 @@ Cada modelo cuenta con una **aplicación web interactiva** (con temporizador, au
 - [ ] Puedo relacionar registros usando identificadores sin duplicar datos innecesariamente (Tarea 4).
 - [ ] Puedo interpretar una expresión XPath o una ruta JSON y explicar a qué dato accede (Tarea 5).
 - [ ] He validado y formateado el JSON en VS Code (0 problemas) y puedo justificar mi solución con mis propias palabras.
-
----
-
-## 📂 Material del Profesor para el Modelo A
-
-El examen y los siguientes documentos de respuestas y práctica corresponden al material del **Modelo A** proporcionado por el profesor:
-
-| Recurso | Formato | Descripción |
-| :--- | :---: | :--- |
-| 📕 [**Examen del Modelo A**](./EXAMEN_TIPO.pdf) | `PDF` | Enunciado oficial en PDF. |
-| 📝 [**Respuestas Teóricas**](./01-respuestas-teoricas.md) | `Markdown` | Respuestas tipo test y preguntas abiertas. |
-| 📋 [**Respuestas Prácticas**](./02-respuestas-practicas.md) | `Markdown` | Corrección y notas de los ejercicios prácticos. |
-| 🧩 [**Fragmento JSON Corregido**](./fragmento_corregido.json) | `JSON` | Ejemplo corregido de la Tarea 1 de la práctica. |
-| 🏨 [**Datos del Hotel**](./hotel.json) | `JSON` | Archivo JSON completo utilizado en los ejercicios. |
 
 ---
 
