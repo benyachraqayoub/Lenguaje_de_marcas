@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#7c2d12">
-  <title>Modelo D - Examen Oficial Interactivo | Lenguajes de Marcas</title>
+  <title>Modelo D (Difícil / Avanzado) - Examen Oficial Interactivo | Lenguajes de Marcas</title>
   <style>
     :root {
       --bg: #f0f4f8;
@@ -807,14 +807,14 @@
       <div class="hero-top">
         <div class="badge-row">
           <span class="eyebrow">Digitech FP · 1.º DAW A</span>
-          <span class="model-pill">MODELO D</span>
+          <span class="model-pill">MODELO D · DIFÍCIL / AVANZADO</span>
         </div>
         <button type="button" class="theme-btn" id="themeToggle" aria-label="Cambiar tema claro u oscuro">
           <span id="themeIcon">🌙</span> <span id="themeText">Modo oscuro</span>
         </button>
       </div>
       <h1>Lenguajes de Marcas — 1.ª Evaluación</h1>
-      <p class="subtitle">Simulacro interactivo completo: Parte 1 (Test 27 preguntas + 3 Abiertas) y Parte 2 (Caso práctico JSON: Centro Deportivo Levante Fit)</p>
+      <p class="subtitle">Simulacro interactivo completo: Parte 1 (Test 27 preguntas + 3 Abiertas) y Parte 2 (Caso práctico JSON: Clínica Médica Turia Salud · Nivel Difícil / Avanzado)</p>
       <div class="meta-chips">
         <span class="meta-chip">⏱️ Parte 1: 30 min (30%)</span>
         <span class="meta-chip">💻 Parte 2: 90 min (50%)</span>
@@ -832,7 +832,7 @@
         </button>
         <button type="button" class="tab-btn" data-tab="tab-prac">
           <span>3. Práctica JSON y Solución</span>
-          <span class="tab-badge">gimnasio.json</span>
+          <span class="tab-badge">clinica_medica.json</span>
         </button>
       </nav>
     </div>
@@ -899,186 +899,169 @@
     <section id="tab-prac" class="tab-panel">
       <div class="card">
         <div class="q-meta">
-          <span class="q-num">PARTE 2 · 90 MINUTOS (50%)</span>
-          <span class="q-topic">Archivo principal: gimnasio.json</span>
+          <span class="q-num">PARTE 2 · 90 MINUTOS (50%) · NIVEL DIFÍCIL / AVANZADO</span>
+          <span class="q-topic">Archivo principal: clinica_medica.json</span>
         </div>
-        <h3 class="sec-heading">Enunciado — Caso: Centro Deportivo Levante Fit (modelado de datos en JSON)</h3>
-<p>El <strong>Centro Deportivo Levante Fit</strong> va a actualizar su aplicacion de gestion de salas deportivas, socios y reservas de eventos privados utilizando el formato JSON. Te encargan crear el archivo <code>gimnasio.json</code> con todos los datos de las tablas siguientes, estructurando objetos, arrays, anidaciones y tipos de datos de forma coherente.</p>
-<p>El archivo tendra un objeto raiz con una unica propiedad <code>gimnasio</code> que contendra el resto de la estructura.</p>
-<h4 class="sub-heading">Informacion del centro deportivo</h4>
+        <h3 class="sec-heading">Enunciado — Caso: Plataforma Sanitaria «Clínica Médica Turia Salud» (Cuadro Médico, Historial Clínico Anidado y Citas)</h3>
+<p>La <strong>Clínica Médica Turia Salud</strong> va a unificar en el archivo <code>clinica_medica.json</code> los datos que ya viste en los fragmentos teóricos del examen oficial: el cuadro de <code>medicos</code> con sus días de consulta, los <code>pacientes</code> con su seguro médico, alergias y su <code>historial</code> anidado de diagnósticos y tratamientos, y el registro de <code>citas</code> que relaciona médicos y pacientes mediante identificadores.</p>
+<p>El archivo tendrá un objeto raíz con una única propiedad <code>clinica</code> que englobará toda la información.</p>
+
+<h4 class="sub-heading">1. Datos Generales de la Clínica</h4>
 <div class="table-wrap"><table class="data-table"><thead><tr>
 <th>Bloque</th>
 <th>Datos</th>
 </tr></thead><tbody>
 <tr>
 <td><strong>Datos generales</strong></td>
-<td>Nombre: Centro Deportivo Levante Fit · Categoría deportiva: 5 · Centro en activo: sí · Apertura: 07:00 · Cierre: 22:30</td>
+<td>Nombre: Clínica Médica Turia Salud · Urgencias activas: sí · Plantas del edificio: 4 · Apertura: 08:00 · Cierre: 21:00 · Web: aún no tiene (null)</td>
 </tr>
 <tr>
-<td><strong>Direccion</strong></td>
-<td>Avenida de las Cortes Valencianas 58, Valencia, código postal 46015 · Coordenadas en el mapa: 39.4891 y -0.4012</td>
+<td><strong>Dirección y Contacto</strong></td>
+<td>Gran Vía Marqués del Turia 32, Valencia, CP 46005 · Coordenadas: 39.4661 y -0.3688 · Email: citas@turiasalud.example · Teléfonos: 963554433 y 655443322</td>
 </tr>
 <tr>
-<td><strong>Contacto</strong></td>
-<td>Email: recepcion@levantefit.example · Teléfonos: 963445566 y 963445577 · Web: aún no tiene</td>
-</tr>
-<tr>
-<td><strong>Servicios</strong></td>
-<td>vestuarios, sauna, cafetería, fisioterapia</td>
+<td><strong>Especialidades</strong></td>
+<td>medicina general, cardiología, dermatología, traumatología</td>
 </tr>
 </tbody></table></div>
-<h4 class="sub-heading">Salas deportivas</h4>
+
+<h4 class="sub-heading">2. Cuadro Médico (Array <code>medicos</code>)</h4>
 <div class="table-wrap"><table class="data-table"><thead><tr>
-<th>ID</th>
-<th>Num.</th>
-<th>Nombre</th>
-<th>Precio alquiler/dia</th>
-<th>Aforo</th>
-<th>Disponible</th>
-<th>Ubicacion</th>
-<th>Valoraciones</th>
-<th>Equipamiento</th>
+<th>ID Médico</th>
+<th>Nombre y Especialidad</th>
+<th>Núm. Colegiado</th>
+<th>Tarifa consulta</th>
+<th>Pasa consulta online</th>
+<th>Días de consulta presencial</th>
+<th>Despacho</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>S101</strong></td>
-<td>101</td>
-<td>Sala &quot;Olimpo&quot;</td>
-<td>95,00 EUR</td>
-<td>30</td>
+<td><strong>MED01</strong></td>
+<td>Dra. Navarro<br><em>(Cardiología)</em></td>
+<td>461092</td>
+<td>85,00 EUR</td>
 <td>Sí</td>
-<td>Planta 1 · Interior</td>
-<td>5, 4, 5</td>
-<td>Espejos murales, Equipo de sonido, Esterillas</td>
+<td>lunes, miércoles, viernes</td>
+<td>Planta 2 · Puerta &quot;2A&quot;</td>
 </tr>
 <tr>
-<td><strong>S204</strong></td>
-<td>204</td>
-<td>Pista Polideportiva</td>
-<td>160,50 EUR</td>
-<td>60</td>
-<td>Sí</td>
-<td>Planta 0 · Exterior</td>
-<td>5, 5</td>
-<td>Marcador electrónico, Canastas, Iluminación LED, Gradas</td>
-</tr>
-<tr>
-<td><strong>S302</strong></td>
-<td>302</td>
-<td>Sala Estudio</td>
-<td>45,00 EUR</td>
-<td>12</td>
+<td><strong>MED02</strong></td>
+<td>Dr. Romero<br><em>(Dermatología)</em></td>
+<td>462318</td>
+<td>70,50 EUR</td>
 <td>No</td>
-<td>Planta 2 · Interior</td>
+<td>martes, jueves</td>
+<td>Planta 1 · Puerta &quot;1B&quot;</td>
+</tr>
+<tr>
+<td><strong>MED03</strong></td>
+<td>Dra. Soriano<br><em>(Traumatología)</em></td>
+<td>463801</td>
+<td>90,00 EUR</td>
+<td>Sí</td>
+<td><em>(baja temporal: array vacío)</em></td>
+<td>Planta 3 · Puerta &quot;3C&quot;</td>
+</tr>
+</tbody></table></div>
+
+<h4 class="sub-heading">3. Pacientes e Historial Clínico Anidado (Array <code>pacientes</code>)</h4>
+<p style="margin:.2rem 0 .6rem; color:var(--ink-soft);">Cada paciente tiene su <code>id</code>, <code>nombre</code>, <code>fechaNacimiento</code>, un array <code>alergias</code>, un objeto <code>seguro</code> (con <code>compania</code> y <code>numeroPoliza</code>, o bien <code>null</code> si no tiene seguro) y un array anidado <code>historial</code> donde cada episodio contiene <code>fecha</code>, <code>diagnostico</code> y un objeto anidado <code>tratamiento</code> (con <code>medicamento</code>, <code>dosisMg</code> y <code>duracionDias</code>):</p>
+<div class="table-wrap"><table class="data-table"><thead><tr>
+<th>ID Paciente</th>
+<th>Nombre y Nacimiento</th>
+<th>Seguro Médico</th>
+<th>Alergias</th>
+<th>Historial Clínico (Episodios con Diagnóstico y Objeto Tratamiento)</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>PAC01</strong></td>
+<td>Rosa Blasco<br><code>1985-03-14</code></td>
+<td>Compañía: <code>Adeslas</code><br>Póliza: <code>POL-88912</code></td>
+<td>látex, polen</td>
+<td>• <code>2026-09-10</code> · Diagnóstico: <code>Contractura cervical</code> $
+ightarrow$ Tratamiento: <code>Ibuprofeno</code> (600 mg · 7 días)</td>
+</tr>
+<tr>
+<td><strong>PAC02</strong></td>
+<td>Tomás Cano<br><code>1972-11-28</code></td>
+<td><em>Sin seguro (null)</em></td>
 <td><em>(ninguna)</em></td>
-<td><em>(ninguno)</em></td>
+<td>• <code>2026-06-15</code> · Diagnóstico: <code>Hipertensión leve</code> $
+ightarrow$ Tratamiento: <code>Enalapril</code> (20 mg · 90 días)<br>• <code>2026-10-02</code> · Diagnóstico: <code>Hipercolesterolemia</code> $
+ightarrow$ Tratamiento: <code>Atorvastatina</code> (40 mg · 60 días)</td>
+</tr>
+<tr>
+<td><strong>PAC03</strong></td>
+<td>Clara Valls<br><code>2000-07-04</code></td>
+<td>Compañía: <code>Sanitas</code><br>Póliza: <code>POL-44109</code></td>
+<td>penicilina</td>
+<td><em>(Paciente nueva sin episodios previos: array historial vacío)</em></td>
 </tr>
 </tbody></table></div>
-<h4 class="sub-heading">Socios</h4>
+
+<h4 class="sub-heading">4. Citas Médicas y Facturación (Array <code>citas</code>: Relaciones Cruzadas)</h4>
 <div class="table-wrap"><table class="data-table"><thead><tr>
-<th>ID</th>
-<th>Nombre</th>
-<th>Fecha nacimiento</th>
-<th>Documento</th>
-<th>Programa fidelidad</th>
-<th>Preferencias</th>
+<th>ID Cita</th>
+<th>Paciente</th>
+<th>Médico</th>
+<th>Fecha y Hora</th>
+<th>Estado / Pagada</th>
+<th>Pruebas adicionales realizadas</th>
+<th>Liquidación de Pago y Notas</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>SO01</strong></td>
-<td>Rubén Sanchis</td>
-<td>1992-06-15</td>
-<td>DNI 34567890V</td>
-<td>Élite · 1500 puntos</td>
-<td>horario matinal, taquilla grande</td>
+<td><strong>CIT01</strong></td>
+<td>PAC02</td>
+<td>MED01</td>
+<td><code>2026-11-18</code><br><code>10:30</code></td>
+<td>Confirmada<br>Pagada: <strong>Sí</strong></td>
+<td>• Electrocardiograma (35,00 EUR x 1)<br>• Analítica lipídica (28,50 EUR x 1)</td>
+<td>Método: Tarjeta · Consulta: 85,00 · Pruebas: 63,50 · Total: 148,50<br>Nota: Acudir en ayunas de 8 horas</td>
 </tr>
 <tr>
-<td><strong>SO02</strong></td>
-<td>Clara Mengual</td>
-<td>2001-10-08</td>
-<td>Pasaporte KB778899</td>
-<td>No tiene programa</td>
+<td><strong>CIT02</strong></td>
+<td>PAC01</td>
+<td>MED02</td>
+<td><code>2026-11-20</code><br><code>17:00</code></td>
+<td>Pendiente<br>Pagada: <strong>No</strong></td>
 <td><em>(ninguna)</em></td>
+<td>Pago: <em>Cubierto o pendiente al asistir (null)</em><br>Nota: <em>(null)</em></td>
 </tr>
 <tr>
-<td><strong>SO03</strong></td>
-<td>Viktor Kovalenko</td>
-<td>1986-02-27</td>
-<td>NIE X5432109P</td>
-<td>Bronce · 310 puntos</td>
-<td>música suave</td>
+<td><strong>CIT03</strong></td>
+<td>PAC03</td>
+<td>MED01</td>
+<td><code>2026-11-25</code><br><code>09:15</code></td>
+<td>Cancelada<br>Pagada: <strong>No</strong></td>
+<td><em>(ninguna)</em></td>
+<td>Pago: <em>(null)</em><br>Nota: Cancelada con 48h de antelación</td>
 </tr>
 </tbody></table></div>
-<h4 class="sub-heading">Reservas de salas (Eventos)</h4>
-<div class="table-wrap"><table class="data-table"><thead><tr>
-<th>ID</th>
-<th>Socio</th>
-<th>Sala</th>
-<th>Fechas (Inicio / Fin)</th>
-<th>Estado</th>
-<th>Pagada</th>
-<th>Extras solicitados</th>
-<th>Pago y notas</th>
-</tr></thead><tbody>
-<tr>
-<td><strong>RE01</strong></td>
-<td>SO01</td>
-<td>S101</td>
-<td>12/12/2026 al 14/12/2026</td>
-<td>Confirmada</td>
-<td>Sí</td>
-<td>Monitor apoyo 30,00 EUR x 2 · Catering saludable 15,50 EUR x 10</td>
-<td>Tarjeta · sala 190,00 · extras 215,00 · impuestos 85,05 · total 490,05 · Nota: Montaje media hora antes</td>
-</tr>
-<tr>
-<td><strong>RE02</strong></td>
-<td>SO02</td>
-<td>S204</td>
-<td>22/12/2026 al 23/12/2026</td>
-<td>Pendiente</td>
-<td>No</td>
-<td><em>(ninguno)</em></td>
-<td>Sin pago todavía · sin notas</td>
-</tr>
-<tr>
-<td><strong>RE03</strong></td>
-<td>SO03</td>
-<td>S101</td>
-<td>15/01/2027 al 16/01/2027</td>
-<td>Confirmada</td>
-<td>Sí</td>
-<td>Grabación vídeo 50,00 EUR x 1</td>
-<td>Bizum · sala 95,00 · extras 50,00 · impuestos 30,45 · total 175,45 · Nota: Necesita enchufe junto a la entrada</td>
-</tr>
-<tr>
-<td><strong>RE04</strong></td>
-<td>SO01</td>
-<td>S204</td>
-<td>20/02/2027 al 21/02/2027</td>
-<td>Cancelada</td>
-<td>No</td>
-<td><em>(ninguno)</em></td>
-<td>Sin pago · Nota: Cancelada por lluvia prevista</td>
-</tr>
-</tbody></table></div>
+
 <hr class="divider">
-<h3 class="sec-heading">Tareas a realizar</h3>
+<h3 class="sec-heading">Tareas a realizar (Nivel Difícil / Avanzado · 100% Temario de Clase)</h3>
 <ul class="task-list">
-<li><strong>Tarea 1. Detecta y corrige errores (10 min):</strong> Corrige el siguiente fragmento en <code>fragmento_corregido.json</code> y explica cada error en <code>respuestas.txt</code>:</li>
+<li><strong>Tarea 1. Detecta y corrige 6 errores (10 min):</strong> El siguiente fragmento contiene <strong>6 errores</strong> (clave sin comillas y valor con comillas simples, booleano <code>True</code>, número entrecomillado <code>"4"</code>, objeto <code>horario</code> delimitado erróneamente con corchetes de array <code>[ ]</code> en vez de llaves <code>{ }</code>, coma final sobrante en <code>especialidades</code> y <code>"null"</code> con comillas). Corrígelo en <code>fragmento_corregido.json</code> y explica cada error en <code>respuestas.txt</code>:</li>
 </ul>
 <pre><code>{
-  nombre: &#x27;Centro Deportivo Levante Fit&#x27;,
-  &quot;categoriaDeportiva&quot;: &quot;5&quot;,
-  &quot;activo&quot;: True,
-  &quot;servicios&quot;: [&quot;vestuarios&quot;, &quot;sauna&quot;,],
-  &quot;web&quot;: &quot;null&quot;
+  nombre: &#x27;Clínica Médica Turia Salud&#x27;,
+  &quot;urgenciasActivas&quot;: True,
+  &quot;plantasEdificio&quot;: &quot;4&quot;,
+  &quot;horario&quot;: [
+    &quot;apertura&quot;: &quot;08:00&quot;,
+    &quot;cierre&quot;: &quot;21:00&quot;
+  ],
+  &quot;especialidades&quot;: [&quot;Cardiología&quot;, &quot;Traumatología&quot;, &quot;Dermatología&quot;,],
+  &quot;directorMedico&quot;: &quot;null&quot;
 }</code></pre>
 <ul class="task-list">
-<li><strong>Tarea 2. Estructura base: objetos y tipos (20 min):</strong> En <code>gimnasio.json</code>, crea el objeto raiz <code>gimnasio</code> con los datos generales, <code>direccion</code> y <code>contacto</code>. Justifica en <code>respuestas.txt</code> los tipos elegidos para <code>categoriaDeportiva</code>, <code>codigoPostal</code> y <code>web</code>.</li>
-<li><strong>Tarea 3. Salas: arrays de objetos y anidacion (20 min):</strong> Anade el array <code>salas</code>. Cada sala tendra <code>id</code>, <code>numero</code>, <code>nombre</code>, <code>precioDia</code>, <code>aforo</code>, <code>disponible</code>, el objeto <code>ubicacion</code> (<code>planta</code> y <code>orientacion</code>), el array <code>equipamiento</code> y el array <code>valoraciones</code>. Escapa correctamente las comillas en <code>Sala &quot;Olimpo&quot;</code>.</li>
-<li><strong>Tarea 4. Socios y reservas: relaciones y jerarquia profunda (30 min):</strong> Anade los arrays <code>socios</code> (con objeto <code>documento</code> (<code>tipo</code> y <code>numero</code>), <code>fidelidad</code> (<code>nivel</code> y <code>puntos</code>, o <code>null</code>) y <code>preferencias</code>) y <code>reservas</code> (relacionadas mediante <code>socioId</code> y <code>salaId</code>, objeto <code>fechas</code> (<code>inicio</code> y <code>fin</code> en formato <code>AAAA-MM-DD</code>), <code>estado</code>, booleano <code>pagada</code>, array <code>extras</code> (<code>servicio</code>, <code>precioUnidad</code>, <code>cantidad</code>), objeto <code>pago</code> (<code>metodo</code>, <code>total</code> y <code>desglose</code> con <code>sala</code>, <code>extras</code>, <code>impuestos</code>) o <code>null</code>, y <code>notas</code> como texto o <code>null</code>).</li>
-<li><strong>Tarea 5. Comprobacion y navegacion (10 min):</strong> En <code>respuestas.txt</code>, escribe:</li>
-<li class="sub-item"><strong>(a)</strong> La ruta completa al importe de <code>extras</code> dentro del desglose del pago de la primera reserva, y la ruta a la <code>cantidad</code> del segundo extra de esa misma reserva.</li>
-<li class="sub-item"><strong>(b)</strong> Como averiguarias que reservas corresponden a la sala <code>S101</code>.</li>
-<li class="sub-item"><strong>(c)</strong> Como averiguarias que socios no tienen programa de fidelidad.</li>
+<li><strong>Tarea 2. Estructura general de la clínica (15 min):</strong> En <code>clinica_medica.json</code> crea <code>clinica</code> con los datos generales, <code>horario</code>, <code>direccion</code>, <code>contacto</code> y <code>especialidades</code>.</li>
+<li><strong>Tarea 3. Cuadro médico y despachos (20 min):</strong> Añade el array <code>medicos</code> con sus propiedades, el array <code>diasConsulta</code> y el objeto anidado <code>despacho</code> (<code>planta</code> y <code>puerta</code>, cuidando el escape de comillas si procede o guardando <code>"2A"</code>).</li>
+<li><strong>Tarea 4. Pacientes con historial profundo y citas (35 min):</strong> Añade el array <code>pacientes</code> (con <code>alergias</code>, <code>seguro</code> como objeto o <code>null</code>, e <code>historial</code> con objetos que anidan a su vez el objeto <code>tratamiento</code>) y el array <code>citas</code> (relacionado mediante <code>pacienteId</code> y <code>medicoId</code>, con array <code>pruebasAdicionales</code>, objeto <code>pago</code> o <code>null</code>, y <code>notas</code>).</li>
+<li><strong>Tarea 5. Comprobación y navegación de 4 niveles (10 min):</strong> Da formato al archivo con VS Code y comprueba que no muestra errores en el panel de problemas. Después, en <code>respuestas.txt</code>, escribe:</li>
+<li class="sub-item"><strong>(a)</strong> La ruta completa al <code>medicamento</code> del segundo episodio del historial del segundo paciente (<code>PAC02</code>), y la ruta al <code>precioUnidad</code> de la segunda prueba adicional de la primera cita (<code>CIT01</code>).</li>
+<li class="sub-item"><strong>(b)</strong> Cómo averiguarías qué citas corresponden a la médica <code>MED01</code> y además están en estado <code>"Confirmada"</code>.</li>
+<li class="sub-item"><strong>(c)</strong> Cómo averiguarías qué pacientes no tienen seguro médico contratado.</li>
 </ul>
 <hr class="divider">
       </div>
@@ -1086,21 +1069,25 @@
       <!-- Interactive JSON Validator Sandbox -->
       <div class="card">
         <h3 style="margin:0 0 .35rem;">🛠️ Validador y Laboratorio JSON en vivo (Tarea 1 / Pruebas)</h3>
-        <p style="margin:0; color:var(--ink-soft);">Corrige aquí mismo el fragmento con 5 errores de la <strong>Tarea 1</strong> (o pega tu archivo <code>gimnasio.json</code>) y comprueba en tiempo real si la sintaxis JSON es válida:</p>
+        <p style="margin:0; color:var(--ink-soft);">Corrige aquí mismo el fragmento con errores de la <strong>Tarea 1</strong> (o pega tu archivo <code>clinica_medica.json</code>) y comprueba en tiempo real si la sintaxis JSON es válida:</p>
         <div class="validator-grid">
           <textarea id="jsonSandbox" class="code-editor" spellcheck="false">{
-  nombre: &#x27;Centro Deportivo Levante Fit&#x27;,
-  &quot;categoriaDeportiva&quot;: &quot;5&quot;,
-  &quot;activo&quot;: True,
-  &quot;servicios&quot;: [&quot;vestuarios&quot;, &quot;sauna&quot;,],
-  &quot;web&quot;: &quot;null&quot;
+  nombre: &#x27;Clínica Médica Turia Salud&#x27;,
+  &quot;urgenciasActivas&quot;: True,
+  &quot;plantasEdificio&quot;: &quot;4&quot;,
+  &quot;horario&quot;: [
+    &quot;apertura&quot;: &quot;08:00&quot;,
+    &quot;cierre&quot;: &quot;21:00&quot;
+  ],
+  &quot;especialidades&quot;: [&quot;Cardiología&quot;, &quot;Traumatología&quot;, &quot;Dermatología&quot;,],
+  &quot;directorMedico&quot;: &quot;null&quot;
 }</textarea>
           <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
             <button type="button" class="btn btn-primary" id="validateJsonBtn">Validar y Formatear JSON</button>
             <button type="button" class="btn btn-secondary" id="loadT1SolBtn">Cargar solución Tarea 1</button>
-            <button type="button" class="btn btn-secondary" id="loadFullSolBtn">Cargar gimnasio.json completo</button>
+            <button type="button" class="btn btn-secondary" id="loadFullSolBtn">Cargar clinica_medica.json completo</button>
           </div>
-          <div id="jsonStatus" class="val-status err">Pendiente de validar: el fragmento inicial de la Tarea 1 contiene 5 errores intencionados.</div>
+          <div id="jsonStatus" class="val-status err">Pendiente de validar: el fragmento inicial de la Tarea 1 contiene errores intencionados.</div>
         </div>
       </div>
 
@@ -1117,11 +1104,19 @@
               <button type="button" class="btn btn-secondary copy-btn" data-target="solFrag">Copiar JSON</button>
             </div>
             <pre><code id="solFrag">{
-  &quot;nombre&quot;: &quot;Centro Deportivo Levante Fit&quot;,
-  &quot;categoriaDeportiva&quot;: 5,
-  &quot;activo&quot;: true,
-  &quot;servicios&quot;: [&quot;vestuarios&quot;, &quot;sauna&quot;],
-  &quot;web&quot;: null
+  &quot;nombre&quot;: &quot;Clínica Médica Turia Salud&quot;,
+  &quot;urgenciasActivas&quot;: true,
+  &quot;plantasEdificio&quot;: 4,
+  &quot;horario&quot;: {
+    &quot;apertura&quot;: &quot;08:00&quot;,
+    &quot;cierre&quot;: &quot;21:00&quot;
+  },
+  &quot;especialidades&quot;: [
+    &quot;Cardiología&quot;,
+    &quot;Traumatología&quot;,
+    &quot;Dermatología&quot;
+  ],
+  &quot;directorMedico&quot;: null
 }</code></pre>
           </div>
         </details>
@@ -1133,249 +1128,236 @@
               <span class="q-topic">Texto explicativo</span>
               <button type="button" class="btn btn-secondary copy-btn" data-target="solResp">Copiar texto</button>
             </div>
-            <pre><code id="solResp">=== TAREA 1: ERRORES DETECTADOS ===
-1. nombre: &#x27;Centro Deportivo Levante Fit&#x27; -&gt; La clave &quot;nombre&quot; carece de comillas dobles obligatorias y su valor está delimitado por comillas simples en lugar de comillas dobles.
-2. &quot;categoriaDeportiva&quot;: &quot;5&quot; -&gt; Error de tipo de dato: la categoría deportiva (5) es un número entero y no debe ir entre comillas como texto.
-3. &quot;activo&quot;: True -&gt; Error de sintaxis: en JSON el valor booleano verdadero se escribe en minúsculas (true).
-4. &quot;servicios&quot;: [&quot;vestuarios&quot;, &quot;sauna&quot;,] -&gt; Error de sintaxis: existe una coma sobrante después del último elemento del array (&quot;sauna&quot;).
-5. &quot;web&quot;: &quot;null&quot; -&gt; Error de tipo de dato: &quot;null&quot; con comillas es una cadena de texto de 4 letras, cuando debe usarse el literal null sin comillas para indicar que aún no tiene web.
+            <pre><code id="solResp">=== TAREA 1: 6 ERRORES DETECTADOS ===
+1. nombre: &#x27;Clínica Médica Turia Salud&#x27; -&gt; La clave &quot;nombre&quot; carece de comillas dobles y su valor está escrito con comillas simples en vez de comillas dobles.
+2. &quot;urgenciasActivas&quot;: True -&gt; En JSON los booleanos se escriben en minúsculas (true).
+3. &quot;plantasEdificio&quot;: &quot;4&quot; -&gt; Error de tipo de dato: el número de plantas del edificio es un entero (4) de tipo Number, no un texto (&quot;4&quot;).
+4. &quot;horario&quot;: [ &quot;apertura&quot;: &quot;08:00&quot;, &quot;cierre&quot;: &quot;21:00&quot; ] -&gt; Error estructural: contiene pares &quot;propiedad&quot;: valor pero usa corchetes de array [ ] en lugar de llaves de objeto { }.
+5. &quot;especialidades&quot;: [&quot;Cardiología&quot;, &quot;Traumatología&quot;, &quot;Dermatología&quot;,] -&gt; Error de sintaxis: sobra la coma final después del último elemento del array (&quot;Dermatología&quot;).
+6. &quot;directorMedico&quot;: &quot;null&quot; -&gt; Error de tipo: debe usarse el literal null sin comillas en vez de la cadena de texto &quot;null&quot;.
 
-=== TAREA 2: JUSTIFICACION DE TIPOS ===
-- categoriaDeportiva (number -&gt; 5): Es un valor numérico entero (equivalente a las estrellas de una instalación) que permite comparaciones numéricas.
-- codigoPostal (string -&gt; &quot;46015&quot;): Es un código identificador postal con el que no se realizan operaciones aritméticas y que debe preservar su formato textual.
-- web (null -&gt; null): El centro deportivo aún no dispone de sitio web, por lo que se representa la ausencia de valor con null.
+=== TAREA 5: COMPROBACIÓN Y NAVEGACIÓN PROFUNDA ===
+(a) Rutas de acceso profundas:
+- Medicamento del segundo episodio del historial del segundo paciente (PAC02, índice 1 -&gt; historial índice 1):
+  clinica.pacientes[1].historial[1].tratamiento.medicamento
+- Precio por unidad de la segunda prueba adicional de la primera cita (CIT01, índice 0 -&gt; pruebasAdicionales índice 1):
+  clinica.citas[0].pruebasAdicionales[1].precioUnidad
 
-=== TAREA 5: COMPROBACION Y NAVEGACION ===
-(a) Rutas de acceso:
-- Importe de extras del desglose del pago de la primera reserva:
-  gimnasio.reservas[0].pago.desglose.extras
-- Cantidad del segundo extra de esa misma reserva:
-  gimnasio.reservas[0].extras[1].cantidad
+(b) Cómo averiguar qué citas corresponden a MED01 y están Confirmadas:
+Recorriendo el array clinica.citas y filtrando aquellos objetos donde cita.medicoId === &quot;MED01&quot; &amp;&amp; cita.estado === &quot;Confirmada&quot;.
 
-(b) Cómo averiguar qué reservas corresponden a la sala S101:
-Recorriendo el array gimnasio.reservas y quedándose con los objetos cuya propiedad salaId sea igual a &quot;S101&quot;.
-
-(c) Cómo averiguar qué socios no tienen programa de fidelidad:
-Recorriendo el array gimnasio.socios y filtrando aquellos objetos donde la propiedad fidelidad sea null.</code></pre>
+(c) Cómo averiguar qué pacientes no tienen seguro médico contratado:
+Recorriendo el array clinica.pacientes y seleccionando aquellos objetos cuya propiedad seguro sea igual a null.</code></pre>
           </div>
         </details>
 
         <details class="sol-drawer">
-          <summary>Archivo 3: gimnasio.json (Solución completa Tareas 2, 3 y 4)</summary>
+          <summary>Archivo 3: clinica_medica.json (Solución completa Tareas 2, 3 y 4)</summary>
           <div class="sol-body">
             <div class="copy-bar">
               <span class="q-topic">Modelado jerárquico completo</span>
-              <button type="button" class="btn btn-secondary copy-btn" data-target="solMainJson">Copiar gimnasio.json</button>
+              <button type="button" class="btn btn-secondary copy-btn" data-target="solMainJson">Copiar clinica_medica.json</button>
             </div>
             <pre><code id="solMainJson">{
-  &quot;gimnasio&quot;: {
-    &quot;nombre&quot;: &quot;Centro Deportivo Levante Fit&quot;,
-    &quot;categoriaDeportiva&quot;: 5,
-    &quot;activo&quot;: true,
+  &quot;clinica&quot;: {
+    &quot;nombre&quot;: &quot;Clínica Médica Turia Salud&quot;,
+    &quot;urgenciasActivas&quot;: true,
+    &quot;plantasEdificio&quot;: 4,
     &quot;horario&quot;: {
-      &quot;apertura&quot;: &quot;07:00&quot;,
-      &quot;cierre&quot;: &quot;22:30&quot;
+      &quot;apertura&quot;: &quot;08:00&quot;,
+      &quot;cierre&quot;: &quot;21:00&quot;
     },
     &quot;direccion&quot;: {
-      &quot;calle&quot;: &quot;Avenida de las Cortes Valencianas 58&quot;,
+      &quot;calle&quot;: &quot;Gran Vía Marqués del Turia 32&quot;,
       &quot;ciudad&quot;: &quot;Valencia&quot;,
-      &quot;codigoPostal&quot;: &quot;46015&quot;,
-      &quot;coordenadas&quot;: [39.4891, -0.4012]
+      &quot;codigoPostal&quot;: &quot;46005&quot;,
+      &quot;coordenadas&quot;: [
+        39.4661,
+        -0.3688
+      ]
     },
     &quot;contacto&quot;: {
-      &quot;email&quot;: &quot;recepcion@levantefit.example&quot;,
-      &quot;telefonos&quot;: [&quot;963445566&quot;, &quot;963445577&quot;],
+      &quot;email&quot;: &quot;citas@turiasalud.example&quot;,
+      &quot;telefonos&quot;: [
+        &quot;963554433&quot;,
+        &quot;655443322&quot;
+      ],
       &quot;web&quot;: null
     },
-    &quot;servicios&quot;: [
-      &quot;vestuarios&quot;,
-      &quot;sauna&quot;,
-      &quot;cafetería&quot;,
-      &quot;fisioterapia&quot;
+    &quot;especialidades&quot;: [
+      &quot;medicina general&quot;,
+      &quot;cardiología&quot;,
+      &quot;dermatología&quot;,
+      &quot;traumatología&quot;
     ],
-    &quot;salas&quot;: [
+    &quot;medicos&quot;: [
       {
-        &quot;id&quot;: &quot;S101&quot;,
-        &quot;numero&quot;: 101,
-        &quot;nombre&quot;: &quot;Sala \&quot;Olimpo\&quot;&quot;,
-        &quot;precioDia&quot;: 95.0,
-        &quot;aforo&quot;: 30,
-        &quot;disponible&quot;: true,
-        &quot;ubicacion&quot;: {
-          &quot;planta&quot;: 1,
-          &quot;orientacion&quot;: &quot;Interior&quot;
-        },
-        &quot;equipamiento&quot;: [
-          &quot;Espejos murales&quot;,
-          &quot;Equipo de sonido&quot;,
-          &quot;Esterillas&quot;
+        &quot;id&quot;: &quot;MED01&quot;,
+        &quot;nombre&quot;: &quot;Dra. Navarro&quot;,
+        &quot;especialidad&quot;: &quot;Cardiología&quot;,
+        &quot;numeroColegiado&quot;: 461092,
+        &quot;tarifaConsulta&quot;: 85.0,
+        &quot;consultaOnline&quot;: true,
+        &quot;diasConsulta&quot;: [
+          &quot;lunes&quot;,
+          &quot;miércoles&quot;,
+          &quot;viernes&quot;
         ],
-        &quot;valoraciones&quot;: [5, 4, 5]
-      },
-      {
-        &quot;id&quot;: &quot;S204&quot;,
-        &quot;numero&quot;: 204,
-        &quot;nombre&quot;: &quot;Pista Polideportiva&quot;,
-        &quot;precioDia&quot;: 160.5,
-        &quot;aforo&quot;: 60,
-        &quot;disponible&quot;: true,
-        &quot;ubicacion&quot;: {
-          &quot;planta&quot;: 0,
-          &quot;orientacion&quot;: &quot;Exterior&quot;
-        },
-        &quot;equipamiento&quot;: [
-          &quot;Marcador electrónico&quot;,
-          &quot;Canastas&quot;,
-          &quot;Iluminación LED&quot;,
-          &quot;Gradas&quot;
-        ],
-        &quot;valoraciones&quot;: [5, 5]
-      },
-      {
-        &quot;id&quot;: &quot;S302&quot;,
-        &quot;numero&quot;: 302,
-        &quot;nombre&quot;: &quot;Sala Estudio&quot;,
-        &quot;precioDia&quot;: 45.0,
-        &quot;aforo&quot;: 12,
-        &quot;disponible&quot;: false,
-        &quot;ubicacion&quot;: {
+        &quot;despacho&quot;: {
           &quot;planta&quot;: 2,
-          &quot;orientacion&quot;: &quot;Interior&quot;
-        },
-        &quot;equipamiento&quot;: [],
-        &quot;valoraciones&quot;: []
-      }
-    ],
-    &quot;socios&quot;: [
-      {
-        &quot;id&quot;: &quot;SO01&quot;,
-        &quot;nombre&quot;: &quot;Rubén Sanchis&quot;,
-        &quot;fechaNacimiento&quot;: &quot;1992-06-15&quot;,
-        &quot;documento&quot;: {
-          &quot;tipo&quot;: &quot;DNI&quot;,
-          &quot;numero&quot;: &quot;34567890V&quot;
-        },
-        &quot;fidelidad&quot;: {
-          &quot;nivel&quot;: &quot;Élite&quot;,
-          &quot;puntos&quot;: 1500
-        },
-        &quot;preferencias&quot;: [&quot;horario matinal&quot;, &quot;taquilla grande&quot;]
+          &quot;puerta&quot;: &quot;Puerta \&quot;2A\&quot;&quot;
+        }
       },
       {
-        &quot;id&quot;: &quot;SO02&quot;,
-        &quot;nombre&quot;: &quot;Clara Mengual&quot;,
-        &quot;fechaNacimiento&quot;: &quot;2001-10-08&quot;,
-        &quot;documento&quot;: {
-          &quot;tipo&quot;: &quot;Pasaporte&quot;,
-          &quot;numero&quot;: &quot;KB778899&quot;
-        },
-        &quot;fidelidad&quot;: null,
-        &quot;preferencias&quot;: []
+        &quot;id&quot;: &quot;MED02&quot;,
+        &quot;nombre&quot;: &quot;Dr. Romero&quot;,
+        &quot;especialidad&quot;: &quot;Dermatología&quot;,
+        &quot;numeroColegiado&quot;: 462318,
+        &quot;tarifaConsulta&quot;: 70.5,
+        &quot;consultaOnline&quot;: false,
+        &quot;diasConsulta&quot;: [
+          &quot;martes&quot;,
+          &quot;jueves&quot;
+        ],
+        &quot;despacho&quot;: {
+          &quot;planta&quot;: 1,
+          &quot;puerta&quot;: &quot;Puerta \&quot;1B\&quot;&quot;
+        }
       },
       {
-        &quot;id&quot;: &quot;SO03&quot;,
-        &quot;nombre&quot;: &quot;Viktor Kovalenko&quot;,
-        &quot;fechaNacimiento&quot;: &quot;1986-02-27&quot;,
-        &quot;documento&quot;: {
-          &quot;tipo&quot;: &quot;NIE&quot;,
-          &quot;numero&quot;: &quot;X5432109P&quot;
-        },
-        &quot;fidelidad&quot;: {
-          &quot;nivel&quot;: &quot;Bronce&quot;,
-          &quot;puntos&quot;: 310
-        },
-        &quot;preferencias&quot;: [&quot;música suave&quot;]
+        &quot;id&quot;: &quot;MED03&quot;,
+        &quot;nombre&quot;: &quot;Dra. Soriano&quot;,
+        &quot;especialidad&quot;: &quot;Traumatología&quot;,
+        &quot;numeroColegiado&quot;: 463801,
+        &quot;tarifaConsulta&quot;: 90.0,
+        &quot;consultaOnline&quot;: true,
+        &quot;diasConsulta&quot;: [],
+        &quot;despacho&quot;: {
+          &quot;planta&quot;: 3,
+          &quot;puerta&quot;: &quot;Puerta \&quot;3C\&quot;&quot;
+        }
       }
     ],
-    &quot;reservas&quot;: [
+    &quot;pacientes&quot;: [
       {
-        &quot;id&quot;: &quot;RE01&quot;,
-        &quot;socioId&quot;: &quot;SO01&quot;,
-        &quot;salaId&quot;: &quot;S101&quot;,
-        &quot;fechas&quot;: {
-          &quot;inicio&quot;: &quot;2026-12-12&quot;,
-          &quot;fin&quot;: &quot;2026-12-14&quot;
+        &quot;id&quot;: &quot;PAC01&quot;,
+        &quot;nombre&quot;: &quot;Rosa Blasco&quot;,
+        &quot;fechaNacimiento&quot;: &quot;1985-03-14&quot;,
+        &quot;seguro&quot;: {
+          &quot;compania&quot;: &quot;Adeslas&quot;,
+          &quot;numeroPoliza&quot;: &quot;POL-88912&quot;
         },
-        &quot;estado&quot;: &quot;Confirmada&quot;,
-        &quot;pagada&quot;: true,
-        &quot;extras&quot;: [
+        &quot;alergias&quot;: [
+          &quot;látex&quot;,
+          &quot;polen&quot;
+        ],
+        &quot;historial&quot;: [
           {
-            &quot;servicio&quot;: &quot;Monitor apoyo&quot;,
-            &quot;precioUnidad&quot;: 30.0,
-            &quot;cantidad&quot;: 2
+            &quot;fecha&quot;: &quot;2026-09-10&quot;,
+            &quot;diagnostico&quot;: &quot;Contractura cervical&quot;,
+            &quot;tratamiento&quot;: {
+              &quot;medicamento&quot;: &quot;Ibuprofeno&quot;,
+              &quot;dosisMg&quot;: 600,
+              &quot;duracionDias&quot;: 7
+            }
+          }
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;PAC02&quot;,
+        &quot;nombre&quot;: &quot;Tomás Cano&quot;,
+        &quot;fechaNacimiento&quot;: &quot;1972-11-28&quot;,
+        &quot;seguro&quot;: null,
+        &quot;alergias&quot;: [],
+        &quot;historial&quot;: [
+          {
+            &quot;fecha&quot;: &quot;2026-06-15&quot;,
+            &quot;diagnostico&quot;: &quot;Hipertensión leve&quot;,
+            &quot;tratamiento&quot;: {
+              &quot;medicamento&quot;: &quot;Enalapril&quot;,
+              &quot;dosisMg&quot;: 20,
+              &quot;duracionDias&quot;: 90
+            }
           },
           {
-            &quot;servicio&quot;: &quot;Catering saludable&quot;,
-            &quot;precioUnidad&quot;: 15.5,
-            &quot;cantidad&quot;: 10
+            &quot;fecha&quot;: &quot;2026-10-02&quot;,
+            &quot;diagnostico&quot;: &quot;Hipercolesterolemia&quot;,
+            &quot;tratamiento&quot;: {
+              &quot;medicamento&quot;: &quot;Atorvastatina&quot;,
+              &quot;dosisMg&quot;: 40,
+              &quot;duracionDias&quot;: 60
+            }
           }
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;PAC03&quot;,
+        &quot;nombre&quot;: &quot;Clara Valls&quot;,
+        &quot;fechaNacimiento&quot;: &quot;2000-07-04&quot;,
+        &quot;seguro&quot;: {
+          &quot;compania&quot;: &quot;Sanitas&quot;,
+          &quot;numeroPoliza&quot;: &quot;POL-44109&quot;
+        },
+        &quot;alergias&quot;: [
+          &quot;penicilina&quot;
         ],
-        &quot;pago&quot;: {
-          &quot;metodo&quot;: &quot;Tarjeta&quot;,
-          &quot;total&quot;: 490.05,
-          &quot;desglose&quot;: {
-            &quot;sala&quot;: 190.0,
-            &quot;extras&quot;: 215.0,
-            &quot;impuestos&quot;: 85.05
-          }
-        },
-        &quot;notas&quot;: &quot;Montaje media hora antes&quot;
-      },
+        &quot;historial&quot;: []
+      }
+    ],
+    &quot;citas&quot;: [
       {
-        &quot;id&quot;: &quot;RE02&quot;,
-        &quot;socioId&quot;: &quot;SO02&quot;,
-        &quot;salaId&quot;: &quot;S204&quot;,
-        &quot;fechas&quot;: {
-          &quot;inicio&quot;: &quot;2026-12-22&quot;,
-          &quot;fin&quot;: &quot;2026-12-23&quot;
-        },
-        &quot;estado&quot;: &quot;Pendiente&quot;,
-        &quot;pagada&quot;: false,
-        &quot;extras&quot;: [],
-        &quot;pago&quot;: null,
-        &quot;notas&quot;: null
-      },
-      {
-        &quot;id&quot;: &quot;RE03&quot;,
-        &quot;socioId&quot;: &quot;SO03&quot;,
-        &quot;salaId&quot;: &quot;S101&quot;,
-        &quot;fechas&quot;: {
-          &quot;inicio&quot;: &quot;2027-01-15&quot;,
-          &quot;fin&quot;: &quot;2027-01-16&quot;
-        },
+        &quot;id&quot;: &quot;CIT01&quot;,
+        &quot;pacienteId&quot;: &quot;PAC02&quot;,
+        &quot;medicoId&quot;: &quot;MED01&quot;,
+        &quot;fecha&quot;: &quot;2026-11-18&quot;,
+        &quot;hora&quot;: &quot;10:30&quot;,
         &quot;estado&quot;: &quot;Confirmada&quot;,
         &quot;pagada&quot;: true,
-        &quot;extras&quot;: [
+        &quot;pruebasAdicionales&quot;: [
           {
-            &quot;servicio&quot;: &quot;Grabación vídeo&quot;,
-            &quot;precioUnidad&quot;: 50.0,
+            &quot;concepto&quot;: &quot;Electrocardiograma&quot;,
+            &quot;precioUnidad&quot;: 35.0,
+            &quot;cantidad&quot;: 1
+          },
+          {
+            &quot;concepto&quot;: &quot;Analítica lipídica&quot;,
+            &quot;precioUnidad&quot;: 28.5,
             &quot;cantidad&quot;: 1
           }
         ],
         &quot;pago&quot;: {
-          &quot;metodo&quot;: &quot;Bizum&quot;,
-          &quot;total&quot;: 175.45,
+          &quot;metodo&quot;: &quot;Tarjeta&quot;,
+          &quot;total&quot;: 148.5,
           &quot;desglose&quot;: {
-            &quot;sala&quot;: 95.0,
-            &quot;extras&quot;: 50.0,
-            &quot;impuestos&quot;: 30.45
+            &quot;consulta&quot;: 85.0,
+            &quot;pruebas&quot;: 63.5
           }
         },
-        &quot;notas&quot;: &quot;Necesita enchufe junto a la entrada&quot;
+        &quot;notas&quot;: &quot;Acudir en ayunas de 8 horas&quot;
       },
       {
-        &quot;id&quot;: &quot;RE04&quot;,
-        &quot;socioId&quot;: &quot;SO01&quot;,
-        &quot;salaId&quot;: &quot;S204&quot;,
-        &quot;fechas&quot;: {
-          &quot;inicio&quot;: &quot;2027-02-20&quot;,
-          &quot;fin&quot;: &quot;2027-02-21&quot;
-        },
+        &quot;id&quot;: &quot;CIT02&quot;,
+        &quot;pacienteId&quot;: &quot;PAC01&quot;,
+        &quot;medicoId&quot;: &quot;MED02&quot;,
+        &quot;fecha&quot;: &quot;2026-11-20&quot;,
+        &quot;hora&quot;: &quot;17:00&quot;,
+        &quot;estado&quot;: &quot;Pendiente&quot;,
+        &quot;pagada&quot;: false,
+        &quot;pruebasAdicionales&quot;: [],
+        &quot;pago&quot;: null,
+        &quot;notas&quot;: null
+      },
+      {
+        &quot;id&quot;: &quot;CIT03&quot;,
+        &quot;pacienteId&quot;: &quot;PAC03&quot;,
+        &quot;medicoId&quot;: &quot;MED01&quot;,
+        &quot;fecha&quot;: &quot;2026-11-25&quot;,
+        &quot;hora&quot;: &quot;09:15&quot;,
         &quot;estado&quot;: &quot;Cancelada&quot;,
         &quot;pagada&quot;: false,
-        &quot;extras&quot;: [],
+        &quot;pruebasAdicionales&quot;: [],
         &quot;pago&quot;: null,
-        &quot;notas&quot;: &quot;Cancelada por lluvia prevista&quot;
+        &quot;notas&quot;: &quot;Cancelada con 48h de antelación&quot;
       }
     ]
   }
@@ -1387,14 +1369,14 @@ Recorriendo el array gimnasio.socios y filtrando aquellos objetos donde la propi
   </main>
 
   <footer>
-    Modelo D Interactivo · Desarrollo de Aplicaciones Web (DAW) — Lenguajes de Marcas · Digitech FP
+    Modelo D Interactivo (Difícil / Avanzado) · Desarrollo de Aplicaciones Web (DAW) — Lenguajes de Marcas · Digitech FP
   </footer>
 
   <script>
-    const questions = [{"number": 1, "topic": "HTML5 & Accesibilidad", "promptHtml": "En la web de un festival de musica, el nombre del festival esta en un <code>&lt;h1&gt;</code>, el apartado «Conciertos del sabado» esta en un <code>&lt;h2&gt;</code>, y cada grupo musical dentro de ese apartado se pone con <code>&lt;h6&gt;</code> para que ocupe poco espacio. ¿Por que es una mala practica?", "bodyHtml": "", "options": [{"letter": "A", "html": "Porque <code>&lt;h6&gt;</code> solo sirve para notas a pie de pagina."}, {"letter": "B", "html": "Porque un documento HTML no puede tener simultaneamente <code>&lt;h1&gt;</code> y <code>&lt;h6&gt;</code>."}, {"letter": "C", "html": "Porque se saltan los niveles <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code> y <code>&lt;h5&gt;</code>, rompiendo el esquema jerarquico del documento que utilizan los lectores de pantalla y buscadores."}, {"letter": "D", "html": "No es mala practica: elegir encabezados segun el tamano deseado es la forma estandar de trabajar en HTML."}], "answer": "C"}, {"number": 2, "topic": "HTML5 & Accesibilidad", "promptHtml": "Quieres crear un enlace al portal del Ministerio de Educacion que se abra en una pestana nueva evitando vulnerabilidades de seguridad (<code>tabnabbing</code>). ¿Que etiqueta debes escribir?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;a href=&quot;https://www.educacion.gob.es&quot; target=&quot;_parent&quot; rel=&quot;noopener&quot;&gt;Portal del Ministerio de Educacion&lt;/a&gt;</code>"}, {"letter": "B", "html": "<code>&lt;a href=&quot;https://www.educacion.gob.es&quot; open=&quot;new&quot; secure=&quot;true&quot;&gt;Portal del Ministerio de Educacion&lt;/a&gt;</code>"}, {"letter": "C", "html": "<code>&lt;a href=&quot;https://www.educacion.gob.es&quot; target=&quot;_blank&quot;&gt;Portal del Ministerio de Educacion&lt;/a&gt;</code>"}, {"letter": "D", "html": "<code>&lt;a href=&quot;https://www.educacion.gob.es&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Portal del Ministerio de Educacion&lt;/a&gt;</code>"}], "answer": "D"}, {"number": 3, "topic": "HTML5 & Accesibilidad", "promptHtml": "Al auditar la accesibilidad de una tienda online, ¿cual de los siguientes enlaces resulta descriptivo y adecuado fuera de contexto?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;a href=&quot;devoluciones.html&quot;&gt;Consultar la politica de cambios y devoluciones&lt;/a&gt;</code>"}, {"letter": "B", "html": "<code>&lt;a href=&quot;devoluciones.html&quot;&gt;Pulsa aqui&lt;/a&gt;</code>"}, {"letter": "C", "html": "<code>&lt;a href=&quot;devoluciones.html&quot;&gt;Info&lt;/a&gt;</code>"}, {"letter": "D", "html": "<code>&lt;a href=&quot;devoluciones.html&quot;&gt;https://tienda.example/devoluciones.html&lt;/a&gt;</code>"}], "answer": "A"}, {"number": 4, "topic": "HTML5 & Accesibilidad", "promptHtml": "En el aviso «Es obligatorio llevar calzado deportivo y jamas acceder con comida a la pista», ¿como debes marcar «obligatorio» (fuerte importancia) y «jamas» (enfasis de lectura) con valor semantico?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;b&gt;obligatorio&lt;/b&gt;</code> e <code>&lt;i&gt;jamas&lt;/i&gt;</code>"}, {"letter": "B", "html": "<code>&lt;strong&gt;obligatorio&lt;/strong&gt;</code> y <code>&lt;em&gt;jamas&lt;/em&gt;</code>"}, {"letter": "C", "html": "<code>&lt;em&gt;obligatorio&lt;/em&gt;</code> y <code>&lt;strong&gt;jamas&lt;/strong&gt;</code>"}, {"letter": "D", "html": "<code>&lt;big&gt;obligatorio&lt;/big&gt;</code> y <code>&lt;cite&gt;jamas&lt;/cite&gt;</code>"}], "answer": "B"}, {"number": 5, "topic": "HTML5 & Accesibilidad", "promptHtml": "Un alumno sube su practica HTML y en el navegador se lee «DiseÃ±o de Interfaces» en vez de «Diseño de Interfaces». ¿Cual es el motivo?", "bodyHtml": "", "options": [{"letter": "A", "html": "Ha usado <code>&lt;h1&gt;</code> en lugar de <code>&lt;h2&gt;</code>."}, {"letter": "B", "html": "Falta la etiqueta <code>&lt;!DOCTYPE html&gt;</code> al final del archivo."}, {"letter": "C", "html": "No ha incluido <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> en el <code>&lt;head&gt;</code> (o el archivo no se ha guardado con codificacion UTF-8)."}, {"letter": "D", "html": "El navegador no soporta la letra ñ en etiquetas de parrafo."}], "answer": "C"}, {"number": 6, "topic": "HTML5 & Accesibilidad", "promptHtml": "¿Que error estructural presenta esta lista en HTML?", "bodyHtml": "<pre><code class=\"lang-html\">&lt;ul&gt;\n  &lt;li&gt;Deportes de raqueta&lt;/li&gt;\n  &lt;ul&gt;\n    &lt;li&gt;Tenis&lt;/li&gt;\n    &lt;li&gt;Padel&lt;/li&gt;\n  &lt;/ul&gt;\n  &lt;li&gt;Natacion&lt;/li&gt;\n&lt;/ul&gt;</code></pre>", "options": [{"letter": "A", "html": "La etiqueta <code>&lt;ul&gt;</code> interior no puede ser hija directa de la <code>&lt;ul&gt;</code> exterior; debe colocarse dentro de <code>&lt;li&gt;Deportes de raqueta ... &lt;/li&gt;</code>."}, {"letter": "B", "html": "En HTML las listas anidadas siempre tienen que alternar <code>&lt;ul&gt;</code> con <code>&lt;ol&gt;</code>."}, {"letter": "C", "html": "Los elementos «Tenis» y «Padel» deben usar la etiqueta <code>&lt;subli&gt;</code>."}, {"letter": "D", "html": "No hay ningun error; el validador W3C lo da por valido."}], "answer": "A"}, {"number": 7, "topic": "HTML5 & Accesibilidad", "promptHtml": "¿Cual de las siguientes estructuras representa mejor una pagina web semantica con cabecera de navegacion, bloque principal con un articulo y barra lateral complementaria, mas pie de pagina?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;head&gt;</code> (con <code>&lt;nav&gt;</code>), <code>&lt;body&gt;</code> (con <code>&lt;div1&gt;</code> y <code>&lt;div2&gt;</code>) y <code>&lt;foot&gt;</code>."}, {"letter": "B", "html": "Tres bloques <code>&lt;article&gt;</code> seguidos sin <code>&lt;main&gt;</code>."}, {"letter": "C", "html": "Un <code>&lt;aside&gt;</code> como contenedor raiz de <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code> y <code>&lt;footer&gt;</code>."}, {"letter": "D", "html": "<code>&lt;header&gt;</code> (con <code>&lt;nav&gt;</code>), <code>&lt;main&gt;</code> (con <code>&lt;article&gt;</code> y <code>&lt;aside&gt;</code>) y <code>&lt;footer&gt;</code>."}], "answer": "D"}, {"number": 8, "topic": "HTML5 & Accesibilidad", "promptHtml": "¿Cual de estos fragmentos HTML es valido segun los estandares actuales?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;p&gt;Entrena &lt;strong&gt;fuerza y &lt;em&gt;resistencia&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;</code>"}, {"letter": "B", "html": "<code>&lt;p&gt;Horario de manana: &lt;ul&gt;&lt;li&gt;09:00&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;</code>"}, {"letter": "C", "html": "<code>&lt;p&gt;Entrena &lt;strong&gt;fuerza&lt;/strong&gt; y &lt;em&gt;resistencia&lt;/em&gt;.&lt;/p&gt;</code>"}, {"letter": "D", "html": "<code>&lt;a href=&quot;contacto.html&quot;&gt;&lt;h2&gt;Contacto&lt;/a&gt;&lt;/h2&gt;</code>"}], "answer": "C"}, {"number": 9, "topic": "HTML5 & Accesibilidad", "promptHtml": "En un formulario de inscripcion deportiva hay tres botones <code>&lt;input type=&quot;radio&quot;&gt;</code> para elegir talla de camiseta (S, M, L), pero el usuario puede dejar los tres marcados simultaneamente. ¿Por que sucede?", "bodyHtml": "", "options": [{"letter": "A", "html": "Porque tienen distinto atributo <code>id</code>."}, {"letter": "B", "html": "Porque cada <code>&lt;input&gt;</code> tiene un valor distinto en su atributo <code>name</code> (o no tienen atributo <code>name</code>)."}, {"letter": "C", "html": "Porque falta el atributo <code>placeholder</code> en cada boton."}, {"letter": "D", "html": "Porque los botones de tipo <code>radio</code> permiten seleccion multiple por defecto."}], "answer": "B"}, {"number": 10, "topic": "XML, XSD & XPath", "promptHtml": "¿Cual de estos documentos XML esta bien formado?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;socio&gt;&lt;nombre&gt;Iván&lt;/nombre&gt;&lt;cuota&gt;35&lt;/Cuota&gt;&lt;/socio&gt;</code>"}, {"letter": "B", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;socio id=&quot;S01&quot;&gt;&lt;nombre&gt;Iván&lt;/nombre&gt;&lt;cuota&gt;35&lt;/cuota&gt;&lt;/socio&gt;</code>"}, {"letter": "C", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;socio id=S01&gt;&lt;nombre&gt;Iván&lt;/nombre&gt;&lt;/socio&gt;</code>"}, {"letter": "D", "html": "<code>&lt;socio&gt;&lt;nombre&gt;Iván&lt;/nombre&gt;&lt;/socio&gt;&lt;socio&gt;&lt;nombre&gt;Marta&lt;/nombre&gt;&lt;/socio&gt;</code>"}], "answer": "B"}, {"number": 11, "topic": "XML, XSD & XPath", "promptHtml": "El esquema <code>centro.xsd</code> define <code>&lt;xs:element name=&quot;capacidad&quot; type=&quot;xs:integer&quot;/&gt;</code>. En <code>centro.xml</code> se escribe <code>&lt;Capacidad&gt;25&lt;/Capacidad&gt;</code>. ¿Que ocurre al validarlo?", "bodyHtml": "", "options": [{"letter": "A", "html": "Esta mal formado porque <code>Capacidad</code> empieza con mayuscula."}, {"letter": "B", "html": "Es valido porque el contenido <code>25</code> si es un numero entero."}, {"letter": "C", "html": "Es invalido porque <code>25</code> no lleva decimales."}, {"letter": "D", "html": "Esta bien formado (abre y cierra con <code>Capacidad</code>), pero es invalido respecto al XSD porque los nombres de elementos distinguen mayusculas de minusculas."}], "answer": "D"}, {"number": 12, "topic": "XML, XSD & XPath", "promptHtml": "En <code>polideportivo.xml</code> existe una seccion <code>socios</code> (con todos sus datos personales) y otra seccion <code>reservasPista</code>. Un socio realiza decenas de reservas al mes. ¿Que diseno es el mas apropiado?", "bodyHtml": "", "options": [{"letter": "A", "html": "Copiar el DNI, nombre, direccion y cuenta bancaria del socio dentro de cada reserva de pista."}, {"letter": "B", "html": "Almacenar los datos completos del socio una vez en <code>socios</code> con su <code>id</code>, y que cada reserva incluya unicamente el identificador del socio (<code>socioId</code>)."}, {"letter": "C", "html": "No guardar que socio hace la reserva para que el archivo ocupe menos."}, {"letter": "D", "html": "Guardar todas las reservas del ano como atributos dentro de la etiqueta <code>&lt;socio&gt;</code>."}], "answer": "B"}, {"number": 13, "topic": "XML, XSD & XPath", "promptHtml": "Una federacion deportiva quiere publicar los resultados de los partidos para que las aplicaciones moviles de distintos medios de comunicacion los importen automaticamente. ¿Por que es adecuado XML?", "bodyHtml": "", "options": [{"letter": "A", "html": "Porque XML permite definir etiquetas semanticas personalizadas (<code>&lt;partido&gt;</code>, <code>&lt;golesLocal&gt;</code>) pensadas para el intercambio estructurado de datos entre sistemas."}, {"letter": "B", "html": "Porque XML aplica automaticamente colores y animaciones a la tabla de clasificacion."}, {"letter": "C", "html": "Porque HTML no permite escribir numeros dentro de etiquetas."}, {"letter": "D", "html": "Porque XML es un formato comprimido que no puede abrirse con un editor de texto."}], "answer": "A"}, {"number": 14, "topic": "XML, XSD & XPath", "promptHtml": "Segun este fragmento XSD, ¿que pasa si el XML tiene <code>&lt;sala&gt;&lt;aforo&gt;20&lt;/aforo&gt;&lt;nombre&gt;Spinning&lt;/nombre&gt;&lt;planta&gt;1&lt;/planta&gt;&lt;/sala&gt;</code>?", "bodyHtml": "<pre><code class=\"lang-xml\">&lt;xs:element name=&quot;sala&quot;&gt;\n  &lt;xs:complexType&gt;\n    &lt;xs:sequence&gt;\n      &lt;xs:element name=&quot;nombre&quot; type=&quot;xs:string&quot;/&gt;\n      &lt;xs:element name=&quot;planta&quot; type=&quot;xs:integer&quot;/&gt;\n      &lt;xs:element name=&quot;aforo&quot; type=&quot;xs:integer&quot;/&gt;\n    &lt;/xs:sequence&gt;\n  &lt;/xs:complexType&gt;\n&lt;/xs:element&gt;</code></pre>", "options": [{"letter": "A", "html": "Es valido porque estan los tres elementos y sus tipos de datos coinciden."}, {"letter": "B", "html": "Esta mal formado porque <code>&lt;aforo&gt;</code> esta en primera posicion."}, {"letter": "C", "html": "Es invalido porque <code>&lt;xs:sequence&gt;</code> obliga a que los elementos hijos aparezcan exactamente en el orden <code>nombre</code>, <code>planta</code>, <code>aforo</code>."}, {"letter": "D", "html": "Es invalido porque <code>planta</code> y <code>aforo</code> no pueden tener el mismo tipo <code>xs:integer</code>."}], "answer": "C"}, {"number": 15, "topic": "XML, XSD & XPath", "promptHtml": "En el XSD de un torneo, el elemento <code>&lt;jugador&gt;</code> dentro de <code>&lt;equipo&gt;</code> tiene <code>minOccurs=&quot;5&quot;</code> y <code>maxOccurs=&quot;12&quot;</code>. Si un equipo en el XML tiene 14 elementos <code>&lt;jugador&gt;</code>, ¿cual es el resultado?", "bodyHtml": "", "options": [{"letter": "A", "html": "El XML esta mal formado porque ninguna etiqueta XML puede repetirse mas de 10 veces."}, {"letter": "B", "html": "El XML es valido porque tiene mas del minimo exigido (<code>5</code>)."}, {"letter": "C", "html": "El validador ignora los 2 ultimos jugadores y da el documento por valido."}, {"letter": "D", "html": "El XML esta bien formado, pero es invalido porque supera el <code>maxOccurs=&quot;12&quot;</code> definido en el XSD."}], "answer": "D"}, {"number": 16, "topic": "XML, XSD & XPath", "promptHtml": "El XSD declara <code>&lt;xs:attribute name=&quot;codigo&quot; type=&quot;xs:string&quot; use=&quot;required&quot;/&gt;</code> en el elemento <code>&lt;actividad&gt;</code>. Si borramos <code>codigo=&quot;ACT01&quot;</code> de una <code>&lt;actividad&gt;</code> en el XML, ¿que sucede?", "bodyHtml": "", "options": [{"letter": "A", "html": "El documento sigue bien formado, pero pasa a ser invalido porque <code>use=&quot;required&quot;</code> exige la presencia del atributo."}, {"letter": "B", "html": "El documento queda mal formado porque <code>&lt;actividad&gt;</code> se queda vacia de atributos."}, {"letter": "C", "html": "Sigue siendo valido porque los atributos nunca se validan en XSD."}, {"letter": "D", "html": "Da error de codificacion UTF-8."}], "answer": "A"}, {"number": 17, "topic": "XML, XSD & XPath", "promptHtml": "En <code>club.xml</code> hay 3 elementos <code>&lt;entrenador&gt;</code> (cada uno con un hijo <code>&lt;nombre&gt;</code>) y 6 elementos <code>&lt;actividad&gt;</code> (cada una tambien con un hijo <code>&lt;nombre&gt;</code>). ¿Cuantos nodos devuelve la expresion XPath <code>//nombre</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "3 nodos (solo los del primer nivel)."}, {"letter": "B", "html": "9 nodos (los 3 nombres de entrenador mas los 6 nombres de actividad)."}, {"letter": "C", "html": "6 nodos (solo los de las actividades)."}, {"letter": "D", "html": "0 nodos."}], "answer": "B"}, {"number": 18, "topic": "XML, XSD & XPath", "promptHtml": "Estructura XML: <code>/gimnasio/sala[@id=&#x27;S02&#x27;]/clases/clase[monitor=&#x27;Laura&#x27;]/plazas</code>. ¿Que selecciona esta expresion XPath?", "bodyHtml": "", "options": [{"letter": "A", "html": "Las salas cuyo elemento hijo <code>id</code> es <code>&#x27;S02&#x27;</code> y tienen un atributo <code>monitor=&#x27;Laura&#x27;</code>."}, {"letter": "B", "html": "Todas las clases de la monitora <code>&#x27;Laura&#x27;</code> en todas las salas del gimnasio."}, {"letter": "C", "html": "El elemento <code>plazas</code> de las clases cuyo elemento hijo <code>monitor</code> vale <code>&#x27;Laura&#x27;</code>, dentro de la sala que tiene el atributo <code>id=&#x27;S02&#x27;</code>."}, {"letter": "D", "html": "El atributo <code>plazas</code> del elemento <code>Laura</code>."}], "answer": "C"}, {"number": 19, "topic": "XML, XSD & XPath", "promptHtml": "En un XSD quieres restringir <code>&lt;cuota&gt;</code> a numeros con decimales y <code>&lt;aforo&gt;</code> a numeros enteros. ¿Que declaracion es la correcta?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>type=&quot;xs:decimal&quot;</code> para <code>cuota</code> y <code>type=&quot;xs:integer&quot;</code> para <code>aforo</code>."}, {"letter": "B", "html": "<code>type=&quot;xs:string&quot;</code> para ambos porque en XML todo es texto."}, {"letter": "C", "html": "<code>type=&quot;xs:float&quot;</code> para <code>aforo</code> y <code>type=&quot;xs:boolean&quot;</code> para <code>cuota</code>."}, {"letter": "D", "html": "Usar XPath en lugar de XSD."}], "answer": "A"}, {"number": 20, "topic": "JSON & Modelado", "promptHtml": "¿Cual de estos fragmentos JSON es sintacticamente valido?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>{ &quot;socio&quot;: &quot;Marta&quot;, &quot;cuotaPagada&quot;: True, &quot;deportes&quot;: [&quot;tenis&quot;, &quot;natación&quot;], &quot;descuento&quot;: null }</code>"}, {"letter": "B", "html": "<code>{ socio: &quot;Marta&quot;, &quot;cuotaPagada&quot;: true, &quot;deportes&quot;: [&quot;tenis&quot;, &quot;natación&quot;] }</code>"}, {"letter": "C", "html": "<code>{ &quot;socio&quot;: &quot;Marta&quot;, &quot;cuotaPagada&quot;: true, &quot;deportes&quot;: [&quot;tenis&quot;, &quot;natación&quot;], &quot;descuento&quot;: null }</code>"}, {"letter": "D", "html": "<code>{ &quot;socio&quot;: &quot;Marta&quot;, &quot;cuotaPagada&quot;: true, &quot;deportes&quot;: [&quot;tenis&quot;, &quot;natación&quot;], }</code>"}], "answer": "C"}, {"number": 21, "topic": "JSON & Modelado", "promptHtml": "En un JSON se escribe <code>&quot;aforoMaximo&quot;: &quot;50&quot;</code> en vez de <code>&quot;aforoMaximo&quot;: 50</code>. ¿Que consecuencia tiene?", "bodyHtml": "", "options": [{"letter": "A", "html": "El archivo JSON no se puede abrir porque los digitos no pueden ir entre comillas."}, {"letter": "B", "html": "El archivo JSON es valido, pero el valor se almacena como texto (<code>string</code>) en lugar de numero (<code>number</code>)."}, {"letter": "C", "html": "Se interpreta como el valor booleano <code>true</code>."}, {"letter": "D", "html": "Es obligatorio ponerlo con comillas si el numero es par."}], "answer": "B"}, {"number": 22, "topic": "JSON & Modelado", "promptHtml": "Un socio puede realizar varias reservas de pista, y de cada reserva interesa guardar <code>fecha</code>, <code>pista</code> y <code>duracionMinutos</code>. ¿Como debe estructurarse <code>&quot;reservas&quot;</code> en JSON?", "bodyHtml": "", "options": [{"letter": "A", "html": "Como un array de objetos, donde cada objeto tiene las propiedades <code>fecha</code>, <code>pista</code> y <code>duracionMinutos</code>."}, {"letter": "B", "html": "Como un objeto con claves <code>&quot;reserva1&quot;</code>, <code>&quot;reserva2&quot;</code>, <code>&quot;reserva3&quot;</code>..."}, {"letter": "C", "html": "Como un texto unico separado por guiones."}, {"letter": "D", "html": "Como un array de booleanos."}], "answer": "A"}, {"number": 23, "topic": "JSON & Modelado", "promptHtml": "Con el siguiente JSON, ¿que ruta devuelve <code>&quot;Pilates&quot;</code>? (Los indices empiezan en 0)", "bodyHtml": "<pre><code class=\"lang-json\">{\n  &quot;centro&quot;: {\n    &quot;monitores&quot;: [\n      { &quot;nombre&quot;: &quot;Álex&quot;, &quot;clases&quot;: [&quot;Boxeo&quot;, &quot;Crossfit&quot;] },\n      { &quot;nombre&quot;: &quot;Sara&quot;, &quot;clases&quot;: [&quot;Yoga&quot;, &quot;Pilates&quot;, &quot;Estiramientos&quot;] }\n    ]\n  }\n}</code></pre>", "options": [{"letter": "A", "html": "<code>centro.monitores[2].clases[2]</code>"}, {"letter": "B", "html": "<code>centro.monitores[1].clases[2]</code>"}, {"letter": "C", "html": "<code>centro.monitores[0].clases[1]</code>"}, {"letter": "D", "html": "<code>centro.monitores[1].clases[1]</code>"}], "answer": "D"}, {"number": 24, "topic": "JSON & Modelado", "promptHtml": "En un archivo JSON tienes un array <code>reservas</code> cuyos objetos contienen <code>id</code>, <code>socioId</code> y <code>salaId</code>. ¿Como obtendrias las reservas de la sala <code>&quot;S01&quot;</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "Consultando unicamente <code>reservas[1]</code>."}, {"letter": "B", "html": "Recorriendo el array <code>reservas</code> y filtrando los objetos cuya propiedad <code>salaId</code> sea igual a <code>&quot;S01&quot;</code>."}, {"letter": "C", "html": "Buscando la reserva cuyo <code>id</code> sea <code>&quot;S01&quot;</code>."}, {"letter": "D", "html": "Mirando el primer socio del array <code>socios</code>."}], "answer": "B"}, {"number": 25, "topic": "JSON & Modelado", "promptHtml": "Si en el modelo de datos JSON la propiedad <code>fidelidad</code> de un socio puede ser un objeto con <code>nivel</code> y <code>puntos</code> o bien no existir programa para ese socio, ¿como se representa cuando no tiene programa?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&quot;fidelidad&quot;: &quot;null&quot;</code>"}, {"letter": "B", "html": "<code>&quot;fidelidad&quot;: 0</code>"}, {"letter": "C", "html": "<code>&quot;fidelidad&quot;: null</code>"}, {"letter": "D", "html": "<code>&quot;fidelidad&quot;: &quot;&quot;</code>"}], "answer": "C"}, {"number": 26, "topic": "JSON & Modelado", "promptHtml": "Al migrar a JSON el elemento XML <code>&lt;suplemento codigo=&quot;SUP1&quot;&gt;&lt;precio&gt;24.95&lt;/precio&gt;&lt;vegano&gt;true&lt;/vegano&gt;&lt;/suplemento&gt;</code>, ¿que opcion conserva mejor la semantica y los tipos de datos?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>{ &quot;codigo&quot;: &quot;SUP1&quot;, &quot;precio&quot;: &quot;24.95&quot;, &quot;vegano&quot;: &quot;true&quot; }</code>"}, {"letter": "B", "html": "<code>{ &quot;codigo&quot;: &quot;SUP1&quot;, &quot;precio&quot;: 24.95, &quot;vegano&quot;: true }</code>"}, {"letter": "C", "html": "<code>{ &quot;suplemento&quot;: [&quot;SUP1&quot;, 24.95, true] }</code>"}, {"letter": "D", "html": "<code>{ codigo=&quot;SUP1&quot;, precio=24.95, vegano=true }</code>"}], "answer": "B"}, {"number": 27, "topic": "JSON & Modelado", "promptHtml": "¿Por que marca error el editor en este archivo JSON?", "bodyHtml": "<pre><code class=\"lang-json\">{\n  &quot;salas&quot;: [\n    { &quot;id&quot;: &quot;S01&quot;, &quot;nombre&quot;: &quot;Sala Fitness&quot;, &quot;climatizada&quot;: true }\n    { &quot;id&quot;: &quot;S02&quot;, &quot;nombre&quot;: &quot;Sala Ciclo&quot;, &quot;climatizada&quot;: true }\n  ]\n}</code></pre>", "options": [{"letter": "A", "html": "Falta la coma <code>,</code> al final del primer objeto para separarlo del segundo elemento del array <code>salas</code>."}, {"letter": "B", "html": "No se puede repetir el valor <code>true</code> en dos objetos distintos."}, {"letter": "C", "html": "<code>&quot;S01&quot;</code> y <code>&quot;S02&quot;</code> no pueden llevar letras y numeros a la vez."}, {"letter": "D", "html": "Un array JSON no puede llamarse <code>&quot;salas&quot;</code>."}], "answer": "A"}];
-    const openQuestions = [{"promptHtml": "<strong>Explica por que los enlaces del tipo «Pincha aqui» o «Mas info» perjudican la accesibilidad y el SEO de una web,</strong> y escribe un ejemplo de enlace HTML correctamente redactado y seguro que abra una web externa en una nueva pestana.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>Por que «Pincha aqui» o «Mas info» perjudican la accesibilidad y el SEO:</strong> Los usuarios que navegan con lectores de pantalla suelen listar todos los enlaces de una pagina para moverse rapido; si escuchan «Pincha aqui» fuera de contexto, no saben a donde lleva el enlace. Ademas, los buscadores utilizan el texto de anclaje (<em>anchor text</em>) para entender de que trata la pagina enlazada.</li>\n<li><strong>Ejemplo correcto y seguro en nueva pestana:</strong></li>\n</ul>\n<pre><code>&lt;a href=&quot;https://www.levantefit.example/horarios&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;\n  Consultar los horarios de actividades dirigidas de Levante Fit\n&lt;/a&gt;</code></pre>"}, {"promptHtml": "<strong>Explica que diferencia hay entre un XML «bien formado» y un XML «valido».</strong> Pon un ejemplo de modificacion sobre un archivo <code>club.xml</code> que lo deje <em>mal formado</em> y otro que lo deje <em>bien formado pero invalido</em> frente a su XSD.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>Diferencia:</strong> Un documento XML <strong>bien formado</strong> respeta las reglas sintacticas de XML (un unico elemento raiz, etiquetas cerradas y bien anidadas, sensibilidad a mayusculas/minusculas y atributos entre comillas). Un documento <strong>valido</strong> es aquel que, ademas de estar bien formado, cumple con todas las reglas de estructura y tipos especificadas en su esquema XSD.</li>\n<li>**Ejemplo mal formado en <code>club.xml</code>:** Poner dos elementos <code>&lt;club&gt;</code> en la raiz del documento o abrir <code>&lt;socio&gt;</code> y cerrarlo con <code>&lt;/Socio&gt;</code>.</li>\n<li><strong>Ejemplo bien formado pero invalido frente a su XSD:</strong> Que el XSD defina un maximo de 5 actividades (<code>maxOccurs=&quot;5&quot;</code>) y el XML incluya 6 elementos <code>&lt;actividad&gt;</code> bien escritos.</li>\n</ul>"}, {"promptHtml": "<strong>Representa en XML y en JSON la informacion de una misma sala deportiva</strong> (<code>id</code>: <code>&quot;S01&quot;</code>, <code>nombre</code>: <code>&quot;Sala Zen&quot;</code>, <code>superficieM2</code>: <code>85.5</code>, <code>aforo</code>: <code>25</code>, <code>climatizada</code>: <code>true</code>) y senala tres diferencias entre ambos formatos.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>En XML:</strong></li>\n</ul>\n<pre><code>&lt;sala id=&quot;S01&quot;&gt;\n  &lt;nombre&gt;Sala Zen&lt;/nombre&gt;\n  &lt;superficieM2&gt;85.5&lt;/superficieM2&gt;\n  &lt;aforo&gt;25&lt;/aforo&gt;\n  &lt;climatizada&gt;true&lt;/climatizada&gt;\n&lt;/sala&gt;</code></pre>\n<ul class=\"task-list\">\n<li><strong>En JSON:</strong></li>\n</ul>\n<pre><code>{\n  &quot;id&quot;: &quot;S01&quot;,\n  &quot;nombre&quot;: &quot;Sala Zen&quot;,\n  &quot;superficieM2&quot;: 85.5,\n  &quot;aforo&quot;: 25,\n  &quot;climatizada&quot;: true\n}</code></pre>\n<ul class=\"task-list\">\n<li><strong>Tres diferencias:</strong></li>\n</ul>\n<p>  1. XML emplea etiquetas de apertura y cierre (<code>&lt;nombre&gt;...&lt;/nombre&gt;</code>) y atributos (<code>id=&quot;S01&quot;</code>), mientras que JSON usa pares <code>&quot;clave&quot;: valor</code> separados por comas.</p>\n<p>  2. JSON representa numeros (<code>85.5</code>, <code>25</code>) y booleanos (<code>true</code>) como tipos primitivos sin comillas, mientras que en XML todo el contenido es texto a menos que se valide con un XSD.</p>\n<p>  3. JSON es menos verboso (no repite el nombre de cada campo al cerrar) y se parsea de forma directa en JavaScript y APIs REST.</p>\n<hr class=\"divider\">"}];
-    const t1SolString = "{\n  \"nombre\": \"Centro Deportivo Levante Fit\",\n  \"categoriaDeportiva\": 5,\n  \"activo\": true,\n  \"servicios\": [\"vestuarios\", \"sauna\"],\n  \"web\": null\n}";
-    const fullJsonString = "{\n  \"gimnasio\": {\n    \"nombre\": \"Centro Deportivo Levante Fit\",\n    \"categoriaDeportiva\": 5,\n    \"activo\": true,\n    \"horario\": {\n      \"apertura\": \"07:00\",\n      \"cierre\": \"22:30\"\n    },\n    \"direccion\": {\n      \"calle\": \"Avenida de las Cortes Valencianas 58\",\n      \"ciudad\": \"Valencia\",\n      \"codigoPostal\": \"46015\",\n      \"coordenadas\": [39.4891, -0.4012]\n    },\n    \"contacto\": {\n      \"email\": \"recepcion@levantefit.example\",\n      \"telefonos\": [\"963445566\", \"963445577\"],\n      \"web\": null\n    },\n    \"servicios\": [\n      \"vestuarios\",\n      \"sauna\",\n      \"cafetería\",\n      \"fisioterapia\"\n    ],\n    \"salas\": [\n      {\n        \"id\": \"S101\",\n        \"numero\": 101,\n        \"nombre\": \"Sala \\\"Olimpo\\\"\",\n        \"precioDia\": 95.0,\n        \"aforo\": 30,\n        \"disponible\": true,\n        \"ubicacion\": {\n          \"planta\": 1,\n          \"orientacion\": \"Interior\"\n        },\n        \"equipamiento\": [\n          \"Espejos murales\",\n          \"Equipo de sonido\",\n          \"Esterillas\"\n        ],\n        \"valoraciones\": [5, 4, 5]\n      },\n      {\n        \"id\": \"S204\",\n        \"numero\": 204,\n        \"nombre\": \"Pista Polideportiva\",\n        \"precioDia\": 160.5,\n        \"aforo\": 60,\n        \"disponible\": true,\n        \"ubicacion\": {\n          \"planta\": 0,\n          \"orientacion\": \"Exterior\"\n        },\n        \"equipamiento\": [\n          \"Marcador electrónico\",\n          \"Canastas\",\n          \"Iluminación LED\",\n          \"Gradas\"\n        ],\n        \"valoraciones\": [5, 5]\n      },\n      {\n        \"id\": \"S302\",\n        \"numero\": 302,\n        \"nombre\": \"Sala Estudio\",\n        \"precioDia\": 45.0,\n        \"aforo\": 12,\n        \"disponible\": false,\n        \"ubicacion\": {\n          \"planta\": 2,\n          \"orientacion\": \"Interior\"\n        },\n        \"equipamiento\": [],\n        \"valoraciones\": []\n      }\n    ],\n    \"socios\": [\n      {\n        \"id\": \"SO01\",\n        \"nombre\": \"Rubén Sanchis\",\n        \"fechaNacimiento\": \"1992-06-15\",\n        \"documento\": {\n          \"tipo\": \"DNI\",\n          \"numero\": \"34567890V\"\n        },\n        \"fidelidad\": {\n          \"nivel\": \"Élite\",\n          \"puntos\": 1500\n        },\n        \"preferencias\": [\"horario matinal\", \"taquilla grande\"]\n      },\n      {\n        \"id\": \"SO02\",\n        \"nombre\": \"Clara Mengual\",\n        \"fechaNacimiento\": \"2001-10-08\",\n        \"documento\": {\n          \"tipo\": \"Pasaporte\",\n          \"numero\": \"KB778899\"\n        },\n        \"fidelidad\": null,\n        \"preferencias\": []\n      },\n      {\n        \"id\": \"SO03\",\n        \"nombre\": \"Viktor Kovalenko\",\n        \"fechaNacimiento\": \"1986-02-27\",\n        \"documento\": {\n          \"tipo\": \"NIE\",\n          \"numero\": \"X5432109P\"\n        },\n        \"fidelidad\": {\n          \"nivel\": \"Bronce\",\n          \"puntos\": 310\n        },\n        \"preferencias\": [\"música suave\"]\n      }\n    ],\n    \"reservas\": [\n      {\n        \"id\": \"RE01\",\n        \"socioId\": \"SO01\",\n        \"salaId\": \"S101\",\n        \"fechas\": {\n          \"inicio\": \"2026-12-12\",\n          \"fin\": \"2026-12-14\"\n        },\n        \"estado\": \"Confirmada\",\n        \"pagada\": true,\n        \"extras\": [\n          {\n            \"servicio\": \"Monitor apoyo\",\n            \"precioUnidad\": 30.0,\n            \"cantidad\": 2\n          },\n          {\n            \"servicio\": \"Catering saludable\",\n            \"precioUnidad\": 15.5,\n            \"cantidad\": 10\n          }\n        ],\n        \"pago\": {\n          \"metodo\": \"Tarjeta\",\n          \"total\": 490.05,\n          \"desglose\": {\n            \"sala\": 190.0,\n            \"extras\": 215.0,\n            \"impuestos\": 85.05\n          }\n        },\n        \"notas\": \"Montaje media hora antes\"\n      },\n      {\n        \"id\": \"RE02\",\n        \"socioId\": \"SO02\",\n        \"salaId\": \"S204\",\n        \"fechas\": {\n          \"inicio\": \"2026-12-22\",\n          \"fin\": \"2026-12-23\"\n        },\n        \"estado\": \"Pendiente\",\n        \"pagada\": false,\n        \"extras\": [],\n        \"pago\": null,\n        \"notas\": null\n      },\n      {\n        \"id\": \"RE03\",\n        \"socioId\": \"SO03\",\n        \"salaId\": \"S101\",\n        \"fechas\": {\n          \"inicio\": \"2027-01-15\",\n          \"fin\": \"2027-01-16\"\n        },\n        \"estado\": \"Confirmada\",\n        \"pagada\": true,\n        \"extras\": [\n          {\n            \"servicio\": \"Grabación vídeo\",\n            \"precioUnidad\": 50.0,\n            \"cantidad\": 1\n          }\n        ],\n        \"pago\": {\n          \"metodo\": \"Bizum\",\n          \"total\": 175.45,\n          \"desglose\": {\n            \"sala\": 95.0,\n            \"extras\": 50.0,\n            \"impuestos\": 30.45\n          }\n        },\n        \"notas\": \"Necesita enchufe junto a la entrada\"\n      },\n      {\n        \"id\": \"RE04\",\n        \"socioId\": \"SO01\",\n        \"salaId\": \"S204\",\n        \"fechas\": {\n          \"inicio\": \"2027-02-20\",\n          \"fin\": \"2027-02-21\"\n        },\n        \"estado\": \"Cancelada\",\n        \"pagada\": false,\n        \"extras\": [],\n        \"pago\": null,\n        \"notas\": \"Cancelada por lluvia prevista\"\n      }\n    ]\n  }\n}";
+    const questions = [{"number": 1, "topic": "HTML5 · Bloques 1 y 10 (Relación HTML, CSS y Rutas)", "promptHtml": "En la estructura de carpetas del proyecto final del Bloque 10 y 13 tienes <code>proyecto/index.html</code>, <code>proyecto/css/estilos.css</code> y <code>proyecto/img/logo.svg</code>. Si en <code>index.html</code> escribes <code>&lt;section id=&quot;intro&quot; class=&quot;bloque&quot;&gt;</code>, ¿cómo se seleccionan ese <code>id</code> y esa <code>class</code> en <code>estilos.css</code>, y qué diferencia hay entre ambos atributos?", "bodyHtml": "", "options": [{"letter": "A", "html": "En CSS se usa <code>.bloque</code> para la clase (que puede reutilizarse en varios elementos) y <code>#intro</code> para el <code>id</code> (que debe ser único en toda la página y también sirve como destino de enlaces internos <code>#intro</code>)."}, {"letter": "B", "html": "En CSS se usa <code>#bloque</code> para la clase y <code>.intro</code> para el <code>id</code>, pudiendo repetirse el mismo <code>id</code> en todos los párrafos."}, {"letter": "C", "html": "HTML define los colores y márgenes, mientras que CSS define qué elementos existen en el DOM."}, {"letter": "D", "html": "Para enlazar <code>estilos.css</code> desde <code>index.html</code> hay que usar la etiqueta <code>&lt;script src=&quot;css/estilos.css&quot;&gt;</code>."}], "answer": "A"}, {"number": 2, "topic": "HTML5 · Bloques 2 y 3 (Textos Avanzados y Anidamiento)", "promptHtml": "Observa los siguientes cuatro fragmentos de código HTML5. ¿Cuál es el ÚNICO que no generaría ningún error en el validador W3C?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;ul&gt;&lt;li&gt;Frontend &lt;ul&gt;&lt;li&gt;HTML&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</code>"}, {"letter": "B", "html": "<code>&lt;ul&gt;&lt;li&gt;Frontend&lt;/li&gt;&lt;ul&gt;&lt;li&gt;HTML&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;</code>"}, {"letter": "C", "html": "<code>&lt;p&gt;Pulsa &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;div&gt;S&lt;/div&gt;&lt;/p&gt;</code>"}, {"letter": "D", "html": "<code>&lt;p&gt;Texto &lt;strong&gt;muy &lt;em&gt;importante&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;</code>"}], "answer": "A"}, {"number": 3, "topic": "HTML5 · Bloque 4 (Lógica de Columnas en Tablas Complejas)", "promptHtml": "En una tabla tienes una primera fila de cabecera con <code>&lt;th rowspan=&quot;2&quot;&gt;Módulo&lt;/th&gt;</code> y <code>&lt;th colspan=&quot;2&quot;&gt;Notas&lt;/th&gt;</code> (sumando 3 columnas lógicas en total). En la segunda fila de cabecera quieres poner los títulos «T1» y «T2». ¿Cuántas celdas <code>&lt;th&gt;</code> debes escribir en esa segunda fila para no descuadrar la tabla?", "bodyHtml": "", "options": [{"letter": "A", "html": "Exactamente 2 celdas (<code>&lt;th&gt;T1&lt;/th&gt;&lt;th&gt;T2&lt;/th&gt;</code>), porque la primera columna ya está ocupada por el <code>rowspan=&quot;2&quot;</code> de «Módulo» de la fila superior."}, {"letter": "B", "html": "3 celdas <code>&lt;th&gt;</code>, repitiendo de nuevo «Módulo» en la segunda fila."}, {"letter": "C", "html": "1 sola celda con <code>rowspan=&quot;3&quot;</code>."}, {"letter": "D", "html": "Ninguna, porque una tabla solo puede tener una fila <code>&lt;tr&gt;</code>."}], "answer": "A"}, {"number": 4, "topic": "HTML5 · Bloque 5 (Formatos de Imagen y Multimedia)", "promptHtml": "Según el Bloque 5 de imágenes y multimedia, ¿qué formato de imagen elegirías para un logotipo vectorial escalable sin pérdida de calidad, cuál para una imagen con fondo transparente clásico y qué atributos usarías en <code>&lt;img&gt;</code> para que el navegador descargue la resolución justa según el ancho de pantalla?", "bodyHtml": "", "options": [{"letter": "A", "html": "<strong>SVG</strong> para gráficos vectoriales, <strong>PNG</strong> para transparencias (o <strong>WebP</strong> como formato moderno), y los atributos <code>srcset</code> y <code>sizes</code> para servir el tamaño de imagen adecuado a cada pantalla."}, {"letter": "B", "html": "<strong>JPG</strong> para logotipos vectoriales y <code>iframe</code> para cambiar la resolución."}, {"letter": "C", "html": "<strong>MP4</strong> para logotipos estáticos y el atributo <code>controls</code> dentro de <code>&lt;img&gt;</code>."}, {"letter": "D", "html": "No importa el formato ni el tamaño; el navegador siempre reduce los megabytes automáticamente."}], "answer": "A"}, {"number": 5, "topic": "HTML5 · Bloques 7 y 8 (Agrupación y Estados de Formulario)", "promptHtml": "En un formulario de matrícula quieres: agrupar visual y semánticamente los botones de radio de «Modalidad» bajo un título común, que el campo de «Curso académico» muestre <code>2026/2027</code> de forma fija sin poder editarse, y que al cargar la página el cursor se sitúe automáticamente en el campo «Nombre». ¿Qué elementos y atributos del Bloque 7 y 8 debes usar?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;fieldset&gt;</code> con <code>&lt;legend&gt;Modalidad&lt;/legend&gt;</code> para agrupar; el atributo <code>readonly</code> en el campo del curso; y el atributo <code>autofocus</code> en el campo del nombre."}, {"letter": "B", "html": "<code>&lt;caption&gt;</code> para agrupar el formulario; <code>multiple</code> para bloquear el texto; y <code>lazy</code> para poner el cursor."}, {"letter": "C", "html": "Poner distinto atributo <code>name</code> en los botones de radio para que solo se pueda elegir una modalidad."}, {"letter": "D", "html": "Usar <code>&lt;meter&gt;</code> como contenedor de todo el formulario."}], "answer": "A"}, {"number": 6, "topic": "HTML5 · Bloque 8 (Progress vs Meter y Validación)", "promptHtml": "En el Bloque 8 de Formularios HTML5 se presentan las etiquetas <code>&lt;progress value=&quot;40&quot; max=&quot;100&quot;&gt;</code> y <code>&lt;meter value=&quot;0.7&quot;&gt;70%&lt;/meter&gt;</code>, además del atributo <code>novalidate</code> en <code>&lt;form&gt;</code>. ¿Qué hace <code>novalidate</code> si se añade a la etiqueta <code>&lt;form&gt;</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "Desactiva la validación nativa del navegador al enviar el formulario (por ejemplo, para probar el envío al servidor sin que salten los avisos de <code>required</code> o <code>type=&quot;email&quot;</code>)."}, {"letter": "B", "html": "Borra todos los campos del formulario igual que un botón <code>type=&quot;reset&quot;</code>."}, {"letter": "C", "html": "Obliga a que todos los campos de texto sean obligatorios."}, {"letter": "D", "html": "Convierte el método <code>POST</code> en <code>GET</code>."}], "answer": "A"}, {"number": 7, "topic": "HTML5 · Bloque 9 (Indexación, Favicon y Redes Sociales)", "promptHtml": "Quieres colocar el icono que se muestra en la pestaña del navegador junto al <code>&lt;title&gt;</code>, e indicar explícitamente a los motores de búsqueda que indexen la página y sigan sus enlaces. Según el Bloque 9 en profundidad, ¿qué etiquetas van en el <code>&lt;head&gt;</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;link rel=&quot;icon&quot; href=&quot;favicon.svg&quot;&gt;</code> y <code>&lt;meta name=&quot;robots&quot; content=&quot;index, follow&quot;&gt;</code>."}, {"letter": "B", "html": "<code>&lt;img src=&quot;favicon.svg&quot;&gt;</code> dentro de <code>&lt;title&gt;</code> y <code>&lt;meta name=&quot;google&quot; content=&quot;true&quot;&gt;</code>."}, {"letter": "C", "html": "<code>&lt;meta name=&quot;twitter:card&quot;&gt;</code> para poner el icono de la pestaña."}, {"letter": "D", "html": "El icono de la pestaña se configura con <code>&lt;header&gt;</code> dentro del <code>&lt;body&gt;</code>."}], "answer": "A"}, {"number": 8, "topic": "HTML5 · Bloque 11 (Navegación Teclado y ARIA en Menús)", "promptHtml": "En la cabecera de una web accesible hay un enlace <code>&lt;a href=&quot;#main&quot;&gt;Saltar al contenido&lt;/a&gt;</code> y un botón de menú móvil: <code>&lt;button aria-expanded=&quot;false&quot; aria-controls=&quot;menu&quot;&gt;Menú&lt;/button&gt;&lt;ul id=&quot;menu&quot; hidden&gt;...&lt;/ul&gt;</code>. ¿Qué aportan estos elementos?", "bodyHtml": "", "options": [{"letter": "A", "html": "El enlace permite a quienes usan teclado saltar directamente al bloque principal sin pasar por todos los enlaces del menú, y <code>aria-expanded=&quot;false&quot;</code> + <code>aria-controls=&quot;menu&quot;</code> informan al lector de pantalla de que el botón controla la lista <code>#menu</code> y que actualmente está contraída."}, {"letter": "B", "html": "El atributo <code>aria-expanded=&quot;false&quot;</code> abre y cierra visualmente el menú mediante CSS sin necesitar JavaScript."}, {"letter": "C", "html": "El atributo <code>hidden</code> hace que el menú se vea en tamaño grande en pantallas móviles."}, {"letter": "D", "html": "Solo funcionan si se elimina el atributo <code>lang=&quot;es&quot;</code> de la etiqueta <code>&lt;html&gt;</code>."}], "answer": "A"}, {"number": 9, "topic": "HTML5 · Bloques 12 y 13 (Rúbrica y Calidad del Código)", "promptHtml": "Antes de entregar el proyecto web integrador y publicarlo en GitHub Pages, ¿cuáles de estos requisitos forman parte de la lista de validación y buenas prácticas de los Bloques 12 y 13?", "bodyHtml": "", "options": [{"letter": "A", "html": "Un único <code>&lt;h1&gt;</code> por página, 0 errores en el validador W3C (validator.w3.org), nombres de archivos en minúsculas y sin espacios, rutas relativas hacia <code>css/</code> e <code>img/</code>, y revisión de <code>alt</code>, <code>label</code> y navegación con teclado."}, {"letter": "B", "html": "Usar varios <code>&lt;h1&gt;</code> para destacar subtítulos, rutas absolutas al disco duro local (<code>C:\\Users\\...</code>) y omitir <code>alt</code> en las fotos."}, {"letter": "C", "html": "Escribir las etiquetas HTML en mayúsculas y dejar los atributos sin comillas."}, {"letter": "D", "html": "Sustituir todas las etiquetas semánticas (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>) por tablas anidadas."}], "answer": "A"}, {"number": 10, "topic": "XML · Propósito y Regla de Oro (HTML vs XML)", "promptHtml": "Según la «Regla de Oro» del PDF de XML y HTML, tienes dos necesidades en una empresa: (1) construir la interfaz visual del panel de control para que los empleados la vean en el navegador, y (2) generar un fichero con el inventario de almacén para enviarlo automáticamente al sistema informático de un proveedor. ¿Qué lenguaje eliges en cada caso?", "bodyHtml": "", "options": [{"letter": "A", "html": "HTML para el caso (1) porque sus etiquetas predefinidas dan formato visual en el navegador, y XML (o JSON) para el caso (2) porque permite estructurar y transportar datos centrándose en qué significa cada dato."}, {"letter": "B", "html": "XML para el caso (1) y HTML para el caso (2)."}, {"letter": "C", "html": "HTML para ambos casos, usando <code>&lt;h1&gt;</code> para guardar el precio y <code>&lt;p&gt;</code> para el stock."}, {"letter": "D", "html": "XPath para diseñar la interfaz visual en el navegador."}], "answer": "A"}, {"number": 11, "topic": "XML & XSD · Esquema XSD Completo de una Receta", "promptHtml": "Observa este esquema XSD que valida el ejemplo de la receta visto en el PDF de XML. ¿Cuál de los siguientes documentos XML sería considerado INVÁLIDO por este XSD?", "bodyHtml": "<pre><code class=\"lang-xml\">&lt;xs:element name=&quot;receta&quot;&gt;\n  &lt;xs:complexType&gt;\n    &lt;xs:sequence&gt;\n      &lt;xs:element name=&quot;nombre&quot; type=&quot;xs:string&quot;/&gt;\n      &lt;xs:element name=&quot;tiempoMinutos&quot; type=&quot;xs:integer&quot;/&gt;\n      &lt;xs:element name=&quot;item&quot; type=&quot;xs:string&quot; minOccurs=&quot;1&quot; maxOccurs=&quot;unbounded&quot;/&gt;\n    &lt;/xs:sequence&gt;\n  &lt;/xs:complexType&gt;\n&lt;/xs:element&gt;</code></pre>", "options": [{"letter": "A", "html": "Una <code>&lt;receta&gt;</code> que tenga <code>&lt;nombre&gt;Pasta&lt;/nombre&gt;</code> y <code>&lt;tiempoMinutos&gt;20&lt;/tiempoMinutos&gt;</code> pero ningún elemento <code>&lt;item&gt;</code> (o que escriba <code>&lt;tiempoMinutos&gt;20 minutos&lt;/tiempoMinutos&gt;</code> con letras)."}, {"letter": "B", "html": "Una <code>&lt;receta&gt;</code> que tenga <code>&lt;nombre&gt;Pasta&lt;/nombre&gt;</code>, <code>&lt;tiempoMinutos&gt;20&lt;/tiempoMinutos&gt;</code> y tres elementos <code>&lt;item&gt;</code> seguidos."}, {"letter": "C", "html": "Una <code>&lt;receta&gt;</code> que tenga <code>&lt;nombre&gt;Ensalada&lt;/nombre&gt;</code>, <code>&lt;tiempoMinutos&gt;10&lt;/tiempoMinutos&gt;</code> y un único elemento <code>&lt;item&gt;Tomate&lt;/item&gt;</code>."}, {"letter": "D", "html": "Cualquier receta cuyo elemento <code>&lt;nombre&gt;</code> contenga texto."}], "answer": "A"}, {"number": 12, "topic": "XML & XSD · Validación de Orden y Cardinalidad", "promptHtml": "En un esquema XSD para <code>gimnasio.xml</code>, el elemento <code>&lt;rutina&gt;</code> define una <code>&lt;xs:sequence&gt;</code> con <code>nombre</code>, <code>nivel</code> y <code>ejercicios</code>, y un atributo obligatorio <code>id</code>. Dentro de <code>ejercicios</code>, el elemento <code>ejercicio</code> tiene <code>maxOccurs=&quot;4&quot;</code>. ¿Qué cambio dejaría el XML <strong>bien formado pero inválido</strong>?", "bodyHtml": "", "options": [{"letter": "A", "html": "Poner 5 elementos <code>&lt;ejercicio&gt;</code> correctamente cerrados dentro de una rutina, o colocar <code>&lt;nivel&gt;</code> antes que <code>&lt;nombre&gt;</code>."}, {"letter": "B", "html": "Olvidar cerrar la etiqueta <code>&lt;/gimnasio&gt;</code> al final del archivo."}, {"letter": "C", "html": "Escribir <code>&lt;nombre&gt;Fuerza&lt;/Nombre&gt;</code> mezclando minúsculas y mayúsculas."}, {"letter": "D", "html": "Poner 3 elementos <code>&lt;ejercicio&gt;</code> dentro de la rutina."}], "answer": "A"}, {"number": 13, "topic": "XPath · Precisión de Rutas (/ vs //)", "promptHtml": "En el documento <code>gimnasio.xml</code> de la teoría de XPath hay 2 elementos <code>&lt;rutina&gt;</code> (cada una con su hijo <code>&lt;nombre&gt;</code>) y en total 6 elementos <code>&lt;ejercicio&gt;</code> repartidos entre ambas rutinas (cada ejercicio también con su hijo <code>&lt;nombre&gt;</code>). ¿Cuántos nodos devuelven respectivamente <code>/gimnasio/rutina/nombre</code>, <code>//ejercicio/nombre</code> y <code>//nombre</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>2</code> nodos (solo los nombres de rutina), <code>6</code> nodos (solo los nombres de ejercicio) y <code>8</code> nodos (todos los elementos <code>&lt;nombre&gt;</code> del documento)."}, {"letter": "B", "html": "<code>8</code> nodos las tres expresiones, porque todas terminan en <code>nombre</code>."}, {"letter": "C", "html": "<code>1</code> nodo la primera, <code>2</code> la segunda y <code>6</code> la tercera."}, {"letter": "D", "html": "<code>0</code> nodos la segunda porque empieza por <code>//</code>."}], "answer": "A"}, {"number": 14, "topic": "XPath · Combinación de Filtros por Atributo, Posición y Texto", "promptHtml": "Observa este XML. ¿Qué expresión XPath selecciona las <code>&lt;repeticiones&gt;</code> del ejercicio llamado <code>Press banca</code> que pertenece a la rutina con atributo <code>id=&#x27;RUT001&#x27;</code>?", "bodyHtml": "<pre><code class=\"lang-xml\">&lt;gimnasio&gt;\n  &lt;rutina id=&quot;RUT001&quot;&gt;\n    &lt;nombre&gt;Fuerza tren superior&lt;/nombre&gt;\n    &lt;nivel&gt;Principiante&lt;/nivel&gt;\n    &lt;ejercicios&gt;\n      &lt;ejercicio&gt;\n        &lt;nombre&gt;Press banca&lt;/nombre&gt;\n        &lt;series&gt;4&lt;/series&gt;\n        &lt;repeticiones&gt;10&lt;/repeticiones&gt;\n      &lt;/ejercicio&gt;\n    &lt;/ejercicios&gt;\n  &lt;/rutina&gt;\n&lt;/gimnasio&gt;</code></pre>", "options": [{"letter": "A", "html": "<code>//rutina[@id=&#x27;RUT001&#x27;]//ejercicio[nombre=&#x27;Press banca&#x27;]/repeticiones</code>"}, {"letter": "B", "html": "<code>//rutina[id=&#x27;RUT001&#x27;]//ejercicio[@nombre=&#x27;Press banca&#x27;]/repeticiones</code>"}, {"letter": "C", "html": "<code>/gimnasio/rutina/@RUT001/ejercicios/Press banca/repeticiones</code>"}, {"letter": "D", "html": "<code>//ejercicio[1]/@repeticiones</code>"}], "answer": "A"}, {"number": 15, "topic": "XPath · Uso de text() y Comodín *", "promptHtml": "Sobre el mismo árbol de <code>gimnasio.xml</code>, ¿qué selecciona la expresión <code>//rutina[nivel[text()=&#x27;Principiante&#x27;]]/nombre</code> y cuántos elementos devuelve <code>//rutina[@id=&#x27;RUT001&#x27;]/ejercicios/ejercicio[1]/*</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "La primera selecciona el <code>&lt;nombre&gt;</code> de las rutinas cuyo nivel tiene el texto <code>Principiante</code>; la segunda devuelve los <code>3</code> elementos hijos del primer ejercicio (<code>nombre</code>, <code>series</code> y <code>repeticiones</code>)."}, {"letter": "B", "html": "La primera selecciona el atributo <code>id</code> y la segunda devuelve <code>0</code> nodos."}, {"letter": "C", "html": "Ambas dan error porque no se puede usar <code>*</code> ni <code>text()</code> en XPath."}, {"letter": "D", "html": "La segunda devuelve únicamente el texto <code>10</code>."}], "answer": "A"}, {"number": 16, "topic": "JSON · Bloques 3 y 8 (Diferencia Semántica de Tipos)", "promptHtml": "En el Bloque 3 de la UD2 se remarca: <code>&quot;edad&quot;: 20</code> no es lo mismo que <code>&quot;edad&quot;: &quot;20&quot;</code>, igual que <code>&quot;activo&quot;: true</code> no es lo mismo que <code>&quot;activo&quot;: &quot;true&quot;</code> ni <code>&quot;web&quot;: null</code> es lo mismo que <code>&quot;web&quot;: &quot;null&quot;</code>. ¿Por qué ocurre esto?", "bodyHtml": "", "options": [{"letter": "A", "html": "Porque al envolver cualquier valor entre comillas dobles en JSON se convierte en un texto literal (<code>String</code>), perdiendo su comportamiento nativo como número (<code>Number</code>), booleano (<code>Boolean</code>) o ausencia de valor (<code>Null</code>)."}, {"letter": "B", "html": "Porque poner comillas alrededor de un número o de <code>null</code> es un error de sintaxis que impide abrir el archivo JSON."}, {"letter": "C", "html": "No hay ninguna diferencia; JSON ignora las comillas dobles en los valores."}, {"letter": "D", "html": "Porque los números en JSON solo van sin comillas cuando son negativos."}], "answer": "A"}, {"number": 17, "topic": "JSON · Bloques 3 y 8 (Sintaxis Estricta y Tipos Correctos)", "promptHtml": "Quieres representar un producto en JSON para que no tenga ningún error de sintaxis en Visual Studio Code y además utilice los tipos nativos correctos para cada dato (texto, decimal, entero y booleano). ¿Cuál de estos objetos es el único correcto?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>{ &quot;id&quot;: &quot;P001&quot;, &quot;nombre&quot;: &quot;Monitor 27&quot;, &quot;precio&quot;: 189.90, &quot;stock&quot;: 12, &quot;activo&quot;: true }</code>"}, {"letter": "B", "html": "<code>{ &quot;id&quot;: &quot;P001&quot;, &quot;nombre&quot;: &quot;Monitor 27&quot;, &quot;precio&quot;: &quot;189.90&quot;, &quot;stock&quot;: &quot;12&quot;, &quot;activo&quot;: &quot;true&quot; }</code>"}, {"letter": "C", "html": "<code>{ &quot;id&quot;: &quot;P001&quot;, &quot;nombre&quot;: &quot;Monitor 27&quot;, &quot;precio&quot;: 189,90, &quot;stock&quot;: 12, &quot;activo&quot;: True }</code>"}, {"letter": "D", "html": "<code>{ id: &quot;P001&quot;, nombre: &quot;Monitor 27&quot;, precio: 189.90, stock: 12, activo: true, }</code>"}], "answer": "A"}, {"number": 18, "topic": "JSON · Bloques 5 y 6 (Objetos Anidados dentro de Arrays)", "promptHtml": "En el archivo JSON de una clínica médica, cada paciente tiene un array <code>historial</code>, y dentro de cada episodio del historial hay una <code>fecha</code>, un <code>diagnostico</code> y un objeto anidado <code>tratamiento</code> con <code>medicamento</code> y <code>dosisMg</code>. ¿Cuál de estos fragmentos está correctamente construido?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&quot;historial&quot;: [ { &quot;fecha&quot;: &quot;2026-09-10&quot;, &quot;diagnostico&quot;: &quot;Contractura&quot;, &quot;tratamiento&quot;: { &quot;medicamento&quot;: &quot;Ibuprofeno&quot;, &quot;dosisMg&quot;: 600 } } ]</code>"}, {"letter": "B", "html": "<code>&quot;historial&quot;: { &quot;fecha&quot;: &quot;2026-09-10&quot;, &quot;tratamiento&quot;: [ &quot;medicamento&quot;: &quot;Ibuprofeno&quot;, &quot;dosisMg&quot;: 600 ] }</code>"}, {"letter": "C", "html": "<code>&quot;historial&quot;: [ &quot;2026-09-10, Contractura, Ibuprofeno, 600&quot; ]</code>"}, {"letter": "D", "html": "<code>&quot;historial&quot;: [ { fecha = &quot;2026-09-10&quot;, tratamiento = &quot;Ibuprofeno&quot; } ]</code>"}], "answer": "A"}, {"number": 19, "topic": "JSON · Bloques 6 y 14 (Navegación Profunda en Pedidos)", "promptHtml": "Observa la estructura de este pedido de <code>tienda_online.json</code>. ¿Qué ruta accede a la <code>cantidad</code> del segundo artículo comprado dentro del primer pedido?", "bodyHtml": "<pre><code class=\"lang-json\">{\n  &quot;tienda&quot;: {\n    &quot;pedidos&quot;: [\n      {\n        &quot;id&quot;: &quot;PED01&quot;,\n        &quot;clienteId&quot;: &quot;C01&quot;,\n        &quot;lineas&quot;: [\n          { &quot;productoId&quot;: &quot;P01&quot;, &quot;precioUnidad&quot;: 19.99, &quot;cantidad&quot;: 1 },\n          { &quot;productoId&quot;: &quot;P02&quot;, &quot;precioUnidad&quot;: 29.99, &quot;cantidad&quot;: 3 }\n        ]\n      }\n    ]\n  }\n}</code></pre>", "options": [{"letter": "A", "html": "<code>tienda.pedidos[0].lineas[1].cantidad</code>"}, {"letter": "B", "html": "<code>tienda.pedidos[1].lineas[2].cantidad</code>"}, {"letter": "C", "html": "<code>tienda.pedidos[0].lineas[0].cantidad</code>"}, {"letter": "D", "html": "<code>tienda.pedidos.lineas[1].cantidad</code>"}], "answer": "A"}, {"number": 20, "topic": "JSON · Índices en XPath vs Índices en JSON", "promptHtml": "Tienes la misma lista de dos productos representada en XML y en JSON. Si quieres acceder al <strong>primer</strong> producto usando XPath en XML (<code>/tienda/productos/producto[?]</code>) y usando navegación de arrays en JSON (<code>tienda.productos[?]</code>), ¿qué número va entre los corchetes en cada lenguaje?", "bodyHtml": "", "options": [{"letter": "A", "html": "En XPath el primer elemento es <code>[1]</code>, mientras que en un array de JSON el primer elemento es <code>[0]</code>."}, {"letter": "B", "html": "En ambos lenguajes el primer elemento es <code>[0]</code>."}, {"letter": "C", "html": "En ambos lenguajes el primer elemento es <code>[1]</code>."}, {"letter": "D", "html": "En XPath es <code>[0]</code> y en JSON es <code>[1]</code>."}], "answer": "A"}, {"number": 21, "topic": "JSON · Bloque 10 (Relaciones Cruzadas entre Clientes, Productos y Pedidos)", "promptHtml": "En <code>tienda_online.json</code> tienes los arrays <code>clientes</code>, <code>productos</code> y <code>pedidos</code>. Un pedido guarda <code>&quot;clienteId&quot;: &quot;C02&quot;</code>. ¿Cómo averiguas el <code>email</code> del cliente que hizo ese pedido y cuántos pedidos en total incluyen el producto <code>&quot;P01&quot;</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "Para el email, se busca en <code>clientes</code> el objeto con <code>id === &quot;C02&quot;</code> y se lee su propiedad <code>email</code>; para los pedidos de <code>&quot;P01&quot;</code>, se recorre <code>pedidos</code> comprobando en cuáles su array <code>lineas</code> contiene algún objeto con <code>productoId === &quot;P01&quot;</code>."}, {"letter": "B", "html": "Mirando directamente <code>clientes[2].email</code> y <code>pedidos[1]</code>."}, {"letter": "C", "html": "No se puede averiguar sin copiar todos los datos del cliente y del producto dentro del pedido."}, {"letter": "D", "html": "Comparando el <code>id</code> del pedido con el <code>id</code> del cliente."}], "answer": "A"}, {"number": 22, "topic": "JSON · Caracteres Especiales y Decimales", "promptHtml": "En un catálogo JSON necesitas guardar un monitor cuyo nombre comercial es <code>Monitor 27&quot; Curvo</code> y cuyo precio es <code>219,50 €</code>. ¿Cómo deben escribirse ambas propiedades en JSON?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&quot;nombre&quot;: &quot;Monitor 27\\&quot; Curvo&quot;, &quot;precio&quot;: 219.5</code> (escapando la comilla doble interna con <code>\\&quot;</code> y usando punto decimal sin el símbolo <code>€</code>)."}, {"letter": "B", "html": "<code>&quot;nombre&quot;: &quot;Monitor 27&quot; Curvo&quot;, &quot;precio&quot;: 219,50</code>."}, {"letter": "C", "html": "<code>&quot;nombre&quot;: &#x27;Monitor 27&quot; Curvo&#x27;, &quot;precio&quot;: &quot;219,50 €&quot;</code>."}, {"letter": "D", "html": "JSON no permite guardar el carácter de pulgadas (<code>&quot;</code>) dentro de un texto."}], "answer": "A"}, {"number": 23, "topic": "JSON · Bloque 8 (Múltiples Errores en un Array de Objetos)", "promptHtml": "Observa este fragmento JSON. ¿Por qué el panel de problemas de Visual Studio Code marca error?", "bodyHtml": "<pre><code class=\"lang-json\">{\n  &quot;clientes&quot;: [\n    { &quot;id&quot;: &quot;C01&quot;, &quot;nombre&quot;: &quot;Ana&quot;, &quot;vip&quot;: true }\n    { &quot;id&quot;: &quot;C02&quot;, &quot;nombre&quot;: &quot;Luis&quot;, &quot;vip&quot;: false }\n  ]\n}</code></pre>", "options": [{"letter": "A", "html": "Porque falta la coma <code>,</code> que debe separar el primer objeto <code>{...}</code> del segundo objeto <code>{...}</code> dentro del array <code>clientes</code>."}, {"letter": "B", "html": "Porque dos objetos del mismo array no pueden tener las mismas claves <code>id</code>, <code>nombre</code> y <code>vip</code>."}, {"letter": "C", "html": "Porque un array no puede tener saltos de línea."}, {"letter": "D", "html": "Porque <code>vip</code> no puede valer <code>true</code> en uno y <code>false</code> en otro."}], "answer": "A"}, {"number": 24, "topic": "JSON · Modelado Jerárquico (Objetos Anidados vs Propiedades Planas)", "promptHtml": "En el Bloque 5 y 10 de la UD2, los datos de ubicación de la tienda (<code>calle</code>, <code>ciudad</code>, <code>codigoPostal</code>) se agrupan dentro de un objeto anidado <code>&quot;direccion&quot;: { ... }</code> en lugar de dejarlos sueltos en la raíz. ¿Qué ventaja aporta esta anidación?", "bodyHtml": "", "options": [{"letter": "A", "html": "Organiza los datos formando una estructura jerárquica lógica y legible, permitiendo tratar la dirección como un bloque coherente (por ejemplo, en la tienda y en cada cliente)."}, {"letter": "B", "html": "Hace que las propiedades interiores no necesiten llevar comillas dobles."}, {"letter": "C", "html": "Impide que se pueda acceder a <code>ciudad</code> mediante rutas de punto."}, {"letter": "D", "html": "Convierte automáticamente el código postal en un número decimal."}], "answer": "A"}, {"number": 25, "topic": "JSON · Justificación de Tipos (Códigos Postales y Teléfonos)", "promptHtml": "En los ejemplos de la UD2 (Bloques 5 y 10), tanto <code>&quot;telefono&quot;: &quot;123456789&quot;</code> como <code>&quot;codigoPostal&quot;: &quot;46001&quot;</code> se guardan como <code>String</code> (entre comillas) aunque estén formados por dígitos. ¿Por qué es una buena práctica modelarlos como texto y no como <code>Number</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "Porque son códigos o identificadores con los que no se realizan operaciones aritméticas (no se suman ni multiplican), pueden empezar por <code>0</code> (como <code>&quot;03001&quot;</code> en Alicante) o incluir prefijos (<code>&quot;+34&quot;</code>), y como número perderían el cero inicial."}, {"letter": "B", "html": "Porque JSON no permite escribir números de más de 2 cifras sin comillas."}, {"letter": "C", "html": "Porque el tipo <code>Number</code> en JSON solo admite números con decimales."}, {"letter": "D", "html": "Es un error del ejemplo; siempre deberían guardarse como <code>Boolean</code>."}], "answer": "A"}, {"number": 26, "topic": "JSON · Conversión de Árbol XML Complejo a JSON", "promptHtml": "Se migra a JSON el siguiente XML de una receta:<br><code>&lt;receta id=&quot;R1&quot;&gt;&lt;nombre&gt;Pasta&lt;/nombre&gt;&lt;ingredientes&gt;&lt;item&gt;Huevo&lt;/item&gt;&lt;item&gt;Queso&lt;/item&gt;&lt;/ingredientes&gt;&lt;/receta&gt;</code><br>¿Qué estructura JSON representa mejor esta información?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>{ &quot;id&quot;: &quot;R1&quot;, &quot;nombre&quot;: &quot;Pasta&quot;, &quot;ingredientes&quot;: [&quot;Huevo&quot;, &quot;Queso&quot;] }</code>"}, {"letter": "B", "html": "<code>{ &quot;id&quot;: &quot;R1&quot;, &quot;nombre&quot;: &quot;Pasta&quot;, &quot;ingredientes&quot;: { &quot;item&quot;: &quot;Huevo&quot;, &quot;item&quot;: &quot;Queso&quot; } }</code>"}, {"letter": "C", "html": "<code>{ &quot;receta&quot;: &quot;R1 Pasta Huevo Queso&quot; }</code>"}, {"letter": "D", "html": "<code>[ &quot;id=R1&quot;, &quot;nombre=Pasta&quot;, &quot;item=Huevo&quot; ]</code>"}], "answer": "A"}, {"number": 27, "topic": "Integración Global · HTML, XML, XSD, XPath y JSON", "promptHtml": "Repasando todos los bloques estudiados para el examen, ¿cuál de estas afirmaciones resume correctamente el propósito de cada tecnología?", "bodyHtml": "", "options": [{"letter": "A", "html": "<strong>HTML5</strong> define la estructura semántica de las páginas web (y <strong>CSS</strong> su aspecto visual); <strong>XML</strong> y <strong>JSON</strong> representan e intercambian datos estructurados; <strong>XSD</strong> valida las reglas y tipos de un XML; y <strong>XPath</strong> permite localizar nodos dentro de un árbol XML."}, {"letter": "B", "html": "<strong>XML</strong> maqueta los colores de la web, <strong>HTML</strong> valida los tipos de datos decimales y <strong>JSON</strong> solo sirve para crear hojas de estilo."}, {"letter": "C", "html": "<strong>XPath</strong> sirve para validar formularios HTML5 y <strong>Flexbox</strong> sirve para consultar archivos XML."}, {"letter": "D", "html": "Todas las tecnologías anteriores usan exactamente las mismas reglas de etiquetas y cierre."}], "answer": "A"}];
+    const openQuestions = [{"promptHtml": "<strong>1. Integración de HTML5, CSS, Accesibilidad y Validación (PDF de HTML - Bloques 1, 2, 10, 11 y 12):</strong> Un compañero entrega una página web con este código:<br><code>&lt;p&gt;&lt;div&gt;Bienvenidos a &lt;b&gt;Digitech&lt;/b&gt;&lt;/div&gt;&lt;/p&gt;</code><br><code>&lt;img src=&quot; campus foto.jpg &quot;&gt;</code><br><code>&lt;a href=&quot;https://digitech.es&quot; target=&quot;_blank&quot;&gt;Pincha aquí&lt;/a&gt;</code><br>Identifica <strong>cinco errores o malas prácticas</strong> presentes en esas tres líneas (según el validador W3C, SEO, seguridad y accesibilidad) y escribe cómo quedaría el código corregido.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>Cinco errores o malas prácticas detectados:</strong>\n  <ol>\n    <li><strong>Bloque dentro de párrafo (<code>&lt;p&gt;&lt;div&gt;...</code>):</strong> Un elemento de bloque <code>&lt;div&gt;</code> dentro de un <code>&lt;p&gt;</code> rompe el DOM y da error en el validador W3C.</li>\n    <li><strong>Uso de <code>&lt;b&gt;</code> en lugar de <code>&lt;strong&gt;</code>:</strong> Si se quiere dar importancia semántica a «Digitech» (y no solo estilo visual), debe usarse <code>&lt;strong&gt;</code>.</li>\n    <li><strong>Imagen sin <code>alt</code> y nombre de archivo con espacios:</strong> Falta el atributo obligatorio <code>alt</code> (accesibilidad y validación W3C) y el archivo <code>campus foto.jpg</code> contiene espacios en blanco (mala práctica del Bloque 12).</li>\n    <li><strong>Enlace con <code>target=&quot;_blank&quot;</code> sin <code>rel=&quot;noopener noreferrer&quot;</code>:</strong> Al abrir una pestaña nueva hacia un sitio externo debe incluirse <code>rel=&quot;noopener noreferrer&quot;</code> por seguridad.</li>\n    <li><strong>Texto de enlace «Pincha aquí»:</strong> No es descriptivo fuera de contexto para lectores de pantalla ni para el SEO.</li>\n  </ol>\n</li>\n<li><strong>Código corregido:</strong></li>\n</ul>\n<pre><code>&lt;p&gt;Bienvenidos a &lt;strong&gt;Digitech&lt;/strong&gt;&lt;/p&gt;\n&lt;img src=&quot;img/campus-foto.jpg&quot; alt=&quot;Fachada principal del campus de Digitech&quot;&gt;\n&lt;a href=&quot;https://digitech.es&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Visitar la web oficial de Digitech&lt;/a&gt;</code></pre>"}, {"promptHtml": "<strong>2. Reglas de XML, XSD y Consultas XPath (PDFs de XML y Teoría de XPath):</strong> A partir del documento <code>gimnasio.xml</code> de la teoría de XPath, explica: <strong>(a)</strong> por qué <code>//nombre</code> devuelve más resultados que <code>/gimnasio/rutina/nombre</code>; <strong>(b)</strong> qué diferencia hay entre filtrar por un atributo (<code>rutina[@id=&#x27;RUT001&#x27;]</code>) y filtrar por un elemento hijo (<code>ejercicio[nombre=&#x27;Sentadilla&#x27;]</code>); y <strong>(c)</strong> qué ocurre si un documento XML cumple todas las reglas de etiquetas cerradas y raíz única, pero incumple el orden de una <code>&lt;xs:sequence&gt;</code> de su XSD.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>(a) <code>//nombre</code> frente a <code>/gimnasio/rutina/nombre</code>:</strong> La ruta absoluta <code>/gimnasio/rutina/nombre</code> desciende paso a paso y selecciona únicamente los elementos <code>&lt;nombre&gt;</code> que son hijos directos de <code>&lt;rutina&gt;</code>. En cambio, <code>//nombre</code> busca la etiqueta <code>&lt;nombre&gt;</code> en cualquier nivel de profundidad de todo el árbol, devolviendo tanto los nombres de las rutinas como los nombres de todos los ejercicios.</li>\n<li><strong>(b) Filtro por atributo vs filtro por elemento hijo en un predicado <code>[ ]</code>:</strong> En XPath los atributos llevan siempre el prefijo arroba <code>@</code> (<code>[@id=&#x27;RUT001&#x27;]</code> busca una etiqueta <code>&lt;rutina id=&quot;RUT001&quot;&gt;</code>), mientras que un nombre sin arroba dentro del corchete (<code>[nombre=&#x27;Sentadilla&#x27;]</code>) comprueba el contenido de una etiqueta hija llamada <code>&lt;nombre&gt;</code>.</li>\n<li><strong>(c) Efecto de incumplir <code>&lt;xs:sequence&gt;</code>:</strong> El documento XML sigue estando <strong>bien formado</strong> (porque su sintaxis XML es correcta), pero resulta <strong>inválido</strong> frente a su esquema XSD.</li>\n</ul>"}, {"promptHtml": "<strong>3. Modelado en JSON, Conversión desde XML y Navegación (PDF de JSON - Bloques 1 a 10):</strong> <strong>(a)</strong> Representa en <strong>XML</strong> (usando un atributo para <code>id</code>) y en <strong>JSON</strong> un pedido de una tienda online con estos datos: <code>id</code>: <code>&quot;PED01&quot;</code>, <code>clienteId</code>: <code>&quot;C005&quot;</code>, <code>pagado</code>: <code>true</code>, <code>total</code>: <code>49.90</code>, <code>cuponDescuento</code>: <code>null</code> (sin cupón) y una lista <code>etiquetas</code> con <code>&quot;urgente&quot;</code> y <code>&quot;regalo&quot;</code>. <strong>(b)</strong> Escribe qué ruta usarías en JSON para acceder a la segunda etiqueta (<code>&quot;regalo&quot;</code>) y explica por qué el índice empieza en <code>0</code>.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>(a) Representación en XML y en JSON:</strong></li>\n</ul>\n<pre><code>&lt;pedido id=&quot;PED01&quot;&gt;\n  &lt;clienteId&gt;C005&lt;/clienteId&gt;\n  &lt;pagado&gt;true&lt;/pagado&gt;\n  &lt;total&gt;49.90&lt;/total&gt;\n  &lt;cuponDescuento/&gt;\n  &lt;etiquetas&gt;\n    &lt;etiqueta&gt;urgente&lt;/etiqueta&gt;\n    &lt;etiqueta&gt;regalo&lt;/etiqueta&gt;\n  &lt;/etiquetas&gt;\n&lt;/pedido&gt;</code></pre>\n<pre><code>{\n  &quot;id&quot;: &quot;PED01&quot;,\n  &quot;clienteId&quot;: &quot;C005&quot;,\n  &quot;pagado&quot;: true,\n  &quot;total&quot;: 49.9,\n  &quot;cuponDescuento&quot;: null,\n  &quot;etiquetas&quot;: [&quot;urgente&quot;, &quot;regalo&quot;]\n}</code></pre>\n<ul class=\"task-list\">\n<li><strong>(b) Ruta a la segunda etiqueta:</strong> La ruta es <code>pedido.etiquetas[1]</code>. En los arrays de JSON (a diferencia de XPath, que empieza en <code>[1]</code>), las posiciones están indexadas desde <code>0</code>, por lo que el primer elemento (<code>&quot;urgente&quot;</code>) ocupa el índice <code>[0]</code> y el segundo (<code>&quot;regalo&quot;</code>) ocupa el índice <code>[1]</code>.</li>\n</ul>"}];
+    const t1SolString = "{\n  \"nombre\": \"Clínica Médica Turia Salud\",\n  \"urgenciasActivas\": true,\n  \"plantasEdificio\": 4,\n  \"horario\": {\n    \"apertura\": \"08:00\",\n    \"cierre\": \"21:00\"\n  },\n  \"especialidades\": [\n    \"Cardiología\",\n    \"Traumatología\",\n    \"Dermatología\"\n  ],\n  \"directorMedico\": null\n}";
+    const fullJsonString = "{\n  \"clinica\": {\n    \"nombre\": \"Clínica Médica Turia Salud\",\n    \"urgenciasActivas\": true,\n    \"plantasEdificio\": 4,\n    \"horario\": {\n      \"apertura\": \"08:00\",\n      \"cierre\": \"21:00\"\n    },\n    \"direccion\": {\n      \"calle\": \"Gran Vía Marqués del Turia 32\",\n      \"ciudad\": \"Valencia\",\n      \"codigoPostal\": \"46005\",\n      \"coordenadas\": [\n        39.4661,\n        -0.3688\n      ]\n    },\n    \"contacto\": {\n      \"email\": \"citas@turiasalud.example\",\n      \"telefonos\": [\n        \"963554433\",\n        \"655443322\"\n      ],\n      \"web\": null\n    },\n    \"especialidades\": [\n      \"medicina general\",\n      \"cardiología\",\n      \"dermatología\",\n      \"traumatología\"\n    ],\n    \"medicos\": [\n      {\n        \"id\": \"MED01\",\n        \"nombre\": \"Dra. Navarro\",\n        \"especialidad\": \"Cardiología\",\n        \"numeroColegiado\": 461092,\n        \"tarifaConsulta\": 85.0,\n        \"consultaOnline\": true,\n        \"diasConsulta\": [\n          \"lunes\",\n          \"miércoles\",\n          \"viernes\"\n        ],\n        \"despacho\": {\n          \"planta\": 2,\n          \"puerta\": \"Puerta \\\"2A\\\"\"\n        }\n      },\n      {\n        \"id\": \"MED02\",\n        \"nombre\": \"Dr. Romero\",\n        \"especialidad\": \"Dermatología\",\n        \"numeroColegiado\": 462318,\n        \"tarifaConsulta\": 70.5,\n        \"consultaOnline\": false,\n        \"diasConsulta\": [\n          \"martes\",\n          \"jueves\"\n        ],\n        \"despacho\": {\n          \"planta\": 1,\n          \"puerta\": \"Puerta \\\"1B\\\"\"\n        }\n      },\n      {\n        \"id\": \"MED03\",\n        \"nombre\": \"Dra. Soriano\",\n        \"especialidad\": \"Traumatología\",\n        \"numeroColegiado\": 463801,\n        \"tarifaConsulta\": 90.0,\n        \"consultaOnline\": true,\n        \"diasConsulta\": [],\n        \"despacho\": {\n          \"planta\": 3,\n          \"puerta\": \"Puerta \\\"3C\\\"\"\n        }\n      }\n    ],\n    \"pacientes\": [\n      {\n        \"id\": \"PAC01\",\n        \"nombre\": \"Rosa Blasco\",\n        \"fechaNacimiento\": \"1985-03-14\",\n        \"seguro\": {\n          \"compania\": \"Adeslas\",\n          \"numeroPoliza\": \"POL-88912\"\n        },\n        \"alergias\": [\n          \"látex\",\n          \"polen\"\n        ],\n        \"historial\": [\n          {\n            \"fecha\": \"2026-09-10\",\n            \"diagnostico\": \"Contractura cervical\",\n            \"tratamiento\": {\n              \"medicamento\": \"Ibuprofeno\",\n              \"dosisMg\": 600,\n              \"duracionDias\": 7\n            }\n          }\n        ]\n      },\n      {\n        \"id\": \"PAC02\",\n        \"nombre\": \"Tomás Cano\",\n        \"fechaNacimiento\": \"1972-11-28\",\n        \"seguro\": null,\n        \"alergias\": [],\n        \"historial\": [\n          {\n            \"fecha\": \"2026-06-15\",\n            \"diagnostico\": \"Hipertensión leve\",\n            \"tratamiento\": {\n              \"medicamento\": \"Enalapril\",\n              \"dosisMg\": 20,\n              \"duracionDias\": 90\n            }\n          },\n          {\n            \"fecha\": \"2026-10-02\",\n            \"diagnostico\": \"Hipercolesterolemia\",\n            \"tratamiento\": {\n              \"medicamento\": \"Atorvastatina\",\n              \"dosisMg\": 40,\n              \"duracionDias\": 60\n            }\n          }\n        ]\n      },\n      {\n        \"id\": \"PAC03\",\n        \"nombre\": \"Clara Valls\",\n        \"fechaNacimiento\": \"2000-07-04\",\n        \"seguro\": {\n          \"compania\": \"Sanitas\",\n          \"numeroPoliza\": \"POL-44109\"\n        },\n        \"alergias\": [\n          \"penicilina\"\n        ],\n        \"historial\": []\n      }\n    ],\n    \"citas\": [\n      {\n        \"id\": \"CIT01\",\n        \"pacienteId\": \"PAC02\",\n        \"medicoId\": \"MED01\",\n        \"fecha\": \"2026-11-18\",\n        \"hora\": \"10:30\",\n        \"estado\": \"Confirmada\",\n        \"pagada\": true,\n        \"pruebasAdicionales\": [\n          {\n            \"concepto\": \"Electrocardiograma\",\n            \"precioUnidad\": 35.0,\n            \"cantidad\": 1\n          },\n          {\n            \"concepto\": \"Analítica lipídica\",\n            \"precioUnidad\": 28.5,\n            \"cantidad\": 1\n          }\n        ],\n        \"pago\": {\n          \"metodo\": \"Tarjeta\",\n          \"total\": 148.5,\n          \"desglose\": {\n            \"consulta\": 85.0,\n            \"pruebas\": 63.5\n          }\n        },\n        \"notas\": \"Acudir en ayunas de 8 horas\"\n      },\n      {\n        \"id\": \"CIT02\",\n        \"pacienteId\": \"PAC01\",\n        \"medicoId\": \"MED02\",\n        \"fecha\": \"2026-11-20\",\n        \"hora\": \"17:00\",\n        \"estado\": \"Pendiente\",\n        \"pagada\": false,\n        \"pruebasAdicionales\": [],\n        \"pago\": null,\n        \"notas\": null\n      },\n      {\n        \"id\": \"CIT03\",\n        \"pacienteId\": \"PAC03\",\n        \"medicoId\": \"MED01\",\n        \"fecha\": \"2026-11-25\",\n        \"hora\": \"09:15\",\n        \"estado\": \"Cancelada\",\n        \"pagada\": false,\n        \"pruebasAdicionales\": [],\n        \"pago\": null,\n        \"notas\": \"Cancelada con 48h de antelación\"\n      }\n    ]\n  }\n}";
 
     const list = document.getElementById('questions');
     const qmapGrid = document.getElementById('qmapGrid');

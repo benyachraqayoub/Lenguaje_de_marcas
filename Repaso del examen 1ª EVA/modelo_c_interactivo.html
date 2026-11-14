@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#4c1d95">
-  <title>Modelo C - Examen Oficial Interactivo | Lenguajes de Marcas</title>
+  <title>Modelo C (Intermedio-Alto) - Examen Oficial Interactivo | Lenguajes de Marcas</title>
   <style>
     :root {
       --bg: #f0f4f8;
@@ -807,14 +807,14 @@
       <div class="hero-top">
         <div class="badge-row">
           <span class="eyebrow">Digitech FP · 1.º DAW A</span>
-          <span class="model-pill">MODELO C</span>
+          <span class="model-pill">MODELO C · INTERMEDIO-ALTO</span>
         </div>
         <button type="button" class="theme-btn" id="themeToggle" aria-label="Cambiar tema claro u oscuro">
           <span id="themeIcon">🌙</span> <span id="themeText">Modo oscuro</span>
         </button>
       </div>
       <h1>Lenguajes de Marcas — 1.ª Evaluación</h1>
-      <p class="subtitle">Simulacro interactivo completo: Parte 1 (Test 27 preguntas + 3 Abiertas) y Parte 2 (Caso práctico JSON: Concesionario Albufera Motor)</p>
+      <p class="subtitle">Simulacro interactivo completo: Parte 1 (Test 27 preguntas + 3 Abiertas) y Parte 2 (Caso práctico JSON: Gimnasio Olympia (Rutinas y Socios) · Nivel Intermedio-Alto)</p>
       <div class="meta-chips">
         <span class="meta-chip">⏱️ Parte 1: 30 min (30%)</span>
         <span class="meta-chip">💻 Parte 2: 90 min (50%)</span>
@@ -832,7 +832,7 @@
         </button>
         <button type="button" class="tab-btn" data-tab="tab-prac">
           <span>3. Práctica JSON y Solución</span>
-          <span class="tab-badge">concesionario.json</span>
+          <span class="tab-badge">gimnasio_rutinas.json</span>
         </button>
       </nav>
     </div>
@@ -899,186 +899,109 @@
     <section id="tab-prac" class="tab-panel">
       <div class="card">
         <div class="q-meta">
-          <span class="q-num">PARTE 2 · 90 MINUTOS (50%)</span>
-          <span class="q-topic">Archivo principal: concesionario.json</span>
+          <span class="q-num">PARTE 2 · 90 MINUTOS (50%) · NIVEL INTERMEDIO-ALTO</span>
+          <span class="q-topic">Archivo principal: gimnasio_rutinas.json</span>
         </div>
-        <h3 class="sec-heading">Enunciado — Caso: Concesionario Albufera Motor (modelado de datos en JSON)</h3>
-<p>El concesionario y servicio de alquiler <strong>Albufera Motor</strong> va a implantar un nuevo sistema que intercambia datos en formato JSON. Debes elaborar el archivo <code>concesionario.json</code> con toda la informacion de las tablas adjuntas, organizando adecuadamente objetos, arrays, anidaciones y tipos de datos.</p>
-<p>El archivo tendra un objeto raiz con una unica propiedad <code>concesionario</code> que englobara todo el contenido.</p>
-<h4 class="sub-heading">Informacion del concesionario</h4>
+        <h3 class="sec-heading">Enunciado — Caso: Migración de «gimnasio.xml» a «gimnasio_rutinas.json» (Árbol de Rutinas, Ejercicios y Socios)</h3>
+<p>En la práctica de XPath trabajaste con el árbol XML de <code>gimnasio.xml</code> (que almacena rutinas y sus listas de ejercicios con series y repeticiones). Ahora el <strong>Gimnasio Olympia Valencia</strong> va a migrar ese catálogo de rutinas a formato JSON en el archivo <code>gimnasio_rutinas.json</code>, añadiendo además el registro de socios y el historial de entrenamientos completados para su nueva aplicación móvil.</p>
+<p>El archivo tendrá un objeto raíz con una única propiedad <code>gimnasio</code> que contendrá toda la estructura.</p>
+
+<h4 class="sub-heading">1. Datos del Gimnasio</h4>
 <div class="table-wrap"><table class="data-table"><thead><tr>
 <th>Bloque</th>
 <th>Datos</th>
 </tr></thead><tbody>
 <tr>
 <td><strong>Datos generales</strong></td>
-<td>Nombre: Albufera Motor · Licencias de flota: 25 · Concesionario abierto: sí · Horario entrega: 08:30 · Horario devolución: 20:00</td>
+<td>Nombre: Gimnasio Olympia Valencia · Cuota mensual base: 39,90 EUR · Aforo máximo: 120 · Abierto festivos: no · Nutricionista asignado: aún no tiene (null)</td>
 </tr>
 <tr>
-<td><strong>Direccion</strong></td>
-<td>Pista de Silla km 5, Valencia, código postal 46470 · Coordenadas en el mapa: 39.4125 y -0.3841</td>
+<td><strong>Dirección y Contacto</strong></td>
+<td>Calle Xàtiva 18, Valencia, CP 46002 · Coordenadas: 39.4672 y -0.3765 · Email: info@olympiavlc.example · Teléfonos: 963221100 y 622110099</td>
 </tr>
 <tr>
-<td><strong>Contacto</strong></td>
-<td>Email: flota@albuferamotor.example · Teléfonos: 961223344 y 961223355 · Web: aún no tiene</td>
-</tr>
-<tr>
-<td><strong>Servicios</strong></td>
-<td>alquiler diario, renting, taller propio, asistencia en carretera</td>
+<td><strong>Zonas de entrenamiento</strong></td>
+<td>musculación, peso libre, cardio, estiramientos</td>
 </tr>
 </tbody></table></div>
-<h4 class="sub-heading">Vehiculos</h4>
+
+<h4 class="sub-heading">2. Catálogo de Rutinas y Ejercicios Anidados (Migración directa desde <code>gimnasio.xml</code>)</h4>
+<p style="margin:.2rem 0 .6rem; color:var(--ink-soft);">Cada objeto del array <code>rutinas</code> conserva la estructura jerárquica de <code>gimnasio.xml</code>: tiene <code>id</code>, <code>nombre</code>, <code>nivel</code>, <code>duracionMinutos</code>, un booleano <code>requiereMonitor</code>, un array <code>materialNecesario</code> y un array anidado <code>ejercicios</code> donde cada ejercicio tiene <code>nombre</code>, <code>series</code> (entero) y <code>repeticiones</code> (entero):</p>
 <div class="table-wrap"><table class="data-table"><thead><tr>
-<th>ID</th>
-<th>Num. plaza</th>
-<th>Modelo</th>
-<th>Precio dia</th>
-<th>Plazas</th>
-<th>Disponible</th>
-<th>Ubicacion</th>
-<th>Valoraciones</th>
-<th>Equipamiento</th>
+<th>ID Rutina</th>
+<th>Nombre y Nivel</th>
+<th>Duración / Monitor</th>
+<th>Material necesario</th>
+<th>Lista de Ejercicios Anidados (<code>nombre</code>, <code>series</code> y <code>repeticiones</code>)</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>V10</strong></td>
-<td>10</td>
-<td>Compacto &quot;Eco&quot;</td>
-<td>42,50 EUR</td>
-<td>5</td>
-<td>Sí</td>
-<td>Nave 1 · Zona Norte</td>
-<td>4, 5, 4</td>
-<td>Climatizador, Bluetooth, Control de crucero</td>
+<td><strong>RUT001</strong></td>
+<td>Fuerza tren superior<br><em>(Nivel: Principiante)</em></td>
+<td>45 min<br>Monitor: <strong>No</strong></td>
+<td>banca, barra olímpica, mancuernas</td>
+<td>1. <strong>Press banca:</strong> 4 series x 10 repeticiones<br>2. <strong>Remo con barra:</strong> 4 series x 12 repeticiones<br>3. <strong>Press militar:</strong> 3 series x 10 repeticiones</td>
 </tr>
 <tr>
-<td><strong>V22</strong></td>
-<td>22</td>
-<td>SUV Familiar</td>
-<td>78,00 EUR</td>
-<td>7</td>
-<td>Sí</td>
-<td>Nave 2 · Zona Sur</td>
-<td>5, 5</td>
-<td>Navegador GPS, Cámara 360, Techo panorámico, Bola remolque</td>
+<td><strong>RUT002</strong></td>
+<td>Potencia &quot;Full Body&quot;<br><em>(Nivel: Alto)</em></td>
+<td>60 min<br>Monitor: <strong>Sí</strong></td>
+<td>jaula potencia, discos, kettlebell</td>
+<td>1. <strong>Sentadilla:</strong> 5 series x 5 repeticiones<br>2. <strong>Peso muerto:</strong> 4 series x 6 repeticiones</td>
 </tr>
 <tr>
-<td><strong>V35</strong></td>
-<td>35</td>
-<td>Furgoneta carga</td>
-<td>64,90 EUR</td>
-<td>2</td>
-<td>No</td>
-<td>Nave 1 · Zona Exterior</td>
-<td><em>(ninguna)</em></td>
-<td><em>(ninguno)</em></td>
+<td><strong>RUT003</strong></td>
+<td>Movilidad y Core<br><em>(Nivel: Inicial)</em></td>
+<td>30 min<br>Monitor: <strong>No</strong></td>
+<td><em>(ninguno: solo peso corporal)</em></td>
+<td><em>(En revisión: array de ejercicios vacío)</em></td>
 </tr>
 </tbody></table></div>
-<h4 class="sub-heading">Clientes</h4>
+
+<h4 class="sub-heading">3. Socios y Registro de Sesiones de Entrenamiento</h4>
 <div class="table-wrap"><table class="data-table"><thead><tr>
-<th>ID</th>
-<th>Nombre</th>
-<th>Fecha nacimiento</th>
-<th>Documento</th>
-<th>Club fidelidad</th>
-<th>Preferencias</th>
+<th>ID Socio</th>
+<th>Nombre y Alta</th>
+<th>Ficha médica (Objeto o null)</th>
+<th>Sesiones de entrenamiento registradas (Relación con Rutinas)</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>CL01</strong></td>
-<td>Sofía Martí</td>
-<td>1990-07-18</td>
-<td>DNI 45678901L</td>
-<td>Premium · 850 puntos</td>
-<td>cambio automático, recogida rápida</td>
+<td><strong>SOC01</strong></td>
+<td>Carlos Vidal<br><code>2026-09-01</code></td>
+<td>Revisión apta: <strong>Sí</strong><br>Frecuencia máx.: <code>185</code> ppm</td>
+<td>• <strong>Sesión SES-101:</strong> Rutina <code>RUT001</code> · Fecha: <code>2026-11-03</code> · Completada: <strong>Sí</strong> · Kcal: <code>420</code> · Nota: <code>Subir 2,5 kg en press banca</code><br>• <strong>Sesión SES-102:</strong> Rutina <code>RUT002</code> · Fecha: <code>2026-11-06</code> · Completada: <strong>Sí</strong> · Kcal: <code>580</code> · Nota: <em>(sin notas: null)</em></td>
 </tr>
 <tr>
-<td><strong>CL02</strong></td>
-<td>David Orts</td>
-<td>1984-03-11</td>
-<td>Pasaporte ZP334455</td>
-<td>No pertenece al club</td>
-<td><em>(ninguna)</em></td>
-</tr>
-<tr>
-<td><strong>CL03</strong></td>
-<td>Nadia Haddad</td>
-<td>1998-12-05</td>
-<td>NIE Y9876543W</td>
-<td>Básico · 120 puntos</td>
-<td>vehículo eléctrico o híbrido</td>
+<td><strong>SOC02</strong></td>
+<td>Elena Serra<br><code>2026-10-15</code></td>
+<td><em>Pendiente de entregar (null)</em></td>
+<td>• <strong>Sesión SES-103:</strong> Rutina <code>RUT001</code> · Fecha: <code>2026-11-10</code> · Completada: <strong>No</strong> · Kcal: <em>(no registrada: null)</em> · Nota: <code>Sesión interrumpida a mitad</code></td>
 </tr>
 </tbody></table></div>
-<h4 class="sub-heading">Alquileres</h4>
-<div class="table-wrap"><table class="data-table"><thead><tr>
-<th>ID</th>
-<th>Cliente</th>
-<th>Vehiculo</th>
-<th>Fechas (Recogida / Devolucion)</th>
-<th>Estado</th>
-<th>Pagado</th>
-<th>Extras contratados</th>
-<th>Pago y notas</th>
-</tr></thead><tbody>
-<tr>
-<td><strong>A001</strong></td>
-<td>CL01</td>
-<td>V10</td>
-<td>04/12/2026 al 07/12/2026</td>
-<td>Activo</td>
-<td>Sí</td>
-<td>Seguro todo riesgo 18,00 EUR x 3 · Silla infantil 8,50 EUR x 3</td>
-<td>Tarjeta · vehiculo 127,50 · extras 79,50 · impuestos 43,47 · total 250,47 · Nota: Entrega con depósito lleno</td>
-</tr>
-<tr>
-<td><strong>A002</strong></td>
-<td>CL02</td>
-<td>V22</td>
-<td>18/12/2026 al 21/12/2026</td>
-<td>Pendiente</td>
-<td>No</td>
-<td><em>(ninguno)</em></td>
-<td>Sin pago todavía · sin notas</td>
-</tr>
-<tr>
-<td><strong>A003</strong></td>
-<td>CL03</td>
-<td>V10</td>
-<td>10/01/2027 al 12/01/2027</td>
-<td>Confirmado</td>
-<td>Sí</td>
-<td>Conductor adicional 15,00 EUR x 2</td>
-<td>Transferencia · vehiculo 85,00 · extras 30,00 · impuestos 24,15 · total 139,15 · Nota: Presenta carné internacional</td>
-</tr>
-<tr>
-<td><strong>A004</strong></td>
-<td>CL01</td>
-<td>V22</td>
-<td>01/02/2027 al 03/02/2027</td>
-<td>Cancelado</td>
-<td>No</td>
-<td><em>(ninguno)</em></td>
-<td>Sin pago · Nota: Cancelado con más de 48h de antelación</td>
-</tr>
-</tbody></table></div>
+
 <hr class="divider">
-<h3 class="sec-heading">Tareas a realizar</h3>
+<h3 class="sec-heading">Tareas a realizar (Nivel Intermedio-Alto · Conexión XML/XPath y JSON)</h3>
 <ul class="task-list">
-<li><strong>Tarea 1. Detecta y corrige errores (10 min):</strong> Corrige el siguiente fragmento en <code>fragmento_corregido.json</code> y detalla cada error en <code>respuestas.txt</code>:</li>
+<li><strong>Tarea 1. Detecta y corrige 7 errores (10 min):</strong> El siguiente fragmento contiene <strong>7 errores</strong> (clave sin comillas, comillas simples, coma decimal <code>39,90</code>, número entrecomillado <code>"120"</code>, booleano <code>False</code>, falta de coma separadora entre los dos objetos del array <code>instalaciones</code> más coma final sobrante, y <code>"null"</code> con comillas). Corrígelo en <code>fragmento_corregido.json</code> y explícalos en <code>respuestas.txt</code>:</li>
 </ul>
 <pre><code>{
-  nombre: &#x27;Albufera Motor&#x27;,
-  &quot;licenciasFlota&quot;: &quot;25&quot;,
-  &quot;abierto&quot;: True,
-  &quot;servicios&quot;: [&quot;alquiler diario&quot;, &quot;renting&quot;,],
-  &quot;web&quot;: &quot;null&quot;
+  nombre: &#x27;Gimnasio Olympia Valencia&#x27;,
+  &quot;cuotaBase&quot;: 39,90,
+  &quot;aforoMaximo&quot;: &quot;120&quot;,
+  &quot;abiertoFestivos&quot;: False,
+  &quot;instalaciones&quot;: [
+    { &quot;zona&quot;: &quot;Musculación&quot;, &quot;planta&quot;: 1 }
+    { &quot;zona&quot;: &quot;Cardio&quot;, &quot;planta&quot;: 2 },
+  ],
+  &quot;nutricionista&quot;: &quot;null&quot;
 }</code></pre>
 <ul class="task-list">
-<li><strong>Tarea 2. Estructura base: objetos y tipos (20 min):</strong> En <code>concesionario.json</code>, crea el objeto raiz <code>concesionario</code> con los datos generales, <code>direccion</code> y <code>contacto</code>. Justifica en <code>respuestas.txt</code> los tipos de dato para <code>licenciasFlota</code>, <code>codigoPostal</code> y <code>web</code>.</li>
-<li><strong>Tarea 3. Vehiculos: arrays de objetos y anidacion (20 min):</strong> Anade el array <code>vehiculos</code>. Cada vehiculo tendra <code>id</code>, <code>numeroPlaza</code>, <code>modelo</code>, <code>precioDia</code>, <code>plazas</code>, <code>disponible</code>, el objeto <code>ubicacion</code> (<code>nave</code> y <code>zona</code>), el array <code>equipamiento</code> y el array <code>valoraciones</code>. Cuida el escape de comillas en <code>Compacto &quot;Eco&quot;</code>.</li>
-<li><strong>Tarea 4. Clientes y alquileres: relaciones y jerarquia profunda (30 min):</strong> Anade los arrays <code>clientes</code> (con <code>documento</code> (<code>tipo</code> y <code>numero</code>), <code>fidelidad</code> (<code>nivel</code> y <code>puntos</code>, o <code>null</code>) y <code>preferencias</code>) y <code>alquileres</code> (con <code>clienteId</code>, <code>vehiculoId</code>, objeto <code>fechas</code> (<code>recogida</code> y <code>devolucion</code> en formato <code>AAAA-MM-DD</code>), <code>estado</code>, booleano <code>pagado</code>, array <code>extras</code> (<code>servicio</code>, <code>precioUnidad</code>, <code>cantidad</code>), objeto <code>pago</code> (<code>metodo</code>, <code>total</code> y <code>desglose</code> con <code>vehiculo</code>, <code>extras</code>, <code>impuestos</code>) o <code>null</code>, y <code>notas</code> como texto o <code>null</code>).</li>
-<li><strong>Tarea 5. Comprobacion y navegacion (10 min):</strong> En <code>respuestas.txt</code>, responde:</li>
-<li class="sub-item"><strong>(a)</strong> La ruta completa al importe de <code>vehiculo</code> dentro del desglose del pago del primer alquiler, y la ruta a la <code>cantidad</code> del segundo extra de ese mismo alquiler.</li>
-<li class="sub-item"><strong>(b)</strong> Como averiguarias que alquileres corresponden al vehiculo <code>V10</code>.</li>
-<li class="sub-item"><strong>(c)</strong> Como averiguarias que clientes no pertenecen al club de fidelidad.</li>
+<li><strong>Tarea 2. Estructura general del gimnasio (15 min):</strong> En <code>gimnasio_rutinas.json</code> crea <code>gimnasio</code> con los datos generales, <code>direccion</code>, <code>contacto</code> y el array <code>zonasEntrenamiento</code>.</li>
+<li><strong>Tarea 3. Rutinas y ejercicios anidados (25 min):</strong> Añade el array <code>rutinas</code>. Cada rutina incluirá sus datos, el array <code>materialNecesario</code> y el array de objetos <code>ejercicios</code> (<code>nombre</code>, <code>series</code> y <code>repeticiones</code>). Cuida el escape de comillas en <code>Potencia &quot;Full Body&quot;</code>.</li>
+<li><strong>Tarea 4. Socios y sesiones de entrenamiento (30 min):</strong> Añade el array <code>socios</code>, donde cada socio incluye su objeto <code>fichaMedica</code> (<code>apto</code> y <code>frecuenciaMaxPpm</code>, o bien <code>null</code>) y su array <code>sesiones</code> (cada sesión con <code>id</code>, <code>rutinaId</code>, <code>fecha</code>, <code>completada</code>, <code>kcalQuemadas</code> como número o <code>null</code>, y <code>notas</code> como texto o <code>null</code>).</li>
+<li><strong>Tarea 5. Comparativa de navegación XPath vs JSON (10 min):</strong> En <code>respuestas.txt</code>, responde:</li>
+<li class="sub-item"><strong>(a)</strong> Para obtener las <code>series</code> del ejercicio <code>Sentadilla</code> de la rutina <code>RUT002</code>: escribe primero cómo lo harías en <strong>XPath</strong> sobre <code>gimnasio.xml</code> (PDF de XPath) y debajo escribe la ruta directa en <strong>JSON</strong> sobre tu archivo <code>gimnasio_rutinas.json</code>.</li>
+<li class="sub-item"><strong>(b)</strong> Escribe la ruta JSON para acceder a las <code>kcalQuemadas</code> de la segunda sesión del primer socio (<code>SOC01</code>).</li>
+<li class="sub-item"><strong>(c)</strong> Explica por qué en la rutina <code>RUT003</code> el campo <code>materialNecesario</code> se guarda como <code>[]</code> mientras que en el socio <code>SOC02</code> el campo <code>fichaMedica</code> se guarda como <code>null</code>.</li>
 </ul>
 <hr class="divider">
       </div>
@@ -1086,21 +1009,25 @@
       <!-- Interactive JSON Validator Sandbox -->
       <div class="card">
         <h3 style="margin:0 0 .35rem;">🛠️ Validador y Laboratorio JSON en vivo (Tarea 1 / Pruebas)</h3>
-        <p style="margin:0; color:var(--ink-soft);">Corrige aquí mismo el fragmento con 5 errores de la <strong>Tarea 1</strong> (o pega tu archivo <code>concesionario.json</code>) y comprueba en tiempo real si la sintaxis JSON es válida:</p>
+        <p style="margin:0; color:var(--ink-soft);">Corrige aquí mismo el fragmento con errores de la <strong>Tarea 1</strong> (o pega tu archivo <code>gimnasio_rutinas.json</code>) y comprueba en tiempo real si la sintaxis JSON es válida:</p>
         <div class="validator-grid">
           <textarea id="jsonSandbox" class="code-editor" spellcheck="false">{
-  nombre: &#x27;Albufera Motor&#x27;,
-  &quot;licenciasFlota&quot;: &quot;25&quot;,
-  &quot;abierto&quot;: True,
-  &quot;servicios&quot;: [&quot;alquiler diario&quot;, &quot;renting&quot;,],
-  &quot;web&quot;: &quot;null&quot;
+  nombre: &#x27;Gimnasio Olympia Valencia&#x27;,
+  &quot;cuotaBase&quot;: 39,90,
+  &quot;aforoMaximo&quot;: &quot;120&quot;,
+  &quot;abiertoFestivos&quot;: False,
+  &quot;instalaciones&quot;: [
+    { &quot;zona&quot;: &quot;Musculación&quot;, &quot;planta&quot;: 1 }
+    { &quot;zona&quot;: &quot;Cardio&quot;, &quot;planta&quot;: 2 },
+  ],
+  &quot;nutricionista&quot;: &quot;null&quot;
 }</textarea>
           <div style="display:flex; gap:.6rem; flex-wrap:wrap;">
             <button type="button" class="btn btn-primary" id="validateJsonBtn">Validar y Formatear JSON</button>
             <button type="button" class="btn btn-secondary" id="loadT1SolBtn">Cargar solución Tarea 1</button>
-            <button type="button" class="btn btn-secondary" id="loadFullSolBtn">Cargar concesionario.json completo</button>
+            <button type="button" class="btn btn-secondary" id="loadFullSolBtn">Cargar gimnasio_rutinas.json completo</button>
           </div>
-          <div id="jsonStatus" class="val-status err">Pendiente de validar: el fragmento inicial de la Tarea 1 contiene 5 errores intencionados.</div>
+          <div id="jsonStatus" class="val-status err">Pendiente de validar: el fragmento inicial de la Tarea 1 contiene errores intencionados.</div>
         </div>
       </div>
 
@@ -1117,11 +1044,21 @@
               <button type="button" class="btn btn-secondary copy-btn" data-target="solFrag">Copiar JSON</button>
             </div>
             <pre><code id="solFrag">{
-  &quot;nombre&quot;: &quot;Albufera Motor&quot;,
-  &quot;licenciasFlota&quot;: 25,
-  &quot;abierto&quot;: true,
-  &quot;servicios&quot;: [&quot;alquiler diario&quot;, &quot;renting&quot;],
-  &quot;web&quot;: null
+  &quot;nombre&quot;: &quot;Gimnasio Olympia Valencia&quot;,
+  &quot;cuotaBase&quot;: 39.9,
+  &quot;aforoMaximo&quot;: 120,
+  &quot;abiertoFestivos&quot;: false,
+  &quot;instalaciones&quot;: [
+    {
+      &quot;zona&quot;: &quot;Musculación&quot;,
+      &quot;planta&quot;: 1
+    },
+    {
+      &quot;zona&quot;: &quot;Cardio&quot;,
+      &quot;planta&quot;: 2
+    }
+  ],
+  &quot;nutricionista&quot;: null
 }</code></pre>
           </div>
         </details>
@@ -1133,249 +1070,174 @@
               <span class="q-topic">Texto explicativo</span>
               <button type="button" class="btn btn-secondary copy-btn" data-target="solResp">Copiar texto</button>
             </div>
-            <pre><code id="solResp">=== TAREA 1: ERRORES DETECTADOS ===
-1. nombre: &#x27;Albufera Motor&#x27; -&gt; La propiedad &quot;nombre&quot; no está encerrada entre comillas dobles y el texto del valor utiliza comillas simples en lugar de comillas dobles.
-2. &quot;licenciasFlota&quot;: &quot;25&quot; -&gt; Error de tipo de dato: la cantidad de licencias de flota es una magnitud numérica entera (25), no un texto (&quot;25&quot;).
-3. &quot;abierto&quot;: True -&gt; Error de sintaxis: el booleano debe escribirse íntegramente en minúsculas (true).
-4. &quot;servicios&quot;: [&quot;alquiler diario&quot;, &quot;renting&quot;,] -&gt; Error de sintaxis: sobra la coma después del último elemento del array (&quot;renting&quot;).
-5. &quot;web&quot;: &quot;null&quot; -&gt; Error de tipo de dato: está escrito como cadena de texto (&quot;null&quot;) en vez del literal nulo de JSON (null).
+            <pre><code id="solResp">=== TAREA 1: 7 ERRORES DETECTADOS ===
+1. nombre: &#x27;Gimnasio Olympia Valencia&#x27; -&gt; La propiedad &quot;nombre&quot; no lleva comillas dobles y el valor usa comillas simples en lugar de comillas dobles.
+2. &quot;cuotaBase&quot;: 39,90 -&gt; En JSON los decimales deben escribirse con punto (39.90), nunca con coma.
+3. &quot;aforoMaximo&quot;: &quot;120&quot; -&gt; Error de tipo de dato: el aforo máximo es una cantidad entera (120) de tipo Number, no un texto (&quot;120&quot;).
+4. &quot;abiertoFestivos&quot;: False -&gt; Error de sintaxis: en JSON el booleano falso se escribe en minúsculas (false).
+5. Falta la coma (,) para separar el primer objeto { &quot;zona&quot;: &quot;Musculación&quot;... } del segundo objeto dentro del array &quot;instalaciones&quot;.
+6. Sobra la coma final (trailing comma) después del segundo objeto { &quot;zona&quot;: &quot;Cardio&quot;, &quot;planta&quot;: 2 } del array.
+7. &quot;nutricionista&quot;: &quot;null&quot; -&gt; Error de tipo: debe usarse el literal null sin comillas para representar que aún no tiene nutricionista.
 
-=== TAREA 2: JUSTIFICACION DE TIPOS ===
-- licenciasFlota (number -&gt; 25): Representa una cantidad contable de licencias con la que se puede operar matemáticamente.
-- codigoPostal (string -&gt; &quot;46470&quot;): Es un identificador postal de longitud fija con el que no se hacen cálculos aritméticos y que debe conservar posibles ceros iniciales.
-- web (null -&gt; null): Indica explícitamente que el concesionario carece actualmente de sitio web.
+=== TAREA 5: COMPARATIVA XPATH VS JSON Y NAVEGACIÓN ===
+(a) Obtener las series de &quot;Sentadilla&quot; en la rutina RUT002:
+- En XML usando XPath (filtrando por atributo @id y elemento hijo nombre):
+  //rutina[@id=&#x27;RUT002&#x27;]//ejercicio[nombre=&#x27;Sentadilla&#x27;]/series
+- En JSON usando ruta por índices (recordando que los arrays empiezan en 0, por lo que RUT002 es rutinas[1] y Sentadilla es ejercicios[0]):
+  gimnasio.rutinas[1].ejercicios[0].series
 
-=== TAREA 5: COMPROBACION Y NAVEGACION ===
-(a) Rutas de acceso:
-- Importe de vehiculo del desglose del pago del primer alquiler:
-  concesionario.alquileres[0].pago.desglose.vehiculo
-- Cantidad del segundo extra de ese mismo alquiler:
-  concesionario.alquileres[0].extras[1].cantidad
+(b) Ruta JSON a las kcalQuemadas de la segunda sesión del primer socio (SOC01):
+  gimnasio.socios[0].sesiones[1].kcalQuemadas
 
-(b) Cómo averiguar qué alquileres corresponden al vehículo V10:
-Recorriendo el array concesionario.alquileres y filtrando los objetos cuya propiedad vehiculoId sea igual a &quot;V10&quot;.
-
-(c) Cómo averiguar qué clientes no pertenecen al club de fidelidad:
-Recorriendo el array concesionario.clientes y seleccionando aquellos cuya propiedad fidelidad tenga el valor null.</code></pre>
+(c) Por qué usar [] en materialNecesario (RUT003) frente a null en fichaMedica (SOC02):
+- &quot;materialNecesario&quot;: [] es una lista/colección de elementos que en esa rutina tiene 0 elementos; usar un array vacío mantiene el mismo tipo de dato Array en todas las rutinas.
+- &quot;fichaMedica&quot;: null representa un objeto único que el socio SOC02 aún no ha entregado; usar null indica claramente la ausencia de ese bloque de datos.</code></pre>
           </div>
         </details>
 
         <details class="sol-drawer">
-          <summary>Archivo 3: concesionario.json (Solución completa Tareas 2, 3 y 4)</summary>
+          <summary>Archivo 3: gimnasio_rutinas.json (Solución completa Tareas 2, 3 y 4)</summary>
           <div class="sol-body">
             <div class="copy-bar">
               <span class="q-topic">Modelado jerárquico completo</span>
-              <button type="button" class="btn btn-secondary copy-btn" data-target="solMainJson">Copiar concesionario.json</button>
+              <button type="button" class="btn btn-secondary copy-btn" data-target="solMainJson">Copiar gimnasio_rutinas.json</button>
             </div>
             <pre><code id="solMainJson">{
-  &quot;concesionario&quot;: {
-    &quot;nombre&quot;: &quot;Albufera Motor&quot;,
-    &quot;licenciasFlota&quot;: 25,
-    &quot;abierto&quot;: true,
-    &quot;horario&quot;: {
-      &quot;entrega&quot;: &quot;08:30&quot;,
-      &quot;devolucion&quot;: &quot;20:00&quot;
-    },
+  &quot;gimnasio&quot;: {
+    &quot;nombre&quot;: &quot;Gimnasio Olympia Valencia&quot;,
+    &quot;cuotaBase&quot;: 39.9,
+    &quot;aforoMaximo&quot;: 120,
+    &quot;abiertoFestivos&quot;: false,
+    &quot;nutricionista&quot;: null,
     &quot;direccion&quot;: {
-      &quot;calle&quot;: &quot;Pista de Silla km 5&quot;,
+      &quot;calle&quot;: &quot;Calle Xàtiva 18&quot;,
       &quot;ciudad&quot;: &quot;Valencia&quot;,
-      &quot;codigoPostal&quot;: &quot;46470&quot;,
-      &quot;coordenadas&quot;: [39.4125, -0.3841]
+      &quot;codigoPostal&quot;: &quot;46002&quot;,
+      &quot;coordenadas&quot;: [
+        39.4672,
+        -0.3765
+      ]
     },
     &quot;contacto&quot;: {
-      &quot;email&quot;: &quot;flota@albuferamotor.example&quot;,
-      &quot;telefonos&quot;: [&quot;961223344&quot;, &quot;961223355&quot;],
-      &quot;web&quot;: null
+      &quot;email&quot;: &quot;info@olympiavlc.example&quot;,
+      &quot;telefonos&quot;: [
+        &quot;963221100&quot;,
+        &quot;622110099&quot;
+      ]
     },
-    &quot;servicios&quot;: [
-      &quot;alquiler diario&quot;,
-      &quot;renting&quot;,
-      &quot;taller propio&quot;,
-      &quot;asistencia en carretera&quot;
+    &quot;zonasEntrenamiento&quot;: [
+      &quot;musculación&quot;,
+      &quot;peso libre&quot;,
+      &quot;cardio&quot;,
+      &quot;estiramientos&quot;
     ],
-    &quot;vehiculos&quot;: [
+    &quot;rutinas&quot;: [
       {
-        &quot;id&quot;: &quot;V10&quot;,
-        &quot;numeroPlaza&quot;: 10,
-        &quot;modelo&quot;: &quot;Compacto \&quot;Eco\&quot;&quot;,
-        &quot;precioDia&quot;: 42.5,
-        &quot;plazas&quot;: 5,
-        &quot;disponible&quot;: true,
-        &quot;ubicacion&quot;: {
-          &quot;nave&quot;: 1,
-          &quot;zona&quot;: &quot;Zona Norte&quot;
-        },
-        &quot;equipamiento&quot;: [
-          &quot;Climatizador&quot;,
-          &quot;Bluetooth&quot;,
-          &quot;Control de crucero&quot;
+        &quot;id&quot;: &quot;RUT001&quot;,
+        &quot;nombre&quot;: &quot;Fuerza tren superior&quot;,
+        &quot;nivel&quot;: &quot;Principiante&quot;,
+        &quot;duracionMinutos&quot;: 45,
+        &quot;requiereMonitor&quot;: false,
+        &quot;materialNecesario&quot;: [
+          &quot;banca&quot;,
+          &quot;barra olímpica&quot;,
+          &quot;mancuernas&quot;
         ],
-        &quot;valoraciones&quot;: [4, 5, 4]
-      },
-      {
-        &quot;id&quot;: &quot;V22&quot;,
-        &quot;numeroPlaza&quot;: 22,
-        &quot;modelo&quot;: &quot;SUV Familiar&quot;,
-        &quot;precioDia&quot;: 78.0,
-        &quot;plazas&quot;: 7,
-        &quot;disponible&quot;: true,
-        &quot;ubicacion&quot;: {
-          &quot;nave&quot;: 2,
-          &quot;zona&quot;: &quot;Zona Sur&quot;
-        },
-        &quot;equipamiento&quot;: [
-          &quot;Navegador GPS&quot;,
-          &quot;Cámara 360&quot;,
-          &quot;Techo panorámico&quot;,
-          &quot;Bola remolque&quot;
-        ],
-        &quot;valoraciones&quot;: [5, 5]
-      },
-      {
-        &quot;id&quot;: &quot;V35&quot;,
-        &quot;numeroPlaza&quot;: 35,
-        &quot;modelo&quot;: &quot;Furgoneta carga&quot;,
-        &quot;precioDia&quot;: 64.9,
-        &quot;plazas&quot;: 2,
-        &quot;disponible&quot;: false,
-        &quot;ubicacion&quot;: {
-          &quot;nave&quot;: 1,
-          &quot;zona&quot;: &quot;Zona Exterior&quot;
-        },
-        &quot;equipamiento&quot;: [],
-        &quot;valoraciones&quot;: []
-      }
-    ],
-    &quot;clientes&quot;: [
-      {
-        &quot;id&quot;: &quot;CL01&quot;,
-        &quot;nombre&quot;: &quot;Sofía Martí&quot;,
-        &quot;fechaNacimiento&quot;: &quot;1990-07-18&quot;,
-        &quot;documento&quot;: {
-          &quot;tipo&quot;: &quot;DNI&quot;,
-          &quot;numero&quot;: &quot;45678901L&quot;
-        },
-        &quot;fidelidad&quot;: {
-          &quot;nivel&quot;: &quot;Premium&quot;,
-          &quot;puntos&quot;: 850
-        },
-        &quot;preferencias&quot;: [&quot;cambio automático&quot;, &quot;recogida rápida&quot;]
-      },
-      {
-        &quot;id&quot;: &quot;CL02&quot;,
-        &quot;nombre&quot;: &quot;David Orts&quot;,
-        &quot;fechaNacimiento&quot;: &quot;1984-03-11&quot;,
-        &quot;documento&quot;: {
-          &quot;tipo&quot;: &quot;Pasaporte&quot;,
-          &quot;numero&quot;: &quot;ZP334455&quot;
-        },
-        &quot;fidelidad&quot;: null,
-        &quot;preferencias&quot;: []
-      },
-      {
-        &quot;id&quot;: &quot;CL03&quot;,
-        &quot;nombre&quot;: &quot;Nadia Haddad&quot;,
-        &quot;fechaNacimiento&quot;: &quot;1998-12-05&quot;,
-        &quot;documento&quot;: {
-          &quot;tipo&quot;: &quot;NIE&quot;,
-          &quot;numero&quot;: &quot;Y9876543W&quot;
-        },
-        &quot;fidelidad&quot;: {
-          &quot;nivel&quot;: &quot;Básico&quot;,
-          &quot;puntos&quot;: 120
-        },
-        &quot;preferencias&quot;: [&quot;vehículo eléctrico o híbrido&quot;]
-      }
-    ],
-    &quot;alquileres&quot;: [
-      {
-        &quot;id&quot;: &quot;A001&quot;,
-        &quot;clienteId&quot;: &quot;CL01&quot;,
-        &quot;vehiculoId&quot;: &quot;V10&quot;,
-        &quot;fechas&quot;: {
-          &quot;recogida&quot;: &quot;2026-12-04&quot;,
-          &quot;devolucion&quot;: &quot;2026-12-07&quot;
-        },
-        &quot;estado&quot;: &quot;Activo&quot;,
-        &quot;pagado&quot;: true,
-        &quot;extras&quot;: [
+        &quot;ejercicios&quot;: [
           {
-            &quot;servicio&quot;: &quot;Seguro todo riesgo&quot;,
-            &quot;precioUnidad&quot;: 18.0,
-            &quot;cantidad&quot;: 3
+            &quot;nombre&quot;: &quot;Press banca&quot;,
+            &quot;series&quot;: 4,
+            &quot;repeticiones&quot;: 10
           },
           {
-            &quot;servicio&quot;: &quot;Silla infantil&quot;,
-            &quot;precioUnidad&quot;: 8.5,
-            &quot;cantidad&quot;: 3
-          }
-        ],
-        &quot;pago&quot;: {
-          &quot;metodo&quot;: &quot;Tarjeta&quot;,
-          &quot;total&quot;: 250.47,
-          &quot;desglose&quot;: {
-            &quot;vehiculo&quot;: 127.5,
-            &quot;extras&quot;: 79.5,
-            &quot;impuestos&quot;: 43.47
-          }
-        },
-        &quot;notas&quot;: &quot;Entrega con depósito lleno&quot;
-      },
-      {
-        &quot;id&quot;: &quot;A002&quot;,
-        &quot;clienteId&quot;: &quot;CL02&quot;,
-        &quot;vehiculoId&quot;: &quot;V22&quot;,
-        &quot;fechas&quot;: {
-          &quot;recogida&quot;: &quot;2026-12-18&quot;,
-          &quot;devolucion&quot;: &quot;2026-12-21&quot;
-        },
-        &quot;estado&quot;: &quot;Pendiente&quot;,
-        &quot;pagado&quot;: false,
-        &quot;extras&quot;: [],
-        &quot;pago&quot;: null,
-        &quot;notas&quot;: null
-      },
-      {
-        &quot;id&quot;: &quot;A003&quot;,
-        &quot;clienteId&quot;: &quot;CL03&quot;,
-        &quot;vehiculoId&quot;: &quot;V10&quot;,
-        &quot;fechas&quot;: {
-          &quot;recogida&quot;: &quot;2027-01-10&quot;,
-          &quot;devolucion&quot;: &quot;2027-01-12&quot;
-        },
-        &quot;estado&quot;: &quot;Confirmado&quot;,
-        &quot;pagado&quot;: true,
-        &quot;extras&quot;: [
+            &quot;nombre&quot;: &quot;Remo con barra&quot;,
+            &quot;series&quot;: 4,
+            &quot;repeticiones&quot;: 12
+          },
           {
-            &quot;servicio&quot;: &quot;Conductor adicional&quot;,
-            &quot;precioUnidad&quot;: 15.0,
-            &quot;cantidad&quot;: 2
+            &quot;nombre&quot;: &quot;Press militar&quot;,
+            &quot;series&quot;: 3,
+            &quot;repeticiones&quot;: 10
           }
-        ],
-        &quot;pago&quot;: {
-          &quot;metodo&quot;: &quot;Transferencia&quot;,
-          &quot;total&quot;: 139.15,
-          &quot;desglose&quot;: {
-            &quot;vehiculo&quot;: 85.0,
-            &quot;extras&quot;: 30.0,
-            &quot;impuestos&quot;: 24.15
-          }
-        },
-        &quot;notas&quot;: &quot;Presenta carné internacional&quot;
+        ]
       },
       {
-        &quot;id&quot;: &quot;A004&quot;,
-        &quot;clienteId&quot;: &quot;CL01&quot;,
-        &quot;vehiculoId&quot;: &quot;V22&quot;,
-        &quot;fechas&quot;: {
-          &quot;recogida&quot;: &quot;2027-02-01&quot;,
-          &quot;devolucion&quot;: &quot;2027-02-03&quot;
+        &quot;id&quot;: &quot;RUT002&quot;,
+        &quot;nombre&quot;: &quot;Potencia \&quot;Full Body\&quot;&quot;,
+        &quot;nivel&quot;: &quot;Alto&quot;,
+        &quot;duracionMinutos&quot;: 60,
+        &quot;requiereMonitor&quot;: true,
+        &quot;materialNecesario&quot;: [
+          &quot;jaula potencia&quot;,
+          &quot;discos&quot;,
+          &quot;kettlebell&quot;
+        ],
+        &quot;ejercicios&quot;: [
+          {
+            &quot;nombre&quot;: &quot;Sentadilla&quot;,
+            &quot;series&quot;: 5,
+            &quot;repeticiones&quot;: 5
+          },
+          {
+            &quot;nombre&quot;: &quot;Peso muerto&quot;,
+            &quot;series&quot;: 4,
+            &quot;repeticiones&quot;: 6
+          }
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;RUT003&quot;,
+        &quot;nombre&quot;: &quot;Movilidad y Core&quot;,
+        &quot;nivel&quot;: &quot;Inicial&quot;,
+        &quot;duracionMinutos&quot;: 30,
+        &quot;requiereMonitor&quot;: false,
+        &quot;materialNecesario&quot;: [],
+        &quot;ejercicios&quot;: []
+      }
+    ],
+    &quot;socios&quot;: [
+      {
+        &quot;id&quot;: &quot;SOC01&quot;,
+        &quot;nombre&quot;: &quot;Carlos Vidal&quot;,
+        &quot;fechaAlta&quot;: &quot;2026-09-01&quot;,
+        &quot;fichaMedica&quot;: {
+          &quot;apto&quot;: true,
+          &quot;frecuenciaMaxPpm&quot;: 185
         },
-        &quot;estado&quot;: &quot;Cancelado&quot;,
-        &quot;pagado&quot;: false,
-        &quot;extras&quot;: [],
-        &quot;pago&quot;: null,
-        &quot;notas&quot;: &quot;Cancelado con más de 48h de antelación&quot;
+        &quot;sesiones&quot;: [
+          {
+            &quot;id&quot;: &quot;SES-101&quot;,
+            &quot;rutinaId&quot;: &quot;RUT001&quot;,
+            &quot;fecha&quot;: &quot;2026-11-03&quot;,
+            &quot;completada&quot;: true,
+            &quot;kcalQuemadas&quot;: 420,
+            &quot;notas&quot;: &quot;Subir 2,5 kg en press banca&quot;
+          },
+          {
+            &quot;id&quot;: &quot;SES-102&quot;,
+            &quot;rutinaId&quot;: &quot;RUT002&quot;,
+            &quot;fecha&quot;: &quot;2026-11-06&quot;,
+            &quot;completada&quot;: true,
+            &quot;kcalQuemadas&quot;: 580,
+            &quot;notas&quot;: null
+          }
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;SOC02&quot;,
+        &quot;nombre&quot;: &quot;Elena Serra&quot;,
+        &quot;fechaAlta&quot;: &quot;2026-10-15&quot;,
+        &quot;fichaMedica&quot;: null,
+        &quot;sesiones&quot;: [
+          {
+            &quot;id&quot;: &quot;SES-103&quot;,
+            &quot;rutinaId&quot;: &quot;RUT001&quot;,
+            &quot;fecha&quot;: &quot;2026-11-10&quot;,
+            &quot;completada&quot;: false,
+            &quot;kcalQuemadas&quot;: null,
+            &quot;notas&quot;: &quot;Sesión interrumpida a mitad&quot;
+          }
+        ]
       }
     ]
   }
@@ -1387,14 +1249,14 @@ Recorriendo el array concesionario.clientes y seleccionando aquellos cuya propie
   </main>
 
   <footer>
-    Modelo C Interactivo · Desarrollo de Aplicaciones Web (DAW) — Lenguajes de Marcas · Digitech FP
+    Modelo C Interactivo (Intermedio-Alto) · Desarrollo de Aplicaciones Web (DAW) — Lenguajes de Marcas · Digitech FP
   </footer>
 
   <script>
-    const questions = [{"number": 1, "topic": "HTML5 & Accesibilidad", "promptHtml": "En una web de recetas, el titulo principal es <code>&lt;h1&gt;</code> «Cocina Mediterranea», el bloque de entrantes es <code>&lt;h2&gt;</code> «Ensaladas» y cada receta dentro de «Ensaladas» se marca con <code>&lt;h5&gt;</code> «Ensalada Cesar» para que la letra salga pequena. ¿Que problema presenta?", "bodyHtml": "", "options": [{"letter": "A", "html": "Ninguno, porque <code>&lt;h5&gt;</code> esta dentro del rango permitido de <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>."}, {"letter": "B", "html": "Se saltan los niveles <code>&lt;h3&gt;</code> y <code>&lt;h4&gt;</code>, deteriorando la estructura semantica del documento para tecnologias de asistencia y motores de busqueda."}, {"letter": "C", "html": "Las etiquetas <code>&lt;h5&gt;</code> solo pueden utilizarse en el <code>&lt;footer&gt;</code>."}, {"letter": "D", "html": "HTML5 no permite usar mas de dos niveles de encabezado en la misma pagina."}], "answer": "B"}, {"number": 2, "topic": "HTML5 & Accesibilidad", "promptHtml": "¿Por que se recomienda anadir <code>rel=&quot;noopener noreferrer&quot;</code> cuando un enlace lleva <code>target=&quot;_blank&quot;</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "Para que la pagina externa cargue sin imagenes y consuma menos datos."}, {"letter": "B", "html": "Por seguridad y privacidad: evita que la pagina abierta pueda acceder al objeto <code>window.opener</code> de la pestana original."}, {"letter": "C", "html": "Para obligar al navegador a abrir el enlace en la misma pestana."}, {"letter": "D", "html": "Para que los buscadores pongan el texto del enlace en negrita."}], "answer": "B"}, {"number": 3, "topic": "HTML5 & Accesibilidad", "promptHtml": "¿Cual de los siguientes enlaces sigue las recomendaciones de accesibilidad para lectores de pantalla?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;a href=&quot;bases-concurso.html&quot;&gt;Consultar las bases legales del concurso&lt;/a&gt;</code>"}, {"letter": "B", "html": "<code>&lt;a href=&quot;bases-concurso.html&quot;&gt;Aqui&lt;/a&gt;</code>"}, {"letter": "C", "html": "<code>&lt;a href=&quot;bases-concurso.html&quot;&gt;Link&lt;/a&gt;</code>"}, {"letter": "D", "html": "<code>&lt;a href=&quot;bases-concurso.html&quot;&gt;Ver&lt;/a&gt;</code>"}], "answer": "A"}, {"number": 4, "topic": "HTML5 & Accesibilidad", "promptHtml": "Quieres marcar en un aviso de seguridad la palabra «Peligro» como de maxima importancia semantica y dar enfasis de lectura a la palabra «inmediatamente». ¿Que opcion es la adecuada?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;i&gt;Peligro&lt;/i&gt;</code> y <code>&lt;b&gt;inmediatamente&lt;/b&gt;</code>"}, {"letter": "B", "html": "<code>&lt;strong&gt;Peligro&lt;/strong&gt;</code> y <code>&lt;em&gt;inmediatamente&lt;/em&gt;</code>"}, {"letter": "C", "html": "<code>&lt;b&gt;Peligro&lt;/b&gt;</code> y <code>&lt;em&gt;inmediatamente&lt;/em&gt;</code>"}, {"letter": "D", "html": "<code>&lt;mark&gt;Peligro&lt;/mark&gt;</code> y <code>&lt;small&gt;inmediatamente&lt;/small&gt;</code>"}], "answer": "B"}, {"number": 5, "topic": "HTML5 & Accesibilidad", "promptHtml": "¿Para que sirve incluir <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code> dentro de la seccion <code>&lt;head&gt;</code> de un documento HTML?", "bodyHtml": "", "options": [{"letter": "A", "html": "Para que la pagina se adapte automaticamente al ancho de las pantallas moviles."}, {"letter": "B", "html": "Para definir el idioma espanol como idioma de traduccion automatica."}, {"letter": "C", "html": "Para indicar la codificacion de caracteres y que simbolos como <code>ñ</code>, tildes o <code>€</code> se muestren correctamente."}, {"letter": "D", "html": "Para enlazar el archivo con un esquema de validacion XML."}], "answer": "C"}, {"number": 6, "topic": "HTML5 & Accesibilidad", "promptHtml": "Analiza el siguiente codigo HTML. ¿Por que es estructuralmente incorrecto?", "bodyHtml": "<pre><code class=\"lang-html\">&lt;ul&gt;\n  &lt;li&gt;Perifericos&lt;/li&gt;\n  &lt;li&gt;Componentes&lt;/li&gt;\n  &lt;ol&gt;\n    &lt;li&gt;Procesadores&lt;/li&gt;\n    &lt;li&gt;Tarjetas graficas&lt;/li&gt;\n  &lt;/ol&gt;\n&lt;/ul&gt;</code></pre>", "options": [{"letter": "A", "html": "Porque no se puede combinar nunca una lista <code>&lt;ol&gt;</code> con una <code>&lt;ul&gt;</code> en el mismo documento."}, {"letter": "B", "html": "Porque la sublista <code>&lt;ol&gt;</code> esta colocada como hija directa de <code>&lt;ul&gt;</code>, cuando deberia estar anidada dentro del <code>&lt;li&gt;</code> correspondiente («Componentes»)."}, {"letter": "C", "html": "Porque <code>&lt;ol&gt;</code> solo acepta dos elementos como maximo."}, {"letter": "D", "html": "Porque falta la etiqueta <code>&lt;list&gt;</code> envolviendo todo el bloque."}], "answer": "B"}, {"number": 7, "topic": "HTML5 & Accesibilidad", "promptHtml": "En un periodico digital quieres etiquetar una noticia independiente (con su titular, texto y autor) que podria redistribuirse por si sola en un lector de noticias, situada dentro de la zona principal de la pagina. ¿Que combinacion semantica encaja mejor?", "bodyHtml": "", "options": [{"letter": "A", "html": "Un <code>&lt;article&gt;</code> situado dentro de <code>&lt;main&gt;</code>."}, {"letter": "B", "html": "Un <code>&lt;nav&gt;</code> situado dentro de <code>&lt;footer&gt;</code>."}, {"letter": "C", "html": "Un <code>&lt;aside&gt;</code> que contenga tres etiquetas <code>&lt;header&gt;</code>."}, {"letter": "D", "html": "Un <code>&lt;p&gt;</code> que envuelva a toda la pagina web."}], "answer": "A"}, {"number": 8, "topic": "HTML5 & Accesibilidad", "promptHtml": "¿Cual de estos fragmentos de codigo HTML es valido y respeta el anidamiento correcto?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;p&gt;Curso de &lt;strong&gt;Desarrollo &lt;em&gt;Web&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;</code>"}, {"letter": "B", "html": "<code>&lt;a href=&quot;index.html&quot;&gt;&lt;p&gt;Volver al inicio&lt;/a&gt;&lt;/p&gt;</code>"}, {"letter": "C", "html": "<code>&lt;p&gt;Curso de &lt;strong&gt;Desarrollo&lt;/strong&gt; &lt;em&gt;Web&lt;/em&gt;.&lt;/p&gt;</code>"}, {"letter": "D", "html": "<code>&lt;ul&gt;&lt;p&gt;Elemento de lista&lt;/p&gt;&lt;/ul&gt;</code>"}], "answer": "C"}, {"number": 9, "topic": "HTML5 & Accesibilidad", "promptHtml": "En un formulario de contacto hay tres casillas <code>&lt;input type=&quot;radio&quot;&gt;</code> para elegir la franja horaria de llamada («Manana», «Mediodia», «Tarde»), cada una con <code>name=&quot;franja1&quot;</code>, <code>name=&quot;franja2&quot;</code> y <code>name=&quot;franja3&quot;</code>. ¿Que ocurrira al usarlo?", "bodyHtml": "", "options": [{"letter": "A", "html": "El navegador mostrara un error y no dejara enviar el formulario."}, {"letter": "B", "html": "Solo se podra elegir «Manana» por ser la primera."}, {"letter": "C", "html": "Funcionara correctamente como seleccion unica porque los <code>name</code> son diferentes."}, {"letter": "D", "html": "El usuario podra marcar las tres opciones a la vez y no podra desmarcarlas porque tienen distinto atributo <code>name</code>."}], "answer": "D"}, {"number": 10, "topic": "XML, XSD & XPath", "promptHtml": "¿Cual de estos fragmentos XML esta bien formado?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;vehiculo&gt;&lt;marca&gt;Seat&lt;/marca&gt;&lt;modelo&gt;Ibiza&lt;/modelo&gt;</code>"}, {"letter": "B", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;vehiculo matricula=&quot;1234BCD&quot;&gt;&lt;marca&gt;Seat&lt;/marca&gt;&lt;modelo&gt;Ibiza&lt;/modelo&gt;&lt;/vehiculo&gt;</code>"}, {"letter": "C", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;vehiculo&gt;&lt;marca&gt;Seat&lt;/marca&gt;&lt;/vehiculo&gt;&lt;vehiculo&gt;&lt;marca&gt;Ford&lt;/marca&gt;&lt;/vehiculo&gt;</code>"}, {"letter": "D", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;vehiculo&gt;&lt;marca&gt;Seat&lt;modelo&gt;Ibiza&lt;/marca&gt;&lt;/modelo&gt;&lt;/vehiculo&gt;</code>"}], "answer": "B"}, {"number": 11, "topic": "XML, XSD & XPath", "promptHtml": "Un archivo <code>facturas.xml</code> cierra todas sus etiquetas correctamente y tiene una unica raiz, pero incluye el elemento <code>&lt;descuento&gt;10&lt;/descuento&gt;</code>, que no ha sido declarado en su archivo <code>facturas.xsd</code>. ¿Cual es su estado?", "bodyHtml": "", "options": [{"letter": "A", "html": "Esta mal formado y es invalido."}, {"letter": "B", "html": "Es valido, pero esta mal formado."}, {"letter": "C", "html": "Esta bien formado, pero es invalido respecto al XSD."}, {"letter": "D", "html": "Es tanto bien formado como valido, porque XML permite anadir etiquetas libres."}], "answer": "C"}, {"number": 12, "topic": "XML, XSD & XPath", "promptHtml": "En <code>concesionario.xml</code> se registran los <code>vehiculos</code> y las <code>revisiones</code> de taller. Un vehiculo pasa muchas revisiones a lo largo de los anos. ¿Como se disena correctamente la relacion?", "bodyHtml": "", "options": [{"letter": "A", "html": "Duplicando todos los datos tecnicos del vehiculo (marca, modelo, bastidor, cilindrada, color) dentro de cada revision."}, {"letter": "B", "html": "Almacenando los datos del vehiculo una sola vez en <code>vehiculos</code> con un <code>id</code>, e incluyendo solo la referencia <code>vehiculoId</code> en cada revision."}, {"letter": "C", "html": "Poniendo solo el color del coche en la revision para identificarlo."}, {"letter": "D", "html": "Creando una etiqueta distinta por cada matricula (<code>&lt;coche1234&gt;</code>, <code>&lt;coche5678&gt;</code>)."}], "answer": "B"}, {"number": 13, "topic": "XML, XSD & XPath", "promptHtml": "¿Cual es la diferencia fundamental de proposito entre HTML y XML?", "bodyHtml": "", "options": [{"letter": "A", "html": "HTML esta disenado para almacenar y transportar datos estructurados; XML sirve para maquetar paginas web."}, {"letter": "B", "html": "XML es la version moderna que ha sustituido por completo a HTML en los navegadores."}, {"letter": "C", "html": "HTML distingue entre mayusculas y minusculas en las etiquetas y XML no."}, {"letter": "D", "html": "HTML se centra en presentar y estructurar contenido en la web con etiquetas predefinidas, mientras que XML permite definir etiquetas propias para estructurar y transportar datos segun su significado."}], "answer": "D"}, {"number": 14, "topic": "XML, XSD & XPath", "promptHtml": "Si un esquema XSD define un elemento complejo mediante <code>&lt;xs:sequence&gt;</code> con los hijos <code>calle</code>, <code>numero</code> y <code>ciudad</code> (en ese orden), ¿que ocurre si un XML pone primero <code>ciudad</code> y luego <code>calle</code> y <code>numero</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "El documento XML es invalido porque <code>&lt;xs:sequence&gt;</code> exige respetar estrictamente el orden declarado."}, {"letter": "B", "html": "El documento XML pasa a estar mal formado."}, {"letter": "C", "html": "El documento XML es valido porque estan presentes los tres elementos obligatorios."}, {"letter": "D", "html": "El validador reordena automaticamente las etiquetas del XML."}], "answer": "A"}, {"number": 15, "topic": "XML, XSD & XPath", "promptHtml": "En un XSD aparece <code>&lt;xs:element name=&quot;extra&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;3&quot;/&gt;</code>. ¿Que significa para el XML?", "bodyHtml": "", "options": [{"letter": "A", "html": "Que el elemento <code>&lt;extra&gt;</code> debe aparecer obligatoriamente 3 veces."}, {"letter": "B", "html": "Que el elemento <code>&lt;extra&gt;</code> es opcional (puede no aparecer) y como maximo puede repetirse 3 veces seguidas."}, {"letter": "C", "html": "Que el texto dentro de <code>&lt;extra&gt;</code> debe tener entre 0 y 3 letras."}, {"letter": "D", "html": "Que el elemento <code>&lt;extra&gt;</code> puede repetirse un numero ilimitado de veces."}], "answer": "B"}, {"number": 16, "topic": "XML, XSD & XPath", "promptHtml": "En el XSD de un catalogo se define <code>&lt;xs:attribute name=&quot;codigo&quot; type=&quot;xs:string&quot; use=&quot;required&quot;/&gt;</code> para el elemento <code>&lt;producto&gt;</code>. Si un <code>&lt;producto&gt;</code> en el XML no lleva el atributo <code>codigo</code>, ¿que ocurre?", "bodyHtml": "", "options": [{"letter": "A", "html": "El XML deja de estar bien formado porque falta un atributo."}, {"letter": "B", "html": "Es valido si el producto tiene un elemento hijo <code>&lt;nombre&gt;</code>."}, {"letter": "C", "html": "El XML sigue estando bien formado, pero resulta invalido al validar contra el XSD."}, {"letter": "D", "html": "El navegador no puede abrir el archivo como texto."}], "answer": "C"}, {"number": 17, "topic": "XML, XSD & XPath", "promptHtml": "En <code>empresa.xml</code> hay 4 elementos <code>&lt;departamento&gt;</code> (cada uno con un hijo <code>&lt;responsable&gt;</code>) y 10 elementos <code>&lt;proyecto&gt;</code> repartidos dentro de los departamentos (cada proyecto tambien tiene un hijo <code>&lt;responsable&gt;</code>). ¿Cuantos nodos devuelve la consulta XPath <code>/empresa/departamento/responsable</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "14 nodos (todos los responsables del documento)."}, {"letter": "B", "html": "4 nodos (unicamente los hijos directos <code>responsable</code> de cada <code>departamento</code>)."}, {"letter": "C", "html": "10 nodos (solo los responsables de los proyectos)."}, {"letter": "D", "html": "0 nodos, porque falta poner <code>//</code> al principio."}], "answer": "B"}, {"number": 18, "topic": "XML, XSD & XPath", "promptHtml": "Dada la estructura XML <code>/concesionario/vehiculo[@id=&#x27;V01&#x27;]/equipamiento/item[categoria=&#x27;Seguridad&#x27;]/nombre</code>, ¿que devuelve esta ruta XPath?", "bodyHtml": "", "options": [{"letter": "A", "html": "El nombre de los items de equipamiento cuya categoria (elemento hijo) es <code>&#x27;Seguridad&#x27;</code>, pertenecientes al vehiculo con atributo <code>id=&#x27;V01&#x27;</code>."}, {"letter": "B", "html": "Todos los vehiculos que tienen el atributo <code>categoria=&#x27;Seguridad&#x27;</code>."}, {"letter": "C", "html": "El atributo <code>nombre</code> del vehiculo <code>&#x27;V01&#x27;</code>."}, {"letter": "D", "html": "Los items de equipamiento cuyo atributo <code>@categoria</code> es <code>&#x27;Seguridad&#x27;</code>."}], "answer": "A"}, {"number": 19, "topic": "XML, XSD & XPath", "promptHtml": "En un archivo XSD necesitas que <code>&lt;unidades&gt;</code> solo admita numeros enteros sin decimales y <code>&lt;importeTotal&gt;</code> admita numeros con decimales. ¿Que tipos de datos XSD debes asignar?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>xs:number</code> para ambos."}, {"letter": "B", "html": "<code>xs:string</code> para <code>unidades</code> y <code>xs:floatString</code> para <code>importeTotal</code>."}, {"letter": "C", "html": "<code>xs:boolean</code> para <code>unidades</code> y <code>xs:decimal</code> para <code>importeTotal</code>."}, {"letter": "D", "html": "<code>xs:integer</code> para <code>unidades</code> y <code>xs:decimal</code> para <code>importeTotal</code>."}], "answer": "D"}, {"number": 20, "topic": "JSON & Modelado", "promptHtml": "¿Cual de los siguientes fragmentos cumple estrictamente la sintaxis de JSON?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>{ &quot;modelo&quot;: &quot;Corsa&quot;, &quot;electrico&quot;: true, &quot;revisiones&quot;: [2024, 2025], &quot;incidencias&quot;: null }</code>"}, {"letter": "B", "html": "<code>{ &quot;modelo&quot;: &quot;Corsa&quot;, &quot;electrico&quot;: TRUE, &quot;revisiones&quot;: [2024, 2025], &quot;incidencias&quot;: null }</code>"}, {"letter": "C", "html": "<code>{ &quot;modelo&quot;: &#x27;Corsa&#x27;, &quot;electrico&quot;: true, &quot;revisiones&quot;: (2024, 2025) }</code>"}, {"letter": "D", "html": "<code>{ modelo: &quot;Corsa&quot;, electrico: true, incidencias: NULL }</code>"}], "answer": "A"}, {"number": 21, "topic": "JSON & Modelado", "promptHtml": "En un JSON de inventario se escribe <code>&quot;precio&quot;: &quot;45.90&quot;</code> en lugar de <code>&quot;precio&quot;: 45.90</code>. ¿Que implicacion tiene?", "bodyHtml": "", "options": [{"letter": "A", "html": "Ninguna, en JSON los numeros con decimales deben ir siempre entre comillas dobles."}, {"letter": "B", "html": "El JSON es invalido porque el punto decimal no esta permitido dentro de comillas."}, {"letter": "C", "html": "El JSON es valido, pero <code>&quot;45.90&quot;</code> se trata como texto (<code>string</code>), por lo que una aplicacion tendria que convertirlo a numero antes de sumarlo o multiplicarlo."}, {"letter": "D", "html": "VS Code lo borrara automaticamente al guardar el archivo."}], "answer": "C"}, {"number": 22, "topic": "JSON & Modelado", "promptHtml": "Un vehiculo de alquiler puede tener varias incidencias registradas, y de cada una queremos almacenar <code>fecha</code>, <code>descripcion</code> y <code>costeReparacion</code>. ¿Como debe modelarse la propiedad <code>&quot;incidencias&quot;</code> en JSON?", "bodyHtml": "", "options": [{"letter": "A", "html": "Como un booleano <code>&quot;incidencias&quot;: true</code>."}, {"letter": "B", "html": "Como un unico objeto repitiendo tres veces las mismas claves <code>fecha</code>, <code>descripcion</code> y <code>costeReparacion</code>."}, {"letter": "C", "html": "Como tres propiedades sueltas: <code>&quot;incidencia1&quot;</code>, <code>&quot;incidencia2&quot;</code> e <code>&quot;incidencia3&quot;</code>."}, {"letter": "D", "html": "Como un array de objetos, donde cada objeto contiene <code>fecha</code>, <code>descripcion</code> y <code>costeReparacion</code>."}], "answer": "D"}, {"number": 23, "topic": "JSON & Modelado", "promptHtml": "Dado el siguiente JSON, ¿que expresion accede a <code>&quot;Automático&quot;</code>?", "bodyHtml": "<pre><code class=\"lang-json\">{\n  &quot;flota&quot;: {\n    &quot;coches&quot;: [\n      { &quot;matricula&quot;: &quot;1111AAA&quot;, &quot;extras&quot;: [&quot;GPS&quot;, &quot;Techo solar&quot;] },\n      { &quot;matricula&quot;: &quot;2222BBB&quot;, &quot;extras&quot;: [&quot;Sensores&quot;, &quot;Automático&quot;, &quot;Asientos calefactables&quot;] }\n    ]\n  }\n}</code></pre>", "options": [{"letter": "A", "html": "<code>flota.coches[2].extras[2]</code>"}, {"letter": "B", "html": "<code>flota.coches[1].extras[1]</code>"}, {"letter": "C", "html": "<code>flota.coches[1].extras[2]</code>"}, {"letter": "D", "html": "<code>flota.coches[0].extras[1]</code>"}], "answer": "B"}, {"number": 24, "topic": "JSON & Modelado", "promptHtml": "Tienes un array JSON <code>alquileres</code>, donde cada objeto incluye <code>id</code>, <code>vehiculoId</code> y <code>clienteId</code>. ¿Como puedes saber cuantas veces se ha alquilado el vehiculo <code>&quot;V02&quot;</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "Mirando el elemento <code>alquileres[2]</code>."}, {"letter": "B", "html": "Recorriendo el array <code>alquileres</code> y seleccionando los objetos cuya propiedad <code>vehiculoId</code> sea <code>&quot;V02&quot;</code>."}, {"letter": "C", "html": "Buscando en <code>alquileres</code> el objeto cuyo <code>id</code> sea <code>&quot;V02&quot;</code>."}, {"letter": "D", "html": "No es posible saberlo si los datos del vehiculo no estan copiados dentro del alquiler."}], "answer": "B"}, {"number": 25, "topic": "JSON & Modelado", "promptHtml": "Segun el diseno de una API en JSON, la propiedad <code>descuento</code> de un cliente debe ser un objeto con <code>tipo</code> y <code>porcentaje</code>, o bien indicar ausencia de valor si no tiene descuento. ¿Como se escribe cuando no tiene descuento?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&quot;descuento&quot;: &quot;ninguno&quot;</code>"}, {"letter": "B", "html": "<code>&quot;descuento&quot;: []</code>"}, {"letter": "C", "html": "<code>&quot;descuento&quot;: null</code>"}, {"letter": "D", "html": "<code>&quot;descuento&quot;: false</code>"}], "answer": "C"}, {"number": 26, "topic": "JSON & Modelado", "promptHtml": "Se desea convertir a JSON el elemento XML <code>&lt;envio codigo=&quot;E99&quot;&gt;&lt;peso&gt;4.5&lt;/peso&gt;&lt;urgente&gt;false&lt;/urgente&gt;&lt;/envio&gt;</code> respetando los tipos de datos. ¿Que opcion es la mas adecuada?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>{ &quot;codigo&quot;: &quot;E99&quot;, &quot;peso&quot;: 4.5, &quot;urgente&quot;: false }</code>"}, {"letter": "B", "html": "<code>{ &quot;codigo&quot;: &quot;E99&quot;, &quot;peso&quot;: &quot;4.5&quot;, &quot;urgente&quot;: &quot;false&quot; }</code>"}, {"letter": "C", "html": "<code>{ &quot;envio&quot;: &quot;E99 - 4.5 - false&quot; }</code>"}, {"letter": "D", "html": "<code>{ codigo: &quot;E99&quot;, peso: 4,5, urgente: 0 }</code>"}], "answer": "A"}, {"number": 27, "topic": "JSON & Modelado", "promptHtml": "¿Que error sintactico impide que este JSON sea valido?", "bodyHtml": "<pre><code class=\"lang-json\">{\n  &quot;sucursales&quot;: [\n    { &quot;id&quot;: 1, &quot;ciudad&quot;: &quot;València&quot; }\n    { &quot;id&quot;: 2, &quot;ciudad&quot;: &quot;Alicante&quot; }\n  ]\n}</code></pre>", "options": [{"letter": "A", "html": "El valor de <code>&quot;id&quot;</code> debe ir obligatoriamente entre comillas."}, {"letter": "B", "html": "No se pueden usar corchetes <code>[</code> <code>]</code> dentro de un objeto JSON."}, {"letter": "C", "html": "La palabra <code>&quot;ciudad&quot;</code> esta repetida en el segundo objeto."}, {"letter": "D", "html": "Falta la coma <code>,</code> que debe separar el primer objeto del segundo dentro del array <code>sucursales</code>."}], "answer": "D"}];
-    const openQuestions = [{"promptHtml": "**Un desarrollador maqueta toda una pagina web utilizando exclusivamente etiquetas <code>&lt;div&gt;</code> (para la cabecera, el menu, las noticias y el pie de pagina) porque «en pantalla se ve exactamente igual».** Explica por que es una mala practica y que ventajas aporta usar etiquetas semanticas de HTML5.", "solutionHtml": "<ul class=\"task-list\">\n<li>**Por que usar solo <code>&lt;div&gt;</code> es mala practica (<code>divitis</code>):** La etiqueta <code>&lt;div&gt;</code> es un contenedor generico sin ningun significado semantico. Si toda la web se construye con <code>&lt;div&gt;</code>, ni los motores de busqueda (SEO) ni los lectores de pantalla para personas con discapacidad visual pueden distinguir cual es el menu de navegacion, cual es el contenido principal o cual es el pie de pagina.</li>\n<li>**Ventajas del HTML5 semantico (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>):** Mejora la accesibilidad (permite saltar directamente al contenido principal o al menu), mejora la indexacion en buscadores y hace que el codigo fuente sea mucho mas legible y mantenible para otros desarrolladores.</li>\n</ul>"}, {"promptHtml": "<strong>Define que significa que un documento XML este «bien formado» frente a que sea «valido».</strong> Sobre un archivo <code>concesionario.xml</code>, inventa un cambio que lo deje <em>mal formado</em> y otro cambio que lo deje <em>bien formado pero invalido</em> segun su XSD.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>Diferencia:</strong> Un XML <strong>bien formado</strong> respeta las reglas sintacticas del estandar XML (etiquetas cerradas en orden, un unico nodo raiz, valores de atributos entrecomillados). Un XML <strong>valido</strong> es un documento bien formado que ademas respeta las restricciones estructurales y de tipos definidas en un esquema XSD o DTD.</li>\n<li>**Ejemplo mal formado en <code>concesionario.xml</code>:** Escribir un atributo sin comillas (<code>&lt;vehiculo id=V10&gt;</code>) o dejar una etiqueta <code>&lt;modelo&gt;</code> sin su cierre <code>&lt;/modelo&gt;</code>.</li>\n<li><strong>Ejemplo bien formado pero invalido segun su XSD:</strong> Eliminar el atributo obligatorio <code>id</code> de <code>&lt;vehiculo&gt;</code> cuando el XSD exige <code>&lt;xs:attribute name=&quot;id&quot; type=&quot;xs:string&quot; use=&quot;required&quot;/&gt;</code>, o alterar el orden de los elementos hijos declarados en un <code>&lt;xs:sequence&gt;</code>.</li>\n</ul>"}, {"promptHtml": "<strong>Escribe la representacion en XML y en JSON de un mismo vehiculo</strong> (<code>id</code>: <code>&quot;V10&quot;</code>, <code>modelo</code>: <code>&quot;Seat León&quot;</code>, <code>potenciaCV</code>: <code>150</code>, <code>consumoMedio</code>: <code>5.4</code>, <code>hibrido</code>: <code>true</code>) e indica tres diferencias sintacticas o de tipos entre ambos formatos.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>En XML:</strong></li>\n</ul>\n<pre><code>&lt;vehiculo id=&quot;V10&quot;&gt;\n  &lt;modelo&gt;Seat León&lt;/modelo&gt;\n  &lt;potenciaCV&gt;150&lt;/potenciaCV&gt;\n  &lt;consumoMedio&gt;5.4&lt;/consumoMedio&gt;\n  &lt;hibrido&gt;true&lt;/hibrido&gt;\n&lt;/vehiculo&gt;</code></pre>\n<ul class=\"task-list\">\n<li><strong>En JSON:</strong></li>\n</ul>\n<pre><code>{\n  &quot;id&quot;: &quot;V10&quot;,\n  &quot;modelo&quot;: &quot;Seat León&quot;,\n  &quot;potenciaCV&quot;: 150,\n  &quot;consumoMedio&quot;: 5.4,\n  &quot;hibrido&quot;: true\n}</code></pre>\n<ul class=\"task-list\">\n<li><strong>Tres diferencias:</strong></li>\n</ul>\n<p>  1. En XML se utilizan etiquetas de apertura/cierre y atributos (<code>id=&quot;V10&quot;</code>), mientras que en JSON todo son propiedades <code>&quot;clave&quot;: valor</code>.</p>\n<p>  2. JSON tipa directamente numeros enteros (<code>150</code>), decimales (<code>5.4</code>) y booleanos (<code>true</code>) sin comillas; en XML todo el contenido textual entre etiquetas es texto a menos que un XSD defina su tipo.</p>\n<p>  3. JSON soporta arrays nativos con corchetes <code>[...]</code> para colecciones, mientras que XML requiere repetir etiquetas hermanas con el mismo nombre.</p>\n<hr class=\"divider\">"}];
-    const t1SolString = "{\n  \"nombre\": \"Albufera Motor\",\n  \"licenciasFlota\": 25,\n  \"abierto\": true,\n  \"servicios\": [\"alquiler diario\", \"renting\"],\n  \"web\": null\n}";
-    const fullJsonString = "{\n  \"concesionario\": {\n    \"nombre\": \"Albufera Motor\",\n    \"licenciasFlota\": 25,\n    \"abierto\": true,\n    \"horario\": {\n      \"entrega\": \"08:30\",\n      \"devolucion\": \"20:00\"\n    },\n    \"direccion\": {\n      \"calle\": \"Pista de Silla km 5\",\n      \"ciudad\": \"Valencia\",\n      \"codigoPostal\": \"46470\",\n      \"coordenadas\": [39.4125, -0.3841]\n    },\n    \"contacto\": {\n      \"email\": \"flota@albuferamotor.example\",\n      \"telefonos\": [\"961223344\", \"961223355\"],\n      \"web\": null\n    },\n    \"servicios\": [\n      \"alquiler diario\",\n      \"renting\",\n      \"taller propio\",\n      \"asistencia en carretera\"\n    ],\n    \"vehiculos\": [\n      {\n        \"id\": \"V10\",\n        \"numeroPlaza\": 10,\n        \"modelo\": \"Compacto \\\"Eco\\\"\",\n        \"precioDia\": 42.5,\n        \"plazas\": 5,\n        \"disponible\": true,\n        \"ubicacion\": {\n          \"nave\": 1,\n          \"zona\": \"Zona Norte\"\n        },\n        \"equipamiento\": [\n          \"Climatizador\",\n          \"Bluetooth\",\n          \"Control de crucero\"\n        ],\n        \"valoraciones\": [4, 5, 4]\n      },\n      {\n        \"id\": \"V22\",\n        \"numeroPlaza\": 22,\n        \"modelo\": \"SUV Familiar\",\n        \"precioDia\": 78.0,\n        \"plazas\": 7,\n        \"disponible\": true,\n        \"ubicacion\": {\n          \"nave\": 2,\n          \"zona\": \"Zona Sur\"\n        },\n        \"equipamiento\": [\n          \"Navegador GPS\",\n          \"Cámara 360\",\n          \"Techo panorámico\",\n          \"Bola remolque\"\n        ],\n        \"valoraciones\": [5, 5]\n      },\n      {\n        \"id\": \"V35\",\n        \"numeroPlaza\": 35,\n        \"modelo\": \"Furgoneta carga\",\n        \"precioDia\": 64.9,\n        \"plazas\": 2,\n        \"disponible\": false,\n        \"ubicacion\": {\n          \"nave\": 1,\n          \"zona\": \"Zona Exterior\"\n        },\n        \"equipamiento\": [],\n        \"valoraciones\": []\n      }\n    ],\n    \"clientes\": [\n      {\n        \"id\": \"CL01\",\n        \"nombre\": \"Sofía Martí\",\n        \"fechaNacimiento\": \"1990-07-18\",\n        \"documento\": {\n          \"tipo\": \"DNI\",\n          \"numero\": \"45678901L\"\n        },\n        \"fidelidad\": {\n          \"nivel\": \"Premium\",\n          \"puntos\": 850\n        },\n        \"preferencias\": [\"cambio automático\", \"recogida rápida\"]\n      },\n      {\n        \"id\": \"CL02\",\n        \"nombre\": \"David Orts\",\n        \"fechaNacimiento\": \"1984-03-11\",\n        \"documento\": {\n          \"tipo\": \"Pasaporte\",\n          \"numero\": \"ZP334455\"\n        },\n        \"fidelidad\": null,\n        \"preferencias\": []\n      },\n      {\n        \"id\": \"CL03\",\n        \"nombre\": \"Nadia Haddad\",\n        \"fechaNacimiento\": \"1998-12-05\",\n        \"documento\": {\n          \"tipo\": \"NIE\",\n          \"numero\": \"Y9876543W\"\n        },\n        \"fidelidad\": {\n          \"nivel\": \"Básico\",\n          \"puntos\": 120\n        },\n        \"preferencias\": [\"vehículo eléctrico o híbrido\"]\n      }\n    ],\n    \"alquileres\": [\n      {\n        \"id\": \"A001\",\n        \"clienteId\": \"CL01\",\n        \"vehiculoId\": \"V10\",\n        \"fechas\": {\n          \"recogida\": \"2026-12-04\",\n          \"devolucion\": \"2026-12-07\"\n        },\n        \"estado\": \"Activo\",\n        \"pagado\": true,\n        \"extras\": [\n          {\n            \"servicio\": \"Seguro todo riesgo\",\n            \"precioUnidad\": 18.0,\n            \"cantidad\": 3\n          },\n          {\n            \"servicio\": \"Silla infantil\",\n            \"precioUnidad\": 8.5,\n            \"cantidad\": 3\n          }\n        ],\n        \"pago\": {\n          \"metodo\": \"Tarjeta\",\n          \"total\": 250.47,\n          \"desglose\": {\n            \"vehiculo\": 127.5,\n            \"extras\": 79.5,\n            \"impuestos\": 43.47\n          }\n        },\n        \"notas\": \"Entrega con depósito lleno\"\n      },\n      {\n        \"id\": \"A002\",\n        \"clienteId\": \"CL02\",\n        \"vehiculoId\": \"V22\",\n        \"fechas\": {\n          \"recogida\": \"2026-12-18\",\n          \"devolucion\": \"2026-12-21\"\n        },\n        \"estado\": \"Pendiente\",\n        \"pagado\": false,\n        \"extras\": [],\n        \"pago\": null,\n        \"notas\": null\n      },\n      {\n        \"id\": \"A003\",\n        \"clienteId\": \"CL03\",\n        \"vehiculoId\": \"V10\",\n        \"fechas\": {\n          \"recogida\": \"2027-01-10\",\n          \"devolucion\": \"2027-01-12\"\n        },\n        \"estado\": \"Confirmado\",\n        \"pagado\": true,\n        \"extras\": [\n          {\n            \"servicio\": \"Conductor adicional\",\n            \"precioUnidad\": 15.0,\n            \"cantidad\": 2\n          }\n        ],\n        \"pago\": {\n          \"metodo\": \"Transferencia\",\n          \"total\": 139.15,\n          \"desglose\": {\n            \"vehiculo\": 85.0,\n            \"extras\": 30.0,\n            \"impuestos\": 24.15\n          }\n        },\n        \"notas\": \"Presenta carné internacional\"\n      },\n      {\n        \"id\": \"A004\",\n        \"clienteId\": \"CL01\",\n        \"vehiculoId\": \"V22\",\n        \"fechas\": {\n          \"recogida\": \"2027-02-01\",\n          \"devolucion\": \"2027-02-03\"\n        },\n        \"estado\": \"Cancelado\",\n        \"pagado\": false,\n        \"extras\": [],\n        \"pago\": null,\n        \"notas\": \"Cancelado con más de 48h de antelación\"\n      }\n    ]\n  }\n}";
+    const questions = [{"number": 1, "topic": "HTML5 · Bloque 2 (Citas, Código y Teclado)", "promptHtml": "En un artículo técnico de programación quieres mostrar un atajo de teclado (<code>Ctrl</code> + <code>S</code>), el significado de una sigla al pasar el ratón (<code>HTML</code>) y una cita textual larga en bloque. Según el Bloque 2 en profundidad, ¿qué etiquetas semánticas corresponden a cada caso?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;kbd&gt;Ctrl&lt;/kbd&gt;</code> para las teclas, <code>&lt;abbr title=&quot;Lenguaje de marcado&quot;&gt;HTML&lt;/abbr&gt;</code> para la abreviatura y <code>&lt;blockquote&gt;</code> para la cita en bloque."}, {"letter": "B", "html": "<code>&lt;small&gt;</code> para las teclas, <code>&lt;mark&gt;</code> para la sigla y <code>&lt;q&gt;</code> para el bloque largo."}, {"letter": "C", "html": "<code>&lt;pre&gt;</code> para la abreviatura y <code>&lt;b&gt;</code> para las teclas."}, {"letter": "D", "html": "Tres etiquetas <code>&lt;div&gt;</code> con el atributo <code>type=&quot;code&quot;</code>."}], "answer": "A"}, {"number": 2, "topic": "HTML5 · Bloque 2 (Enlaces Internos y Entidades)", "promptHtml": "Quieres crear un enlace interno que lleve directamente al apartado de Preguntas Frecuentes en la misma página, y además escribir el símbolo de menor que (<code>&lt;</code>) y el símbolo de copyright (<code>©</code>) mediante entidades HTML. ¿Cuál es la combinación correcta?", "bodyHtml": "", "options": [{"letter": "A", "html": "Enlace <code>&lt;a href=&quot;#faq&quot;&gt;Ir a FAQ&lt;/a&gt;</code> que apunta a <code>&lt;h2 id=&quot;faq&quot;&gt;</code>; y entidades <code>&amp;lt;</code> y <code>&amp;copy;</code>."}, {"letter": "B", "html": "Enlace <code>&lt;a href=&quot;faq&quot;&gt;</code> que apunta a <code>&lt;h2 class=&quot;#faq&quot;&gt;</code>; y entidades <code>\\lt</code> y <code>\\copy</code>."}, {"letter": "C", "html": "Enlace <code>&lt;a target=&quot;_faq&quot;&gt;</code> y entidades <code>#lt;</code> y <code>#copy;</code>."}, {"letter": "D", "html": "En HTML5 no se pueden enlazar secciones de la misma página sin usar un servidor."}], "answer": "A"}, {"number": 3, "topic": "HTML5 · Bloque 3 (Atributos de Listas Ordenadas)", "promptHtml": "Necesitas una lista ordenada <code>&lt;ol&gt;</code> que utilice letras minúsculas (a, b, c...) y que se numere en orden inverso (de atrás hacia adelante). ¿Qué atributos del Bloque 3 de listas admite la etiqueta <code>&lt;ol&gt;</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;ol type=&quot;a&quot; reversed&gt;</code> (además de admitir <code>start</code> para indicar el número inicial)."}, {"letter": "B", "html": "<code>&lt;ol style=&quot;letters&quot; order=&quot;back&quot;&gt;</code>."}, {"letter": "C", "html": "<code>&lt;ul type=&quot;a&quot; reversed&gt;</code>."}, {"letter": "D", "html": "Las listas <code>&lt;ol&gt;</code> solo admiten números del 1 al 9 en orden ascendente."}], "answer": "A"}, {"number": 4, "topic": "HTML5 · Bloque 5 (Imágenes Adaptables y Carga Diferida)", "promptHtml": "Para optimizar el rendimiento de una web quieres que una imagen situada al final de la página retrase su descarga hasta que el usuario haga scroll cerca de ella, y además ofrecer una imagen WebP en pantallas de escritorio (mínimo 800px) o un JPG pequeño en móviles. ¿Qué elementos y atributos del Bloque 5 debes usar?", "bodyHtml": "", "options": [{"letter": "A", "html": "El atributo <code>loading=&quot;lazy&quot;</code> en <code>&lt;img&gt;</code> para retrasar la carga, y la etiqueta <code>&lt;picture&gt;</code> con <code>&lt;source media=&quot;(min-width: 800px)&quot; srcset=&quot;grande.webp&quot;&gt;</code> más su <code>&lt;img&gt;</code> base."}, {"letter": "B", "html": "El atributo <code>defer</code> dentro de <code>&lt;img&gt;</code> y dos etiquetas <code>&lt;iframe&gt;</code>."}, {"letter": "C", "html": "Poner dos atributos <code>src</code> seguidos dentro de la misma etiqueta <code>&lt;img&gt;</code>."}, {"letter": "D", "html": "Usar <code>&lt;video poster=&quot;grande.webp&quot;&gt;</code> para mostrar fotografías estáticas."}], "answer": "A"}, {"number": 5, "topic": "HTML5 · Bloque 6 (Fechas y Semántica dentro de Article)", "promptHtml": "Observa este código del Bloque 6 en profundidad. ¿Por qué es válido incluir un <code>&lt;header&gt;</code> y un <code>&lt;footer&gt;</code> dentro de un <code>&lt;article&gt;</code>, y para qué sirve <code>&lt;time datetime=&quot;2026-10-21&quot;&gt;21 oct&lt;/time&gt;</code>?", "bodyHtml": "<pre><code class=\"lang-html\">&lt;article&gt;\n  &lt;header&gt;&lt;h2&gt;Título&lt;/h2&gt;&lt;/header&gt;\n  &lt;section&gt;\n    &lt;h3&gt;Apartado&lt;/h3&gt;\n    &lt;p&gt;Texto...&lt;/p&gt;\n  &lt;/section&gt;\n  &lt;footer&gt;\n    &lt;time datetime=&quot;2026-10-21&quot;&gt;21 oct&lt;/time&gt;\n  &lt;/footer&gt;\n&lt;/article&gt;</code></pre>", "options": [{"letter": "A", "html": "Porque elementos seccionadores como <code>&lt;article&gt;</code> y <code>&lt;section&gt;</code> pueden tener su propio encabezado y pie (lo que debe ser único por página es <code>&lt;main&gt;</code>), y <code>&lt;time&gt;</code> aporta significado semántico legible por máquinas a la fecha."}, {"letter": "B", "html": "Es un error: solo puede existir un único <code>&lt;header&gt;</code> y un único <code>&lt;footer&gt;</code> en todo el archivo HTML."}, {"letter": "C", "html": "La etiqueta <code>&lt;time&gt;</code> muestra un reloj digital en vivo mediante JavaScript."}, {"letter": "D", "html": "Dentro de <code>&lt;article&gt;</code> está prohibido usar <code>&lt;section&gt;</code>."}], "answer": "A"}, {"number": 6, "topic": "HTML5 · Bloques 7 y 8 (Controles Avanzados de Formulario)", "promptHtml": "En un formulario quieres: (1) sugerir ciudades al escribir en un <code>&lt;input&gt;</code> sin impedir que el usuario escriba otra distinta, (2) permitir adjuntar varios archivos de imagen a la vez, y (3) mostrar una barra de progreso al 40%. ¿Qué código del Bloque 8 resuelve los tres casos?", "bodyHtml": "", "options": [{"letter": "A", "html": "(1) <code>&lt;input list=&quot;ciu&quot;&gt;</code> con <code>&lt;datalist id=&quot;ciu&quot;&gt;</code>, (2) <code>&lt;input type=&quot;file&quot; accept=&quot;image/*&quot; multiple&gt;</code>, y (3) <code>&lt;progress value=&quot;40&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;</code>."}, {"letter": "B", "html": "(1) <code>&lt;select&gt;</code> cerrado, (2) <code>&lt;input type=&quot;image&quot;&gt;</code>, y (3) <code>&lt;div width=&quot;40%&quot;&gt;</code>."}, {"letter": "C", "html": "(1) <code>&lt;textarea&gt;</code>, (2) <code>&lt;input type=&quot;url&quot;&gt;</code>, y (3) <code>&lt;legend&gt;40%&lt;/legend&gt;</code>."}, {"letter": "D", "html": "Usando el atributo <code>novalidate</code> en tres etiquetas <code>&lt;input type=&quot;text&quot;&gt;</code>."}], "answer": "A"}, {"number": 7, "topic": "HTML5 · Bloque 9 (SEO, Open Graph y Canonical)", "promptHtml": "En el bloque de SEO y metadatos avanzados se incluyen en el <code>&lt;head&gt;</code> las etiquetas <code>&lt;link rel=&quot;canonical&quot; href=&quot;...&quot;&gt;</code>, <code>&lt;meta name=&quot;description&quot; content=&quot;...&quot;&gt;</code> y <code>&lt;meta property=&quot;og:image&quot; content=&quot;a.jpg&quot;&gt;</code>. ¿Para qué sirven?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>canonical</code> evita contenido duplicado en buscadores, <code>description</code> define el resumen (~155 caracteres) que aparece en Google, y <code>og:image</code> (Open Graph) define la imagen de la tarjeta al compartir el enlace en redes sociales."}, {"letter": "B", "html": "<code>og:image</code> inserta una foto visible en mitad del <code>&lt;body&gt;</code> y <code>canonical</code> bloquea el acceso a Google."}, {"letter": "C", "html": "Sirven para cambiar el icono de la pestaña (que se hace con <code>meta name=&quot;robots&quot;</code>)."}, {"letter": "D", "html": "Son etiquetas obsoletas que el validador W3C rechaza."}], "answer": "A"}, {"number": 8, "topic": "HTML5 · Bloque 11 (ARIA y Accesibilidad con Teclado)", "promptHtml": "En un formulario accesible tienes un campo de contraseña con un mensaje de ayuda debajo (<code>&lt;p id=&quot;ayuda&quot;&gt;Mínimo 8 caracteres&lt;/p&gt;</code>) y un contenedor que muestra errores dinámicos urgentes. Según el Bloque 11 en profundidad, ¿cómo se vinculan para los lectores de pantalla?", "bodyHtml": "", "options": [{"letter": "A", "html": "Añadiendo <code>aria-describedby=&quot;ayuda&quot;</code> en el <code>&lt;input&gt;</code> para vincular la explicación con el campo, y <code>role=&quot;alert&quot;</code> en el contenedor del mensaje de error para que se anuncie en voz alta."}, {"letter": "B", "html": "Poniendo el texto de ayuda en color rojo sin etiquetas, porque los lectores de pantalla leen los colores CSS."}, {"letter": "C", "html": "Sustituyendo todos los elementos <code>&lt;label&gt;</code> y <code>&lt;button&gt;</code> por atributos ARIA sobre etiquetas <code>&lt;span&gt;</code>."}, {"letter": "D", "html": "Añadiendo <code>hidden</code> al campo <code>&lt;input&gt;</code>."}], "answer": "A"}, {"number": 9, "topic": "HTML5 · Bloque 12 (Errores Frecuentes en el Validador W3C)", "promptHtml": "El Bloque 12 muestra 6 errores clásicos que hacen fallar la validación W3C de una página HTML. ¿Cuál de los siguientes fragmentos contiene DOS de esos errores a la vez?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;p&gt;&lt;div&gt;Bienvenido&lt;/div&gt;&lt;/p&gt;</code> y tener dos elementos con el mismo <code>id=&quot;a&quot;</code> en el documento."}, {"letter": "B", "html": "Usar un único <code>&lt;h1&gt;</code> por página y poner <code>alt</code> en todas las imágenes."}, {"letter": "C", "html": "Usar <code>&lt;button type=&quot;button&quot;&gt;Abrir&lt;/button&gt;</code> e indentar el código con dos espacios."}, {"letter": "D", "html": "Enlazar un archivo <code>css/estilos.css</code> con nombres en minúsculas y sin espacios."}], "answer": "A"}, {"number": 10, "topic": "XML · Sintaxis Estricta y Anidamiento", "promptHtml": "Analiza estos cuatro fragmentos XML. ¿Cuál es el ÚNICO que cumple las tres reglas básicas de XML (etiquetas siempre cerradas, sensibilidad a mayúsculas/minúsculas, y un solo elemento raíz con anidamiento de adentro hacia afuera)?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;receta&gt;&lt;nombre&gt;Carbonara&lt;/nombre&gt;&lt;ingredientes&gt;&lt;item&gt;Huevo&lt;/item&gt;&lt;/ingredientes&gt;&lt;/receta&gt;</code>"}, {"letter": "B", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;receta&gt;&lt;Nombre&gt;Carbonara&lt;/nombre&gt;&lt;/receta&gt;</code>"}, {"letter": "C", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;receta&gt;&lt;ingredientes&gt;&lt;item&gt;Huevo&lt;/ingredientes&gt;&lt;/item&gt;&lt;/receta&gt;</code>"}, {"letter": "D", "html": "<code>&lt;?xml version=&quot;1.0&quot;?&gt;&lt;receta&gt;&lt;nombre&gt;Carbonara&lt;/receta&gt;</code>"}], "answer": "A"}, {"number": 11, "topic": "XML & XSD · Orden Obligatorio con xs:sequence", "promptHtml": "Tienes un documento <code>receta.xml</code> validado con un esquema XSD donde <code>&lt;receta&gt;</code> tiene un <code>&lt;xs:complexType&gt;</code> con una <code>&lt;xs:sequence&gt;</code> que declara los hijos <code>nombre</code>, <code>tiempo</code> e <code>ingredientes</code> en ese orden. Si en el XML escribes primero <code>&lt;tiempo&gt;20 min&lt;/tiempo&gt;</code> y después <code>&lt;nombre&gt;Pasta&lt;/nombre&gt;</code>, ¿qué ocurre?", "bodyHtml": "", "options": [{"letter": "A", "html": "El documento XML está bien formado, pero es INVÁLIDO según el XSD porque <code>&lt;xs:sequence&gt;</code> exige que los elementos hijos aparezcan exactamente en el orden declarado (<code>nombre</code>, <code>tiempo</code>, <code>ingredientes</code>)."}, {"letter": "B", "html": "El documento pasa a estar mal formado porque las etiquetas están cerradas."}, {"letter": "C", "html": "Es válido porque <code>&lt;xs:sequence&gt;</code> permite poner los elementos en cualquier orden."}, {"letter": "D", "html": "Es inválido porque <code>xs:string</code> no permite escribir números como <code>20</code>."}], "answer": "A"}, {"number": 12, "topic": "XML & XSD · Función de cada pieza en XSD", "promptHtml": "Según la página de XSD del PDF de XML, ¿para qué sirven respectivamente las piezas <code>xs:element</code>, <code>xs:complexType</code>, <code>xs:sequence</code> y <code>xs:attribute</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>xs:element</code> declara un elemento y su tipo; <code>xs:complexType</code> indica que contiene otros elementos o atributos; <code>xs:sequence</code> marca el orden obligatorio de los hijos; y <code>xs:attribute</code> añade información extra en la etiqueta de apertura (como <code>id=&quot;P001&quot;</code>)."}, {"letter": "B", "html": "<code>xs:element</code> aplica colores CSS; <code>xs:complexType</code> crea enlaces web; y <code>xs:sequence</code> borra los atributos."}, {"letter": "C", "html": "Con XSD ya no hace falta cerrar las etiquetas en el archivo XML."}, {"letter": "D", "html": "<code>xs:attribute</code> sirve para declarar el elemento raíz del documento XML."}], "answer": "A"}, {"number": 13, "topic": "XML & XSD · Elementos Complejos y Atributos", "promptHtml": "Observa este esquema XSD para un catálogo. Si un XML contiene <code>&lt;producto&gt;&lt;nombre&gt;Teclado&lt;/nombre&gt;&lt;precio&gt;29.99&lt;/precio&gt;&lt;stock&gt;15&lt;/stock&gt;&lt;/producto&gt;</code> (sin el atributo <code>id</code>), ¿cuál es el resultado de la validación?", "bodyHtml": "<pre><code class=\"lang-xml\">&lt;xs:element name=&quot;producto&quot;&gt;\n  &lt;xs:complexType&gt;\n    &lt;xs:sequence&gt;\n      &lt;xs:element name=&quot;nombre&quot; type=&quot;xs:string&quot;/&gt;\n      &lt;xs:element name=&quot;precio&quot; type=&quot;xs:decimal&quot;/&gt;\n      &lt;xs:element name=&quot;stock&quot; type=&quot;xs:integer&quot;/&gt;\n    &lt;/xs:sequence&gt;\n    &lt;xs:attribute name=&quot;id&quot; type=&quot;xs:string&quot; use=&quot;required&quot;/&gt;\n  &lt;/xs:complexType&gt;\n&lt;/xs:element&gt;</code></pre>", "options": [{"letter": "A", "html": "El documento está bien formado y cumple el orden de <code>xs:sequence</code>, pero es INVÁLIDO porque omite el atributo <code>id</code> declarado con <code>use=&quot;required&quot;</code>."}, {"letter": "B", "html": "Es válido porque los atributos en XSD son siempre opcionales aunque lleven <code>use=&quot;required&quot;</code>."}, {"letter": "C", "html": "Está mal formado porque ningún elemento XML puede funcionar sin atributos."}, {"letter": "D", "html": "Es inválido porque <code>29.99</code> no es un <code>xs:decimal</code>."}], "answer": "A"}, {"number": 14, "topic": "XPath · Rutas Absolutas vs Búsqueda Global", "promptHtml": "En el árbol de <code>gimnasio.xml</code>, tanto cada <code>&lt;rutina&gt;</code> como cada <code>&lt;ejercicio&gt;</code> tienen un elemento hijo llamado <code>&lt;nombre&gt;</code>. Si solo quieres obtener los nombres de los ejercicios (y NO los nombres de las rutinas), ¿qué expresión XPath de la teoría debes usar?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>//ejercicio/nombre</code> (o la ruta completa <code>/gimnasio/rutina/ejercicios/ejercicio/nombre</code>)."}, {"letter": "B", "html": "<code>//nombre</code>, porque <code>//nombre</code> ignora las rutinas automáticamente."}, {"letter": "C", "html": "<code>/gimnasio/rutina/nombre</code>."}, {"letter": "D", "html": "<code>//@nombre</code>."}], "answer": "A"}, {"number": 15, "topic": "XPath · Predicados Combinados en Cadena", "promptHtml": "Analiza paso a paso la expresión XPath del apartado 4 del PDF: <code>//rutina[@id=&#x27;RUT001&#x27;]//ejercicio[nombre=&#x27;Sentadilla&#x27;]/series</code>. ¿Por qué <code>@id</code> lleva arroba y <code>nombre</code> NO lleva arroba?", "bodyHtml": "", "options": [{"letter": "A", "html": "Porque en el XML <code>id</code> es un atributo de la etiqueta <code>&lt;rutina id=&quot;RUT001&quot;&gt;</code> (se accede con <code>@</code>), mientras que <code>&lt;nombre&gt;Sentadilla&lt;/nombre&gt;</code> es un elemento hijo dentro de <code>&lt;ejercicio&gt;</code>."}, {"letter": "B", "html": "Porque en XPath solo se puede poner una arroba por cada consulta."}, {"letter": "C", "html": "Porque <code>Sentadilla</code> es un atributo y <code>RUT001</code> es un elemento."}, {"letter": "D", "html": "Es una errata; ambos deberían llevar <code>@</code>."}], "answer": "A"}, {"number": 16, "topic": "XPath · Posición del Predicado y Filtros", "promptHtml": "En un archivo <code>tienda.xml</code> cada <code>&lt;producto codigo=&quot;P002&quot;&gt;</code> tiene los elementos hijos <code>&lt;nombre&gt;</code>, <code>&lt;precio&gt;</code> y <code>&lt;stock&gt;</code>. ¿Qué expresión XPath devuelve el <code>&lt;stock&gt;</code> del producto cuyo atributo <code>codigo</code> es <code>&#x27;P002&#x27;</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>//producto[@codigo=&#x27;P002&#x27;]/stock</code>"}, {"letter": "B", "html": "<code>//producto[codigo=&#x27;P002&#x27;]/stock</code>"}, {"letter": "C", "html": "<code>//producto/stock[@codigo=&#x27;P002&#x27;]</code>"}, {"letter": "D", "html": "<code>//@P002/stock</code>"}], "answer": "A"}, {"number": 17, "topic": "XPath · Selección de Nodos por Texto e Índice", "promptHtml": "En <code>gimnasio.xml</code> la rutina <code>RUT001</code> tiene 3 ejercicios y la rutina <code>RUT002</code> tiene 2 ejercicios. ¿Qué devuelve la expresión <code>/gimnasio/rutina[@id=&#x27;RUT002&#x27;]/ejercicios/ejercicio[2]/repeticiones</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "El elemento <code>&lt;repeticiones&gt;</code> del segundo ejercicio de la rutina <code>RUT002</code>."}, {"letter": "B", "html": "El tercer ejercicio de la rutina <code>RUT002</code>, porque XPath empieza a contar en 0."}, {"letter": "C", "html": "Las repeticiones de todas las rutinas del gimnasio."}, {"letter": "D", "html": "El atributo <code>id</code> del segundo ejercicio."}], "answer": "A"}, {"number": 18, "topic": "JSON · Bloques 1, 2 y 3 (Conceptos y Tipos)", "promptHtml": "En la tabla de conceptos del Bloque 2 y 3 de la UD2 de JSON, ¿qué diferencia existe entre los seis tipos de datos permitidos en JSON (<code>String</code>, <code>Number</code>, <code>Boolean</code>, <code>Null</code>, <code>Object</code>, <code>Array</code>)?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>String</code> va entre comillas dobles (<code>&quot;Juan&quot;</code>), <code>Number</code> sin comillas (<code>25</code>), <code>Boolean</code> es <code>true</code>/<code>false</code>, <code>Null</code> es <code>null</code>, <code>Object</code> usa llaves <code>{}</code> y <code>Array</code> usa corchetes <code>[]</code>."}, {"letter": "B", "html": "Los booleanos van entre comillas simples (<code>&#x27;true&#x27;</code>) y los arrays usan llaves <code>{}</code>."}, {"letter": "C", "html": "<code>Object</code> sirve solo para listas de números y <code>Array</code> para pares propiedad-valor."}, {"letter": "D", "html": "En JSON todos los tipos de datos deben escribirse obligatoriamente entre comillas dobles."}], "answer": "A"}, {"number": 19, "topic": "JSON · Bloques 4, 5 y 6 (Anidación de Objetos y Arrays)", "promptHtml": "Según el Bloque 4 de la UD2, ¿qué elementos puede contener un array <code>[ ]</code> en JSON?", "bodyHtml": "", "options": [{"letter": "A", "html": "Textos, números, booleanos, objetos <code>{ }</code> e incluso otros arrays <code>[ ]</code>."}, {"letter": "B", "html": "Únicamente cadenas de texto separadas por punto y coma."}, {"letter": "C", "html": "Solo objetos que tengan un único atributo XML."}, {"letter": "D", "html": "Un array en JSON no puede contener objetos dentro."}], "answer": "A"}, {"number": 20, "topic": "JSON · Bloque 8 (Detección de Errores Sintácticos)", "promptHtml": "Un compañero crea el archivo <code>tienda_online.json</code> en Visual Studio Code y el editor subraya varios errores en este bloque. ¿Cuántos y cuáles son los errores de sintaxis?", "bodyHtml": "<pre><code class=\"lang-json\">{\n  nombre: &quot;Tienda Online&quot;,\n  &quot;activo&quot;: True,\n  &quot;productos&quot;: [\n    { &quot;id&quot;: &quot;P001&quot;, &quot;precio&quot;: 19.99 },\n  ]\n}</code></pre>", "options": [{"letter": "A", "html": "Hay 3 errores de sintaxis: la propiedad <code>nombre</code> no lleva comillas dobles, el booleano <code>True</code> está en mayúscula inicial, y hay una coma final sobrante detrás del objeto dentro del array <code>productos</code>."}, {"letter": "B", "html": "Solo hay 1 error: el número <code>19.99</code> debería llevar comillas dobles."}, {"letter": "C", "html": "No hay ningún error de sintaxis; VS Code lo valida sin problemas."}, {"letter": "D", "html": "El error es que un objeto JSON no puede tener una propiedad llamada <code>productos</code>."}], "answer": "A"}, {"number": 21, "topic": "JSON · Bloques 5, 6 y 10 (Estructuras de Objetos y Arrays)", "promptHtml": "En el proyecto <code>tienda_online.json</code> (Bloque 10 de la UD2), la propiedad <code>direccion</code> de la tienda tiene <code>calle</code>, <code>ciudad</code> y <code>codigoPostal</code>, mientras que la propiedad <code>productos</code> contiene los artículos a la venta. ¿Por qué <code>direccion</code> se escribe con llaves <code>{ }</code> y <code>productos</code> con corchetes <code>[ ]</code>?", "bodyHtml": "", "options": [{"letter": "A", "html": "Porque <code>direccion</code> es un único objeto con propiedades fijas (calle, ciudad, código postal), mientras que <code>productos</code> es una colección o lista de varios objetos del mismo tipo (un objeto por cada producto)."}, {"letter": "B", "html": "Porque en JSON solo se puede usar un par de llaves <code>{ }</code> en todo el archivo."}, {"letter": "C", "html": "Porque <code>direccion</code> solo contiene números y <code>productos</code> solo contiene booleanos."}, {"letter": "D", "html": "Es indiferente; en JSON las llaves <code>{ }</code> y los corchetes <code>[ ]</code> significan exactamente lo mismo."}], "answer": "A"}, {"number": 22, "topic": "JSON · Bloque 14 y Navegación de Datos", "promptHtml": "Observa este JSON de una tienda online. ¿Qué ruta accede al <code>codigoPostal</code> de la dirección del primer cliente, y qué ruta accede al segundo teléfono de ese mismo cliente?", "bodyHtml": "<pre><code class=\"lang-json\">{\n  &quot;tienda&quot;: {\n    &quot;clientes&quot;: [\n      {\n        &quot;id&quot;: &quot;C01&quot;,\n        &quot;nombre&quot;: &quot;Juan&quot;,\n        &quot;telefonos&quot;: [&quot;961112233&quot;, &quot;600998877&quot;],\n        &quot;direccion&quot;: { &quot;calle&quot;: &quot;Colón&quot;, &quot;ciudad&quot;: &quot;Valencia&quot;, &quot;codigoPostal&quot;: &quot;46001&quot; }\n      }\n    ]\n  }\n}</code></pre>", "options": [{"letter": "A", "html": "<code>tienda.clientes[0].direccion.codigoPostal</code> y <code>tienda.clientes[0].telefonos[1]</code>"}, {"letter": "B", "html": "<code>tienda.clientes[1].direccion.codigoPostal</code> y <code>tienda.clientes[1].telefonos[2]</code>"}, {"letter": "C", "html": "<code>tienda.clientes.direccion[0].codigoPostal</code> y <code>tienda.telefonos[1]</code>"}, {"letter": "D", "html": "<code>/tienda/clientes[1]/direccion/@codigoPostal</code>"}], "answer": "A"}, {"number": 23, "topic": "JSON · Bloque 14 (Consultas y Filtrado en JSON)", "promptHtml": "En un archivo JSON tienes el array <code>tienda.productos</code>, donde cada objeto tiene <code>id</code>, <code>nombre</code>, <code>precio</code> y <code>stock</code>. ¿Cómo localizarías todos los productos que están agotados (sin unidades disponibles)?", "bodyHtml": "", "options": [{"letter": "A", "html": "Recorriendo el array <code>tienda.productos</code> y filtrando aquellos objetos cuya propiedad <code>stock</code> sea igual a <code>0</code>."}, {"letter": "B", "html": "Accediendo únicamente a <code>tienda.productos[0]</code>."}, {"letter": "C", "html": "Buscando los productos cuyo <code>id</code> sea igual a <code>0</code>."}, {"letter": "D", "html": "Borrando el array <code>productos</code> del archivo."}], "answer": "A"}, {"number": 24, "topic": "JSON · Modelado de Datos (Null vs Array Vacío)", "promptHtml": "En el diseño de un JSON para una tienda, un cliente no tiene ningún cupón de descuento activo (que cuando existe es un objeto con <code>codigo</code> y <code>porcentaje</code>) y tampoco ha marcado etiquetas de intereses (que es una lista de textos). ¿Cómo se representan ambos campos?", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>&quot;cuponActivo&quot;: null</code> (ausencia de objeto) e <code>&quot;intereses&quot;: []</code> (array vacío de 0 elementos)."}, {"letter": "B", "html": "<code>&quot;cuponActivo&quot;: &quot;null&quot;</code> e <code>&quot;intereses&quot;: &quot;ninguno&quot;</code>."}, {"letter": "C", "html": "<code>&quot;cuponActivo&quot;: false</code> e <code>&quot;intereses&quot;: 0</code>."}, {"letter": "D", "html": "Ambos con comillas simples <code>&#x27;&#x27;</code>."}], "answer": "A"}, {"number": 25, "topic": "JSON · Bloque 7 (Transformación de XML con Atributos a JSON)", "promptHtml": "Quieres migrar este elemento XML a JSON conservando toda su información y los tipos correctos:<br><code>&lt;pedido id=&quot;PED01&quot; enviado=&quot;false&quot;&gt;&lt;clienteId&gt;C001&lt;/clienteId&gt;&lt;total&gt;49.98&lt;/total&gt;&lt;/pedido&gt;</code>", "bodyHtml": "", "options": [{"letter": "A", "html": "<code>{ &quot;id&quot;: &quot;PED01&quot;, &quot;enviado&quot;: false, &quot;clienteId&quot;: &quot;C001&quot;, &quot;total&quot;: 49.98 }</code>"}, {"letter": "B", "html": "<code>{ &quot;id&quot;: &quot;PED01&quot;, &quot;enviado&quot;: &quot;false&quot;, &quot;clienteId&quot;: &quot;C001&quot;, &quot;total&quot;: &quot;49.98&quot; }</code>"}, {"letter": "C", "html": "<code>{ &quot;clienteId&quot;: &quot;C001&quot;, &quot;total&quot;: 49.98 }</code> (descartando <code>id</code> y <code>enviado</code> porque en JSON no hay atributos)."}, {"letter": "D", "html": "<code>[ &quot;PED01&quot;, false, &quot;C001&quot;, 49.98 ]</code>"}], "answer": "A"}, {"number": 26, "topic": "JSON · Bloque 9 (Herramientas de VS Code)", "promptHtml": "Al trabajar con un archivo <code>.json</code> en Visual Studio Code (Bloque 9 de la UD2), ¿qué ventajas ofrece el editor de forma nativa sin necesidad de programar?", "bodyHtml": "", "options": [{"letter": "A", "html": "Detectar errores de sintaxis en tiempo real, colorear la estructura de claves y tipos, autocompletar y formatear (indentar) automáticamente el documento JSON."}, {"letter": "B", "html": "Convertir automáticamente las comas finales sobrantes en etiquetas HTML."}, {"letter": "C", "html": "Permitir guardar claves sin comillas dobles si el archivo se llama <code>tienda.json</code>."}, {"letter": "D", "html": "Sustituir la necesidad de usar arrays por tablas de Word."}], "answer": "A"}, {"number": 27, "topic": "JSON · Bloques 1 y 7 (Propósito de JSON y Diferencias con XML)", "promptHtml": "Según los Bloques 1 y 7 de la UD2 de JSON, ¿qué problema resuelve JSON y por qué resulta más compacto que XML al representar los mismos datos?", "bodyHtml": "", "options": [{"letter": "A", "html": "JSON permite representar e intercambiar datos estructurados de forma sencilla tanto para personas como para máquinas, y es más compacto que XML porque usa pares <code>&quot;propiedad&quot;: valor</code> sin repetir etiquetas de apertura y cierre."}, {"letter": "B", "html": "JSON incluye directamente el diseño CSS y las fuentes tipográficas de la pantalla."}, {"letter": "C", "html": "JSON no permite estructurar datos jerárquicos ni listas de elementos."}, {"letter": "D", "html": "JSON obliga a usar atributos dentro de etiquetas igual que XML."}], "answer": "A"}];
+    const openQuestions = [{"promptHtml": "<strong>1. Accesibilidad Web, Metadatos SEO y Validación HTML5 (Bloques 9, 11 y 12 del PDF de HTML):</strong> Explica razonadamente: <strong>(a)</strong> qué función cumplen en el <code>&lt;head&gt;</code> las etiquetas <code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code>, <code>&lt;meta name=&quot;viewport&quot; ...&gt;</code> y <code>&lt;meta name=&quot;description&quot; ...&gt;</code>; <strong>(b)</strong> por qué es un error crear un botón con <code>&lt;div onclick=&quot;...&quot;&gt;Abrir&lt;/div&gt;</code> en lugar de <code>&lt;button type=&quot;button&quot;&gt;Abrir&lt;/button&gt;</code> pensando en los usuarios que navegan con teclado y lector de pantalla.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>(a) Función de los tres metadatos en <code>&lt;head&gt;</code>:</strong>\n  <ul>\n    <li><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code>: Define la codificación de caracteres para que tildes, <code>ñ</code> y símbolos especiales se muestren sin romperse.</li>\n    <li><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code>: Adapta el ancho de la página al ancho real de la pantalla del móvil o tablet (base del diseño responsive).</li>\n    <li><code>&lt;meta name=&quot;description&quot; content=&quot;...&quot;&gt;</code>: Proporciona el resumen (~155 caracteres) que muestran los buscadores como Google bajo el título de la página en los resultados de búsqueda (SEO).</li>\n  </ul>\n</li>\n<li><strong>(b) Por qué usar <code>&lt;button&gt;</code> en lugar de <code>&lt;div onclick&gt;</code>:</strong> Un <code>&lt;div&gt;</code> es un contenedor genérico que no recibe el foco del teclado al pulsar la tecla <code>Tab</code>, no se activa con <code>Enter</code>/<code>Espacio</code> y no es anunciado como botón por un lector de pantalla. La etiqueta semántica <code>&lt;button type=&quot;button&quot;&gt;</code> ofrece accesibilidad por teclado y semántica nativa de forma automática.</li>\n</ul>"}, {"promptHtml": "<strong>2. Esquemas XSD y Consultas XPath (PDFs de XML y XPath):</strong> <strong>(a)</strong> Escribe cómo declararías en un esquema <strong>XSD</strong> un elemento <code>&lt;producto&gt;</code> que tenga un atributo obligatorio <code>id</code> (texto) y tres elementos hijos en orden obligatorio: <code>nombre</code> (texto), <code>precio</code> (decimal) y <code>stock</code> (entero). <strong>(b)</strong> Sobre ese mismo XML, escribe la expresión <strong>XPath</strong> para obtener el <code>&lt;precio&gt;</code> del producto con atributo <code>id=&#x27;P001&#x27;</code>, y otra para obtener el <code>&lt;stock&gt;</code> del producto cuyo elemento hijo <code>&lt;nombre&gt;</code> sea <code>&#x27;Teclado&#x27;</code>.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>(a) Declaración en XSD:</strong></li>\n</ul>\n<pre><code>&lt;xs:element name=&quot;producto&quot;&gt;\n  &lt;xs:complexType&gt;\n    &lt;xs:sequence&gt;\n      &lt;xs:element name=&quot;nombre&quot; type=&quot;xs:string&quot;/&gt;\n      &lt;xs:element name=&quot;precio&quot; type=&quot;xs:decimal&quot;/&gt;\n      &lt;xs:element name=&quot;stock&quot; type=&quot;xs:integer&quot;/&gt;\n    &lt;/xs:sequence&gt;\n    &lt;xs:attribute name=&quot;id&quot; type=&quot;xs:string&quot; use=&quot;required&quot;/&gt;\n  &lt;/xs:complexType&gt;\n&lt;/xs:element&gt;</code></pre>\n<ul class=\"task-list\">\n<li><strong>(b) Expresiones XPath:</strong>\n  <ul>\n    <li>Precio filtrando por atributo <code>id</code>: <code>//producto[@id=&#x27;P001&#x27;]/precio</code></li>\n    <li>Stock filtrando por elemento hijo <code>nombre</code>: <code>//producto[nombre=&#x27;Teclado&#x27;]/stock</code></li>\n  </ul>\n</li>\n</ul>"}, {"promptHtml": "<strong>3. Comparativa entre XML y JSON y Migración de Datos (PDF de JSON - Bloques 1 al 8):</strong> <strong>(a)</strong> A partir del elemento XML <code>&lt;rutina id=&quot;RUT001&quot;&gt;&lt;nombre&gt;Fuerza&lt;/nombre&gt;&lt;duracion&gt;45&lt;/duracion&gt;&lt;activa&gt;true&lt;/activa&gt;&lt;/rutina&gt;</code>, escribe su representación equivalente en <strong>JSON</strong> conservando los tipos de datos adecuados. <strong>(b)</strong> Señala tres diferencias principales entre XML y JSON vistas en el Bloque 7 de la UD2.", "solutionHtml": "<ul class=\"task-list\">\n<li><strong>(a) Representación equivalente en JSON:</strong></li>\n</ul>\n<pre><code>{\n  &quot;id&quot;: &quot;RUT001&quot;,\n  &quot;nombre&quot;: &quot;Fuerza&quot;,\n  &quot;duracion&quot;: 45,\n  &quot;activa&quot;: true\n}</code></pre>\n<ul class=\"task-list\">\n<li><strong>(b) Tres diferencias principales entre XML y JSON (Bloque 7 UD2):</strong>\n  <ol>\n    <li><strong>Etiquetas vs Propiedades:</strong> XML organiza los datos con etiquetas de apertura y cierre (<code>&lt;nombre&gt;...&lt;/nombre&gt;</code>), mientras que JSON usa pares <code>&quot;propiedad&quot;: valor</code> dentro de objetos <code>{}</code>.</li>\n    <li><strong>Atributos:</strong> XML permite añadir atributos en las etiquetas de apertura (<code>id=&quot;RUT001&quot;</code>); JSON no tiene atributos y los representa como una propiedad más del objeto.</li>\n    <li><strong>Verbosidad y tipos:</strong> XML es más verboso al repetir el nombre de cada etiqueta al abrir y cerrar y trata el contenido como texto salvo que haya un XSD; JSON es más compacto y distingue nativamente números (<code>45</code>), booleanos (<code>true</code>), <code>null</code>, arrays <code>[]</code> y objetos <code>{}</code>.</li>\n  </ol>\n</li>\n</ul>"}];
+    const t1SolString = "{\n  \"nombre\": \"Gimnasio Olympia Valencia\",\n  \"cuotaBase\": 39.9,\n  \"aforoMaximo\": 120,\n  \"abiertoFestivos\": false,\n  \"instalaciones\": [\n    {\n      \"zona\": \"Musculación\",\n      \"planta\": 1\n    },\n    {\n      \"zona\": \"Cardio\",\n      \"planta\": 2\n    }\n  ],\n  \"nutricionista\": null\n}";
+    const fullJsonString = "{\n  \"gimnasio\": {\n    \"nombre\": \"Gimnasio Olympia Valencia\",\n    \"cuotaBase\": 39.9,\n    \"aforoMaximo\": 120,\n    \"abiertoFestivos\": false,\n    \"nutricionista\": null,\n    \"direccion\": {\n      \"calle\": \"Calle Xàtiva 18\",\n      \"ciudad\": \"Valencia\",\n      \"codigoPostal\": \"46002\",\n      \"coordenadas\": [\n        39.4672,\n        -0.3765\n      ]\n    },\n    \"contacto\": {\n      \"email\": \"info@olympiavlc.example\",\n      \"telefonos\": [\n        \"963221100\",\n        \"622110099\"\n      ]\n    },\n    \"zonasEntrenamiento\": [\n      \"musculación\",\n      \"peso libre\",\n      \"cardio\",\n      \"estiramientos\"\n    ],\n    \"rutinas\": [\n      {\n        \"id\": \"RUT001\",\n        \"nombre\": \"Fuerza tren superior\",\n        \"nivel\": \"Principiante\",\n        \"duracionMinutos\": 45,\n        \"requiereMonitor\": false,\n        \"materialNecesario\": [\n          \"banca\",\n          \"barra olímpica\",\n          \"mancuernas\"\n        ],\n        \"ejercicios\": [\n          {\n            \"nombre\": \"Press banca\",\n            \"series\": 4,\n            \"repeticiones\": 10\n          },\n          {\n            \"nombre\": \"Remo con barra\",\n            \"series\": 4,\n            \"repeticiones\": 12\n          },\n          {\n            \"nombre\": \"Press militar\",\n            \"series\": 3,\n            \"repeticiones\": 10\n          }\n        ]\n      },\n      {\n        \"id\": \"RUT002\",\n        \"nombre\": \"Potencia \\\"Full Body\\\"\",\n        \"nivel\": \"Alto\",\n        \"duracionMinutos\": 60,\n        \"requiereMonitor\": true,\n        \"materialNecesario\": [\n          \"jaula potencia\",\n          \"discos\",\n          \"kettlebell\"\n        ],\n        \"ejercicios\": [\n          {\n            \"nombre\": \"Sentadilla\",\n            \"series\": 5,\n            \"repeticiones\": 5\n          },\n          {\n            \"nombre\": \"Peso muerto\",\n            \"series\": 4,\n            \"repeticiones\": 6\n          }\n        ]\n      },\n      {\n        \"id\": \"RUT003\",\n        \"nombre\": \"Movilidad y Core\",\n        \"nivel\": \"Inicial\",\n        \"duracionMinutos\": 30,\n        \"requiereMonitor\": false,\n        \"materialNecesario\": [],\n        \"ejercicios\": []\n      }\n    ],\n    \"socios\": [\n      {\n        \"id\": \"SOC01\",\n        \"nombre\": \"Carlos Vidal\",\n        \"fechaAlta\": \"2026-09-01\",\n        \"fichaMedica\": {\n          \"apto\": true,\n          \"frecuenciaMaxPpm\": 185\n        },\n        \"sesiones\": [\n          {\n            \"id\": \"SES-101\",\n            \"rutinaId\": \"RUT001\",\n            \"fecha\": \"2026-11-03\",\n            \"completada\": true,\n            \"kcalQuemadas\": 420,\n            \"notas\": \"Subir 2,5 kg en press banca\"\n          },\n          {\n            \"id\": \"SES-102\",\n            \"rutinaId\": \"RUT002\",\n            \"fecha\": \"2026-11-06\",\n            \"completada\": true,\n            \"kcalQuemadas\": 580,\n            \"notas\": null\n          }\n        ]\n      },\n      {\n        \"id\": \"SOC02\",\n        \"nombre\": \"Elena Serra\",\n        \"fechaAlta\": \"2026-10-15\",\n        \"fichaMedica\": null,\n        \"sesiones\": [\n          {\n            \"id\": \"SES-103\",\n            \"rutinaId\": \"RUT001\",\n            \"fecha\": \"2026-11-10\",\n            \"completada\": false,\n            \"kcalQuemadas\": null,\n            \"notas\": \"Sesión interrumpida a mitad\"\n          }\n        ]\n      }\n    ]\n  }\n}";
 
     const list = document.getElementById('questions');
     const qmapGrid = document.getElementById('qmapGrid');
