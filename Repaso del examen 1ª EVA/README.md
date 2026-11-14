@@ -7,6 +7,9 @@
 
 Apartado de repaso y simulacros dentro del repositorio de **Lenguajes de marcas y sistemas de gestión de información** para preparar el examen oficial de la primera evaluación.
 
+> [!IMPORTANT]
+> **¿Quieres empezar un simulacro?** Baja a **Simulacros Disponibles** y haz clic en **🎮 Test Interactivo** junto al modelo que quieras practicar. Se abrirá el examen interactivo.
+
 > [!NOTE]
 > **Sobre este apartado del repositorio:** El **Modelo A** procede del material oficial proporcionado por el profesor en clase. Los **Modelos B, C y D** son simulacros adicionales creados con IA siguiendo la misma estructura y rúbrica para practicar, y no sustituyen las indicaciones oficiales del aula.
 
